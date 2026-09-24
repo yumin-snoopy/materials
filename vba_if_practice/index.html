@@ -4,21 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VBA IF文 読み解き練習 BASIC</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260924-4">
 </head>
-<body>
+<body oncontextmenu="return false">
   <main class="app">
     <header>
       <div>
         <h1>VBA IF文 読み解き練習 BASIC</h1>
         <p class="lead">変数の値を見て、If / ElseIf / Else のどの分岐が実行されるかを選ぶ10問です。And / Or を含む条件は、1つずつ True / False に分解して読みます。</p>
       </div>
-      <section class="scorebox" aria-live="polite">
-        <span>現在の得点</span>
-        <strong id="scoreText">0 / 10</strong>
-        <div class="progress" aria-label="回答済みの割合"><div id="progressBar"></div></div>
-      </section>
+      <div class="header-side">
+        <section class="scorebox" aria-live="polite">
+          <span>現在の得点</span>
+          <strong id="scoreText">0 / 10</strong>
+          <div class="progress" aria-label="回答済みの割合"><div id="progressBar"></div></div>
+        </section>
+      </div>
     </header>
 
     <section class="toolbar" aria-label="操作">
@@ -35,6 +36,13 @@
       <section class="question-list" id="questionList" aria-label="練習問題"></section>
 
       <aside aria-label="学習メモ">
+        <section class="qrbox" aria-labelledby="qrTitle">
+          <div id="qrCode" role="img" aria-label="このページのQRコード"></div>
+          <div class="qr-copy">
+            <strong id="qrTitle">スマホで開く</strong>
+            <p id="qrStatus">このページのQRコードを作成しています。</p>
+          </div>
+        </section>
         <section class="panel">
           <h3>読み方の型</h3>
           <ul>
@@ -49,7 +57,7 @@
           <ul>
             <li>And は両方 True で True</li>
             <li>Or はどちらか True で True</li>
-            <li>VBAでは And が Or より先に評価される</li>
+            <li>And と Or を組み合わせたら括弧の中から読む</li>
           </ul>
         </section>
         <section class="panel">
@@ -61,5 +69,8 @@
 
     <section class="summary" id="summary" aria-live="polite"></section>
   </main>
+
+  <script src="qrcode.min.js?v=20260924-4" defer></script>
+  <script src="script.js?v=20260924-4" defer></script>
 </body>
 </html>
