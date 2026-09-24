@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VBA IF文 読み解き練習 BASIC</title>
-  <link rel="stylesheet" href="style.css?v=20260924-4">
+  <link id="appStyle" rel="stylesheet" href="style.css">
 </head>
 <body oncontextmenu="return false">
   <main class="app">
@@ -70,7 +70,17 @@
     <section class="summary" id="summary" aria-live="polite"></section>
   </main>
 
-  <script src="qrcode.min.js?v=20260924-4" defer></script>
-  <script src="script.js?v=20260924-5" defer></script>
+  <script src="qrcode.min.js" defer></script>
+  <script>
+    const cacheBuster = Date.now();
+
+    const style = document.getElementById("appStyle");
+    style.href = `style.css?v=${cacheBuster}`;
+
+    const appScript = document.createElement("script");
+    appScript.src = `script.js?v=${cacheBuster}`;
+    appScript.defer = true;
+    document.body.appendChild(appScript);
+  </script>
 </body>
 </html>
