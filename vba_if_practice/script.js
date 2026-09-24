@@ -1,3 +1,517 @@
-(()=>{"use strict";const _0x5a="W3siaWQiOjEsInRhZ3MiOlsiYmFzaWMiXSwidGl0bGUiOiLmnIDliJ3jga4gSWYg44GMIFRydWUg44Gq44KJ44Gd44GT44Gn57WC5LqGIiwiY29kZSI6IlN1YiBRMSgpXG4gICAgRGltIHggQXMgSW50ZWdlclxuICAgIHggPSAxMlxuXG4gICAgSWYgeCA+PSAxMCBUaGVuXG4gICAgICAgIE1zZ0JveCBcIkFcIlxuICAgIEVsc2VJZiB4ID49IDUgVGhlblxuICAgICAgICBNc2dCb3ggXCJCXCJcbiAgICBFbHNlXG4gICAgICAgIE1zZ0JveCBcIkNcIlxuICAgIEVuZCBJZlxuRW5kIFN1YiIsInByb21wdCI6IuihqOekuuOBleOCjOOCi+aWh+Wtl+OBr+OBqeOCjOOBp+OBmeOBi+OAgiIsImNob2ljZXMiOlsiQiIsIuS9leOCguihqOekuuOBleOCjOOBquOBhCIsIkEiLCJDIl0sImFuc3dlciI6MiwiZXhwbGFuYXRpb24iOiJ4IOOBryAxMiDjgafjgZnjgILmnIDliJ3jga4geCA+PSAxMCDjgYwgVHJ1ZSDjgarjga7jgafjgIxB44CN44GM6KGo56S644GV44KM44CB44Gd44KM5Lul6ZmN44GuIEVsc2VJZiDjgaggRWxzZSDjga/liKTlrprjgZXjgozjgb7jgZvjgpPjgIIifSx7ImlkIjoyLCJ0YWdzIjpbIm9yIl0sInRpdGxlIjoiT3Ig44Gv44Gp44Gh44KJ44GL5LiA5pa544Gn5oiQ56uLIiwiY29kZSI6IlN1YiBRMigpXG4gICAgRGltIHNjb3JlIEFzIEludGVnZXJcbiAgICBEaW0gcGFzc2VkIEFzIEJvb2xlYW5cbiAgICBzY29yZSA9IDcyXG4gICAgcGFzc2VkID0gRmFsc2VcblxuICAgIElmIHNjb3JlID49IDgwIE9yIHBhc3NlZCA9IFRydWUgVGhlblxuICAgICAgICBNc2dCb3ggXCLlkIjmoLzlgJnoo5xcIlxuICAgIEVsc2VcbiAgICAgICAgTXNnQm94IFwi5YaN5oyR5oimXCJcbiAgICBFbmQgSWZcbkVuZCBTdWIiLCJwcm9tcHQiOiLooajnpLrjgZXjgozjgovjg6Hjg4Pjgrvjg7zjgrjjga/jganjgozjgafjgZnjgYvjgIIiLCJjaG9pY2VzIjpbIuWGjeaMkeaIpiIsInNjb3JlIiwi5ZCI5qC85YCZ6KOcIiwicGFzc2VkIl0sImFuc3dlciI6MCwiZXhwbGFuYXRpb24iOiJzY29yZSA+PSA4MCDjgoIgcGFzc2VkID0gVHJ1ZSDjgoIgRmFsc2Ug44Gn44GZ44CCT3Ig44Gv5Lih5pa544GMIEZhbHNlIOOBruOBqOOBjeOBoOOBkSBGYWxzZSDjgavjgarjgovjgZ/jgoHjgIFFbHNlIOOBruOAjOWGjeaMkeaIpuOAjeOBp+OBmeOAgiJ9LHsiaWQiOjMsInRhZ3MiOlsiYW5kIiwib3IiXSwidGl0bGUiOiJBbmQg44Gu5Lih5pa544GM5oiQ56uL44GZ44KL5aC05ZCIIiwiY29kZSI6IlN1YiBRMygpXG4gICAgRGltIHF0eSBBcyBJbnRlZ2VyXG4gICAgRGltIHByaWNlIEFzIEludGVnZXJcbiAgICBxdHkgPSA2XG4gICAgcHJpY2UgPSAxMjAwXG5cbiAgICBJZiBxdHkgPj0gNSBBbmQgcHJpY2UgPj0gMTAwMCBUaGVuXG4gICAgICAgIE1zZ0JveCBcIuWJsuW8lUFcIlxuICAgIEVsc2VJZiBxdHkgPj0gMyBPciBwcmljZSA+PSAxNTAwIFRoZW5cbiAgICAgICAgTXNnQm94IFwi5Ymy5byVQlwiXG4gICAgRWxzZVxuICAgICAgICBNc2dCb3ggXCLlibLlvJXjgarjgZdcIlxuICAgIEVuZCBJZlxuRW5kIFN1YiIsInByb21wdCI6IuihqOekuuOBleOCjOOCi+ODoeODg+OCu+ODvOOCuOOBr+OBqeOCjOOBp+OBmeOBi+OAgiIsImNob2ljZXMiOlsi5Ymy5byV44Gq44GXIiwi44Ko44Op44O844Gr44Gq44KLIiwi5Ymy5byVQiIsIuWJsuW8lUEiXSwiYW5zd2VyIjozLCJleHBsYW5hdGlvbiI6InF0eSA+PSA1IOOBqCBwcmljZSA+PSAxMDAwIOOBr+S4oeaWueOBqOOCgiBUcnVlIOOBp+OBmeOAguacgOWIneOBriBBbmQg44GM5oiQ56uL44GZ44KL44Gu44Gn44CM5Ymy5byVQeOAjeOBjOihqOekuuOBleOCjOOAgUVsc2VJZiDjga/liKTlrprjgZXjgozjgb7jgZvjgpPjgIIifSx7ImlkIjo0LCJ0YWdzIjpbImFuZCIsIm9yIl0sInRpdGxlIjoi5paH5a2X5YiX5p2h5Lu244Go5pWw5YCk5p2h5Lu244KS57WE44G/5ZCI44KP44Gb44KLIiwiY29kZSI6IlN1YiBRNCgpXG4gICAgRGltIGRlcHQgQXMgU3RyaW5nXG4gICAgRGltIHllYXJzIEFzIEludGVnZXJcbiAgICBkZXB0ID0gXCJTYWxlc1wiXG4gICAgeWVhcnMgPSAyXG5cbiAgICBJZiBkZXB0ID0gXCJTYWxlc1wiIEFuZCB5ZWFycyA+PSAzIFRoZW5cbiAgICAgICAgTXNnQm94IFwi5LiK57Sa5ouF5b2TXCJcbiAgICBFbHNlSWYgZGVwdCA9IFwiU2FsZXNcIiBPciB5ZWFycyA+PSA1IFRoZW5cbiAgICAgICAgTXNnQm94IFwi6YCa5bi45ouF5b2TXCJcbiAgICBFbHNlXG4gICAgICAgIE1zZ0JveCBcIuWvvuixoeWkllwiXG4gICAgRW5kIElmXG5FbmQgU3ViIiwicHJvbXB0Ijoi6KGo56S644GV44KM44KL44Oh44OD44K744O844K444Gv44Gp44KM44Gn44GZ44GL44CCIiwiY2hvaWNlcyI6WyLlr77osaHlpJYiLCLpgJrluLjmi4XlvZMiLCJTYWxlcyIsIuS4iue0muaLheW9kyJdLCJhbnN3ZXIiOjEsImV4cGxhbmF0aW9uIjoiZGVwdCA9IFwiU2FsZXNcIiDjga8gVHJ1ZeOAgXllYXJzID49IDMg44GvIEZhbHNlIOOBquOBruOBp+acgOWIneOBriBBbmQg44GvIEZhbHNl44CC5qyh44GuIE9yIOOBr+W3puWBtOOBjCBUcnVlIOOBquOBruOBp+OAjOmAmuW4uOaLheW9k+OAjeOBp+OBmeOAgiJ9LHsiaWQiOjUsInRhZ3MiOlsiYmFzaWMiXSwidGl0bGUiOiIwIOOBruWIpOWumuOCkuiqreOBv+iQveOBqOOBleOBquOBhCIsImNvZGUiOiJTdWIgUTUoKVxuICAgIERpbSBuIEFzIEludGVnZXJcbiAgICBuID0gLTNcblxuICAgIElmIG4gPiAwIFRoZW5cbiAgICAgICAgTXNnQm94IFwi5q2jXCJcbiAgICBFbHNlSWYgbiA9IDAgVGhlblxuICAgICAgICBNc2dCb3ggXCLjgrzjg61cIlxuICAgIEVsc2VcbiAgICAgICAgTXNnQm94IFwi6LKgXCJcbiAgICBFbmQgSWZcbkVuZCBTdWIiLCJwcm9tcHQiOiLooajnpLrjgZXjgozjgovmloflrZfjga/jganjgozjgafjgZnjgYvjgIIiLCJjaG9pY2VzIjpbIuOCvOODrSIsIi0zIiwi6LKgIiwi5q2jIl0sImFuc3dlciI6MiwiZXhwbGFuYXRpb24iOiJuID4gMCDjgoIgbiA9IDAg44KCIEZhbHNlIOOBp+OBmeOAguOBqeOBruadoeS7tuOBq+OCguW9k+OBpuOBr+OBvuOCieOBquOBhOOBn+OCgeOAgUVsc2Ug44Gu44CM6LKg44CN44GM6KGo56S644GV44KM44G+44GZ44CCIn0seyJpZCI6NiwidGFncyI6WyJhbmQiLCJvciJdLCJ0aXRsZSI6IjLjgaTjga7mlbDlgKTjgpLmr5TovIPjgZnjgosiLCJjb2RlIjoiU3ViIFE2KClcbiAgICBEaW0gYSBBcyBJbnRlZ2VyXG4gICAgRGltIGIgQXMgSW50ZWdlclxuICAgIGEgPSA0XG4gICAgYiA9IDRcblxuICAgIElmIGEgPiA1IEFuZCBiID4gNSBUaGVuXG4gICAgICAgIE1zZ0JveCBcIuS4oeaWuVwiXG4gICAgRWxzZUlmIGEgPiA1IE9yIGIgPiA1IFRoZW5cbiAgICAgICAgTXNnQm94IFwi54mH5pa5XCJcbiAgICBFbHNlXG4gICAgICAgIE1zZ0JveCBcIuOBquOBl1wiXG4gICAgRW5kIElmXG5FbmQgU3ViIiwicHJvbXB0Ijoi6KGo56S644GV44KM44KL5paH5a2X44Gv44Gp44KM44Gn44GZ44GL44CCIiwiY2hvaWNlcyI6WyLjgarjgZciLCJhIiwi5Lih5pa5Iiwi54mH5pa5Il0sImFuc3dlciI6MCwiZXhwbGFuYXRpb24iOiJhID4gNSDjgaggYiA+IDUg44Gv44Gp44Gh44KJ44KCIEZhbHNlIOOBp+OBmeOAgkFuZCDjgoIgT3Ig44KC5oiQ56uL44GX44Gq44GE44Gu44Gn44CBRWxzZSDjga7jgIzjgarjgZfjgI3jgYzooajnpLrjgZXjgozjgb7jgZnjgIIifSx7ImlkIjo3LCJ0YWdzIjpbImFuZCIsIm9yIl0sInRpdGxlIjoi5pyA5Yid44GuIE9yIOOBjOaIkOeri+OBmeOCi+WgtOWQiCIsImNvZGUiOiJTdWIgUTcoKVxuICAgIERpbSByYW5rIEFzIFN0cmluZ1xuICAgIERpbSBwb2ludCBBcyBJbnRlZ2VyXG4gICAgcmFuayA9IFwiQlwiXG4gICAgcG9pbnQgPSA5N1xuXG4gICAgSWYgcmFuayA9IFwiQVwiIE9yIHBvaW50ID49IDk1IFRoZW5cbiAgICAgICAgTXNnQm94IFwiR29sZFwiXG4gICAgRWxzZUlmIHJhbmsgPSBcIkJcIiBBbmQgcG9pbnQgPj0gODAgVGhlblxuICAgICAgICBNc2dCb3ggXCJTaWx2ZXJcIlxuICAgIEVsc2VcbiAgICAgICAgTXNnQm94IFwiQnJvbnplXCJcbiAgICBFbmQgSWZcbkVuZCBTdWIiLCJwcm9tcHQiOiLooajnpLrjgZXjgozjgovmloflrZfjga/jganjgozjgafjgZnjgYvjgIIiLCJjaG9pY2VzIjpbIlNpbHZlciIsIkIiLCJCcm9uemUiLCJHb2xkIl0sImFuc3dlciI6MywiZXhwbGFuYXRpb24iOiJyYW5rID0gXCJBXCIg44GvIEZhbHNlIOOBp+OBmeOBjOOAgXBvaW50ID49IDk1IOOBryBUcnVlIOOBp+OBmeOAgk9yIOOBr+eJh+aWueOBjCBUcnVlIOOBquOCieaIkOeri+OBmeOCi+OBruOBp+OAgeacgOWIneOBriBJZiDjgafjgIxHb2xk44CN44GM6KGo56S644GV44KM44G+44GZ44CCIn0seyJpZCI6OCwidGFncyI6WyJhbmQiLCJvciJdLCJ0aXRsZSI6IkFuZCDjga7kuKHmlrnjgYzmnaHku7bjgpLmuoDjgZ/jgZnloLTlkIgiLCJjb2RlIjoiU3ViIFE4KClcbiAgICBEaW0gdGVtcCBBcyBJbnRlZ2VyXG4gICAgRGltIGh1bWlkIEFzIEludGVnZXJcbiAgICB0ZW1wID0gMzFcbiAgICBodW1pZCA9IDc1XG5cbiAgICBJZiB0ZW1wID49IDMwIEFuZCBodW1pZCA+PSA3MCBUaGVuXG4gICAgICAgIE1zZ0JveCBcIuitpuaIklwiXG4gICAgRWxzZUlmIHRlbXAgPj0gMzAgT3IgaHVtaWQgPj0gNzAgVGhlblxuICAgICAgICBNc2dCb3ggXCLms6jmhI9cIlxuICAgIEVsc2VcbiAgICAgICAgTXNnQm94IFwi6YCa5bi4XCJcbiAgICBFbmQgSWZcbkVuZCBTdWIiLCJwcm9tcHQiOiLooajnpLrjgZXjgozjgovjg6Hjg4Pjgrvjg7zjgrjjga/jganjgozjgafjgZnjgYvjgIIiLCJjaG9pY2VzIjpbIuazqOaEjyIsIuitpuaIkiIsIumAmuW4uCIsIjMxIl0sImFuc3dlciI6MSwiZXhwbGFuYXRpb24iOiJ0ZW1wID49IDMwIOOBqCBodW1pZCA+PSA3MCDjga/kuKHmlrnjgajjgoIgVHJ1ZSDjgafjgZnjgILmnIDliJ3jga4gQW5kIOOBjOaIkOeri+OBmeOCi+OBruOBp+OAjOitpuaIkuOAjeOBjOihqOekuuOBleOCjOOBvuOBmeOAgiJ9LHsiaWQiOjksInRhZ3MiOlsiYW5kIiwib3IiXSwidGl0bGUiOiJCb29sZWFuIOWkieaVsOOBjCBGYWxzZSDjga7loLTlkIgiLCJjb2RlIjoiU3ViIFE5KClcbiAgICBEaW0gdG90YWwgQXMgSW50ZWdlclxuICAgIERpbSBtZW1iZXIgQXMgQm9vbGVhblxuICAgIHRvdGFsID0gMTI1XG4gICAgbWVtYmVyID0gRmFsc2VcblxuICAgIElmIG1lbWJlciA9IFRydWUgQW5kIHRvdGFsID49IDEwMCBUaGVuXG4gICAgICAgIE1zZ0JveCBcIuS8muWToeWJsuW8lVwiXG4gICAgRWxzZUlmIG1lbWJlciA9IFRydWUgT3IgdG90YWwgPj0gMTIwIFRoZW5cbiAgICAgICAgTXNnQm94IFwi44Kv44O844Od44OzXCJcbiAgICBFbHNlXG4gICAgICAgIE1zZ0JveCBcIumAmuW4uOS+oeagvFwiXG4gICAgRW5kIElmXG5FbmQgU3ViIiwicHJvbXB0Ijoi6KGo56S644GV44KM44KL44Oh44OD44K744O844K444Gv44Gp44KM44Gn44GZ44GL44CCIiwiY2hvaWNlcyI6WyLjgq/jg7zjg53jg7MiLCJUcnVlIiwi6YCa5bi45L6h5qC8Iiwi5Lya5ZOh5Ymy5byVIl0sImFuc3dlciI6MCwiZXhwbGFuYXRpb24iOiLmnIDliJ3jga4gSWYg44GvIG1lbWJlciA9IFRydWUg44GMIEZhbHNlIOOBquOBruOBp+OAgUFuZCDlhajkvZPjgYwgRmFsc2Ug44Gn44GZ44CCRWxzZUlmIOOBryB0b3RhbCA+PSAxMjAg44GMIFRydWUg44Gq44Gu44Gn44CBT3Ig5YWo5L2T44GMIFRydWUg44Gr44Gq44KK44CM44Kv44O844Od44Oz44CN44Gn44GZ44CCIn0seyJpZCI6MTAsInRhZ3MiOlsiYW5kIiwib3IiXSwidGl0bGUiOiJBbmQg44GoIE9yIOOBjOWQjOOBmOW8j+OBq+OBguOCi+WgtOWQiCIsImNvZGUiOiJTdWIgUTEwKClcbiAgICBEaW0gZGF5TmFtZSBBcyBTdHJpbmdcbiAgICBEaW0gaG91ciBBcyBJbnRlZ2VyXG4gICAgZGF5TmFtZSA9IFwiU3VuXCJcbiAgICBob3VyID0gMTRcblxuICAgIElmIGRheU5hbWUgPSBcIlNhdFwiIE9yIChkYXlOYW1lID0gXCJTdW5cIiBBbmQgaG91ciA8IDEyKSBUaGVuXG4gICAgICAgIE1zZ0JveCBcIuS8keaXpeWNiOWJjVwiXG4gICAgRWxzZVxuICAgICAgICBNc2dCb3ggXCLlr77osaHlpJZcIlxuICAgIEVuZCBJZlxuRW5kIFN1YiIsInByb21wdCI6IuihqOekuuOBleOCjOOCi+ODoeODg+OCu+ODvOOCuOOBr+OBqeOCjOOBp+OBmeOBi+OAgiIsImNob2ljZXMiOlsi5LyR5pel5Y2I5YmNIiwiU3VuIiwi5a++6LGh5aSWIiwi44Ko44Op44O844Gr44Gq44KLIl0sImFuc3dlciI6MiwiZXhwbGFuYXRpb24iOiLmi6zlvKfjga7kuK3jgpLlhYjjgavoqq3jgb/jgb7jgZnjgIJkYXlOYW1lID0gXCJTdW5cIiDjga8gVHJ1ZSDjgafjgZnjgYzjgIFob3VyIDwgMTIg44GvIEZhbHNlIOOBquOBruOBp+OAgeaLrOW8p+WGheOBriBBbmQg44GvIEZhbHNlIOOBp+OBmeOAgmRheU5hbWUgPSBcIlNhdFwiIOOCgiBGYWxzZSDjga7jgZ/jgoHjgIFPciDlhajkvZPjgoIgRmFsc2Ug44Go44Gq44KK44CM5a++6LGh5aSW44CN44Gn44GZ44CCIn1d",_0x1d=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(_0x5a),c=>c.charCodeAt(0)))),_0x2c={f:"all",a:{}},_0x3e=document,_0x41=_0x3e.getElementById("questionList"),_0x42=_0x3e.getElementById("miniList"),_0x43=_0x3e.getElementById("scoreText"),_0x44=_0x3e.getElementById("progressBar"),_0x45=_0x3e.getElementById("summary"),_0x6b=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),_0x7d=t=>t==="basic"?"If / ElseIf":t==="and"?"And":t==="or"?"Or":t,_0x81=()=>_0x2c.f==="all"?_0x1d:_0x1d.filter(q=>q.tags.includes(_0x2c.f));function _0x91(){_0x41.innerHTML="",_0x81().forEach(q=>{const s=_0x2c.a[q.id],a=s!==undefined,o=s===q.answer,e=_0x3e.createElement("article");e.className=`question${a?o?" is-correct":" is-wrong":""}`,e.id=`q-${q.id}`,e.innerHTML=`<div class="q-head"><h2>問${q.id}: ${_0x6b(q.title)}</h2><div class="tags">${q.tags.map(t=>`<span class="tag">${_0x7d(t)}</span>`).join("")}</div></div><pre><code>${_0x6b(q.code)}</code></pre><p class="prompt">${_0x6b(q.prompt)}</p><div class="choices" role="radiogroup" aria-label="問${q.id}の選択肢">${q.choices.map((c,i)=>{let n="choice";return a&&i===q.answer&&(n+=" correct"),a&&i===s&&i!==q.answer&&(n+=" wrong"),`<label class="${n}"><input type="radio" name="q${q.id}" value="${i}" ${s===i?"checked":""}><span>${_0x6b(c)}</span></label>`}).join("")}</div><div class="result${a?" show":""}" aria-live="polite"><strong>${a?o?"正解":"不正解":""}</strong>${a?_0x6b(q.explanation):""}</div>`,_0x41.appendChild(e)})}function _0xa2(){_0x42.innerHTML="",_0x1d.forEach(q=>{const s=_0x2c.a[q.id],b=_0x3e.createElement("button");b.type="button",b.className="mini",b.textContent=q.id,s!==undefined&&b.classList.add(s===q.answer?"done":"missed"),b.setAttribute("aria-label",`問${q.id}へ移動`),b.addEventListener("click",()=>{_0x2c.f="all",_0xc7(),_0xd8(),_0x3e.getElementById(`q-${q.id}`).scrollIntoView({behavior:"smooth",block:"start"})}),_0x42.appendChild(b)})}function _0xb4(){const a=Object.keys(_0x2c.a).length,c=_0x1d.filter(q=>_0x2c.a[q.id]===q.answer).length;_0x43.textContent=`${c} / ${_0x1d.length}`,_0x44.style.width=`${a/_0x1d.length*100}%`,a===_0x1d.length?(_0x45.textContent=c===_0x1d.length?"全問正解です。IF文の読み順はかなり安定しています。":`${_0x1d.length}問中${c}問正解です。間違えた問題は、条件を True / False に分けてもう一度読み直してみましょう。`,_0x45.classList.add("show")):(_0x45.classList.remove("show"),_0x45.textContent="")}function _0xc7(){_0x3e.querySelectorAll(".filter").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===_0x2c.f)))}function _0xd8(){_0x91(),_0xa2(),_0xb4()}_0x41.addEventListener("change",e=>{if(e.target.matches("input[type='radio']")){const i=Number(e.target.name.replace("q",""));_0x2c.a[i]=Number(e.target.value),_0xd8(),_0x3e.getElementById(`q-${i}`).scrollIntoView({behavior:"smooth",block:"nearest"})}}),_0x3e.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{_0x2c.f=b.dataset.filter,_0xc7(),_0x91()})),_0x3e.getElementById("resetBtn").addEventListener("click",()=>{_0x2c.a={},_0xd8(),scrollTo({top:0,behavior:"smooth"})}),addEventListener("contextmenu",e=>e.preventDefault(),{capture:true}),addEventListener("keydown",e=>{const k=String(e.key).toLowerCase(),m=e.ctrlKey||e.metaKey,p=e.shiftKey||e.altKey;if(e.key==="F12"||m&&["u","s"].includes(k)||m&&p&&["i","j","c","k"].includes(k)){e.preventDefault(),e.stopPropagation()}},{capture:true}),_0xd8()})();
+(() => {
+  "use strict";
 
-document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("qrCode"),t=document.getElementById("qrStatus"),o="https://yumin0116snoopy-spec.github.io/materials/vba_if_practice/";if(typeof QRCode==="undefined"){t.textContent="QRコードを読み込めませんでした。ページを更新してください。";return}new QRCode(e,{text:o,width:92,height:92,colorDark:"#18212f",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M}),t.textContent="読み取ると、この練習ページを開けます。"});
+  // ==============================
+  // 問題データ
+  // ==============================
+  const questions = [
+  {
+    "id": 1,
+    "tags": [
+      "basic"
+    ],
+    "title": "最初の If が True ならそこで終了",
+    "code": "Sub Q1()\n    Dim x As Integer\n    x = 12\n\n    If x >= 10 Then\n        MsgBox \"A\"\n    ElseIf x >= 5 Then\n        MsgBox \"B\"\n    Else\n        MsgBox \"C\"\n    End If\nEnd Sub",
+    "prompt": "表示される文字はどれですか。",
+    "choices": [
+      "B",
+      "何も表示されない",
+      "A",
+      "C"
+    ],
+    "answer": 2,
+    "explanation": "x は 12 です。最初の x >= 10 が True なので「A」が表示され、それ以降の ElseIf と Else は判定されません。"
+  },
+  {
+    "id": 2,
+    "tags": [
+      "or"
+    ],
+    "title": "Or はどちらか一方で成立",
+    "code": "Sub Q2()\n    Dim score As Integer\n    Dim passed As Boolean\n    score = 72\n    passed = False\n\n    If score >= 80 Or passed = True Then\n        MsgBox \"合格候補\"\n    Else\n        MsgBox \"再挑戦\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "再挑戦",
+      "score",
+      "合格候補",
+      "passed"
+    ],
+    "answer": 0,
+    "explanation": "score >= 80 も passed = True も False です。Or は両方が False のときだけ False になるため、Else の「再挑戦」です。"
+  },
+  {
+    "id": 3,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "And の両方が成立する場合",
+    "code": "Sub Q3()\n    Dim qty As Integer\n    Dim price As Integer\n    qty = 6\n    price = 1200\n\n    If qty >= 5 And price >= 1000 Then\n        MsgBox \"割引A\"\n    ElseIf qty >= 3 Or price >= 1500 Then\n        MsgBox \"割引B\"\n    Else\n        MsgBox \"割引なし\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "割引なし",
+      "エラーになる",
+      "割引B",
+      "割引A"
+    ],
+    "answer": 3,
+    "explanation": "qty >= 5 と price >= 1000 は両方とも True です。最初の And が成立するので「割引A」が表示され、ElseIf は判定されません。"
+  },
+  {
+    "id": 4,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "文字列条件と数値条件を組み合わせる",
+    "code": "Sub Q4()\n    Dim dept As String\n    Dim years As Integer\n    dept = \"Sales\"\n    years = 2\n\n    If dept = \"Sales\" And years >= 3 Then\n        MsgBox \"上級担当\"\n    ElseIf dept = \"Sales\" Or years >= 5 Then\n        MsgBox \"通常担当\"\n    Else\n        MsgBox \"対象外\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "対象外",
+      "通常担当",
+      "Sales",
+      "上級担当"
+    ],
+    "answer": 1,
+    "explanation": "dept = \"Sales\" は True、years >= 3 は False なので最初の And は False。次の Or は左側が True なので「通常担当」です。"
+  },
+  {
+    "id": 5,
+    "tags": [
+      "basic"
+    ],
+    "title": "0 の判定を読み落とさない",
+    "code": "Sub Q5()\n    Dim n As Integer\n    n = -3\n\n    If n > 0 Then\n        MsgBox \"正\"\n    ElseIf n = 0 Then\n        MsgBox \"ゼロ\"\n    Else\n        MsgBox \"負\"\n    End If\nEnd Sub",
+    "prompt": "表示される文字はどれですか。",
+    "choices": [
+      "ゼロ",
+      "-3",
+      "負",
+      "正"
+    ],
+    "answer": 2,
+    "explanation": "n > 0 も n = 0 も False です。どの条件にも当てはまらないため、Else の「負」が表示されます。"
+  },
+  {
+    "id": 6,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "2つの数値を比較する",
+    "code": "Sub Q6()\n    Dim a As Integer\n    Dim b As Integer\n    a = 4\n    b = 4\n\n    If a > 5 And b > 5 Then\n        MsgBox \"両方\"\n    ElseIf a > 5 Or b > 5 Then\n        MsgBox \"片方\"\n    Else\n        MsgBox \"なし\"\n    End If\nEnd Sub",
+    "prompt": "表示される文字はどれですか。",
+    "choices": [
+      "なし",
+      "a",
+      "両方",
+      "片方"
+    ],
+    "answer": 0,
+    "explanation": "a > 5 と b > 5 はどちらも False です。And も Or も成立しないので、Else の「なし」が表示されます。"
+  },
+  {
+    "id": 7,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "最初の Or が成立する場合",
+    "code": "Sub Q7()\n    Dim rank As String\n    Dim point As Integer\n    rank = \"B\"\n    point = 97\n\n    If rank = \"A\" Or point >= 95 Then\n        MsgBox \"Gold\"\n    ElseIf rank = \"B\" And point >= 80 Then\n        MsgBox \"Silver\"\n    Else\n        MsgBox \"Bronze\"\n    End If\nEnd Sub",
+    "prompt": "表示される文字はどれですか。",
+    "choices": [
+      "Silver",
+      "B",
+      "Bronze",
+      "Gold"
+    ],
+    "answer": 3,
+    "explanation": "rank = \"A\" は False ですが、point >= 95 は True です。Or は片方が True なら成立するので、最初の If で「Gold」が表示されます。"
+  },
+  {
+    "id": 8,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "And の両方が条件を満たす場合",
+    "code": "Sub Q8()\n    Dim temp As Integer\n    Dim humid As Integer\n    temp = 31\n    humid = 75\n\n    If temp >= 30 And humid >= 70 Then\n        MsgBox \"警戒\"\n    ElseIf temp >= 30 Or humid >= 70 Then\n        MsgBox \"注意\"\n    Else\n        MsgBox \"通常\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "注意",
+      "警戒",
+      "通常",
+      "31"
+    ],
+    "answer": 1,
+    "explanation": "temp >= 30 と humid >= 70 は両方とも True です。最初の And が成立するので「警戒」が表示されます。"
+  },
+  {
+    "id": 9,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "Boolean 変数が False の場合",
+    "code": "Sub Q9()\n    Dim total As Integer\n    Dim member As Boolean\n    total = 125\n    member = False\n\n    If member = True And total >= 100 Then\n        MsgBox \"会員割引\"\n    ElseIf member = True Or total >= 120 Then\n        MsgBox \"クーポン\"\n    Else\n        MsgBox \"通常価格\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "クーポン",
+      "True",
+      "通常価格",
+      "会員割引"
+    ],
+    "answer": 0,
+    "explanation": "最初の If は member = True が False なので、And 全体が False です。ElseIf は total >= 120 が True なので、Or 全体が True になり「クーポン」です。"
+  },
+  {
+    "id": 10,
+    "tags": [
+      "and",
+      "or"
+    ],
+    "title": "And と Or が同じ式にある場合",
+    "code": "Sub Q10()\n    Dim dayName As String\n    Dim hour As Integer\n    dayName = \"Sun\"\n    hour = 14\n\n    If dayName = \"Sat\" Or (dayName = \"Sun\" And hour < 12) Then\n        MsgBox \"休日午前\"\n    Else\n        MsgBox \"対象外\"\n    End If\nEnd Sub",
+    "prompt": "表示されるメッセージはどれですか。",
+    "choices": [
+      "休日午前",
+      "Sun",
+      "対象外",
+      "エラーになる"
+    ],
+    "answer": 2,
+    "explanation": "括弧の中を先に読みます。dayName = \"Sun\" は True ですが、hour < 12 は False なので、括弧内の And は False です。dayName = \"Sat\" も False のため、Or 全体も False となり「対象外」です。"
+  }
+];
+
+  // ==============================
+  // 状態
+  // ==============================
+  const state = {
+    filter: "all",
+    answers: {}
+  };
+
+  // ==============================
+  // HTML要素
+  // ==============================
+  const questionList = document.getElementById("questionList");
+  const miniList = document.getElementById("miniList");
+  const scoreText = document.getElementById("scoreText");
+  const progressBar = document.getElementById("progressBar");
+  const summary = document.getElementById("summary");
+
+  // HTMLに表示する文字を安全な形に変換
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"]/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;"
+    })[char]);
+  }
+
+  // タグ名を画面表示用に変換
+  function getTagLabel(tag) {
+    if (tag === "basic") return "If / ElseIf";
+    if (tag === "and") return "And";
+    if (tag === "or") return "Or";
+    return tag;
+  }
+
+  // 現在のフィルターに該当する問題だけを取得
+  function getVisibleQuestions() {
+    if (state.filter === "all") {
+      return questions;
+    }
+
+    return questions.filter(question =>
+      question.tags.includes(state.filter)
+    );
+  }
+
+  // ==============================
+  // 問題一覧を表示
+  // ==============================
+  function renderQuestions() {
+    questionList.innerHTML = "";
+
+    getVisibleQuestions().forEach(question => {
+      const selectedAnswer = state.answers[question.id];
+      const answered = selectedAnswer !== undefined;
+      const isCorrect = selectedAnswer === question.answer;
+
+      const article = document.createElement("article");
+      article.className =
+        "question" +
+        (answered ? (isCorrect ? " is-correct" : " is-wrong") : "");
+      article.id = `q-${question.id}`;
+
+      const choicesHtml = question.choices.map((choice, index) => {
+        let className = "choice";
+
+        if (answered && index === question.answer) {
+          className += " correct";
+        }
+
+        if (
+          answered &&
+          index === selectedAnswer &&
+          index !== question.answer
+        ) {
+          className += " wrong";
+        }
+
+        return `
+          <label class="${className}">
+            <input
+              type="radio"
+              name="q${question.id}"
+              value="${index}"
+              ${selectedAnswer === index ? "checked" : ""}
+            >
+            <span>${escapeHtml(choice)}</span>
+          </label>
+        `;
+      }).join("");
+
+      article.innerHTML = `
+        <div class="q-head">
+          <h2>問${question.id}: ${escapeHtml(question.title)}</h2>
+
+          <div class="tags">
+            ${question.tags
+              .map(tag => `<span class="tag">${getTagLabel(tag)}</span>`)
+              .join("")}
+          </div>
+        </div>
+
+        <pre><code>${escapeHtml(question.code)}</code></pre>
+
+        <p class="prompt">${escapeHtml(question.prompt)}</p>
+
+        <div
+          class="choices"
+          role="radiogroup"
+          aria-label="問${question.id}の選択肢"
+        >
+          ${choicesHtml}
+        </div>
+
+        <div
+          class="result${answered ? " show" : ""}"
+          aria-live="polite"
+        >
+          <strong>
+            ${answered ? (isCorrect ? "正解" : "不正解") : ""}
+          </strong>
+          ${answered ? escapeHtml(question.explanation) : ""}
+        </div>
+      `;
+
+      questionList.appendChild(article);
+    });
+  }
+
+  // ==============================
+  // 右側の問題ナビを表示
+  // ==============================
+  function renderMiniList() {
+    miniList.innerHTML = "";
+
+    questions.forEach(question => {
+      const selectedAnswer = state.answers[question.id];
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "mini";
+      button.textContent = question.id;
+
+      if (selectedAnswer !== undefined) {
+        button.classList.add(
+          selectedAnswer === question.answer ? "done" : "missed"
+        );
+      }
+
+      button.setAttribute(
+        "aria-label",
+        `問${question.id}へ移動`
+      );
+
+      button.addEventListener("click", () => {
+        state.filter = "all";
+        updateFilterButtons();
+        renderAll();
+
+        document
+          .getElementById(`q-${question.id}`)
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+      });
+
+      miniList.appendChild(button);
+    });
+  }
+
+  // ==============================
+  // 得点と進捗を更新
+  // ==============================
+  function updateScore() {
+    const answeredCount = Object.keys(state.answers).length;
+
+    const correctCount = questions.filter(question =>
+      state.answers[question.id] === question.answer
+    ).length;
+
+    scoreText.textContent =
+      `${correctCount} / ${questions.length}`;
+
+    progressBar.style.width =
+      `${(answeredCount / questions.length) * 100}%`;
+
+    if (answeredCount === questions.length) {
+      summary.textContent =
+        correctCount === questions.length
+          ? "全問正解です。IF文の読み順はかなり安定しています。"
+          : `${questions.length}問中${correctCount}問正解です。間違えた問題は、条件を True / False に分けてもう一度読み直してみましょう。`;
+
+      summary.classList.add("show");
+    } else {
+      summary.classList.remove("show");
+      summary.textContent = "";
+    }
+  }
+
+  // フィルターボタンの選択状態を更新
+  function updateFilterButtons() {
+    document.querySelectorAll(".filter").forEach(button => {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.filter === state.filter)
+      );
+    });
+  }
+
+  // 画面をまとめて再描画
+  function renderAll() {
+    renderQuestions();
+    renderMiniList();
+    updateScore();
+  }
+
+  // ==============================
+  // イベント
+  // ==============================
+
+  // 回答を選択したとき
+  questionList.addEventListener("change", event => {
+    if (!event.target.matches("input[type='radio']")) {
+      return;
+    }
+
+    const questionId = Number(
+      event.target.name.replace("q", "")
+    );
+
+    state.answers[questionId] =
+      Number(event.target.value);
+
+    renderAll();
+
+    document
+      .getElementById(`q-${questionId}`)
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+  });
+
+  // フィルター切り替え
+  document.querySelectorAll(".filter").forEach(button => {
+    button.addEventListener("click", () => {
+      state.filter = button.dataset.filter;
+      updateFilterButtons();
+      renderQuestions();
+    });
+  });
+
+  // 回答リセット
+  document
+    .getElementById("resetBtn")
+    .addEventListener("click", () => {
+      state.answers = {};
+      renderAll();
+
+      scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+  // HTML側の右クリック禁止に加え、
+  // 既存のショートカット抑止動作もそのまま維持
+  addEventListener(
+    "contextmenu",
+    event => event.preventDefault(),
+    { capture: true }
+  );
+
+  addEventListener(
+    "keydown",
+    event => {
+      const key = String(event.key).toLowerCase();
+      const ctrlOrCommand = event.ctrlKey || event.metaKey;
+      const extraKey = event.shiftKey || event.altKey;
+
+      const blocked =
+        event.key === "F12" ||
+        (ctrlOrCommand && ["u", "s"].includes(key)) ||
+        (
+          ctrlOrCommand &&
+          extraKey &&
+          ["i", "j", "c", "k"].includes(key)
+        );
+
+      if (blocked) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
+    { capture: true }
+  );
+
+  // 初期表示
+  renderAll();
+})();
+
+
+// ==============================
+// QRコード
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const qrCodeArea = document.getElementById("qrCode");
+  const qrStatus = document.getElementById("qrStatus");
+
+  const pageUrl =
+    "https://yumin0116snoopy-spec.github.io/materials/vba_if_practice/";
+
+  if (typeof QRCode === "undefined") {
+    qrStatus.textContent =
+      "QRコードを読み込めませんでした。ページを更新してください。";
+    return;
+  }
+
+  new QRCode(qrCodeArea, {
+    text: pageUrl,
+    width: 92,
+    height: 92,
+    colorDark: "#18212f",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  qrStatus.textContent =
+    "読み取ると、この練習ページを開けます。";
+});
