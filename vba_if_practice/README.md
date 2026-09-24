@@ -8,7 +8,6 @@ VBAの `If` / `ElseIf` / `Else`、`And`、`Or` の読み方を練習するWebア
 
 https://yumin-snoopy.github.io/materials/vba_if_practice/
 
-
 ## 主な機能
 
 - 選択式の練習問題（10問）
@@ -30,7 +29,7 @@ https://yumin-snoopy.github.io/materials/vba_if_practice/
 
 ## ファイル構成
 
-- `index.html`：画面の構成
+- `index.html`：画面の構成・右クリック抑止・CSS / JavaScriptの読み込み
 - `style.css`：画面デザイン
 - `script.js`：問題データ・判定処理・QRコード処理
 - `qrcode.min.js`：QRコード生成用ライブラリ
@@ -42,3 +41,7 @@ https://yumin-snoopy.github.io/materials/vba_if_practice/
 QRコードのリンク先を変更する場合は、`script.js` の `pageUrl` を編集します。
 
 CSSとJavaScriptは、今後の修正がしやすいように読みやすい形式で管理しています。
+
+`index.html` では `Date.now()` を利用し、`style.css` と `script.js` のURLに毎回異なる値を付けて読み込んでいます。これにより、ブラウザに古いCSSやJavaScriptが残っていても、更新後のファイルを読み込みやすくしています。
+
+右クリック抑止は `index.html` 側で行っています。JavaScript側には、F12やショートカットキーを無効化するための処理は入れていません。
