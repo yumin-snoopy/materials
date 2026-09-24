@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>マスクアニメーション スライドショー</title>
+  <style>
+    /* スライドショー全体の枠 */
+    #slideshow {
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 各スライドの基本スタイル */
+    .mask-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0; /* 最初は透明 */
+      clip-path: circle(0% at 50% 50%); /* 円が0%の大きさ（中心から） */
+      transition: opacity 1s ease, clip-path 1s ease; /* フェード＋マスク動き */
+    }
+
+    /* 表示中のスライドに適用 */
+    .mask-slide.active {
+      opacity: 1;
+      clip-path: circle(150% at 50% 50%); /* 円を大きくして全体を表示 */
+      z-index: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>マスクアニメーション（円形）スライドショー</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="mask-slide active">
+  <img src="./images/pic2.png" class="mask-slide">
+  <img src="./images/pic3.png" class="mask-slide">
+  <img src="./images/pic4.png" class="mask-slide">
+  <img src="./images/pic5.png" class="mask-slide">
+  <img src="./images/pic6.png" class="mask-slide">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.mask-slide');
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000); // 4秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>カーテン／ワイプ スライドショー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 0;
+      font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    }
+
+    h2 {
+      width: min(800px, calc(100% - 32px));
+      margin: 0 auto 16px;
+    }
+
+    #slideshow {
+      position: relative;
+      width: min(800px, calc(100% - 32px));
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #111827;
+    }
+
+    .wipe-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+    }
+
+    .wipe-slide.active {
+      z-index: 1;
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+
+    .wipe-slide.entering {
+      z-index: 2;
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: clip-path 1.2s ease-in-out;
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>カーテン／ワイプ スライドショー</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="wipe-slide active">
+  <img src="./images/pic2.png" class="wipe-slide">
+  <img src="./images/pic3.png" class="wipe-slide">
+  <img src="./images/pic4.png" class="wipe-slide">
+  <img src="./images/pic5.png" class="wipe-slide">
+  <img src="./images/pic6.png" class="wipe-slide">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.wipe-slide');
+  const animationTime = 1200;
+  let current = 0;
+  let changing = false;
+
+  function showNextSlide() {
+    if (changing) return;
+
+    changing = true;
+    const next = (current + 1) % slides.length;
+    slides[next].classList.add('entering');
+
+    setTimeout(() => {
+      slides[current].classList.remove('active');
+      slides[next].classList.add('active');
+      slides[next].classList.remove('entering');
+      current = next;
+      changing = false;
+    }, animationTime);
+  }
+
+  setInterval(showNextSlide, 4000); // 4秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

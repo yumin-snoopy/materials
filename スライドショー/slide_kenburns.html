@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ズーム＋フェード スライドショー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 0;
+      font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    }
+
+    h2 {
+      width: min(800px, calc(100% - 32px));
+      margin: 0 auto 16px;
+    }
+
+    #slideshow {
+      position: relative;
+      width: min(800px, calc(100% - 32px));
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #111827;
+    }
+
+    .kenburns-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1);
+      transition: opacity 1.4s ease-in-out, transform 5s ease-out;
+    }
+
+    .kenburns-slide.active {
+      z-index: 1;
+      opacity: 1;
+      transform: scale(1.12);
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>ズーム＋フェード スライドショー</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="kenburns-slide active">
+  <img src="./images/pic2.png" class="kenburns-slide">
+  <img src="./images/pic3.png" class="kenburns-slide">
+  <img src="./images/pic4.png" class="kenburns-slide">
+  <img src="./images/pic5.png" class="kenburns-slide">
+  <img src="./images/pic6.png" class="kenburns-slide">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.kenburns-slide');
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000); // 5秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>カード重ね・めくり スライドショー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px 0;
+      background: #eef3f0;
+      font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    }
+
+    h2 {
+      width: min(800px, calc(100% - 48px));
+      margin: 0 auto 16px;
+    }
+
+    #slideshow {
+      position: relative;
+      width: min(760px, calc(100% - 64px));
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      perspective: 1200px;
+    }
+
+    .card-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      border: 8px solid #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 16px 36px rgba(23, 33, 29, 0.22);
+      transform: translateX(40px) rotate(4deg) scale(0.96);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .card-slide.active {
+      z-index: 2;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    .card-slide.leaving {
+      z-index: 3;
+      opacity: 0;
+      transform: translateX(-115%) rotate(-10deg) scale(0.92);
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>カード重ね・めくり スライドショー</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="card-slide active">
+  <img src="./images/pic2.png" class="card-slide">
+  <img src="./images/pic3.png" class="card-slide">
+  <img src="./images/pic4.png" class="card-slide">
+  <img src="./images/pic5.png" class="card-slide">
+  <img src="./images/pic6.png" class="card-slide">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.card-slide');
+  const animationTime = 800;
+  let current = 0;
+
+  function showNextSlide() {
+    const previous = current;
+    current = (current + 1) % slides.length;
+
+    slides[previous].classList.add('leaving');
+    slides[current].classList.add('active');
+
+    setTimeout(() => {
+      slides[previous].classList.remove('active', 'leaving');
+    }, animationTime);
+  }
+
+  setInterval(showNextSlide, 4000); // 4秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

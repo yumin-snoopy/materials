@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>スライドショー</title>
+  <style>
+    #slideshow {
+      width: 800px;
+      height: 600px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    #slideshow img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+    #slideshow img.active {
+      display: block;
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>スライドショーのサンプル</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="active">
+  <img src="./images/pic2.png">
+  <img src="./images/pic3.png">
+  <img src="./images/pic4.png">
+  <img src="./images/pic5.png">
+  <img src="./images/pic6.png">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const images = document.querySelectorAll('#slideshow img');
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove('active');
+    index = (index + 1) % images.length;
+    images[index].classList.add('active');
+  }, 3000); // 3秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

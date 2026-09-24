@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>クロスフェード スライドショー</title>
+  <style>
+    /* スライドショー全体の表示エリア */
+    #slideshow {
+      width: 800px;
+      height: 600px;
+      position: relative;       /* 各画像を重ねるために relative に */
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* 画像の共通スタイル（全て重ねて配置） */
+    .fade-slide {
+      position: absolute;       /* 重ねて表示するため absolute に */
+      width: 100%;
+      height: 100%;
+      opacity: 0;               /* 最初は非表示 */
+      transition: opacity 1.5s ease-in-out; /* フェードのアニメーション */
+    }
+
+    /* 表示中の画像 */
+    .fade-slide.active {
+      opacity: 1;               /* 表示する画像のみ不透明に */
+      z-index: 1;               /* 前面に表示 */
+    }
+  </style>
+  <link rel="stylesheet" href="source-viewer.css">
+</head>
+<body>
+
+<h2>クロスフェード スライドショー</h2>
+
+<div id="slideshow">
+  <img src="./images/pic1.png" class="fade-slide active">
+  <img src="./images/pic2.png" class="fade-slide">
+  <img src="./images/pic3.png" class="fade-slide">
+  <img src="./images/pic4.png" class="fade-slide">
+  <img src="./images/pic5.png" class="fade-slide">
+  <img src="./images/pic6.png" class="fade-slide">
+</div>
+
+<div class="source-tools">
+  <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
+</div>
+
+<section class="source-panel" id="sourcePanel" hidden>
+  <h3 class="source-heading">このサンプルのソースコード</h3>
+  <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.fade-slide');
+  let current = 0;
+
+  setInterval(() => {
+    // 現在の画像を非表示に
+    slides[current].classList.remove('active');
+
+    // 次の画像のインデックスを計算
+    current = (current + 1) % slides.length;
+
+    // 次の画像を表示
+    slides[current].classList.add('active');
+  }, 4000); // 4秒ごとに切り替え
+</script>
+<script src="source-viewer.js"></script>
+
+</body>
+</html>

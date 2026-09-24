@@ -1,0 +1,74 @@
+.source-tools {
+  width: min(800px, calc(100% - 32px));
+  margin: 20px auto 0;
+}
+
+.source-toggle {
+  appearance: none;
+  padding: 10px 16px;
+  background: #176b55;
+  color: #ffffff;
+  border: 1px solid #0f4f3e;
+  border-radius: 6px;
+  font: 700 0.95rem/1.4 "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.source-toggle:hover,
+.source-toggle:focus-visible {
+  background: #0f4f3e;
+}
+
+.source-toggle:focus-visible {
+  outline: 3px solid rgba(23, 107, 85, 0.3);
+  outline-offset: 2px;
+}
+
+.source-toggle:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.source-panel {
+  width: min(1100px, calc(100% - 32px));
+  margin: 16px auto 40px;
+}
+
+.source-panel[hidden] {
+  display: none;
+}
+
+.source-heading {
+  margin: 0 0 8px;
+  color: #17211d;
+  font: 700 1.05rem/1.5 "Yu Gothic", "Meiryo", system-ui, sans-serif;
+}
+
+.source-pre {
+  max-height: 70vh;
+  margin: 0;
+  overflow: auto;
+  padding: 18px;
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.14);
+  tab-size: 2;
+}
+
+.source-code {
+  white-space: pre;
+  font: 0.88rem/1.65 Consolas, "Courier New", monospace;
+}
+
+@media (max-width: 600px) {
+  .source-tools,
+  .source-panel {
+    width: calc(100% - 20px);
+  }
+
+  .source-pre {
+    padding: 12px;
+  }
+}
