@@ -450,38 +450,6 @@
       });
     });
 
-  // HTML側の右クリック禁止に加え、
-  // 既存のショートカット抑止動作もそのまま維持
-  addEventListener(
-    "contextmenu",
-    event => event.preventDefault(),
-    { capture: true }
-  );
-
-  addEventListener(
-    "keydown",
-    event => {
-      const key = String(event.key).toLowerCase();
-      const ctrlOrCommand = event.ctrlKey || event.metaKey;
-      const extraKey = event.shiftKey || event.altKey;
-
-      const blocked =
-        event.key === "F12" ||
-        (ctrlOrCommand && ["u", "s"].includes(key)) ||
-        (
-          ctrlOrCommand &&
-          extraKey &&
-          ["i", "j", "c", "k"].includes(key)
-        );
-
-      if (blocked) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    },
-    { capture: true }
-  );
-
   // 初期表示
   renderAll();
 })();
