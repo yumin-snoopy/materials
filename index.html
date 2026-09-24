@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教材一覧</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Meiryo", sans-serif;
+      margin: 0;
+      background: #f7f8fa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: #0969da;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #0757b7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>教材一覧</h1>
+    <p class="lead">利用したい教材を選んでください。</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>VBA IF文 練習</h2>
+        <p>VBAのIf文を練習するための教材です。</p>
+        <a class="button" href="./vba_if_practice/">教材を開く</a>
+      </div>
+
+      <div class="card">
+        <h2>スライドショー</h2>
+        <p>HTML・CSS・JavaScriptを使ったスライドショー教材です。</p>
+        <a class="button" href="./スライドショー/">教材を開く</a>
+      </div>
+
+    </div>
+
+    <footer>
+      materials
+    </footer>
+  </div>
+</body>
+</html>
