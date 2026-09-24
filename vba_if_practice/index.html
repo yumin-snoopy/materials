@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VBA IF文 読み解き練習 BASIC</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <h1>VBA IF文 読み解き練習 BASIC</h1>
+        <p class="lead">変数の値を見て、If / ElseIf / Else のどの分岐が実行されるかを選ぶ10問です。And / Or を含む条件は、1つずつ True / False に分解して読みます。</p>
+      </div>
+      <section class="scorebox" aria-live="polite">
+        <span>現在の得点</span>
+        <strong id="scoreText">0 / 10</strong>
+        <div class="progress" aria-label="回答済みの割合"><div id="progressBar"></div></div>
+      </section>
+    </header>
+
+    <section class="toolbar" aria-label="操作">
+      <div class="filters" role="group" aria-label="問題フィルター">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">すべて</button>
+        <button class="filter" type="button" data-filter="basic" aria-pressed="false">If / ElseIf</button>
+        <button class="filter" type="button" data-filter="and" aria-pressed="false">And</button>
+        <button class="filter" type="button" data-filter="or" aria-pressed="false">Or</button>
+      </div>
+      <button class="action" type="button" id="resetBtn">回答をリセット</button>
+    </section>
+
+    <div class="layout">
+      <section class="question-list" id="questionList" aria-label="練習問題"></section>
+
+      <aside aria-label="学習メモ">
+        <section class="panel">
+          <h3>読み方の型</h3>
+          <ul>
+            <li>If から順番に条件を見る</li>
+            <li>最初に True になった分岐だけ実行</li>
+            <li>ElseIf は前の条件が False のときだけ確認</li>
+            <li>Else はどれも True でないときに実行</li>
+          </ul>
+        </section>
+        <section class="panel">
+          <h3>And / Or のコツ</h3>
+          <ul>
+            <li>And は両方 True で True</li>
+            <li>Or はどちらか True で True</li>
+            <li>VBAでは And が Or より先に評価される</li>
+          </ul>
+        </section>
+        <section class="panel">
+          <h3>問題ナビ</h3>
+          <div class="mini-list" id="miniList"></div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="summary" id="summary" aria-live="polite"></section>
+  </main>
+</body>
+</html>
