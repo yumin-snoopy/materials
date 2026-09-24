@@ -495,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const qrStatus = document.getElementById("qrStatus");
 
   const pageUrl =
-    "https://yumin-snoopy-spec.github.io/materials/vba_if_practice/";
+    "https://yumin-snoopy.github.io/materials/vba_if_practice/";
 
   if (typeof QRCode === "undefined") {
     qrStatus.textContent =
