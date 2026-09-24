@@ -6,7 +6,8 @@ VBAの `If` / `ElseIf` / `Else`、`And`、`Or` の読み方を練習するWebア
 
 以下のURLから利用できます。
 
-https://yumin-snoopy-spec.github.io/materials/vba_if_practice/
+https://yumin-snoopy.github.io/materials/vba_if_practice/
+
 
 ## 主な機能
 
