@@ -458,9 +458,13 @@
 // ==============================
 // QRコード
 // ==============================
-document.addEventListener("DOMContentLoaded", () => {
+function initializeQrCode() {
   const qrCodeArea = document.getElementById("qrCode");
   const qrStatus = document.getElementById("qrStatus");
+
+  if (!qrCodeArea || !qrStatus) {
+    return;
+  }
 
   const pageUrl =
     "https://yumin-snoopy.github.io/materials/vba_if_practice/";
@@ -482,4 +486,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   qrStatus.textContent =
     "読み取ると、この練習ページを開けます。";
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeQrCode);
+} else {
+  initializeQrCode();
+}
