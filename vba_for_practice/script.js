@@ -28,8 +28,8 @@
       title: "Step -1で減る",
       code: "Sub Q3()\n    Dim i As Integer\n    Dim text As String\n    text = \"\"\n\n    For i = 3 To 1 Step -1\n        text = text & i\n    Next i\n\n    MsgBox text\nEnd Sub",
       prompt: "表示される文字列はどれですか。",
-      choices: ["123", "321", "31", "エラーになる"],
-      answer: 1,
+      choices: ["321", "123", "31", "エラーになる"],
+      answer: 0,
       explanation: "Step -1 なので i は 3, 2, 1 の順番です。文字列として連結するため「321」が表示されます。"
     },
     {
@@ -45,12 +45,12 @@
     {
       id: 5,
       tags: ["basic"],
-      title: "ループ後の変数",
-      code: "Sub Q5()\n    Dim i As Integer\n\n    For i = 1 To 3\n    Next i\n\n    MsgBox i\nEnd Sub",
+      title: "Exit Forで途中終了",
+      code: "Sub Q5()\n    Dim i As Integer\n    Dim total As Integer\n    total = 0\n\n    For i = 1 To 10\n        If i = 4 Then\n            Exit For\n        End If\n        total = total + i\n    Next i\n\n    MsgBox total\nEnd Sub",
       prompt: "表示される数値はどれですか。",
-      choices: ["1", "3", "4", "何も表示されない"],
-      answer: 2,
-      explanation: "i は 1, 2, 3 で実行され、次に 4 へ増えた時点で終了します。そのためループ後の i は 4 です。"
+      choices: ["10", "15", "4", "6"],
+      answer: 3,
+      explanation: "i が 1, 2, 3 のときだけ total に加算されます。i が 4 になると Exit For でループを抜けるため、1 + 2 + 3 で 6 が表示されます。"
     },
     {
       id: 6,
