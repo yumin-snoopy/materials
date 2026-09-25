@@ -15,7 +15,10 @@
       width: min(800px, calc(100% - 32px));
       margin: 0 auto 16px;
     }
+  </style>
 
+  <!-- ===== スライドショー用CSS ここからコピー（head内） ===== -->
+  <style>
     #slideshow {
       position: relative;
       width: min(800px, calc(100% - 32px));
@@ -48,12 +51,15 @@
       transition: clip-path 1.2s ease-in-out;
     }
   </style>
+  <!-- ===== スライドショー用CSS ここまでコピー ===== -->
   <link rel="stylesheet" href="source-viewer.css">
 </head>
 <body>
 
 <h2>カーテン／ワイプ スライドショー</h2>
 
+<!-- ===== スライドショー用HTML ここからコピー ===== -->
+<!-- 画像ファイルの場所に合わせて、各img要素のsrcを書き換えてください。 -->
 <div id="slideshow">
   <img src="./images/pic1.png" class="wipe-slide active">
   <img src="./images/pic2.png" class="wipe-slide">
@@ -62,6 +68,7 @@
   <img src="./images/pic5.png" class="wipe-slide">
   <img src="./images/pic6.png" class="wipe-slide">
 </div>
+<!-- ===== スライドショー用HTML ここまでコピー ===== -->
 
 <div class="source-tools">
   <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
@@ -72,6 +79,7 @@
   <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
 </section>
 
+<!-- ===== スライドショー用JavaScript ここからコピー（bodyの最後） ===== -->
 <script>
   const slides = document.querySelectorAll('.wipe-slide');
   const animationTime = 1200;
@@ -96,6 +104,7 @@
 
   setInterval(showNextSlide, 4000); // 4秒ごとに切り替え
 </script>
+<!-- ===== スライドショー用JavaScript ここまでコピー ===== -->
 <script src="source-viewer.js"></script>
 
 </body>

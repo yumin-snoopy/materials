@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>フリップ切り替えスライドショー</title>
+  <!-- ===== スライドショー用CSS ここからコピー（head内） ===== -->
   <style>
     /* スライドショーの表示エリア */
     #slideshow {
@@ -38,12 +39,15 @@
       z-index: 1;                    /* 最前面 */
     }
   </style>
+  <!-- ===== スライドショー用CSS ここまでコピー ===== -->
   <link rel="stylesheet" href="source-viewer.css">
 </head>
 <body>
 
 <h2>フリップ切り替えスライドショー</h2>
 
+<!-- ===== スライドショー用HTML ここからコピー ===== -->
+<!-- 画像ファイルの場所に合わせて、各img要素のsrcを書き換えてください。 -->
 <div id="slideshow">
   <div class="flip-container">
     <img src="./images/pic1.png" class="flip-slide active">
@@ -54,6 +58,7 @@
     <img src="./images/pic6.png" class="flip-slide">
   </div>
 </div>
+<!-- ===== スライドショー用HTML ここまでコピー ===== -->
 
 <div class="source-tools">
   <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
@@ -64,6 +69,7 @@
   <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
 </section>
 
+<!-- ===== スライドショー用JavaScript ここからコピー（bodyの最後） ===== -->
 <script>
   const slides = document.querySelectorAll('.flip-slide');
   let currentIndex = 0;
@@ -79,6 +85,7 @@
     slides[currentIndex].classList.add('active');
   }, 4000); // 4秒ごとにフリップ切り替え
 </script>
+<!-- ===== スライドショー用JavaScript ここまでコピー ===== -->
 <script src="source-viewer.js"></script>
 
 </body>

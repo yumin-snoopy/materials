@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>スライドショー</title>
+  <!-- ===== スライドショー用CSS ここからコピー（head内） ===== -->
   <style>
     #slideshow {
       width: 800px;
@@ -19,12 +20,15 @@
       display: block;
     }
   </style>
+  <!-- ===== スライドショー用CSS ここまでコピー ===== -->
   <link rel="stylesheet" href="source-viewer.css">
 </head>
 <body>
 
 <h2>スライドショーのサンプル</h2>
 
+<!-- ===== スライドショー用HTML ここからコピー ===== -->
+<!-- 画像ファイルの場所に合わせて、各img要素のsrcを書き換えてください。 -->
 <div id="slideshow">
   <img src="./images/pic1.png" class="active">
   <img src="./images/pic2.png">
@@ -33,6 +37,7 @@
   <img src="./images/pic5.png">
   <img src="./images/pic6.png">
 </div>
+<!-- ===== スライドショー用HTML ここまでコピー ===== -->
 
 <div class="source-tools">
   <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
@@ -43,6 +48,7 @@
   <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
 </section>
 
+<!-- ===== スライドショー用JavaScript ここからコピー（bodyの最後） ===== -->
 <script>
   const images = document.querySelectorAll('#slideshow img');
   let index = 0;
@@ -53,6 +59,7 @@
     images[index].classList.add('active');
   }, 3000); // 3秒ごとに切り替え
 </script>
+<!-- ===== スライドショー用JavaScript ここまでコピー ===== -->
 <script src="source-viewer.js"></script>
 
 </body>

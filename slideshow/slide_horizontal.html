@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>スライドショー（横スライド）</title>
+  <!-- ===== スライドショー用CSS ここからコピー（head内） ===== -->
   <style>
     /* スライドショー全体の枠（表示される領域） */
     #slideshow {
@@ -28,12 +29,15 @@
       flex-shrink: 0;             /* 画像の幅を縮めないようにする（横並び維持） */
     }
   </style>
+  <!-- ===== スライドショー用CSS ここまでコピー ===== -->
   <link rel="stylesheet" href="source-viewer.css">
   </head>
 <body>
 
 <h2>横にスライドするスライドショー</h2>
 
+<!-- ===== スライドショー用HTML ここからコピー ===== -->
+<!-- 画像ファイルの場所に合わせて、各img要素のsrcを書き換えてください。 -->
 <div id="slideshow">
   <div class="slide-container" id="slideContainer">
     <img src="./images/pic1.png">
@@ -44,6 +48,7 @@
     <img src="./images/pic6.png">
   </div>
 </div>
+<!-- ===== スライドショー用HTML ここまでコピー ===== -->
 
 <div class="source-tools">
   <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
@@ -54,6 +59,7 @@
   <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
 </section>
 
+<!-- ===== スライドショー用JavaScript ここからコピー（bodyの最後） ===== -->
 <script>
   const slideContainer = document.getElementById('slideContainer');
   const totalSlides = slideContainer.children.length;
@@ -64,6 +70,7 @@
     slideContainer.style.transform = `translateX(-${currentIndex * 800}px)`;
   }, 3000); // 3秒ごとにスライド
 </script>
+<!-- ===== スライドショー用JavaScript ここまでコピー ===== -->
 <script src="source-viewer.js"></script>
 
 </body>

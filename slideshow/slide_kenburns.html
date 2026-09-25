@@ -15,7 +15,10 @@
       width: min(800px, calc(100% - 32px));
       margin: 0 auto 16px;
     }
+  </style>
 
+  <!-- ===== スライドショー用CSS ここからコピー（head内） ===== -->
+  <style>
     #slideshow {
       position: relative;
       width: min(800px, calc(100% - 32px));
@@ -42,12 +45,15 @@
       transform: scale(1.12);
     }
   </style>
+  <!-- ===== スライドショー用CSS ここまでコピー ===== -->
   <link rel="stylesheet" href="source-viewer.css">
 </head>
 <body>
 
 <h2>ズーム＋フェード スライドショー</h2>
 
+<!-- ===== スライドショー用HTML ここからコピー ===== -->
+<!-- 画像ファイルの場所に合わせて、各img要素のsrcを書き換えてください。 -->
 <div id="slideshow">
   <img src="./images/pic1.png" class="kenburns-slide active">
   <img src="./images/pic2.png" class="kenburns-slide">
@@ -56,6 +62,7 @@
   <img src="./images/pic5.png" class="kenburns-slide">
   <img src="./images/pic6.png" class="kenburns-slide">
 </div>
+<!-- ===== スライドショー用HTML ここまでコピー ===== -->
 
 <div class="source-tools">
   <button class="source-toggle" type="button" data-source-toggle aria-expanded="false" aria-controls="sourcePanel">ソースを表示</button>
@@ -66,6 +73,7 @@
   <pre class="source-pre"><code class="source-code" id="sourceCode"></code></pre>
 </section>
 
+<!-- ===== スライドショー用JavaScript ここからコピー（bodyの最後） ===== -->
 <script>
   const slides = document.querySelectorAll('.kenburns-slide');
   let current = 0;
@@ -76,6 +84,7 @@
     slides[current].classList.add('active');
   }, 5000); // 5秒ごとに切り替え
 </script>
+<!-- ===== スライドショー用JavaScript ここまでコピー ===== -->
 <script src="source-viewer.js"></script>
 
 </body>
