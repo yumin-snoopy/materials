@@ -180,8 +180,8 @@ window.PRACTICE_SET = {
     {
       "id": 10,
       "title": "Do...Loopを読み解く",
-      "prompt": "Do...Loop文について、無限ループにならないものはどれですか。",
-      "code": "1\nSub Sample()\nDim i As Integer\ni = 1\nDo While i < 10\nMsgBox i\nLoop\nEnd Sub\n2\nSub Sample()\nDim i As Integer\ni = 1\nDo While i < 10\nMsgBox i\ni = i + 1\nLoop\nEnd Sub\n3\nSub Sample()\nDim i As Integer\ni = 1\nDo\nMsgBox i\nLoop While i < 10\nEnd Sub\n4\nSub Sample()\nDim i As Integer\ni = 1\nDo Until i = 10\nMsgBox i\nLoop\nEnd Sub",
+      "prompt": "変数iの初期値が1のとき、無限ループにならず終了するDo...Loop文はどれですか。",
+      "code": "Dim i As Integer\ni = 1",
       "choices": [
         "Do\n    MsgBox i\nLoop While i < 10",
         "Do Until i = 10\n    MsgBox i\nLoop",
@@ -191,7 +191,7 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "2番だけがループ内で i を増やすため、i が 10 になると条件が False になって終了します。",
+      "explanation": "正解はDです。Dだけがループ内でiを1ずつ増やすため、iが10になると「i < 10」がFalseになって終了します。A・Cはiが1のままなので条件がTrueのまま、Bもiが1のままで終了条件「i = 10」を満たしません。",
       "tags": [
         "loop"
       ]
@@ -301,7 +301,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim total As Long\nDim i As Long\nFor i = 2 To 7\nIf Cells(i, 2).Value >= 70 And Cells(i, 3).Value = \"A\" Then\ntotal = total + Cells(i, 4).Value\nEnd If\nNext i\nMsgBox total\nEnd Sub",
       "tableImage": "assets/q16-table.png",
       "tableAlt": "氏名、点数、評価、金額の表",
-      "tableWidth": 390,
+      "tableWidth": 310,
       "choices": [
         "5200",
         "3000",
@@ -363,7 +363,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim total As Long\nDim i As Long\nFor i = 2 To 7\nIf Cells(i, 2).Value = \"大阪\" Or Cells(i, 2).Value = \"福岡\" Then\ntotal = total + Cells(i, 3).Value\nEnd If\nNext i\nMsgBox total\nEnd Sub",
       "tableImage": "assets/q19-table.png",
       "tableAlt": "配送先、地域、送料の表",
-      "tableWidth": 330,
+      "tableWidth": 265,
       "choices": [
         "150",
         "170",
@@ -387,7 +387,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim total As Long\nDim i As Long\nFor i = 2 To 7\nIf Cells(i, 2).Value = \"A\" And Cells(i, 4).Value >= 1000 Then\ntotal = total + Cells(i, 4).Value\nEnd If\nNext i\nMsgBox total\nEnd Sub",
       "tableImage": "assets/q20-table.png",
       "tableAlt": "商品、ランク、在庫、金額の表",
-      "tableWidth": 390,
+      "tableWidth": 310,
       "choices": [
         "4300",
         "5200",
