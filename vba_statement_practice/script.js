@@ -18,8 +18,8 @@
       title: "IfとElseの分岐",
       code: "Sub Q2()\n    Dim x As Long\n    x = 10\n    If x >= 10 Then\n        MsgBox \"OK\"\n    Else\n        MsgBox \"NG\"\n    End If\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["OK", "NG", "10", "エラー"],
-      answer: 0,
+      choices: ["NG", "10", "エラー", "OK"],
+      answer: 3,
       explanation: "x は 10 です。x >= 10 は True なので Then 側の MsgBox \"OK\" が実行されます。"
     },
     {
@@ -30,7 +30,7 @@
       prompt: "表示される結果はどれですか。",
       choices: ["3", "6", "1", "5"],
       answer: 1,
-      explanation: "i は 1, 2, 3 の順に変化します。s は 1 + 2 + 3 の合計で 6 になります。"
+      explanation: "Long型の s の初期値は 0 です。i は 1, 2, 3 の順に変化するため、s は 0 + 1 + 2 + 3 で 6 になります。"
     },
     {
       id: 4,
@@ -38,8 +38,8 @@
       title: "Do Whileで増やす",
       code: "Sub Q4()\n    Dim n As Long\n    n = 1\n    Do While n < 5\n        n = n + 1\n    Loop\n    MsgBox n\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["4", "5", "6", "無限ループ"],
-      answer: 1,
+      choices: ["5", "4", "6", "無限ループ"],
+      answer: 0,
       explanation: "n は 1 から始まり、2, 3, 4, 5 と増えます。n が 5 になると n < 5 が False になり、5 が表示されます。"
     },
     {
@@ -48,8 +48,8 @@
       title: "文字列を結合する",
       code: "Sub Q5()\n    Dim txt As String\n    txt = \"ABC\"\n    txt = txt & \"D\"\n    MsgBox txt\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["ABC", "ABCD", "ABD", "ACD"],
-      answer: 1,
+      choices: ["ABC", "ABD", "ACD", "ABCD"],
+      answer: 3,
       explanation: "文字列は & で結合します。\"ABC\" の後ろに \"D\" がつくので、ABCD が表示されます。"
     },
     {
@@ -68,9 +68,9 @@
       title: "Forで文字列を連結する",
       code: "Sub Q7()\n    Dim i As Long\n    Dim s As String\n\n    For i = 1 To 4\n        s = s & i\n    Next i\n\n    MsgBox s\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["123", "1234", "4321", "14"],
-      answer: 1,
-      explanation: "For 文で i は 1 から 4 まで順に変化します。s に順番に連結されるので 1234 になります。"
+      choices: ["123", "4321", "1234", "14"],
+      answer: 2,
+      explanation: "String型の s の初期値は空文字です。i は 1 から 4 まで順に変化し、s の後ろに連結されるので 1234 になります。"
     },
     {
       id: 8,
@@ -88,9 +88,9 @@
       title: "条件に合う回数を数える",
       code: "Sub Q9()\n    Dim i As Long\n    Dim cnt As Long\n    For i = 1 To 5\n        If i >= 3 Then\n            cnt = cnt + 1\n        End If\n    Next i\n    MsgBox cnt\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["2", "3", "4", "5"],
-      answer: 1,
-      explanation: "i >= 3 になるのは 3, 4, 5 の 3 回です。cnt は 3 まで増えます。"
+      choices: ["3", "2", "4", "5"],
+      answer: 0,
+      explanation: "Long型の cnt の初期値は 0 です。i >= 3 になるのは 3, 4, 5 の 3 回なので、cnt は 3 まで増えます。"
     },
     {
       id: 10,
@@ -98,8 +98,8 @@
       title: "代入と計算の順番",
       code: "Sub Q10()\n    Dim a As Long\n    a = 5\n    a = a * 2\n    a = a - 3\n    MsgBox a\nEnd Sub",
       prompt: "表示される結果はどれですか。",
-      choices: ["7", "10", "5", "3"],
-      answer: 0,
+      choices: ["10", "7", "5", "3"],
+      answer: 1,
       explanation: "a は 5 から始まり、a * 2 で 10、そこから 3 を引いて 7 になります。"
     }
   ];
