@@ -91,6 +91,23 @@
     return data.questions.filter(question => question.tags.includes(state.filter));
   }
 
+  function updateChoiceLayouts() {
+    const mobileLayout = matchMedia("(max-width: 560px)").matches;
+    document.querySelectorAll(".choices").forEach(group => {
+      group.classList.remove("is-stacked");
+      if (mobileLayout) {
+        return;
+      }
+
+      const wraps = [...group.querySelectorAll(".choice span")].some(label => {
+        const style = getComputedStyle(label);
+        const lineHeight = Number.parseFloat(style.lineHeight) || Number.parseFloat(style.fontSize) * 1.6;
+        return label.scrollHeight > lineHeight * 1.5;
+      });
+      group.classList.toggle("is-stacked", wraps);
+    });
+  }
+
   function seriesLink(number, label) {
     if (number < 1 || number > 10) {
       return "";
@@ -192,6 +209,7 @@
         </div>`;
       list.appendChild(article);
     });
+    updateChoiceLayouts();
   }
 
   function renderMiniList() {
@@ -305,6 +323,12 @@
     state.answers = {};
     renderAll();
     scrollTo({top: 0, behavior: "smooth"});
+  });
+
+  let resizeFrame;
+  addEventListener("resize", () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(updateChoiceLayouts);
   });
 
   renderAll();

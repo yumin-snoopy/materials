@@ -354,6 +354,10 @@ code {
   width:100%;
 }
 
+.choices.is-stacked {
+  grid-template-columns:minmax(0,1fr);
+}
+
 .choice {
   display:flex;
   gap:8px;
