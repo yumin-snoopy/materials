@@ -19,4 +19,5 @@ https://yumin-snoopy.github.io/materials/vba_statement_practice_10/
 
 - `index.html`：読み取りにくくした最小構成の画面と共通ファイルの読み込み
 - `questions.js`：この問題集の問題データ
+- `assets/`：問題で使用する表の高解像度PNG画像
 - `../vba_statement_common/`：共通のデザイン、採点処理、QRコード処理

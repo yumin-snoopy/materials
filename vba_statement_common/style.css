@@ -26,6 +26,10 @@ html,body {
   overflow-x:hidden;
 }
 
+html {
+  font-size:17px;
+}
+
 body {
   margin:0;
   min-height:100vh;

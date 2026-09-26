@@ -31,6 +31,49 @@
     })[char]);
   }
 
+  function formatVbaCode(value) {
+    let indent = 0;
+    const selectStack = [];
+    return String(value).replace(/\r\n?/g, "\n").split("\n").map(rawLine => {
+      const line = rawLine.trim();
+      if (!line) {
+        return "";
+      }
+
+      const isCase = /^Case\b/i.test(line);
+      const isEndSelect = /^End\s+Select\b/i.test(line);
+      const activeSelect = selectStack[selectStack.length - 1];
+      if (isCase && activeSelect?.caseOpen) {
+        indent = Math.max(0, indent - 1);
+      }
+      if (isEndSelect && activeSelect?.caseOpen) {
+        indent = Math.max(0, indent - 1);
+      }
+
+      const closesBlock = !isCase && /^(?:End\s+(?:If|Select|With|Sub|Function|Property)|Next\b|Loop\b|Wend\b|ElseIf\b|Else\b)/i.test(line);
+      if (closesBlock) {
+        indent = Math.max(0, indent - 1);
+      }
+
+      const formatted = `${"    ".repeat(indent)}${line}`;
+      const opensSelect = /^Select\s+Case\b/i.test(line);
+      const opensBlock = /^(?:(?:Public\s+|Private\s+|Friend\s+|Static\s+)?(?:Sub|Function|Property)\b|For(?:\s+Each)?\b|Do(?:\s+(?:While|Until)\b)?|While\b|With\b|Select\s+Case\b|Case\b|Else\b|ElseIf\b.*\bThen\s*$|If\b.*\bThen\s*$)/i.test(line)
+        && !/^(?:End\b|If\b.*\bThen\s+.+)/i.test(line);
+      if (opensBlock) {
+        indent += 1;
+      }
+      if (opensSelect) {
+        selectStack.push({caseOpen: false});
+      } else if (isCase && activeSelect) {
+        activeSelect.caseOpen = true;
+      } else if (isEndSelect) {
+        selectStack.pop();
+      }
+
+      return formatted;
+    }).join("\n");
+  }
+
   function sameAnswers(left = [], right = []) {
     if (left.length !== right.length) {
       return false;
@@ -120,7 +163,7 @@
         return `
           <label class="${className}">
             <input type="${inputType}" name="q${question.id}" value="${index}" ${selected.includes(index) ? "checked" : ""}>
-            <span><b>${String.fromCharCode(65 + index)}.</b> ${escapeHtml(choice)}</span>
+            <span><b>${String.fromCharCode(65 + index)}.</b> ${escapeHtml(formatVbaCode(choice))}</span>
           </label>`;
       }).join("");
 
@@ -129,7 +172,7 @@
           <h2>問${question.id}: ${escapeHtml(question.title)}</h2>
           <div class="tags">${question.tags.map(tag => `<span class="tag">${tagLabels[tag] || escapeHtml(tag)}</span>`).join("")}</div>
         </div>
-        ${question.code ? `<pre><code>${escapeHtml(question.code)}</code></pre>` : ""}
+        ${question.code ? `<pre><code>${escapeHtml(formatVbaCode(question.code))}</code></pre>` : ""}
         ${question.tableImage ? `
           <figure class="question-table-figure">
             <div class="question-table-scroll">
