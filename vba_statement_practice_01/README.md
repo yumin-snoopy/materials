@@ -6,7 +6,7 @@ VBAの初級ステートメントを読み解く4択問題のWebアプリです�
 
 以下のURLから利用できます。
 
-https://yumin-snoopy.github.io/materials/vba_statement_practice/
+https://yumin-snoopy.github.io/materials/vba_statement_practice_01/
 
 ## 主な機能
 

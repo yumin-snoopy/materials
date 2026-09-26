@@ -350,7 +350,7 @@ function initializeQrCode() {
   }
 
   const pageUrl =
-    "https://yumin-snoopy.github.io/materials/vba_statement_practice/";
+    "https://yumin-snoopy.github.io/materials/vba_statement_practice_01/";
 
   if (typeof QRCode === "undefined") {
     qrStatus.textContent =
