@@ -130,6 +130,15 @@
           <div class="tags">${question.tags.map(tag => `<span class="tag">${tagLabels[tag] || escapeHtml(tag)}</span>`).join("")}</div>
         </div>
         ${question.code ? `<pre><code>${escapeHtml(question.code)}</code></pre>` : ""}
+        ${question.tableImage ? `
+          <figure class="question-table-figure">
+            <div class="question-table-scroll">
+              <a href="${escapeHtml(question.tableImage)}" target="_blank" rel="noopener" aria-label="表を原寸で開く">
+                <img class="question-table-image" src="${escapeHtml(question.tableImage)}" alt="${escapeHtml(question.tableAlt || `問${question.id}で使用する表`)}" loading="lazy" style="--table-width:${Number(question.tableWidth) || 560}px">
+              </a>
+            </div>
+            <figcaption>問題で使用する表（タップすると原寸表示）</figcaption>
+          </figure>` : ""}
         <p class="prompt">${escapeHtml(question.prompt)}</p>
         ${multiple ? `<p class="multi-note">正しいものをすべて選んでください。</p>` : ""}
         <div class="choices" role="group" aria-label="問${question.id}の選択肢">${choices}</div>

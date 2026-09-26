@@ -306,6 +306,37 @@ code {
   line-height:1.55;
 }
 
+.question-table-figure {
+  margin:12px 0 4px;
+}
+
+.question-table-scroll {
+  max-width:100%;
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+}
+
+.question-table-scroll a {
+  display:block;
+  width:max-content;
+  max-width:none;
+}
+
+.question-table-image {
+  display:block;
+  width:var(--table-width);
+  max-width:none;
+  height:auto;
+}
+
+.question-table-figure figcaption {
+  margin-top:5px;
+  color:var(--muted);
+  font-size:0.78rem;
+}
+
 .prompt {
   margin:12px 0 8px;
   font-weight:600;
