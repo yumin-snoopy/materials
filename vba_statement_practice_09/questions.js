@@ -11,7 +11,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim total As Long\ntotal = 0\nFor i = 2 To 8\nIf Cells(i, 2).Value >= 80 Then\ntotal = total + Cells(i, 3).Value\nEnd If\nNext i\nMsgBox total\nEnd Sub",
       "tableImage": "assets/q01-table.png",
       "tableAlt": "商品、得点、個数の表",
-      "tableWidth": 420,
+      "tableWidth": 320,
       "choices": [
         "87",
         "47",
@@ -35,7 +35,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim i As Long\nFor i = 2 To 6\nCells(i, 2) = 【  】に入るコード\nNext i\nEnd Sub",
       "tableImage": "assets/q02-table.png",
       "tableAlt": "郵便番号と上3桁の表",
-      "tableWidth": 340,
+      "tableWidth": 260,
       "choices": [
         "Mid(Cells(i, 1), InStr(Cells(i, 1), \"-\") - 3, 3)",
         "Left(Cells(i, 1), 3)",
@@ -60,7 +60,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim i As Long\nWith ActiveSheet\nFor i = 2 To .Cells(Rows.Count, 1).End(xlUp).Row\nIf .Cells(i, 2).Value < .Cells(i, 3).Value Then\n【  】\nEnd If\nNext i\nEnd With\nEnd Sub",
       "tableImage": "assets/q03-table.png",
       "tableAlt": "商品、在庫数、安全在庫とコピー先の表",
-      "tableWidth": 720,
+      "tableWidth": 540,
       "choices": [
         ".Cells(i, 1).Resize(1, 3).Copy .Cells(.Rows.Count, 5).End(xlUp).Offset(1)",
         ".Cells(i, 1).EntireRow.Copy .Cells(.Rows.Count, 5).End(xlUp).Offset(1)",
@@ -84,7 +84,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim count As Long\ncount = 0\nFor i = 2 To 9\nIf Cells(i, 2).Value = \"東京\" And Cells(i, 3).Value >= 100 Then\ncount = count + 1\nEnd If\nNext i\nMsgBox \"条件を満たすのは\" & count & \"件\"\nEnd Sub",
       "tableImage": "assets/q04-table.png",
       "tableAlt": "店舗ID、地域、売上の表",
-      "tableWidth": 430,
+      "tableWidth": 330,
       "choices": [
         "条件を満たすのは2件",
         "条件を満たすのは3件",
@@ -127,7 +127,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim i As Long\nFor i = 2 To Cells(Rows.Count, 1).End(xlUp).Row\nCells(i, 2) = 【  】\nNext i\nEnd Sub",
       "tableImage": "assets/q06-table.png",
       "tableAlt": "社員番号と下4桁の表",
-      "tableWidth": 350,
+      "tableWidth": 270,
       "choices": [
         "Mid(Cells(i, 1), 5, 4)",
         "Left(Cells(i, 1), 4)",
@@ -152,7 +152,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim sum As Long\nsum = 0\nWith ActiveSheet\nFor i = 2 To .Cells(Rows.Count, 1).End(xlUp).Row\nIf .Cells(i, 2).Value = \"A\" And .Cells(i, 3).Value > 50 Then\nsum = sum + .Cells(i, 4).Value\nEnd If\nNext i\nEnd With\nMsgBox sum\nEnd Sub",
       "tableImage": "assets/q07-table.png",
       "tableAlt": "商品名、ランク、評価、金額の表",
-      "tableWidth": 520,
+      "tableWidth": 390,
       "choices": [
         "6800",
         "3000",
@@ -176,7 +176,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim i As Long, j As Long\nj = 2\nFor i = 2 To Cells(Rows.Count, 1).End(xlUp).Row\nIf Cells(i, 3).Value = \"カテゴリー1\" Then\n【  】\nj = j + 1\nEnd If\nNext i\nEnd Sub",
       "tableImage": "assets/q08-table.png",
       "tableAlt": "商品名、価格、カテゴリーとコピー先の表",
-      "tableWidth": 660,
+      "tableWidth": 500,
       "choices": [
         "Range(Cells(i, 1), Cells(i, 2)).Copy Cells(j, 5)",
         "Cells(j, 5).Value = Cells(i, 1).Value\nCells(j, 6).Value = Cells(i, 2).Value",
@@ -202,7 +202,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim avg As Double\nDim sum As Long, count As Long\nFor i = 2 To 7\nIf Cells(i, 3).Value >= 70 Then\nsum = sum + Cells(i, 2).Value\ncount = count + 1\nEnd If\nNext i\navg = sum / count\nMsgBox avg\nEnd Sub",
       "tableImage": "assets/q09-table.png",
       "tableAlt": "氏名、数学、英語の点数表",
-      "tableWidth": 420,
+      "tableWidth": 320,
       "choices": [
         "85",
         "90",
@@ -226,7 +226,7 @@ window.PRACTICE_SET = {
       "code": "Sub Sample()\nDim total As Long\nWith ActiveSheet\nFor i = 2 To .Cells(Rows.Count, 1).End(xlUp).Row\nIf .Cells(i, 1).Value = \"大阪\" And .Cells(i, 2).Value >= 80 Then\n【  】\nEnd If\nNext i\nEnd With\nMsgBox total\nEnd Sub",
       "tableImage": "assets/q10-table.png",
       "tableAlt": "配送先、荷物サイズ、配送料の表",
-      "tableWidth": 480,
+      "tableWidth": 360,
       "choices": [
         "total = .Cells(i, 3).Value",
         "total = total + .Cells(i, 2).Value",
