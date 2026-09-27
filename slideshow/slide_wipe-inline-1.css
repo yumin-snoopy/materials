@@ -1,0 +1,10 @@
+body {
+      margin: 0;
+      padding: 24px 0;
+      font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    }
+
+    h2 {
+      width: min(800px, calc(100% - 32px));
+      margin: 0 auto 16px;
+    }

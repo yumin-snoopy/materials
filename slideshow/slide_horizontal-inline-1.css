@@ -1,0 +1,23 @@
+/* スライドショー全体の枠（表示される領域） */
+    #slideshow {
+      width: 800px;               /* 表示エリアの幅を800pxに設定 */
+      height: 600px;              /* 表示エリアの高さを600pxに設定 */
+      overflow: hidden;           /* 枠からはみ出た部分は非表示にする */
+      position: relative;         /* 子要素の配置の基準とするため相対配置に */
+      margin: 0 auto;             /* ページ中央に配置 */
+    }
+
+    /* スライド画像を横一列に並べるためのコンテナ */
+    .slide-container {
+      display: flex;              /* 子要素（画像）を横に並べる */
+      width: 600%;                /* スライド6枚分なので100% × 6 */
+      height: 100%;               /* 親要素に高さを合わせる */
+      transition: transform 1s ease-in-out; /* スライドの動きを1秒で滑らかに */
+    }
+
+    /* 各画像のスタイル */
+    .slide-container img {
+      width: 800px;               /* 画像1枚の幅を800pxに設定（固定） */
+      height: 600px;              /* 高さも固定で表示を揃える */
+      flex-shrink: 0;             /* 画像の幅を縮めないようにする（横並び維持） */
+    }

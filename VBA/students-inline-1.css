@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+    body { margin: 0; background: #f5f7fb; color: #243247; font-family: "Yu Gothic", "Meiryo", sans-serif; line-height: 1.8; }
+    main { max-width: 880px; margin: 0 auto; padding: 48px 20px; }
+    header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .header-copy { flex: 1; min-width: 0; }
+    .qr-panel { flex: 0 0 180px; padding: 16px; border: 1px solid #dce3ee; border-radius: 12px; background: #fff; text-align: center; }
+    .qr-panel strong { display: block; font-size: .95rem; }
+    #pageQr { width: 152px; height: 152px; margin: 8px auto; padding: 12px; background: #fff; }
+    #pageQr img, #pageQr canvas { display: block; max-width: 100%; }
+    .qr-panel p { margin: 0; font-size: .8rem; color: #526078; line-height: 1.6; }
+    .qr-panel a { color: #0969da; }
+    @media (max-width: 600px) { header { flex-wrap: wrap; } .header-copy { flex-basis: 100%; } .qr-panel { margin-left: auto; } }
+    .label { color: #0969da; font-weight: bold; margin: 0; }
+    h1 { margin: 8px 0 12px; font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.4; }
+    .lead { margin: 0; color: #526078; }
+    .notice { margin: 24px 0 36px; padding: 18px 20px; background: #eaf2ff; border-radius: 12px; }
+    h2 { margin: 0 0 18px; font-size: 1.3rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
+    .card { padding: 26px; background: #fff; border: 1px solid #dce3ee; border-radius: 16px; }
+    .number { margin: 0; color: #526078; font-size: .9rem; }
+    h3 { margin: 8px 0; font-size: 1.4rem; }
+    .card p { margin: 0 0 16px; }
+    .button { display: inline-block; padding: 12px 20px; background: #0969da; color: #fff; font-weight: bold; text-decoration: none; border-radius: 8px; }
+    .button:hover { background: #0757b7; }
+    .button:focus-visible { outline: 3px solid #243247; outline-offset: 4px; }
+    footer { margin-top: 36px; color: #526078; font-size: .9rem; }

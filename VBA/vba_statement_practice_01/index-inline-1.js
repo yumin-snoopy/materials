@@ -1,0 +1,1 @@
+addEventListener("contextmenu",e=>e.preventDefault(),{capture:true});addEventListener("keydown",e=>{const k=String(e.key).toLowerCase(),c=e.ctrlKey||e.metaKey,x=e.shiftKey||e.altKey,b=e.key==="F12"||c&&["u","s"].includes(k)||c&&x&&["i","j","c","k"].includes(k);if(b){e.preventDefault();e.stopPropagation()}},{capture:true});

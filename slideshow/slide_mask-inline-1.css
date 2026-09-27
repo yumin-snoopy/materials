@@ -1,0 +1,25 @@
+/* スライドショー全体の枠 */
+    #slideshow {
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 各スライドの基本スタイル */
+    .mask-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0; /* 最初は透明 */
+      clip-path: circle(0% at 50% 50%); /* 円が0%の大きさ（中心から） */
+      transition: opacity 1s ease, clip-path 1s ease; /* フェード＋マスク動き */
+    }
+
+    /* 表示中のスライドに適用 */
+    .mask-slide.active {
+      opacity: 1;
+      clip-path: circle(150% at 50% 50%); /* 円を大きくして全体を表示 */
+      z-index: 1;
+    }
