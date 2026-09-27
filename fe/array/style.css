@@ -33,3 +33,10 @@
   .top-actions .controls .data-settings select{min-height:44px;padding:6px}
   .top-actions .controls .count-picker{min-width:64px}
 }
+@media(max-width:520px){
+  .top-actions .controls #play{grid-column:1;grid-row:2}
+  .top-actions .controls #pause{grid-column:2;grid-row:2}
+  .top-actions .controls #reset{grid-column:1/-1;grid-row:3}
+  .top-actions .controls .data-settings{grid-row:4}
+  .top-actions + .hint,.top-actions ~ .play-status,.top-actions ~ .hint{font-size:14px;line-height:1.4;margin:4px 0}
+}
