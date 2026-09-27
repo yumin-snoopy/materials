@@ -9,3 +9,5 @@
 ## スライドショーの例外
 
 生徒が自分でまねする教材なので、slideshow/slide_*.html には「ソースを表示」ボタンを必ず残す。source-viewer.js と source-viewer.css を使用し、CSS・HTML・JavaScriptのコピー開始／終了の目印を維持する。サンプルのHTMLは読みやすい改行・インデントとインラインCSS／JavaScriptを維持する。共通閲覧抑止スクリプトはコピー範囲の外に置く。ソース表示と通常の選択・コピーを妨げない。
+
+- JavaScriptやCSSの動作修正時は、HTMLの読み込みURLの版番号（例: script.js?v=unique-numbers-1）も更新して古いブラウザキャッシュの再利用を避ける。必要に応じて一覧からの教材リンクにも版番号を付ける。
