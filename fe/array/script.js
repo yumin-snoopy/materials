@@ -8,14 +8,14 @@ const algorithms = {
   average: { name: "平均", label: "現在の合計", code: ["sum ← 0", "for i ← 0 to データ数 - 1", "  sum ← sum + data[i]", "endfor", "average ← sum ÷ データ数", "平均は average"], point: "平均を求めるには、まず合計を求めます。すべてを足した後に、データ数で割ります。" },
   search: { name: "線形探索", label: "探索結果", code: ["位置 ← -1", "for i ← 0 to データ数 - 1", "  if data[i] = 探す値", "    位置 ← i", "    繰返しを終了", "  endif", "endfor", "位置が -1 なら見つからない"], point: "先頭から順番に探す方法を線形探索といいます。見つかった時点で終了し、同じ値が複数ある場合は最初の位置を返します。" }
 };
-let data = [7, 3, 12, 5, 9];
+let data = [7, 3, 12, 5, 9, 2, 16];
 let mode = "max";
 let target = 5;
 let frames = [];
 let step = 0;
 let timer = null;
 const app = document.getElementById("app");
-app.innerHTML = `<main><a class="back-link" href="../">← FE教材一覧</a><header><div class="eyebrow">基本情報技術者試験 · 科目B</div><h1>FE アルゴリズム可視化教材<span>配列を調べる基本アルゴリズム</span></h1><p class="hint">配列を先頭から順番に確認する流れを、1ステップずつ見てみましょう。</p></header><nav aria-label="アルゴリズムの切替">${Object.entries(algorithms).map(([key, a]) => `<button type="button" data-mode="${key}" aria-pressed="false">${a.name}</button>`).join("")}</nav><div class="layout"><section class="panel" aria-labelledby="algorithm-title"><h2 id="algorithm-title"></h2><div class="search" hidden><label for="target">探す値</label><input id="target" type="number" step="1" value="5"><p class="hint">値を変更すると、先頭からやり直します。</p><p id="input-error" class="error" role="alert"></p></div><p class="hint">インデックス（要素の位置）は <strong>0から</strong>始まります。</p><div id="cards" class="cards" aria-label="配列のデータ"></div><div class="legend"><span>未確認</span><span class="current">現在確認中</span><span class="checked">確認済み</span></div><div id="metrics" class="metrics"><div id="metric-label" class="metric-label"></div><div id="value" class="value"></div><div id="detail" class="detail"></div></div><div class="explanation" aria-live="polite" aria-atomic="true"><div id="phase" class="phase"></div><div id="formula" class="formula"></div><p id="explanation"></p></div><div class="controls"><button id="next" class="primary" type="button">1ステップ進む →</button><button id="reset" type="button">最初から</button><button id="play" type="button">自動再生</button><button id="pause" type="button">一時停止</button><button id="random" type="button">新しいデータを作る</button></div><p id="play-status" class="play-status"></p><div id="point" class="point" hidden><h3>学習ポイント</h3><p id="point-text"></p></div></section><aside class="panel" aria-labelledby="code-title"><h2 id="code-title">疑似コード</h2><p class="hint">色の付いた行を、今実行しています。<br>「←」は、右の値を左の変数に保存する意味です。</p><ol id="code" class="code"></ol><div id="side-note" class="side-note"></div></aside></div><footer>教育用途の教材です。処理はすべてブラウザ内で行います。</footer></main>`;
+app.innerHTML = `<main><a class="back-link" href="../">← FE教材一覧</a><header><div class="eyebrow">基本情報技術者試験 · 科目B</div><h1>FE アルゴリズム可視化教材<span>配列を調べる基本アルゴリズム</span></h1><p class="hint">配列を先頭から順番に確認する流れを、1ステップずつ見てみましょう。</p></header><nav aria-label="アルゴリズムの切替">${Object.entries(algorithms).map(([key, a]) => `<button type="button" data-mode="${key}" aria-pressed="false">${a.name}</button>`).join("")}</nav><div class="layout"><section class="panel" aria-labelledby="algorithm-title"><h2 id="algorithm-title"></h2><div class="data-settings"><label for="data-count">表示数</label><select id="data-count"><option value="5">5個</option><option value="6">6個</option><option value="7" selected>7個</option><option value="8">8個</option><option value="9">9個</option></select><p class="hint">個数を変更すると、新しいデータで最初から始めます。</p></div><div class="search" hidden><label for="target">探す値</label><input id="target" type="number" step="1" value="5"><p class="hint">値を変更すると、先頭からやり直します。</p><p id="input-error" class="error" role="alert"></p></div><p class="hint">インデックス（要素の位置）は <strong>0から</strong>始まります。</p><div id="cards" class="cards" aria-label="配列のデータ"></div><div class="legend"><span>未確認</span><span class="current">現在確認中</span><span class="checked">確認済み</span></div><div id="metrics" class="metrics"><div id="metric-label" class="metric-label"></div><div id="value" class="value"></div><div id="detail" class="detail"></div></div><div class="explanation" aria-live="polite" aria-atomic="true"><div id="phase" class="phase"></div><div id="formula" class="formula"></div><p id="explanation"></p></div><div class="controls"><button id="next" class="primary" type="button">1ステップ進む →</button><button id="reset" type="button">最初から</button><button id="play" type="button">自動再生</button><button id="pause" type="button">一時停止</button><button id="random" type="button">新しいデータを作る</button></div><p id="play-status" class="play-status"></p><div id="point" class="point" hidden><h3>学習ポイント</h3><p id="point-text"></p></div></section><aside class="panel" aria-labelledby="code-title"><h2 id="code-title">疑似コード</h2><p class="hint">色の付いた行を、今実行しています。<br>「←」は、右の値を左の変数に保存する意味です。</p><ol id="code" class="code"></ol><div id="side-note" class="side-note"></div></aside></div><footer>教育用途の教材です。処理はすべてブラウザ内で行います。</footer></main>`;
 const $ = (id) => document.getElementById(id);
 
 function buildFrames() {
@@ -139,17 +139,19 @@ $("play").addEventListener("click", () => {
   timer = setInterval(next, 1000); render();
 });
 $("pause").addEventListener("click", () => { pause(); render(); });
-$("random").addEventListener("click", () => {
-  const count = 5 + Math.floor(Math.random() * 4);
+function makeNewData() {
+  const count = Number($("data-count").value);
   const candidates = Array.from({ length: 20 }, (_, i) => i + 1);
-  // Shuffle a pool of distinct numbers, then take 5–8 without replacement.
+  // Shuffle a pool of distinct numbers, then take the selected count without replacement.
   for (let i = candidates.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
   }
   data = candidates.slice(0, count);
   reset();
-});
+}
+$("random").addEventListener("click", makeNewData);
+$("data-count").addEventListener("change", makeNewData);
 $("target").addEventListener("input", () => {
   pause();
   $("input-error").textContent = validTarget() ? "" : "探す値には整数を入力してください。";
