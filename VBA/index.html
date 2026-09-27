@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VBA 教材一覧</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Meiryo", sans-serif;
+      margin: 0;
+      background: #f7f8fa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .material-section + .material-section {
+      margin-top: 46px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #d9dee8;
+      font-size: 1.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: #0969da;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #0757b7;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <a href="../">← 教材一覧</a>
+    <h1>VBA 教材一覧</h1>
+    <p class="lead">基礎練習からVBAエキスパート対策まで、学びたい教材を選んでください。</p>
+    <section class="material-section" aria-labelledby="basic-title">
+      <h2 class="section-title" id="basic-title">VBA基礎練習</h2>
+      <div class="cards">
+
+        <div class="card">
+          <h3>VBA IF文 練習</h3>
+          <p>VBAのIf文を練習するための教材です。</p>
+          <a class="button" href="./vba_if_practice/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>VBA FOR文 練習</h3>
+          <p>VBAのFor文を読み解く練習をするための教材です。</p>
+          <a class="button" href="./vba_for_practice/">教材を開く</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="material-section" aria-labelledby="expert-title">
+      <h2 class="section-title" id="expert-title">VBAエキスパート対策</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>① VBA 初級ステートメント 4択問題</h3>
+          <p>If、For、Do While、文字列結合などの基本ステートメントを読み解く教材です。</p>
+          <a class="button" href="./vba_statement_practice_01/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>② VBA 初級ステートメント 4択問題</h3>
+          <p>条件分岐、繰り返し、文字列結合などを確認する10問です。</p>
+          <a class="button" href="./vba_statement_practice_02/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>③ VBA 初級ステートメント 4択問題</h3>
+          <p>文字列、整数除算、Select Caseなどを読み解く10問です。</p>
+          <a class="button" href="./vba_statement_practice_03/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>④ VBA 中級ステートメント 4択問題</h3>
+          <p>配列、Offset、文字列関数、Exit Forなどを扱う10問です。</p>
+          <a class="button" href="./vba_statement_practice_04/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑤ VBA 中級ステートメント 4択問題</h3>
+          <p>With、Replace、Mid、複合条件などを扱う10問です。</p>
+          <a class="button" href="./vba_statement_practice_05/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑥ VBAエキスパート BASIC 総合問題</h3>
+          <p>マクロ記録からセル・ブック操作まで横断する30問です。</p>
+          <a class="button" href="./vba_statement_practice_06/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑦ VBA 中級ステートメント 4択問題</h3>
+          <p>複合条件、ループ、配列、文字列処理を扱う20問です。</p>
+          <a class="button" href="./vba_statement_practice_07/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑧ VBAエキスパート BASIC 上級練習</h3>
+          <p>二重ループ、Range、Offset、Resizeなどを扱う20問です。</p>
+          <a class="button" href="./vba_statement_practice_08/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑨ VBAエキスパート BASIC 中級模擬</h3>
+          <p>表データの集計、抽出、コピー処理を確認する10問です。</p>
+          <a class="button" href="./vba_statement_practice_09/">教材を開く</a>
+        </div>
+
+        <div class="card">
+          <h3>⑩ VBAエキスパート BASIC 練習問題</h3>
+          <p>演算、イベント、エラー処理、関数、表集計を確認する20問です。</p>
+          <a class="button" href="./vba_statement_practice_10/">教材を開く</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>materials / VBA</footer>
+  </main>
+</body>
+</html>
