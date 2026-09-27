@@ -69,7 +69,7 @@ window.PRACTICE_SET = {
       "prompt": "セルF3に、セルC3:E3の平均を求める数式を入力するステートメントはどれか。正しいものを1つ選びなさい。",
       "code": "",
       "choices": [
-        "Range(\"F3\").Value = \"=AVERAGE(C3:E3)\"",
+        "Range(\"F3\").Value = \"AVERAGE(C3:E3)\"",
         "Range(\"F3\").Formula = \"=AVERAGE(C3:E3)\"",
         "Range(\"F3\").Format = \"=AVERAGE(C3:E3)\"",
         "Range(\"F3\").Formula = AVERAGE(C3:E3)"
@@ -77,7 +77,7 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "3（Range(\"F3\").Formula = \"=AVERAGE(C3:E3)\"） Formula は「=から始まる文字列」。",
+      "explanation": "正解はBです。Formulaプロパティには、=から始まる数式を文字列として指定します。Aは先頭に=がないため、数式ではなく文字列が入力されます。",
       "tags": [
         "other"
       ]
@@ -143,7 +143,7 @@ window.PRACTICE_SET = {
       "id": 8,
       "title": "関数と文字列を確認する",
       "prompt": "次のステートメントを実行したとき、メッセージボックスに表示される文字列はどれか。正しいものを1つ選びなさい。 ただし、RTrim関数の引数「\" ABCDEFGH \"」には、「A」の前、「H」の後にそれぞれ半角スペースが2つずつ含まれているものとする。",
-      "code": "MsgBox Mid(RTrim(\"  ABCDEFGH 　\"), 3, 4)",
+      "code": "MsgBox Mid(RTrim(\"  ABCDEFGH  \"), 3, 4)",
       "choices": [
         "DEFG",
         "ABCD",
@@ -153,7 +153,7 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "RTrimで右の空白削除→Midで抽出。→左の空白は2つ残っている！",
+      "explanation": "RTrimで右側の半角スペースだけが削除され、左側の2文字分のスペースは残ります。3文字目のAから4文字を取り出すため、ABCDです。",
       "tags": [
         "other"
       ]
@@ -212,7 +212,7 @@ window.PRACTICE_SET = {
         2,
         3
       ],
-      "explanation": "1,4 値のみのコピーはvalueで。Copyメソッドは書式等もコピーされてしまう。",
+      "explanation": "正解はCとDです。Rangeの既定プロパティを使うCと、Valueを明記するDは、どちらも値だけを代入します。Copyメソッドを使うBは書式などもコピーします。",
       "tags": [
         "other"
       ]
@@ -289,7 +289,7 @@ window.PRACTICE_SET = {
         0,
         2
       ],
-      "explanation": "2,4（負のStepは不可／Next後の変数名は必須） どちらも誤り（負のStepは可能・変数名は任意）。",
+      "explanation": "正解はAとCです。Stepには負の値も指定でき、Nextの後のカウンタ変数名は省略できます。BとDは正しい説明です。",
       "tags": [
         "other"
       ]
@@ -336,7 +336,7 @@ window.PRACTICE_SET = {
     {
       "id": 18,
       "title": "VBAの基本を確認する",
-      "prompt": "If...Then...Elseステートメントに関する説明として、正しいものはどれか。次の中から選びなさい。",
+      "prompt": "複数行形式のIf...Then...Elseステートメントに関する説明として、正しいものを2つ選びなさい。",
       "code": "",
       "choices": [
         "Else節は省略できる",
@@ -414,7 +414,7 @@ window.PRACTICE_SET = {
     {
       "id": 22,
       "title": "VBAの基本を確認する",
-      "prompt": "アクティブセルの1つ下のセルを選択するステートメントはどれか。正しいものを2つ選びなさい。",
+      "prompt": "アクティブセルだけが選択されているとき、その1つ下のセルを選択するステートメントはどれか。正しいものを2つ選びなさい。",
       "code": "",
       "choices": [
         "ActiveCell.Offset(1, 0).Select",

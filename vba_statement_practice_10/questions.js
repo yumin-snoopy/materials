@@ -103,7 +103,7 @@ window.PRACTICE_SET = {
     {
       "id": 6,
       "title": "Select Caseを読み解く",
-      "prompt": "Select Case文について、次のコードと同じ結果になるものを選択しなさい。",
+      "prompt": "次のSelect Case文を実行したとき、メッセージボックスに表示される内容を選択しなさい。",
       "code": "Sub Sample()\nDim score As Integer\nscore = 75\nSelect Case score\nCase Is >= 80\nMsgBox \"優\"\nCase Is >= 60\nMsgBox \"良\"\nCase Else\nMsgBox \"可\"\nEnd Select\nEnd Sub",
       "choices": [
         "メッセージボックスに「良」と表示される",
@@ -153,7 +153,7 @@ window.PRACTICE_SET = {
         0,
         2
       ],
-      "explanation": "1,3（正しいものすべて） シートで使える／関数名に代入で返せる。④は誤り（引数は持てる）。",
+      "explanation": "正解はAとCです。Function名に値を代入すると戻り値を返せ、Public Functionはワークシートからも利用できます。Functionは引数を持つことができ、戻り値を代入しなかった場合は型の初期値が返るため、BとDは誤りです。",
       "tags": [
         "other"
       ]
@@ -220,18 +220,20 @@ window.PRACTICE_SET = {
     {
       "id": 12,
       "title": "For文を読み解く",
-      "prompt": "次のコードで、セルA1からA10までの空白セルの個数をカウントするために【 】に入るコードとして正しいものを選択しなさい。",
+      "prompt": "セルA1:A10には数式や空文字列（\"\"）がなく、値が未入力のセルだけを空白として数えるものとします。【 】に入る正しい条件式をすべて選択しなさい。",
       "code": "Sub Sample()\nDim i As Integer, count As Integer\ncount = 0\nFor i = 1 To 10\nIf 【 】 Then\ncount = count + 1\nEnd If\nNext i\nMsgBox count\nEnd Sub",
       "choices": [
-        "すべて正しい",
+        "Cells(i, 1).Value = Null",
         "IsEmpty(Cells(i, 1))",
         "Cells(i, 1).Value = \"\"",
         "Len(Cells(i, 1).Value) = 0"
       ],
       "answers": [
-        0
+        1,
+        2,
+        3
       ],
-      "explanation": "空白判定は目的次第で3つとも使える（未入力・空文字・長さ0）。",
+      "explanation": "正解はB・C・Dです。未入力セルではIsEmptyがTrueになり、Valueは空文字列として比較でき、文字列長も0です。Nullとの比較結果はNullになり、If条件のTrueにはなりません。",
       "tags": [
         "if",
         "loop"
@@ -321,7 +323,7 @@ window.PRACTICE_SET = {
     {
       "id": 17,
       "title": "関数と文字列を確認する",
-      "prompt": "文字列「ABC-DEF-GHI」から「DEF」を取り出すコードとして正しいものはどれか。",
+      "prompt": "変数strに文字列「ABC-DEF-GHI」が格納されているとき、「DEF」を取り出すコードとして正しいものはどれか。",
       "code": "",
       "choices": [
         "Mid(str, InStr(str,\"-\"), 3)",
