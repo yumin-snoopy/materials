@@ -161,7 +161,7 @@ window.PRACTICE_SET = {
       "id": 9,
       "title": "VBAの基本を確認する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q9()\nDim a As Long\nDim b As Long\na = 12\nb = a \\ 5\nMsgBox b\nEnd Sub",
+      "code": "Sub Q9()\nDim a As Long\nDim b As Long\na = 12\nb = a ¥ 5\nMsgBox b\nEnd Sub",
       "choices": [
         "エラー",
         "2",
@@ -171,7 +171,7 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "「\\」は整数除算。",
+      "explanation": "「¥」はVBAの整数除算です。12を5で割った整数部分の2が表示されます。",
       "tags": [
         "other"
       ]
