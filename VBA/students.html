@@ -8,7 +8,15 @@
     * { box-sizing: border-box; }
     body { margin: 0; background: #f5f7fb; color: #243247; font-family: "Yu Gothic", "Meiryo", sans-serif; line-height: 1.8; }
     main { max-width: 880px; margin: 0 auto; padding: 48px 20px; }
-    header { margin-bottom: 32px; }
+    header { margin-bottom: 32px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .header-copy { flex: 1; min-width: 0; }
+    .qr-panel { flex: 0 0 180px; padding: 16px; border: 1px solid #dce3ee; border-radius: 12px; background: #fff; text-align: center; }
+    .qr-panel strong { display: block; font-size: .95rem; }
+    #pageQr { width: 152px; height: 152px; margin: 8px auto; padding: 12px; background: #fff; }
+    #pageQr img, #pageQr canvas { display: block; max-width: 100%; }
+    .qr-panel p { margin: 0; font-size: .8rem; color: #526078; line-height: 1.6; }
+    .qr-panel a { color: #0969da; }
+    @media (max-width: 600px) { header { flex-wrap: wrap; } .header-copy { flex-basis: 100%; } .qr-panel { margin-left: auto; } }
     .label { color: #0969da; font-weight: bold; margin: 0; }
     h1 { margin: 8px 0 12px; font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.4; }
     .lead { margin: 0; color: #526078; }
@@ -28,9 +36,16 @@
 <body>
   <main>
     <header>
+      <div class="header-copy">
       <p class="label">授業の復習</p>
       <h1>VBA 練習ページ</h1>
       <p class="lead">授業で習った内容を、練習問題で確認しましょう。</p>
+      </div>
+      <aside class="qr-panel" aria-labelledby="qr-title">
+        <strong id="qr-title">スマホで開く</strong>
+        <div id="pageQr" role="img" aria-label="この練習ページを開くQRコード"></div>
+        <p id="qr-status">開いたらブックマーク<br>しておきましょう。</p>
+      </aside>
     </header>
     <p class="notice">このページをブックマークしておきましょう。授業が進むと、練習できる教材がこのページに追加されます。</p>
     <section aria-labelledby="practice-title">
@@ -53,5 +68,31 @@
     </section>
     <footer>わからない問題は、授業のノートやコードを確認しながら取り組みましょう。</footer>
   </main>
+  <script src="./vba_if_practice/qrcode.min.js" defer></script>
+  <script>
+    function initializePageQr() {
+      const target = document.getElementById("pageQr");
+      const pageUrl = "https://yumin-snoopy.github.io/materials/VBA/students.html";
+      if (!target || target.childElementCount) return;
+      if (typeof QRCode === "undefined") {
+        document.getElementById("qr-status").innerHTML =
+          '<a href="' + pageUrl + '">このページを開く</a><br>開いたらブックマークしてください。';
+        return;
+      }
+      new QRCode(target, {
+        text: pageUrl,
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializePageQr);
+    } else {
+      initializePageQr();
+    }
+  </script>
 </body>
 </html>
