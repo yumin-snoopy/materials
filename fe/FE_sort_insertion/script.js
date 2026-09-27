@@ -101,8 +101,18 @@ function advance(){
 }
 function stop(){clearTimeout(timer);timer=null;paint();}
 function schedule(){timer=setTimeout(()=>{timer=null;advance();if(current<steps.length-1)schedule();else stop();},delay());paint();}
+// 選んだ値を候補から取り除き、重複しない6個の数値を作る。
+function createRandomData() {
+  const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const values = [];
+  for (let count = 0; count < 6; count++) {
+    const index = Math.floor(Math.random() * candidates.length);
+    values.push(candidates.splice(index, 1)[0]);
+  }
+  return values;
+}
 function reset(newData=false){stop();clearTimeout(unlockTimer);busy=false;current=0;
-  if(newData){original=Array.from({length:6},()=>1+Math.floor(Math.random()*9));}
+  if(newData){original=createRandomData();}
   for(const el of tiles.values())el.remove();tiles.clear();steps=buildSteps(original);paint();
 }
 function init(){
