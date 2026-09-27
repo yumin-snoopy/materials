@@ -132,3 +132,8 @@ function init(){
   window.addEventListener('resize',paint);steps=buildSteps(original);paint();
 }
 if(typeof document!=='undefined')init();
+
+// 簡易的な閲覧抑止です。完全なソース保護ではなく、開発者ツールは制限しません。
+if (typeof document !== "undefined") {
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
+}

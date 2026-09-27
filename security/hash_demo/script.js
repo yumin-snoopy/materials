@@ -146,3 +146,8 @@ dropZone.addEventListener("dragover", () => dropZone.classList.add("dragging"));
 dropZone.addEventListener("dragleave", () => dropZone.classList.remove("dragging"));
 dropZone.addEventListener("drop", (event) => { dropZone.classList.remove("dragging"); handleFiles(event.dataTransfer.files); });
 updateText();
+
+// 簡易的な閲覧抑止です。完全なソース保護ではなく、開発者ツールは制限しません。
+if (typeof document !== "undefined") {
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
+}
