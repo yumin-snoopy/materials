@@ -24,6 +24,7 @@ function trace(values) {
   t.emit(-1,'「1ステップ進む」で、比較する値と疑似コードの行を確認しましょう。');
   return t;
 }
+// アルゴリズム：比較・交換・代入ごとに説明付きの状態を記録する。
 function buildSteps(values) {
   const t = trace(values); const a = t.a; const n = a.length;
   for (let end = n - 1; end > 0; end--) {
@@ -40,6 +41,7 @@ function buildSteps(values) {
   return t.finish();
 }
 
+// 画面と再生操作：アルゴリズムが作った記録を順に表示する。
 const $=id=>document.getElementById(id);
 let original=[7,3,5,1,8,4], steps=[],current=0,timer=null,busy=false,unlockTimer=null;
 const tiles=new Map();

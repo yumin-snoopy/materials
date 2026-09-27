@@ -29,6 +29,7 @@ function trace(values) {
   t.emit(-1,'「1ステップ進む」で、比較する値と疑似コードの行を確認しましょう。');
   return t;
 }
+// アルゴリズム：比較・交換・代入ごとに説明付きの状態を記録する。
 function buildSteps(values) {
   const t=trace(values);const a=t.a;
   function quick(left,right,depth) {
@@ -56,6 +57,7 @@ function buildSteps(values) {
   quick(0,a.length-1,0);return t.finish();
 }
 
+// 画面と再生操作：アルゴリズムが作った記録を順に表示する。
 const $=id=>document.getElementById(id);
 let original=[7,3,5,1,8,4], steps=[],current=0,timer=null,busy=false,unlockTimer=null;
 const tiles=new Map();
@@ -73,6 +75,7 @@ function paint() {
   s.a.forEach((item,i)=> {
     let kind=s.sorted.includes(i)?'sorted':'';
     if(i<s.range[0]||i>s.range[1])kind+=' outside';
+    if(s.boundary!==null && i>=s.range[0] && i<s.boundary)kind+=' smaller';
     if(s.compare.includes(i))kind+=' comparing';
     if(i===s.candidate)kind+=' candidate';if(i===s.pivot)kind+=' pivot';
     place(item,'a'+item?.id,i,38,kind);
