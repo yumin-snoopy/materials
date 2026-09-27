@@ -16,5 +16,5 @@
 
 このフォルダの4ファイルを `fe/array/FE_binary_search/` に配置すると、`https://yumin-snoopy.github.io/materials/fe/array/FE_binary_search/` で利用できます。`index.html` を直接開いても動きます。外部ライブラリ、サーバー通信は不要です。
 
-`index.html` は読み込みと画面の土台、`style.css` は表示、`script.js` は教材の描画と操作、`README.md` は説明です。右クリックメニューの抑止は簡易的なもので、ソース保護ではありません。
+`index.html` は読み込みと画面の土台、`style.css` は表示、`script.js` は教材の描画と操作、`README.md` は説明です。共通の `../../../assets/source-guard.js` で右クリック・F12・Ctrl/Cmd+Shift+I/J/C・Ctrl/Cmd+Uを抑止し、この教材の `script.js` でCtrl/Cmd+Sも抑止します。これらは通常のブラウザ操作を難しくする簡易対策であり、ソース保護や開発者ツールの完全禁止はできません。
 

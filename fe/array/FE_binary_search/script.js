@@ -107,5 +107,11 @@ $("new").addEventListener("click", () => { const pool = Array.from({length: 99},
 $("target").addEventListener("input", () => { $("error").textContent = validTarget() ? "" : "探す値には整数を入力してください。"; reset(); });
 document.addEventListener("visibilitychange", () => { if (document.hidden) { pause(); render(); } });
 document.addEventListener("contextmenu", (event) => event.preventDefault());
+window.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && String(event.key).toLowerCase() === "s") {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+}, { capture: true });
 reset();
 
