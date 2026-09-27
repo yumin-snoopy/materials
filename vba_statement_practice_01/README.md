@@ -30,15 +30,14 @@ https://yumin-snoopy.github.io/materials/vba_statement_practice_01/
 
 ## ファイル構成
 
-- `index.html`：画面の構成・右クリック抑止・CSS / JavaScriptの読み込み
-- `style.css`：画面デザイン
-- `script.js`：問題データ・判定処理・QRコード処理
-- `qrcode.min.js`：QRコード生成用ライブラリ
+- `index.html`：読み取りにくくした最小構成の画面と共通ファイルの読み込み
+- `questions.js`：この問題集の問題データ
+- `../vba_statement_common/`：共通のデザイン、採点処理、QRコード処理
 
 ## メンテナンスについて
 
-問題文・選択肢・正解・解説を変更する場合は、`script.js` の `questions` 配列を編集します。
+問題文・選択肢・正解・解説を変更する場合は、`questions.js` の `questions` 配列を編集します。
 
-QRコードのリンク先を変更する場合は、`script.js` の `pageUrl` を編集します。
+QRコードのリンク先を変更する場合は、`questions.js` の `pageUrl` を編集します。
 
 HTMLは読みづらく、CSSとJavaScriptは別ファイルで管理しています。

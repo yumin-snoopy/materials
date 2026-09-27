@@ -153,7 +153,7 @@ window.PRACTICE_SET = {
         0,
         2
       ],
-      "explanation": "正解はAとCです。Function名に値を代入すると戻り値を返せ、Public Functionはワークシートからも利用できます。Functionは引数を持つことができ、戻り値を代入しなかった場合は型の初期値が返るため、BとDは誤りです。",
+      "explanation": "Function名に値を代入すると戻り値を返せ、Public Functionはワークシートからも利用できます。Functionは引数を持つことができ、戻り値を代入しなかった場合は型の初期値が返ります。",
       "tags": [
         "other"
       ]
@@ -191,7 +191,7 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "正解はDです。Dだけがループ内でiを1ずつ増やすため、iが10になると「i < 10」がFalseになって終了します。A・Cはiが1のままなので条件がTrueのまま、Bもiが1のままで終了条件「i = 10」を満たしません。",
+      "explanation": "ループ内に「i = i + 1」がある処理だけは、iが10になると「i < 10」がFalseになって終了します。それ以外はiが1のままで、継続条件または終了条件が変化しません。",
       "tags": [
         "loop"
       ]
@@ -233,7 +233,7 @@ window.PRACTICE_SET = {
         2,
         3
       ],
-      "explanation": "正解はB・C・Dです。未入力セルではIsEmptyがTrueになり、Valueは空文字列として比較でき、文字列長も0です。Nullとの比較結果はNullになり、If条件のTrueにはなりません。",
+      "explanation": "未入力セルではIsEmptyがTrueになり、Valueは空文字列として比較でき、文字列長も0です。Nullとの比較結果はNullになり、If条件のTrueにはなりません。",
       "tags": [
         "if",
         "loop"

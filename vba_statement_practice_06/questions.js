@@ -77,7 +77,7 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "正解はBです。Formulaプロパティには、=から始まる数式を文字列として指定します。Aは先頭に=がないため、数式ではなく文字列が入力されます。",
+      "explanation": "Formulaプロパティには、=から始まる数式を文字列として指定します。Valueへ代入する選択肢は先頭に=がないため、数式ではなく文字列が入力されます。",
       "tags": [
         "other"
       ]
@@ -212,7 +212,7 @@ window.PRACTICE_SET = {
         2,
         3
       ],
-      "explanation": "正解はCとDです。Rangeの既定プロパティを使うCと、Valueを明記するDは、どちらも値だけを代入します。Copyメソッドを使うBは書式などもコピーします。",
+      "explanation": "Rangeの既定プロパティを使う代入と、Valueを明記する代入は、どちらも値だけをコピーします。Copyメソッドは書式などもコピーします。",
       "tags": [
         "other"
       ]
@@ -289,7 +289,7 @@ window.PRACTICE_SET = {
         0,
         2
       ],
-      "explanation": "正解はAとCです。Stepには負の値も指定でき、Nextの後のカウンタ変数名は省略できます。BとDは正しい説明です。",
+      "explanation": "Stepには負の値も指定でき、Nextの後のカウンタ変数名は省略できます。Exit Forで途中終了できることと、Step省略時の増分値が1になることは正しい説明です。",
       "tags": [
         "other"
       ]

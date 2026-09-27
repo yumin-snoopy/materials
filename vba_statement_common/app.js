@@ -180,7 +180,7 @@
         return `
           <label class="${className}">
             <input type="${inputType}" name="q${question.id}" value="${index}" ${selected.includes(index) ? "checked" : ""}>
-            <span><b>${String.fromCharCode(65 + index)}.</b> ${escapeHtml(formatVbaCode(choice))}</span>
+            <span>${escapeHtml(formatVbaCode(choice))}</span>
           </label>`;
       }).join("");
 
