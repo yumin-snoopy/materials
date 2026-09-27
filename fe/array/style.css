@@ -8,3 +8,9 @@
 .data-settings select { font:inherit; color:inherit; background:white; border:1px solid #a8afb8; border-radius:8px; padding:10px 16px; min-height:52px; }
 .data-settings select:focus-visible { outline:3px solid #266ca9; outline-offset:3px; }
 @media(max-width:520px) { .cards { gap:4px; } .number { font-size:clamp(18px,5.3vw,25px); } .marker { height:52px; } }
+/* Keep the search field and playback controls together near the top. */
+.top-actions{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;margin:10px 0 12px}
+.top-actions .search{flex:0 0 190px;margin:0}
+.top-actions .controls{flex:1 1 360px;margin:0}
+.top-actions .controls .primary{margin:0}
+@media(max-width:700px){.top-actions .search,.top-actions .controls{flex:1 1 100%}.top-actions .search{padding:10px 12px}.top-actions .controls{gap:8px}.top-actions .controls .primary{padding:11px;font-size:20px}.top-actions .controls button{min-height:48px}.top-actions .data-settings select{min-height:48px}}
