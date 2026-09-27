@@ -1,0 +1,60 @@
+/* 外部フォントを使わず、教室・プロジェクターでも読みやすくする。 */
+:root { color-scheme: light; --ink: #172b42; --muted: #526477; --blue: #185ac8; --border: #ced9e5; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif; font-size: 18px; line-height: 1.8; }
+main { max-width: 1200px; margin: auto; padding: 40px 32px; }
+header { margin-bottom: 42px; }
+.eyebrow { color: var(--blue); font-weight: bold; font-size: 15px; letter-spacing: .06em; margin: 0 0 8px; }
+h1 { font-size: clamp(30px, 4vw, 46px); line-height: 1.35; margin: 0 0 18px; }
+h2 { font-size: 25px; line-height: 1.5; margin: 0 0 16px; }
+h3 { font-size: 18px; margin: 18px 0 8px; }
+p { margin: 0 0 14px; }
+.lead { font-size: 21px; }
+.steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0; margin: 28px 0 0; }
+.steps li { background: #f1f5fa; padding: 14px; border-radius: 10px; font-weight: bold; }
+.steps b { color: var(--blue); margin-right: 5px; }
+.section-top { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+.section-top h2 { margin-bottom: 0; }
+select, input, textarea, button { font: inherit; }
+select { border: 1px solid var(--border); border-radius: 8px; background: white; padding: 9px 14px; color: var(--ink); }
+.hint { font-size: 16px; color: var(--muted); margin-top: 10px; }
+.warning { background: #fff4d8; border-left: 5px solid #9b6300; padding: 12px 18px; color: #704800; }
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+.data-panel { min-width: 0; padding: 24px; border: 1px solid var(--border); border-top: 5px solid var(--blue); border-radius: 12px; }
+.modified { border-top-color: #865100; }
+.input-label { display: block; font-size: 23px; font-weight: bold; margin-bottom: 12px; }
+textarea { display: block; width: 100%; resize: vertical; min-height: 128px; border: 1px solid #99adbf; border-radius: 8px; padding: 14px; color: var(--ink); background: #fff; font-size: 22px; }
+.count { font-size: 15px; color: var(--muted); margin: 6px 0 0; }
+.algorithm-label { color: var(--muted); font-size: 14px; font-weight: normal; margin-left: 8px; }
+.hash { display: block; padding: 16px; border-radius: 8px; background: #f4f7fb; font-family: Consolas, "Courier New", monospace; font-size: 21px; line-height: 1.85; overflow-wrap: anywhere; word-break: break-all; letter-spacing: .025em; user-select: all; }
+.hash .changed { background: #ffe5c2; color: #713900; text-decoration: underline; text-underline-offset: 4px; font-weight: bold; }
+.original .hash .changed { background: #dceaff; color: #17448d; }
+.actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+button, .file-picker { border: 2px solid var(--blue); border-radius: 9px; padding: 13px 24px; background: var(--blue); color: #fff; font-weight: bold; cursor: pointer; min-height: 54px; }
+button:hover, .file-picker:hover { background: #104ba8; }
+.secondary { color: var(--blue); background: #fff; }
+.secondary:hover { background: #edf4ff; }
+:focus-visible { outline: 3px solid #b65c00; outline-offset: 4px; }
+.status { padding: 20px 24px; border: 2px solid #78aa99; border-radius: 10px; background: #edf8f3; margin-top: 24px; }
+.status strong { display: block; font-size: 23px; }
+.status p { margin: 6px 0 0; }
+.status.different { border-color: #c38a40; background: #fff6e9; }
+.status.error { border-color: #bf4050; background: #fff0f1; }
+.file-section, .learning { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.drop-zone { border: 2px dashed #95a9bd; background: #f8fafd; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.drop-zone.dragging { background: #e7f0ff; border-color: var(--blue); }
+.file-picker { position: relative; display: inline-block; overflow: hidden; }
+.file-picker:focus-within { outline: 3px solid #b65c00; outline-offset: 4px; }
+.file-picker input { position: absolute; inset: 0; opacity: 0; width: 100%; cursor: pointer; }
+#file-status { overflow-wrap: anywhere; }
+#expected-hash { width: 100%; padding: 12px; border: 1px solid #99adbf; border-radius: 8px; margin-top: 8px; min-width: 0; }
+.file-section > label { display: block; margin-top: 24px; font-weight: bold; }
+#file-comparison { font-weight: bold; }
+.learning ul { padding-left: 25px; }
+.learning li { margin-bottom: 12px; }
+.lesson-example { background: #f1f5fa; padding: 20px 24px; border-radius: 10px; }
+.lesson-example h3 { margin-top: 0; }
+footer { color: var(--muted); font-size: 14px; text-align: center; margin-top: 40px; }
+[hidden] { display: none !important; }
+@media (max-width: 720px) { main { padding: 24px 16px; } .comparison-grid { grid-template-columns: 1fr; gap: 16px; } .steps { grid-template-columns: 1fr 1fr; gap: 8px; } .steps li { font-size: 16px; padding: 10px; } .data-panel { padding: 18px; } .hash { font-size: 19px; } .actions button { flex: 1 1 200px; } .status strong { font-size: 21px; } }
+@media (prefers-reduced-motion: no-preference) { button { transition: background .15s; } }
