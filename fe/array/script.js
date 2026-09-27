@@ -140,7 +140,14 @@ $("play").addEventListener("click", () => {
 });
 $("pause").addEventListener("click", () => { pause(); render(); });
 $("random").addEventListener("click", () => {
-  data = Array.from({ length: 5 + Math.floor(Math.random() * 4) }, () => 1 + Math.floor(Math.random() * 20));
+  const count = 5 + Math.floor(Math.random() * 4);
+  const candidates = Array.from({ length: 20 }, (_, i) => i + 1);
+  // Shuffle a pool of distinct numbers, then take 5–8 without replacement.
+  for (let i = candidates.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+  }
+  data = candidates.slice(0, count);
   reset();
 });
 $("target").addEventListener("input", () => {
