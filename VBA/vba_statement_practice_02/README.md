@@ -1,6 +1,7 @@
 # ② VBA 初級ステートメント 4択問題 BASIC
 
 VBAエキスパートBASICの選択式練習問題を、スマートフォンでも学習しやすいWeb形式にした教材です。
+Notや複合条件、Step、二重のFor、WithとOffsetを扱います。
 
 ## Webアプリ
 
@@ -20,3 +21,4 @@ https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_02/
 - `index.html`：読み取りにくくした最小構成の画面と共通ファイルの読み込み
 - `questions.js`：この問題集の問題データ
 - `../vba_statement_common/`：共通のデザイン、採点処理、QRコード処理
+

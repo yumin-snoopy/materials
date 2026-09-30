@@ -11,7 +11,7 @@ https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/
 ## 主な機能
 
 - 選択式の練習問題（10問）
-- If、For、文字列結合、計算式の読み解き
+- Ifによる条件分岐、For...NextとStep、Withによるセル参照の読み解き
 - 正解・不正解の判定
 - 各問題の解説表示
 - 得点と進捗の表示
