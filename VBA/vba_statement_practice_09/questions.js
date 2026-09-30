@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 9,
-  "title": "⑨ VBAエキスパート BASIC 中級模擬問題",
+  "title": "VBA エキスパート 練習問題⑨",
   "description": "表データを使った集計、抽出、コピー処理を中心に確認する10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_09/",
   "questions": [
