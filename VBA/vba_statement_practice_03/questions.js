@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 3,
-  "title": "③ VBA 初級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題③",
   "description": "Withによるセル範囲の指定と、If・For...Next・Stepを組み合わせたコードを読む10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_03/",
   "questions": [
