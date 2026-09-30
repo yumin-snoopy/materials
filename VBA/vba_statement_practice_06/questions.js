@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 6,
-  "title": "⑥ VBAエキスパート BASIC 総合問題30問",
+  "title": "VBA エキスパート 練習問題⑥（30問）",
   "description": "マクロ記録、セル・ブック操作、変数、関数、条件分岐、ループを横断する30問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_06/",
   "questions": [
