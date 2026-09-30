@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 8,
-  "title": "⑧ VBAエキスパート BASIC 上級練習問題",
+  "title": "VBA エキスパート 練習問題⑧",
   "description": "二重ループ、Range、Offset、Resize、Exit Subなどを扱う20問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_08/",
   "questions": [
