@@ -121,7 +121,7 @@ window.PRACTICE_SET = {
     {
       "id": 7,
       "title": "Step 2の繰り返し回数",
-      "prompt": "Countの値はいくつですか。",
+      "prompt": "表示される結果はどれですか。",
       "code": "Sub Q7()\nDim i As Long\nDim count As Long\nFor i = 2 To 8 Step 2\n    count = count + 1\nNext i\nMsgBox count\nEnd Sub",
       "choices": [
         "3",
