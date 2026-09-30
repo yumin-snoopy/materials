@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 1,
-  "title": "① VBA 初級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題①",
   "description": "Ifによる分岐、For...NextとStep、Withによるセル参照をコードから読み解く10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/",
   "questions": [
@@ -121,7 +121,7 @@ window.PRACTICE_SET = {
     {
       "id": 7,
       "title": "Step 2の繰り返し回数",
-      "prompt": "For文の本体は何回実行されますか。",
+      "prompt": "Countの値はいくつですか。",
       "code": "Sub Q7()\nDim i As Long\nDim count As Long\nFor i = 2 To 8 Step 2\n    count = count + 1\nNext i\nMsgBox count\nEnd Sub",
       "choices": [
         "3",
