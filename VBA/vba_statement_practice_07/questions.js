@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 7,
-  "title": "⑦ VBA 中級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題⑦",
   "description": "複合条件、ループ、セル参照、配列、文字列処理を読み解く20問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_07/",
   "questions": [
