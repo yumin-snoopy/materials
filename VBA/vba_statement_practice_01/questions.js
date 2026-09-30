@@ -1,7 +1,7 @@
 window.PRACTICE_SET = {
   "number": 1,
   "title": "① VBA 初級ステートメント 4択問題 BASIC",
-  "description": "If、For、Do While、文字列結合、Select Case、計算式の読み方を確認する10問です。コードを上から順番に追い、MsgBoxに表示される結果を選びます。",
+  "description": "If、For、文字列結合、計算式の読み方を確認する10問です。コードを上から順番に追い、MsgBoxに表示される結果を選びます。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/",
   "questions": [
     {
@@ -37,12 +37,12 @@ window.PRACTICE_SET = {
     {
       "id": 4,
       "tags": ["loop"],
-      "title": "Do Whileで増やす",
-      "code": "Sub Q4()\nDim n As Long\nn = 1\nDo While n < 5\nn = n + 1\nLoop\nMsgBox n\nEnd Sub",
+      "title": "Forで変数を増やす",
+      "code": "Sub Q4()\nDim i As Long\nDim n As Long\nn = 1\nFor i = 1 To 4\nn = n + 1\nNext i\nMsgBox n\nEnd Sub",
       "prompt": "表示される結果はどれですか。",
-      "choices": ["5", "4", "6", "無限ループ"],
+      "choices": ["5", "4", "6", "1"],
       "answers": [0],
-      "explanation": "nは1から始まり、2、3、4、5と増えます。nが5になるとn < 5がFalseになり、5が表示されます。"
+      "explanation": "nは1から始まり、For文の4回の繰り返しで2、3、4、5と増えます。表示されるのは5です。"
     },
     {
       "id": 5,
@@ -76,13 +76,13 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "tags": ["other"],
-      "title": "Select Caseで分岐する",
-      "code": "Sub Q8()\nDim x As Long\nx = 3\nSelect Case x\nCase 1\nMsgBox \"A\"\nCase 2\nMsgBox \"B\"\nCase 3\nMsgBox \"C\"\nCase Else\nMsgBox \"D\"\nEnd Select\nEnd Sub",
+      "tags": ["if"],
+      "title": "IfとElseIfで分岐する",
+      "code": "Sub Q8()\nDim x As Long\nx = 3\nIf x = 1 Then\nMsgBox \"A\"\nElseIf x = 2 Then\nMsgBox \"B\"\nElseIf x = 3 Then\nMsgBox \"C\"\nElse\nMsgBox \"D\"\nEnd If\nEnd Sub",
       "prompt": "表示される結果はどれですか。",
       "choices": ["A", "B", "C", "D"],
       "answers": [2],
-      "explanation": "xは3です。Case 3に一致するため、MsgBox \"C\"が実行されます。"
+      "explanation": "xは3です。最初の2条件はFalseで、x = 3がTrueになるため、Cが表示されます。"
     },
     {
       "id": 9,
@@ -106,3 +106,4 @@ window.PRACTICE_SET = {
     }
   ]
 };
+

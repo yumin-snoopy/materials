@@ -1,6 +1,6 @@
 # ① VBA 初級ステートメント 4択問題 BASIC
 
-VBAの初級ステートメントを読み解く4択問題のWebアプリです。PDF「初級ステートメント 4択問題（10問）」の内容を、スマートフォンでも学習しやすい形式にしています。
+VBAの初級ステートメントを読み解く4択問題のWebアプリです。Excel VBA ベーシックの出題範囲に合わせた問題を、スマートフォンでも学習しやすい形式にしています。
 
 ## Webアプリ
 
@@ -11,7 +11,7 @@ https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/
 ## 主な機能
 
 - 選択式の練習問題（10問）
-- If、For、Do While、文字列結合、Select Case、計算式の読み解き
+- If、For、文字列結合、計算式の読み解き
 - 正解・不正解の判定
 - 各問題の解説表示
 - 得点と進捗の表示
@@ -41,3 +41,4 @@ https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/
 QRコードのリンク先を変更する場合は、`questions.js` の `pageUrl` を編集します。
 
 HTMLは読みづらく、CSSとJavaScriptは別ファイルで管理しています。
+

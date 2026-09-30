@@ -101,28 +101,28 @@ window.PRACTICE_SET = {
     },
     {
       "id": 6,
-      "title": "Do...Loopを読み解く",
+      "title": "For文で2ずつ減らす",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q6()\nDim a As Long\na = 20\nDo While a > 15\na = a - 2\nLoop\nMsgBox a\nEnd Sub",
+      "code": "Sub Q6()\nDim i As Long\nDim a As Long\na = 20\nFor i = 1 To 3\na = a - 2\nNext i\nMsgBox a\nEnd Sub",
       "choices": [
         "16",
-        "無限ループ",
+        "18",
         "14",
         "15"
       ],
       "answers": [
         2
       ],
-      "explanation": "20→18→16→14 でループ終了。",
+      "explanation": "For文で3回2を引きます。aは20→18→16→14となり、14が表示されます。",
       "tags": [
         "loop"
       ]
     },
     {
       "id": 7,
-      "title": "Select Caseを読み解く",
+      "title": "IfとElseIfで値を判定する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q7()\nDim x As Long\nx = 7\nSelect Case x\nCase Is < 5\nMsgBox \"小さい\"\nCase Is < 10\nMsgBox \"中くらい\"\nCase Else\nMsgBox \"大きい\"\nEnd Select\nEnd Sub",
+      "code": "Sub Q7()\nDim x As Long\nx = 7\nIf x < 5 Then\nMsgBox \"小さい\"\nElseIf x < 10 Then\nMsgBox \"中くらい\"\nElse\nMsgBox \"大きい\"\nEnd If\nEnd Sub",
       "choices": [
         "大きい",
         "エラー",
@@ -132,9 +132,9 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "Select Case は上から順に評価。",
+      "explanation": "xは7です。x < 5はFalse、次のx < 10はTrueなので、中くらいが表示されます。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
@@ -197,3 +197,4 @@ window.PRACTICE_SET = {
     }
   ]
 };
+

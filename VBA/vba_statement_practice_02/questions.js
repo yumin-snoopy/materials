@@ -1,7 +1,7 @@
 window.PRACTICE_SET = {
   "number": 2,
   "title": "② VBA 初級ステートメント 4択問題 BASIC",
-  "description": "If、For、Do Until、文字列結合、Select Caseなどの基本処理を確認する10問です。",
+  "description": "If、For、文字列結合など、Excel VBA ベーシックの基本処理を確認する10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_02/",
   "questions": [
     {
@@ -63,19 +63,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 4,
-      "title": "Do...Loopを読み解く",
+      "title": "For文で4回加算する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q4()\nDim n As Long\nn = 0\nDo Until n >= 4\nn = n + 1\nLoop\nMsgBox n\nEnd Sub",
+      "code": "Sub Q4()\nDim i As Long\nDim n As Long\nn = 0\nFor i = 1 To 4\nn = n + 1\nNext i\nMsgBox n\nEnd Sub",
       "choices": [
         "5",
-        "無限ループ",
+        "0",
         "3",
         "4"
       ],
       "answers": [
         3
       ],
-      "explanation": "Do Until は「条件を満たすまで繰り返す」。",
+      "explanation": "nは0から始まり、For文で4回1を足すので、4が表示されます。",
       "tags": [
         "loop"
       ]
@@ -139,9 +139,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "title": "Select Caseを読み解く",
+      "title": "IfとElseIfで範囲を判定する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q8()\nDim x As Long\nx = 5\nSelect Case x\nCase 1 To 3\nMsgBox \"小\"\nCase 4 To 6\nMsgBox \"中\"\nCase 7 To 9\nMsgBox \"大\"\nCase Else\nMsgBox \"範囲外\"\nEnd Select\nEnd Sub",
+      "code": "Sub Q8()\nDim x As Long\nx = 5\nIf x <= 3 Then\nMsgBox \"小\"\nElseIf x <= 6 Then\nMsgBox \"中\"\nElseIf x <= 9 Then\nMsgBox \"大\"\nElse\nMsgBox \"範囲外\"\nEnd If\nEnd Sub",
       "choices": [
         "大",
         "範囲外",
@@ -151,9 +151,9 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "x = 5 は「4 To 6」に該当。",
+      "explanation": "xは5です。x <= 3はFalse、次のx <= 6はTrueなので、中が表示されます。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
@@ -197,3 +197,4 @@ window.PRACTICE_SET = {
     }
   ]
 };
+
