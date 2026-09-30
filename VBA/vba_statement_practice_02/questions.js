@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 2,
-  "title": "② VBA 初級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題②",
   "description": "Notや複合条件、Step、実行されないFor、二重ループ、WithとOffsetを確認する10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_02/",
   "questions": [
