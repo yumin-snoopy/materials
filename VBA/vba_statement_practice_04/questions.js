@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 4,
-  "title": "④ VBA 中級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題④",
   "description": "配列、Offset、文字列関数、Exit For、Select Case Trueを扱う10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_04/",
   "questions": [
