@@ -1,6 +1,7 @@
-# ④ VBA 中級ステートメント 4択問題 BASIC
+# VBA エキスパート 練習問題④
 
 VBAエキスパートBASICの選択式練習問題を、スマートフォンでも学習しやすいWeb形式にした教材です。
+If・For...Next・Withを使い、セルのコピー、表示形式、範囲指定、シート追加を読み解きます。
 
 ## Webアプリ
 
@@ -20,3 +21,4 @@ https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_04/
 - `index.html`：読み取りにくくした最小構成の画面と共通ファイルの読み込み
 - `questions.js`：この問題集の問題データ
 - `../vba_statement_common/`：共通のデザイン、採点処理、QRコード処理
+
