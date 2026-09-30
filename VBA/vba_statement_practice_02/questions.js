@@ -82,8 +82,8 @@ window.PRACTICE_SET = {
     },
     {
       "id": 5,
-      "title": "開始値と終了値で実行回数を判定する",
-      "prompt": "表示される結果はどれですか。",
+      "title": "Stepを省略したForの実行回数",
+      "prompt": "Stepを書かないとき、countはいくつ表示されますか。",
       "code": "Sub Q5()\nDim i As Long\nDim count As Long\ncount = 0\nFor i = 5 To 1\n    count = count + 1\nNext i\nMsgBox count\nEnd Sub",
       "choices": [
         "0",
@@ -94,7 +94,7 @@ window.PRACTICE_SET = {
       "answers": [
         0
       ],
-      "explanation": "Stepを省略すると1ずつ増えます。開始値5が終了値1を超えているので、本体は一度も実行されません。",
+      "explanation": "Stepを省略するとStep 1と同じです。最初の判定で5 <= 1はFalseなので、本体は0回でcountは0のままです。5から1へ減らして繰り返すにはStep -1が必要です。",
       "tags": [
         "loop"
       ]
