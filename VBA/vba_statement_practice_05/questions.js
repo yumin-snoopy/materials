@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 5,
-  "title": "⑤ VBA 中級ステートメント 4択問題 BASIC",
+  "title": "VBA エキスパート 練習問題⑤",
   "description": "配列、With、Replace、Mid、複合条件を扱う10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_05/",
   "questions": [
