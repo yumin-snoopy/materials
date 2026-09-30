@@ -13,12 +13,6 @@
 
 VBA教材と共通ファイルは `VBA/` 内に追加します。
 
-## 配布済みURLの一時保存
-
-`vba_if_practice/` は生徒に配布済みのため、元の場所にもコピーを残しています。
-[配布済みのIF文教材](https://yumin-snoopy.github.io/materials/vba_if_practice/)は引き続き利用できます。
-新しい教材一覧では `VBA/vba_if_practice/` にリンクします。
-
 ## 閲覧抑止の方針
 
 すべての教材HTMLで `assets/source-guard.js` を読み込み、右クリックとF12・Ctrl/Cmd+U・代表的な開発者ツールのショートカットを抑止します。HTML内のCSS・JavaScriptは外部ファイルへ分離し、HTMLの余分な改行・空白を減らします。スライドショーは生徒がまねできるようにする例外です。「ソースを表示」ボタン、読みやすいコード、コピー範囲の目印を維持します。新規教材にも同じ方針を適用します（AGENTS.mdを参照）。

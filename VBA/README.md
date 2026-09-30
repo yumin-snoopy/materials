@@ -7,8 +7,6 @@
 - `vba_statement_practice_01/` ～ `vba_statement_practice_10/`：VBAエキスパート対策
 - `vba_statement_common/`：共通のデザイン・採点・QRコード処理
 
-リポジトリ直下の `vba_if_practice/` は、配布済みURLを維持するための一時保存コピーです。
-
 ## 生徒向け配布ページ
 
 [授業の復習・VBA練習ページ](https://yumin-snoopy.github.io/materials/VBA/students.html)
