@@ -1,6 +1,6 @@
 window.PRACTICE_SET = {
   "number": 10,
-  "title": "⑩ VBAエキスパート BASIC 練習問題",
+  "title": "VBA エキスパート 練習問題⑩",
   "description": "演算、イベント、エラー処理、関数、オブジェクト、表集計を確認する20問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_10/",
   "questions": [
