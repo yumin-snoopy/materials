@@ -22,7 +22,7 @@
     ["秘密鍵で復号", "受信者は自分だけが持つ秘密鍵で復号します。", "秘密鍵を安全に保管することが大切です。"]
   ];
   const hybrid = [
-    ["2つの方式の得意・不得意", "共通鍵は速いけれど鍵を渡すのが心配。公開鍵は鍵を配りやすいけれど処理が遅い。", "それなら、両方の長所を使おう！"],
+    ["2つの方式の得意・不得意", "共通鍵は速いけれど鍵を渡すのが心配。公開鍵は鍵を配りやすいけれど処理が遅い。", "それなら、両方の長所を使おう！ 送信者は受信者の公開鍵を受け取っている前提です。秘密鍵は受信者だけが持ちます。"],
     ["共通鍵を作る", "送信側で、通信に使う黄色い共通鍵を作ります。", "大量データには速い共通鍵暗号を使います。"],
     ["共通鍵を包む", "受信者の青い公開鍵で、共通鍵そのものを暗号化します。", "公開鍵で大量のデータを暗号化するのではありません。"],
     ["暗号化した鍵を送る", "包まれた共通鍵を受信者へ送ります。", "途中で見られても、秘密鍵がなければ取り出せません。"],
@@ -43,7 +43,8 @@
   const sharedKey = '<span class="key shared">🔑 共通鍵</span>';
   const publicKey = '<span class="key public">🔑 公開鍵</span>';
   const privateKey = '<span class="key private">🔑 秘密鍵</span>';
-  const scene = (left, center, right, a = false, b = false, c = false) => `<div class="scene"><div class="actor ${a ? "active" : ""}"><span class="icon">👤</span><strong>${left}</strong></div><div class="arrow ${b ? "active" : ""}">→</div><div class="artifact ${b ? "active" : ""}">${center}</div><div class="arrow ${c ? "active" : ""}">→</div><div class="actor ${c ? "active" : ""}"><span class="icon">👤</span><strong>${right}</strong></div></div>`;
+  const heldKeys = (keys) => `<div class="held-keys"><span class="held-label">手元にある鍵</span>${keys.length ? keys.join("") : '<span class="no-key">まだ鍵はありません</span>'}</div>`;
+  const scene = ({ senderKeys, receiverKeys, action, centerKey = "", senderActive = false, receiverActive = false, moving = false }) => `<div class="scene"><div class="actor ${senderActive ? "active" : ""}"><span class="icon">👤</span><strong>送信者</strong>${heldKeys(senderKeys)}</div><div class="arrow ${moving ? "active" : ""}">→</div><div class="artifact ${moving ? "active" : ""}"><span class="held-label">いまの動き</span>${centerKey}<strong>${action}</strong></div><div class="arrow ${moving ? "active" : ""}">→</div><div class="actor ${receiverActive ? "active" : ""}"><span class="icon">👤</span><strong>受信者</strong>${heldKeys(receiverKeys)}</div></div>`;
   function callout(text, type = "") { return `<div class="callout ${type}">${text}</div>`; }
   function comparison() { return '<table class="comparison"><thead><tr><th>方式</th><th>得意なこと</th><th>注意点</th></tr></thead><tbody><tr><th>共通鍵暗号方式</th><td>処理が速く、大量データに向く</td><td>鍵配送問題がある</td></tr><tr><th>公開鍵暗号方式</th><td>公開鍵を配れるため鍵配送問題に対応しやすい</td><td>処理が遅く、大量データに向かない</td></tr></tbody></table>'; }
   function renderCompare() {
@@ -52,14 +53,36 @@
     const selector = `<div class="compare-switch"><button data-kind="symmetric" class="${kind === "symmetric" ? "current" : ""}">共通鍵暗号方式</button><button data-kind="asymmetric" class="${kind === "asymmetric" ? "current" : ""}">公開鍵暗号方式</button></div>`;
     $("stage-title").textContent = `${kind === "symmetric" ? "共通鍵暗号方式" : "公開鍵暗号方式"}：${items[s][0]}`;
     $("lead").textContent = items[s][1];
-    const center = kind === "symmetric" ? `${sharedKey}<small>${s < 2 ? "同じ鍵を共有" : s === 2 ? "文章を暗号化" : s === 3 ? "暗号文" : "同じ鍵で復号"}</small>` : `${publicKey}${s === 0 || s === 4 ? privateKey : ""}<small>${s === 2 ? "公開鍵で暗号化" : s === 4 ? "秘密鍵で復号" : "2種類の鍵"}</small>`;
-    $("diagram").innerHTML = selector + scene("送信者", center, "受信者", s === 0 || s === 2, s === 1 || s === 3, s === 4);
+    const symmetricScene = [
+      { senderKeys: [sharedKey], receiverKeys: [], action: "共通鍵を作成", senderActive: true },
+      { senderKeys: [sharedKey], receiverKeys: [], centerKey: sharedKey, action: "共通鍵を渡すには？", moving: true },
+      { senderKeys: [sharedKey], receiverKeys: [sharedKey], action: "共通鍵で暗号化", senderActive: true, receiverActive: true },
+      { senderKeys: [sharedKey], receiverKeys: [sharedKey], action: "暗号文を送信", moving: true },
+      { senderKeys: [sharedKey], receiverKeys: [sharedKey], action: "同じ共通鍵で復号", receiverActive: true }
+    ];
+    const receiverPair = [publicKey, privateKey];
+    const publicScene = [
+      { senderKeys: [], receiverKeys: receiverPair, action: "鍵ペアを用意", receiverActive: true },
+      { senderKeys: [publicKey], receiverKeys: receiverPair, centerKey: publicKey, action: "公開鍵を渡す", moving: true },
+      { senderKeys: [publicKey], receiverKeys: receiverPair, action: "受信者の公開鍵で暗号化", senderActive: true },
+      { senderKeys: [publicKey], receiverKeys: receiverPair, action: "暗号文を送信", moving: true },
+      { senderKeys: [publicKey], receiverKeys: receiverPair, action: "受信者の秘密鍵で復号", receiverActive: true }
+    ];
+    $("diagram").innerHTML = selector + scene((kind === "symmetric" ? symmetricScene : publicScene)[s]);
     $("detail").innerHTML = callout(items[s][2], kind === "symmetric" && s === 1 ? "warn" : "") + comparison();
   }
   function renderHybrid() {
     const s = step; $("stage-title").textContent = hybrid[s][0]; $("lead").textContent = hybrid[s][1];
-    const phases = ["2つの方式", "共通鍵を作成", "公開鍵で共通鍵を暗号化", "暗号化した共通鍵を送信", "秘密鍵で共通鍵を取り出す", "共通鍵でデータを高速に暗号化"];
-    $("diagram").innerHTML = scene("送信者", `${s === 0 ? `${sharedKey} ＋ ${publicKey}` : s < 3 ? `${sharedKey} ${s === 2 ? `＋ ${publicKey}` : ""}` : s === 4 ? privateKey + sharedKey : sharedKey}<strong>${phases[s]}</strong>`, "受信者", s === 1 || s === 2, s === 3, s === 4 || s === 5);
+    const receiverPair = [publicKey, privateKey];
+    const hybridScene = [
+      { senderKeys: [publicKey], receiverKeys: receiverPair, action: "2方式を組み合わせる" },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: receiverPair, action: "共通鍵を作成", senderActive: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: receiverPair, centerKey: publicKey, action: "公開鍵で共通鍵を暗号化", senderActive: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: receiverPair, centerKey: '<span class="wrapped-key">🔒 暗号化された共通鍵</span>', action: "暗号化した鍵を送信", moving: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "秘密鍵で共通鍵を取り出す", receiverActive: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "共通鍵でデータを通信", moving: true }
+    ];
+    $("diagram").innerHTML = scene(hybridScene[s]);
     $("detail").innerHTML = callout(hybrid[s][2], s === 5 ? "success" : "") + (s === 5 ? '<p class="summary">公開鍵暗号方式 ↓ 共通鍵を安全に共有<br>共通鍵暗号方式 ↓ データを高速に暗号化<br><strong>＝ ハイブリッド暗号方式</strong></p><p class="note">HTTPS（TLS）も共通鍵暗号と公開鍵技術を組み合わせます。現在のTLSでは、共通鍵を公開鍵で包んで送る代わりに、鍵共有で共通鍵を作る方式が一般的です。</p>' : "");
   }
   function certificate() { return `<div class="certificate"><h3>📜 デジタル証明書</h3><dl><dt>所有者</dt><dd>www.example.jp</dd><dt>公開鍵</dt><dd>${publicKey}</dd><dt>発行者</dt><dd>認証局（CA）</dd></dl></div>`; }
@@ -106,11 +129,14 @@
     $("detail").innerHTML = callout(verification || "デジタル署名で確認できること：本人が署名したこと、内容が改ざんされていないこと、否認防止。", verification.startsWith("一致") ? "success" : verification.startsWith("不一致") ? "warn" : "") + '<p class="note">この体験ではブラウザ内で一時的な鍵ペアを生成し、SHA-256とRSA-PSSを使います。「本人」の判断には公開鍵が本当に本人のものだという確認も必要です。</p>';
   }
   function render() {
+    $("quiz").hidden = mode !== "quiz";
+    document.querySelector(".workspace").hidden = mode === "quiz";
+    document.querySelectorAll(".tabs button").forEach(button => button.setAttribute("aria-selected", String(button.dataset.mode === mode)));
+    if (mode === "quiz") return;
     $("stage-label").textContent = modes[mode].label;
     const total = mode === "compare" ? 5 : mode === "hybrid" ? hybrid.length : mode === "pki" ? pki.length : 5;
     $("progress").textContent = `${step + 1} / ${total}`;
     $("back").disabled = step === 0; $("next").disabled = step === total - 1;
-    document.querySelectorAll(".tabs button").forEach(button => button.setAttribute("aria-selected", String(button.dataset.mode === mode)));
     if (mode === "compare") renderCompare(); else if (mode === "hybrid") renderHybrid(); else if (mode === "pki") renderPki(); else renderSignature();
   }
   document.querySelector(".tabs").addEventListener("click", (event) => { const button = event.target.closest("button[data-mode]"); if (!button) return; mode = button.dataset.mode; step = 0; render(); });
