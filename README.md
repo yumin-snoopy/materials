@@ -9,8 +9,8 @@
 - [VBA/](./VBA/) — VBA基礎練習・VBAエキスパート対策（[教材一覧](https://yumin-snoopy.github.io/materials/VBA/)）
 - [fe/](./fe/) — 基本情報技術者 科目Bのソート・配列処理、情報セキュリティ（[教材一覧](https://yumin-snoopy.github.io/materials/fe/)）
   - [鍵と証明書の動きを見る](./fe/pki_visual/) — 暗号方式・署名・証明書・PKI
+  - [ハッシュ値確認](./fe/hash_demo/) — 文字列とファイルのハッシュ値を比べる体験教材
 - [slideshow/](./slideshow/) — スライドショー教材
-- [security/hash_demo/](./security/hash_demo/) — ハッシュ値確認の体験教材
 
 VBA教材と共通ファイルは `VBA/` 内に追加します。
 
