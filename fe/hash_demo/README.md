@@ -31,7 +31,7 @@ README.md    この説明書
 5. Pagesのデプロイ完了後、表示されたHTTPSの公開URLを開きます。
 6. 一致 → 1文字変更 → 不一致 → 元に戻す → 一致の順に確認してください。
 
-この教材はFE情報セキュリティ教材として `fe/hash_demo/` に配置します。旧URLの `security/hash_demo/` からも新しい場所へ移動できます。
+この教材はFE情報セキュリティ教材として `fe/hash_demo/` に配置します。
 
 公開URL： https://yumin-snoopy.github.io/materials/fe/hash_demo/
 
