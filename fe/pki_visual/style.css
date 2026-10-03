@@ -8,4 +8,10 @@
 .no-key{font-size:.9rem;color:#546c80}
 .wrapped-key{display:inline-block;border-radius:12px;padding:9px;background:#e6eaf4;color:#34486e;font-weight:800}
 @media(max-width:800px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs button:last-child{grid-column:1/-1}.actor{min-height:125px}}
-
+.message-example{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:10px;margin-top:16px}
+.message-card{display:flex;min-width:0;min-height:132px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:15px 10px;border:2px solid #9bbbd6;border-radius:17px;background:#f2f8ff;text-align:center}
+.message-card.current{border-color:#1769bc;background:#e4f1ff;box-shadow:0 5px 14px #abc9e677}
+.message-card.done{border-color:#70a7d6;background:#f2f8ff}
+.message-card.pending{border-color:#d7e0e8;background:#f7f9fb;color:#596b7b}
+.message-label{font-size:1rem;font-weight:850}.message-card strong{font-size:clamp(1.2rem,2vw,1.65rem);overflow-wrap:anywhere}.message-card small{font-size:.88rem}.message-arrow{align-self:center;font-size:1.8rem;font-weight:900;color:#54789d}.message-note{margin:9px 2px 0;color:#455e76;font-size:.91rem;line-height:1.5}
+@media(max-width:800px){.message-example{grid-template-columns:minmax(0,1fr)}.message-card{min-height:98px}.message-arrow{transform:rotate(90deg);font-size:1.25rem;line-height:1}}

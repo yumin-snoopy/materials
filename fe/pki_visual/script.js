@@ -27,7 +27,9 @@
     ["共通鍵を包む", "受信者の青い公開鍵で、共通鍵そのものを暗号化します。", "公開鍵で大量のデータを暗号化するのではありません。"],
     ["暗号化した鍵を送る", "包まれた共通鍵を受信者へ送ります。", "途中で見られても、秘密鍵がなければ取り出せません。"],
     ["秘密鍵で取り出す", "受信者が自分の赤い秘密鍵を使い、共通鍵を取り出します。", "両者が同じ共通鍵を持てました。"],
-    ["その後は高速に通信", "以降のデータは共通鍵で暗号化して送ります。", "公開鍵暗号方式 → 共通鍵を安全に共有 → 共通鍵暗号方式 → データを高速に暗号化 ＝ ハイブリッド暗号方式"]
+    ["共通鍵で文章を暗号化", "送信者は共有した共通鍵で「こんにちは」を暗号文にします。", "データの暗号化には黄色い共通鍵を使います。"],
+    ["暗号文を送る", "暗号文を受信者へ送ります。", "公開鍵で包んで送ったのは共通鍵です。文章は共通鍵で暗号化します。"],
+    ["共通鍵で復号", "受信者は同じ共通鍵で暗号文を復号し、「こんにちは」を読みます。", "公開鍵暗号方式で共通鍵を共有し、共通鍵暗号方式でデータを通信します。これがハイブリッド暗号方式です。"]
   ];
   const pki = [
     ["Webサイトが鍵を用意", "Webサイトは公開鍵と秘密鍵を用意します。", "秘密鍵はWebサイトだけが保管します。"],
@@ -45,6 +47,16 @@
   const privateKey = '<span class="key private">🔑 秘密鍵</span>';
   const heldKeys = (keys) => `<div class="held-keys"><span class="held-label">手元にある鍵</span>${keys.length ? keys.join("") : '<span class="no-key">まだ鍵はありません</span>'}</div>`;
   const scene = ({ senderKeys, receiverKeys, action, centerKey = "", senderActive = false, receiverActive = false, moving = false }) => `<div class="scene"><div class="actor ${senderActive ? "active" : ""}"><span class="icon">👤</span><strong>送信者</strong>${heldKeys(senderKeys)}</div><div class="arrow ${moving ? "active" : ""}">→</div><div class="artifact ${moving ? "active" : ""}"><span class="held-label">いまの動き</span>${centerKey}<strong>${action}</strong></div><div class="arrow ${moving ? "active" : ""}">→</div><div class="actor ${receiverActive ? "active" : ""}"><span class="icon">👤</span><strong>受信者</strong>${heldKeys(receiverKeys)}</div></div>`;
+  function messageFlow(phase) {
+    const encrypted = phase >= 1, sent = phase >= 2, decrypted = phase >= 3;
+    return `<div class="message-example" aria-label="送る文章の変化">
+      <div class="message-card ${encrypted ? "done" : "current"}"><span class="message-label">送信者の平文</span><strong>こんにちは</strong><small>暗号化する前の文章</small></div>
+      <span class="message-arrow" aria-hidden="true">→</span>
+      <div class="message-card ${encrypted ? sent ? "done" : "current" : "pending"}"><span class="message-label">${sent ? "送信中の暗号文" : "暗号文"}</span><strong>${encrypted ? "Q7x-9mP" : "まだ暗号化していません"}</strong><small>${encrypted ? "読めない形に変化" : "次の段階で変化"}</small></div>
+      <span class="message-arrow" aria-hidden="true">→</span>
+      <div class="message-card ${decrypted ? "current" : "pending"}"><span class="message-label">受信者が復号した文</span><strong>${decrypted ? "こんにちは" : "まだ復号していません"}</strong><small>${decrypted ? "元の文章に戻る" : "届いたあとに復号"}</small></div>
+    </div><p class="message-note">※「Q7x-9mP」は暗号文の見た目を示す例です。実際に暗号化して計算した値ではありません。</p>`;
+  }
   function callout(text, type = "") { return `<div class="callout ${type}">${text}</div>`; }
   function comparison() { return '<table class="comparison"><thead><tr><th>方式</th><th>得意なこと</th><th>注意点</th></tr></thead><tbody><tr><th>共通鍵暗号方式</th><td>処理が速く、大量データに向く</td><td>鍵配送問題がある</td></tr><tr><th>公開鍵暗号方式</th><td>公開鍵を配れるため鍵配送問題に対応しやすい</td><td>処理が遅く、大量データに向かない</td></tr></tbody></table>'; }
   function renderCompare() {
@@ -68,7 +80,7 @@
       { senderKeys: [publicKey], receiverKeys: receiverPair, action: "暗号文を送信", moving: true },
       { senderKeys: [publicKey], receiverKeys: receiverPair, action: "受信者の秘密鍵で復号", receiverActive: true }
     ];
-    $("diagram").innerHTML = selector + scene((kind === "symmetric" ? symmetricScene : publicScene)[s]);
+    $("diagram").innerHTML = selector + scene((kind === "symmetric" ? symmetricScene : publicScene)[s]) + messageFlow(s < 2 ? 0 : s === 2 ? 1 : s === 3 ? 2 : 3);
     $("detail").innerHTML = callout(items[s][2], kind === "symmetric" && s === 1 ? "warn" : "") + comparison();
   }
   function renderHybrid() {
@@ -80,10 +92,12 @@
       { senderKeys: [publicKey, sharedKey], receiverKeys: receiverPair, centerKey: publicKey, action: "公開鍵で共通鍵を暗号化", senderActive: true },
       { senderKeys: [publicKey, sharedKey], receiverKeys: receiverPair, centerKey: '<span class="wrapped-key">🔒 暗号化された共通鍵</span>', action: "暗号化した鍵を送信", moving: true },
       { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "秘密鍵で共通鍵を取り出す", receiverActive: true },
-      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "共通鍵でデータを通信", moving: true }
+      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "共通鍵で文章を暗号化", senderActive: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "暗号文を送信", moving: true },
+      { senderKeys: [publicKey, sharedKey], receiverKeys: [...receiverPair, sharedKey], action: "同じ共通鍵で復号", receiverActive: true }
     ];
-    $("diagram").innerHTML = scene(hybridScene[s]);
-    $("detail").innerHTML = callout(hybrid[s][2], s === 5 ? "success" : "") + (s === 5 ? '<p class="summary">公開鍵暗号方式 ↓ 共通鍵を安全に共有<br>共通鍵暗号方式 ↓ データを高速に暗号化<br><strong>＝ ハイブリッド暗号方式</strong></p><p class="note">HTTPS（TLS）も共通鍵暗号と公開鍵技術を組み合わせます。現在のTLSでは、共通鍵を公開鍵で包んで送る代わりに、鍵共有で共通鍵を作る方式が一般的です。</p>' : "");
+    $("diagram").innerHTML = scene(hybridScene[s]) + (s >= 5 ? messageFlow(s - 4) : "");
+    $("detail").innerHTML = callout(hybrid[s][2], s === 7 ? "success" : "") + (s === 7 ? '<p class="summary">公開鍵暗号方式 ↓ 共通鍵を安全に共有<br>共通鍵暗号方式 ↓ データを高速に暗号化<br><strong>＝ ハイブリッド暗号方式</strong></p><p class="note">HTTPS（TLS）も共通鍵暗号と公開鍵技術を組み合わせます。現在のTLSでは、共通鍵を公開鍵で包んで送る代わりに、鍵共有で共通鍵を作る方式が一般的です。</p>' : "");
   }
   function certificate() { return `<div class="certificate"><h3>📜 デジタル証明書</h3><dl><dt>所有者</dt><dd>www.example.jp</dd><dt>公開鍵</dt><dd>${publicKey}</dd><dt>発行者</dt><dd>認証局（CA）</dd></dl></div>`; }
   function renderPki() {
@@ -142,7 +156,7 @@
   document.querySelector(".tabs").addEventListener("click", (event) => { const button = event.target.closest("button[data-mode]"); if (!button) return; mode = button.dataset.mode; step = 0; render(); });
   $("diagram").addEventListener("click", (event) => { const button = event.target.closest("button[data-kind]"); if (!button) return; kind = button.dataset.kind; step = 0; render(); });
   $("back").addEventListener("click", () => { if (step) { step--; render(); } });
-  $("next").addEventListener("click", () => { const max = mode === "compare" ? 4 : mode === "hybrid" ? 5 : mode === "pki" ? 6 : 4; if (step < max) { step++; render(); } });
+  $("next").addEventListener("click", () => { const max = mode === "compare" ? 4 : mode === "hybrid" ? hybrid.length - 1 : mode === "pki" ? 6 : 4; if (step < max) { step++; render(); } });
   $("reset").addEventListener("click", () => { step = 0; if (mode === "signature") { signed = null; keys = null; signature = null; displayedHash = ""; verification = ""; $("message").value = "明日の会議は10時です"; } render(); });
   const questions = [
     ["暗号化と復号に同じ鍵を使う方式は？", ["共通鍵暗号方式", "公開鍵暗号方式"], 0, "共通鍵暗号方式では両者が同じ鍵を使います。"],
@@ -156,4 +170,3 @@
   $("questions").addEventListener("click", (event) => { const button = event.target.closest("button[data-question]"); if (!button) return; const i = Number(button.dataset.question), choice = Number(button.dataset.answer), ok = choice === questions[i][2]; answers.set(i, ok); button.parentElement.querySelectorAll("button").forEach(item => item.classList.toggle("selected", item === button)); const feedback = $(`feedback-${i}`); feedback.className = `feedback ${ok ? "good" : "bad"}`; feedback.textContent = `${ok ? "正解" : "不正解"}。${questions[i][3]}`; $("score").textContent = `${answers.size} / ${questions.length}問回答 · ${[...answers.values()].filter(Boolean).length}問正解`; });
   render();
 })();
-
