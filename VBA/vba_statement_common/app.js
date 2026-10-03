@@ -131,8 +131,7 @@
       </header>
       <nav class="series-nav" aria-label="問題集ナビゲーション">
         ${seriesLink(data.number - 1, "前の問題集")}
-        <a class="series-link" href="../">教材一覧</a>
-        ${seriesLink(data.number + 1, "次の問題集")}
+        <a class="series-link" href="../students.html">教材一覧</a>
       </nav>
       <section class="toolbar" aria-label="操作">
         <div class="filters" role="group" aria-label="問題フィルター">
