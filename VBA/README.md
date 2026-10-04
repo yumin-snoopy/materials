@@ -11,5 +11,5 @@
 
 [授業の復習・VBA練習ページ](https://yumin-snoopy.github.io/materials/VBA/students.html)
 
-生徒にはこのURLを配布します。現在はIF文・FOR文の練習のみ掲載しています。
+生徒にはこのURLを配布します。
 授業の進度に合わせて `students.html` の教材カードを追加し、配布URLは維持します。
