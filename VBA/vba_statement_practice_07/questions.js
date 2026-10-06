@@ -1,7 +1,7 @@
 window.PRACTICE_SET = {
   "number": 7,
   "title": "VBA エキスパート 練習問題⑦",
-  "description": "複合条件、ループ、セル参照、配列、文字列処理を読み解く20問です。",
+  "description": "If・For...Next・With、セル参照、文字列処理を読み解く20問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_07/",
   "questions": [
     {
@@ -85,9 +85,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 5,
-      "title": "Select Caseを読み解く",
+      "title": "If文で点数を判定する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q5()\nDim score As Integer\nDim msg As String\nscore = 70\nSelect Case score\nCase Is >= 80\nmsg = \"A\"\nCase 60 To 79\nmsg = \"B\"\nCase 0 To 59\nmsg = \"C\"\nCase Else\nmsg = \"D\"\nEnd Select\nMsgBox msg\nEnd Sub",
+      "code": "Sub Q5()\nDim score As Integer\nDim msg As String\nscore = 70\nIf score >= 80 Then\nmsg = \"A\"\nElseIf score >= 60 Then\nmsg = \"B\"\nElse\nmsg = \"C\"\nEnd If\nMsgBox msg\nEnd Sub",
       "choices": [
         "A",
         "B",
@@ -97,9 +97,9 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "70点は 60～79 の範囲。",
+      "explanation": "70は80以上ではありませんが60以上なので、ElseIfの処理で「B」になります。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
@@ -123,9 +123,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 7,
-      "title": "For文を読み解く",
-      "prompt": "セルの初期状態は次のとおりです。",
-      "code": "A1 = 5\nA2 = 10\nA3 = 15\nA4 = 8\nA5 = 12\nSub Q7()\nDim c As Range\nDim cnt As Long\nFor Each c In Range(\"A1:A5\")\nIf c.Value >= 10 Then\ncnt = cnt + 1\nEnd If\nNext c\nMsgBox cnt\nEnd Sub",
+      "title": "For文で条件に合うセルを数える",
+      "prompt": "表示される結果はどれですか。",
+      "code": "Sub Q7()\nDim i As Long\nDim cnt As Long\nRange(\"A1\").Value = 5\nRange(\"A2\").Value = 10\nRange(\"A3\").Value = 15\nRange(\"A4\").Value = 8\nRange(\"A5\").Value = 12\nFor i = 1 To 5\nIf Cells(i, 1).Value >= 10 Then\ncnt = cnt + 1\nEnd If\nNext i\nMsgBox cnt\nEnd Sub",
       "choices": [
         "4",
         "5",
@@ -135,7 +135,7 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "10以上は 10,15,12 の3個。",
+      "explanation": "A1:A5のうち10以上の値は10、15、12の3個です。",
       "tags": [
         "if",
         "loop",
@@ -144,9 +144,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "title": "Do...Loopを読み解く",
+      "title": "For文で数を3倍ずつにする",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q8()\nDim n As Long\nn = 1\nDo While n < 20\nn = n * 3\nLoop\nMsgBox n\nEnd Sub",
+      "code": "Sub Q8()\nDim i As Long\nDim n As Long\nn = 1\nFor i = 1 To 3\nn = n * 3\nNext i\nMsgBox n\nEnd Sub",
       "choices": [
         "27",
         "無限ループになる",
@@ -156,16 +156,16 @@ window.PRACTICE_SET = {
       "answers": [
         0
       ],
-      "explanation": "1→3→9→27 で条件を満たして終了。",
+      "explanation": "For文は3回実行され、nは1→3→9→27と変わります。",
       "tags": [
         "loop"
       ]
     },
     {
       "id": 9,
-      "title": "Do...Loopを読み解く",
+      "title": "Stepを使って奇数を合計する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q9()\nDim n As Long\nDim i As Long\nn = 0\ni = 1\nDo\nn = n + i\ni = i + 2\nLoop Until n >= 15\nMsgBox n\nEnd Sub",
+      "code": "Sub Q9()\nDim n As Long\nDim i As Long\nFor i = 1 To 7 Step 2\nn = n + i\nNext i\nMsgBox n\nEnd Sub",
       "choices": [
         "15",
         "16",
@@ -175,7 +175,7 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "1+3+5+7=16 で 15以上に到達。",
+      "explanation": "iは1、3、5、7と変わるので、合計は1+3+5+7=16です。",
       "tags": [
         "loop"
       ]
@@ -260,9 +260,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 14,
-      "title": "Select Caseを読み解く",
+      "title": "If文で曜日を分類する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q14()\nDim d As String\nDim msg As String\nd = \"水\"\nSelect Case d\nCase \"月\", \"火\"\nmsg = \"前半\"\nCase \"水\", \"木\"\nmsg = \"中日\"\nCase \"金\"\nmsg = \"花金\"\nCase Else\nmsg = \"週末\"\nEnd Select\nMsgBox msg\nEnd Sub",
+      "code": "Sub Q14()\nDim d As String\nDim msg As String\nd = \"水\"\nIf d = \"月\" Or d = \"火\" Then\nmsg = \"前半\"\nElseIf d = \"水\" Or d = \"木\" Then\nmsg = \"中日\"\nElseIf d = \"金\" Then\nmsg = \"花金\"\nElse\nmsg = \"週末\"\nEnd If\nMsgBox msg\nEnd Sub",
       "choices": [
         "週末",
         "前半",
@@ -272,9 +272,9 @@ window.PRACTICE_SET = {
       "answers": [
         2
       ],
-      "explanation": "\"水\" は Case \"水\",\"木\" に一致。",
+      "explanation": "「水」は2番目の条件に当てはまるので、「中日」が表示されます。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
@@ -299,9 +299,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 16,
-      "title": "Do...Loopを読み解く",
+      "title": "For文で最初の条件一致を記録する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q16()\nDim n As Long\nn = 0\nDo While Not (n >= 5 And n Mod 2 = 0)\nn = n + 1\nLoop\nMsgBox n\nEnd Sub",
+      "code": "Sub Q16()\nDim n As Long\nDim found As Long\nFor n = 1 To 10\nIf found = 0 And n >= 5 And n Mod 2 = 0 Then\nfound = n\nEnd If\nNext n\nMsgBox found\nEnd Sub",
       "choices": [
         "6",
         "7",
@@ -311,8 +311,9 @@ window.PRACTICE_SET = {
       "answers": [
         0
       ],
-      "explanation": "「5以上かつ偶数」になったらループ終了。",
+      "explanation": "5以上で最初の偶数は6です。foundに6が入ると、その後はfound=0が偽なので値は変わりません。",
       "tags": [
+        "if",
         "loop"
       ]
     },
@@ -337,9 +338,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 18,
-      "title": "For文を読み解く",
+      "title": "For文で条件に合う最初の値を記録する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q18()\nDim arr(1 To 5) As Integer\nDim i As Long\nDim x As Variant\nDim found As Integer\nFor i = 1 To 5\narr(i) = i * 2\nNext i\nFor Each x In arr\nIf x >= 6 Then\nfound = x\nExit For\nEnd If\nNext x\nMsgBox found\nEnd Sub",
+      "code": "Sub Q18()\nDim i As Long\nDim found As Long\nFor i = 1 To 5\nCells(i, 1).Value = i * 2\nIf found = 0 And Cells(i, 1).Value >= 6 Then\nfound = Cells(i, 1).Value\nEnd If\nNext i\nMsgBox found\nEnd Sub",
       "choices": [
         "2",
         "4",
@@ -349,17 +350,18 @@ window.PRACTICE_SET = {
       "answers": [
         2
       ],
-      "explanation": "配列を先頭から見て、最初に6以上になるのが6。",
+      "explanation": "A列には2、4、6、8、10が入り、最初に6以上となる値6をfoundに記録します。",
       "tags": [
         "if",
-        "loop"
+        "loop",
+        "cell"
       ]
     },
     {
       "id": 19,
-      "title": "For文を読み解く",
+      "title": "If文で余りに応じて加算する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q19()\nDim i As Long\nDim cnt As Long\nFor i = 1 To 6\nSelect Case i Mod 3\nCase 0\ncnt = cnt + 2\nCase 1\ncnt = cnt + 1\nCase Else\n' 何もしない\nEnd Select\nNext i\nMsgBox cnt\nEnd Sub",
+      "code": "Sub Q19()\nDim i As Long\nDim cnt As Long\nFor i = 1 To 6\nIf i Mod 3 = 0 Then\ncnt = cnt + 2\nElseIf i Mod 3 = 1 Then\ncnt = cnt + 1\nEnd If\nNext i\nMsgBox cnt\nEnd Sub",
       "choices": [
         "8",
         "4",
@@ -369,16 +371,17 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "mod3=1で+1、mod3=0で+2 を合計。",
+      "explanation": "iが3と6のとき2ずつ、1と4のとき1ずつ加えるので、合計は6です。",
       "tags": [
+        "if",
         "loop"
       ]
     },
     {
       "id": 20,
-      "title": "For文を読み解く",
+      "title": "For文とIf文で文字列を作る",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q20()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 4\nSelect Case i\nCase 1, 4\ns = s & \"X\"\nCase 2\ns = s & \"Y\"\nCase 3\ns = s & \"Z\"\nEnd Select\nIf s = \"XY\" Then\ns = s & \"!\"\nExit For\nEnd If\nNext i\nMsgBox s\nEnd Sub",
+      "code": "Sub Q20()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 4\nIf i = 1 Or i = 4 Then\ns = s & \"X\"\nElseIf i = 2 Then\ns = s & \"Y\"\nElse\ns = s & \"Z\"\nEnd If\nIf s = \"XY\" Then\ns = s & \"!\"\nExit For\nEnd If\nNext i\nMsgBox s\nEnd Sub",
       "choices": [
         "XY!",
         "XYZ",
@@ -388,7 +391,7 @@ window.PRACTICE_SET = {
       "answers": [
         0
       ],
-      "explanation": "i=2で \"XY\" になった瞬間に \"!\" を付けて Exit For。",
+      "explanation": "i=1で「X」、i=2で「XY」となります。そこで「!」を付けてFor文を終了するので「XY!」です。",
       "tags": [
         "if",
         "loop"
