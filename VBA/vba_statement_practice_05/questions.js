@@ -44,7 +44,7 @@ window.PRACTICE_SET = {
     },
     {
       "id": 3,
-      "title": "追加したシートを最後へ移動する",
+      "title": "追加したシートを移動する",
       "prompt": "追加したシートは移動後にどこにありますか。",
       "code": "Sub Q3()\nWorksheets.Add\nActiveSheet.Move After:=Worksheets(Worksheets.Count)\nEnd Sub",
       "choices": [
