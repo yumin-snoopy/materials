@@ -1,7 +1,7 @@
 window.PRACTICE_SET = {
   "number": 8,
   "title": "VBA エキスパート 練習問題⑧",
-  "description": "二重ループ、Range、Offset、Resize、Exit Subなどを扱う20問です。",
+  "description": "For...Next、If、WithとRange・Offset・Resize・Copyを扱う20問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_08/",
   "questions": [
     {
@@ -66,9 +66,9 @@ window.PRACTICE_SET = {
     },
     {
       "id": 4,
-      "title": "セル操作を確認する",
+      "title": "Resizeで書き込む範囲を変える",
       "prompt": "以下のコードの実行結果として正しいものはどれか。",
-      "code": "Sub Test4()\nDim rng As Range\nSet rng = Range(\"A1:C3\")\nSet rng = rng.Resize(2, 2)\nrng.Value = \"X\"\nEnd Sub",
+      "code": "Sub Test4()\nRange(\"A1:C3\").Resize(2, 2).Value = \"X\"\nEnd Sub",
       "choices": [
         "A1～C3に\"X\"が入力される",
         "A1～B2に\"X\"が入力される",
@@ -78,29 +78,28 @@ window.PRACTICE_SET = {
       "answers": [
         1
       ],
-      "explanation": "Resize(2,2)で範囲がA1:B2へ。",
+      "explanation": "A1を起点とする2行2列はA1:B2です。この範囲に「X」が入力されます。",
       "tags": [
         "cell"
       ]
     },
     {
       "id": 5,
-      "title": "Do...Loopを読み解く",
-      "prompt": "以下のコードの動作として正しいものはどれか。",
-      "code": "Sub Test5()\nDim i As Integer\ni = 1\nDo While i < 10\nCells(i, 1).Value = i\ni = i - 1\nLoop\nEnd Sub",
+      "title": "For文で奇数を合計する",
+      "prompt": "表示される結果はどれですか。",
+      "code": "Sub Test5()\nDim i As Long\nDim total As Long\nFor i = 1 To 9 Step 2\ntotal = total + i\nNext i\nMsgBox total\nEnd Sub",
       "choices": [
-        "A1～A9に1～9が入力される",
-        "無限ループになる",
-        "エラーが発生する",
-        "何も実行されない"
+        "20",
+        "25",
+        "15",
+        "9"
       ],
       "answers": [
-        2
+        1
       ],
-      "explanation": "iが0になり Cells(0,1) 参照で実行時エラー。",
+      "explanation": "iは1、3、5、7、9と変わるので、合計は25です。",
       "tags": [
-        "loop",
-        "cell"
+        "loop"
       ]
     },
     {
@@ -145,19 +144,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "title": "For文を読み解く",
-      "prompt": "以下のコードの動作として正しいものはどれか。",
-      "code": "Sub Test8()\nDim i As Integer, j As Integer\nFor i = 1 To 3\nFor j = 1 To 3\nIf i = j Then Exit Sub\nCells(i, j).Value = \"O\"\nNext j\nNext i\nEnd Sub",
+      "title": "If文で対角線のセルを分ける",
+      "prompt": "実行後、B2セルの値はどれですか。",
+      "code": "Sub Test8()\nDim i As Long, j As Long\nFor i = 1 To 3\nFor j = 1 To 3\nIf i = j Then\nCells(i, j).Value = \"X\"\nElse\nCells(i, j).Value = \"O\"\nEnd If\nNext j\nNext i\nEnd Sub",
       "choices": [
-        "すべてのセルに\"O\"が入力される",
-        "何も実行されない",
-        "A1のみ処理されて終了する",
-        "エラーが発生する"
+        "O",
+        "空白",
+        "X",
+        "エラー"
       ],
       "answers": [
-        1
+        2
       ],
-      "explanation": "i=1,j=1で即 Exit Sub。",
+      "explanation": "B2は2行目・2列目なのでiとjがともに2です。条件がTrueとなり「X」が入ります。",
       "tags": [
         "if",
         "loop",
@@ -166,19 +165,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 9,
-      "title": "セル操作を確認する",
-      "prompt": "以下のコードでエラーが発生するのはどれか。",
-      "code": "Sub Test9()\nDim rng As Range\nSet rng = Range(\"A1:B2\")\nSet rng = rng.Offset(1, 1).Resize(3, 3)\nrng.Interior.Color = vbYellow\nEnd Sub",
+      "title": "OffsetとResizeで範囲を指定する",
+      "prompt": "「済」が入力される範囲はどれですか。",
+      "code": "Sub Test9()\nRange(\"A1:B2\").Offset(1, 1).Resize(3, 3).Value = \"済\"\nEnd Sub",
       "choices": [
-        "Resizeでエラーが発生する",
-        "Interior.Colorでエラーが発生する",
-        "エラーは発生しない",
-        "Offsetでエラーが発生する"
+        "A1:C3",
+        "B2:C3",
+        "B2:D4",
+        "C3:E5"
       ],
       "answers": [
         2
       ],
-      "explanation": "Offset→Resize後の範囲に色付けできる。",
+      "explanation": "Offset(1, 1)で左上がB2になり、Resize(3, 3)でB2:D4の3行3列になります。",
       "tags": [
         "cell"
       ]
@@ -205,19 +204,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 11,
-      "title": "Do...Loopを読み解く",
-      "prompt": "以下のコードの動作として正しいものはどれか。",
-      "code": "Sub Test11()\nDim i As Integer\ni = 10\nDo Until i = 0\nCells(i, 1).Value = i\ni = i + 1\nLoop\nEnd Sub",
+      "title": "負のStepでセルに値を書き込む",
+      "prompt": "実行後、A3セルの値はどれですか。",
+      "code": "Sub Test11()\nDim i As Long\nFor i = 5 To 1 Step -2\nCells(i, 1).Value = i\nNext i\nEnd Sub",
       "choices": [
-        "エラーが発生する",
-        "i=0で停止する",
-        "正常に動作する",
-        "無限ループになる"
+        "5",
+        "1",
+        "3",
+        "空白"
       ],
       "answers": [
-        0
+        2
       ],
-      "explanation": "i は 10 から増え続けて 0 にはなりません。Integer の上限を超えた時点でオーバーフローエラーになります。",
+      "explanation": "iは5、3、1と変わります。i=3の回にA3へ3を書き込みます。",
       "tags": [
         "loop",
         "cell"
@@ -245,20 +244,21 @@ window.PRACTICE_SET = {
     },
     {
       "id": 13,
-      "title": "Do...Loopを読み解く",
-      "prompt": "以下のコードの動作として正しいものはどれか。",
-      "code": "Sub Test13()\nDim i As Integer\ni = 5\nDo\nCells(i, 1).Value = i\ni = i + 1\nLoop While i <= 5\nEnd Sub",
+      "title": "For文とIf文で一部のセルに入力する",
+      "prompt": "実行後、A4セルの値はどれですか。",
+      "code": "Sub Test13()\nDim i As Long\nFor i = 1 To 5\nIf i >= 3 Then\nCells(i, 1).Value = i * 2\nEnd If\nNext i\nEnd Sub",
       "choices": [
-        "無限ループになる",
-        "エラーが発生する",
-        "A5に5が入力される",
-        "A5～A10に5～10が入力される"
+        "4",
+        "6",
+        "8",
+        "空白"
       ],
       "answers": [
         2
       ],
-      "explanation": "1回実行後、条件がFalseで終了。",
+      "explanation": "i=4は3以上なので、A4には4×2=8が入ります。",
       "tags": [
+        "if",
         "loop",
         "cell"
       ]
@@ -285,19 +285,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 15,
-      "title": "For文を読み解く",
-      "prompt": "以下のコードで最終的に色が付くセル範囲はどれか。",
-      "code": "Sub Test15()\nDim i As Integer\nFor i = 1 To 5\nRange(\"A1\").Resize(i, i).Interior.Color = vbRed\nNext i\nEnd Sub",
+      "title": "Resizeで広げた範囲へ値を入れる",
+      "prompt": "実行後、E5セルの値はどれですか。",
+      "code": "Sub Test15()\nDim i As Long\nFor i = 1 To 5\nRange(\"A1\").Resize(i, i).Value = i\nNext i\nEnd Sub",
       "choices": [
-        "A1:E5",
-        "A1:A5",
-        "A1:E1",
-        "A1"
+        "5",
+        "4",
+        "1",
+        "空白"
       ],
       "answers": [
         0
       ],
-      "explanation": "最後のi=5で5×5が塗られる。",
+      "explanation": "最後のi=5ではA1:E5の全セルに5が入るため、E5も5です。",
       "tags": [
         "loop",
         "cell"
@@ -325,38 +325,38 @@ window.PRACTICE_SET = {
     },
     {
       "id": 17,
-      "title": "セル操作を確認する",
-      "prompt": "以下のコードでエラーが発生する理由として正しいものはどれか。",
-      "code": "Sub Test17()\nDim rng As Range\nrng = Range(\"A1:C3\")\nrng.Value = \"Test\"\nEnd Sub",
+      "title": "Withでセル範囲に値を入れる",
+      "prompt": "「Test」が入力される範囲はどれですか。",
+      "code": "Sub Test17()\nWith Range(\"A1:C3\")\n.Value = \"Test\"\nEnd With\nEnd Sub",
       "choices": [
-        "エラーは発生しない",
-        "Rangeオブジェクトの指定が間違っている",
-        "Setステートメントが必要",
-        "Valueプロパティの使い方が間違っている"
+        "A1のみ",
+        "A1:C3",
+        "C3のみ",
+        "何も入力されない"
       ],
       "answers": [
-        2
+        1
       ],
-      "explanation": "Rangeオブジェクト代入に Set が必要。",
+      "explanation": "Withで指定したA1:C3の各セルに、.Valueで「Test」を入力します。",
       "tags": [
         "cell"
       ]
     },
     {
       "id": 18,
-      "title": "For文を読み解く",
-      "prompt": "以下のコードでB2セルの値はどうなるか。",
-      "code": "Sub Test18()\nDim i As Integer, j As Integer\nFor i = 1 To 3\nFor j = 1 To 3\nCells(i, j).Value = Cells(i, j).Offset(1, 1).Address\nNext j\nNext i\nEnd Sub",
+      "title": "For文で作った値をコピーする",
+      "prompt": "実行後、C4セルの値はどれですか。",
+      "code": "Sub Test18()\nDim i As Long\nFor i = 1 To 3\nCells(i, 1).Value = i * 10\nNext i\nRange(\"A1:A3\").Copy Destination:=Range(\"C2\")\nEnd Sub",
       "choices": [
-        "エラーが発生する",
-        "B2のまま",
-        "$B$2",
-        "$C$3"
+        "10",
+        "20",
+        "30",
+        "空白"
       ],
       "answers": [
-        3
+        2
       ],
-      "explanation": "B2のOffset(1,1)はC3、そのAddress。",
+      "explanation": "A1:A3には10、20、30が入り、C2から縦にコピーされます。A3の30がC4に入ります。",
       "tags": [
         "loop",
         "cell"
@@ -364,38 +364,38 @@ window.PRACTICE_SET = {
     },
     {
       "id": 19,
-      "title": "セル操作を確認する",
-      "prompt": "以下のコードの実行結果として正しいものはどれか。",
-      "code": "Sub Test19()\nDim rng As Range\nSet rng = Range(\"B2:D4\")\nSet rng = rng.Offset(-1, -1).Resize(rng.Rows.Count + 2, rng.Columns.Count + 2)\nrng.Interior.Color = vbRed\nEnd Sub",
+      "title": "OffsetとResizeで5行5列を指定する",
+      "prompt": "「済」が入力される範囲はどれですか。",
+      "code": "Sub Test19()\nRange(\"B2:D4\").Offset(-1, -1).Resize(5, 5).Value = \"済\"\nEnd Sub",
       "choices": [
-        "A1:E5に色が塗られる",
-        "A1:E6に色が塗られる",
-        "B2:D4に色が塗られる",
+        "A1:E5",
+        "A1:E6",
+        "B2:D4",
         "エラーが発生する"
       ],
       "answers": [
         0
       ],
-      "explanation": "Offset(-1,-1)でA1起点、Resize(5,5)。",
+      "explanation": "B2から1行上・1列左へずらしてA1を起点とし、5行5列へ広げるのでA1:E5です。",
       "tags": [
         "cell"
       ]
     },
     {
       "id": 20,
-      "title": "Do...Loopを読み解く",
-      "prompt": "以下のコードの動作として正しいものはどれか。",
-      "code": "Sub Test20()\nDim i As Integer\ni = 1\nDo While i <> 10\nCells(i, 1).Value = i\ni = i + 2\nLoop\nEnd Sub",
+      "title": "For文とOffsetでセルに値を入れる",
+      "prompt": "実行後、B6セルの値はどれですか。",
+      "code": "Sub Test20()\nDim i As Long\nFor i = 1 To 5\nRange(\"B2\").Offset(i - 1, 0).Value = i\nNext i\nEnd Sub",
       "choices": [
-        "無限ループになる",
-        "エラーが発生する",
-        "A1～A9に奇数が入力される",
-        "A1～A5に奇数が入力される"
+        "5",
+        "4",
+        "1",
+        "空白"
       ],
       "answers": [
-        1
+        0
       ],
-      "explanation": "i は奇数のまま増えるため 10 にはなりません。Integer の上限を超えた時点でオーバーフローエラーになります。",
+      "explanation": "i=5の回にB2から4行下のB6へ5を入力します。",
       "tags": [
         "loop",
         "cell"
