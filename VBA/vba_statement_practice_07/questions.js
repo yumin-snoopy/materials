@@ -47,7 +47,7 @@ window.PRACTICE_SET = {
       "id": 3,
       "title": "For文を読み解く",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q3()\nDim i As Long\nDim total As Long\nFor i = 1 To 10\ntotal = total + i\nIf total >= 15 Then\nExit For\nEnd If\nNext i\nMsgBox \"i=\" & i & \", total=\" & total\nEnd Sub",
+      "code": "Sub Q3()\nDim i As Long\nDim total As Long\nDim lastI As Long\nFor i = 1 To 10\nIf total < 15 Then\ntotal = total + i\nlastI = i\nEnd If\nNext i\nMsgBox \"i=\" & lastI & \", total=\" & total\nEnd Sub",
       "choices": [
         "i=6, total=21",
         "i=10, total=55",
@@ -57,7 +57,7 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "合計が15に達した瞬間に Exit For。",
+      "explanation": "i=1から5まで足すと合計が15になります。その後は条件を満たさず加算しないため、lastIは5、totalは15です。",
       "tags": [
         "if",
         "loop"
@@ -281,7 +281,7 @@ window.PRACTICE_SET = {
       "id": 15,
       "title": "For文を読み解く",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q15()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 5\nIf i Mod 2 = 1 Then\ns = s & \"A\"\nElse\ns = s & \"B\"\nIf Len(s) >= 4 Then\nExit For\nEnd If\nEnd If\nNext i\nMsgBox s\nEnd Sub",
+      "code": "Sub Q15()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 5\nIf Len(s) < 4 Then\nIf i Mod 2 = 1 Then\ns = s & \"A\"\nElse\ns = s & \"B\"\nEnd If\nEnd If\nNext i\nMsgBox s\nEnd Sub",
       "choices": [
         "AABB",
         "ABABB",
@@ -291,7 +291,7 @@ window.PRACTICE_SET = {
       "answers": [
         3
       ],
-      "explanation": "Len(s)>=4 になった偶数回で Exit For。",
+      "explanation": "i=1から4で順にA、B、A、Bを連結します。5回目は文字数が4なので追加しません。",
       "tags": [
         "if",
         "loop"
@@ -381,7 +381,7 @@ window.PRACTICE_SET = {
       "id": 20,
       "title": "For文とIf文で文字列を作る",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q20()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 4\nIf i = 1 Or i = 4 Then\ns = s & \"X\"\nElseIf i = 2 Then\ns = s & \"Y\"\nElse\ns = s & \"Z\"\nEnd If\nIf s = \"XY\" Then\ns = s & \"!\"\nExit For\nEnd If\nNext i\nMsgBox s\nEnd Sub",
+      "code": "Sub Q20()\nDim i As Long\nDim s As String\ns = \"\"\nFor i = 1 To 4\nIf Len(s) < 2 Then\nIf i Mod 2 = 1 Then\ns = s & \"X\"\nElse\ns = s & \"Y\"\nEnd If\nEnd If\nNext i\nIf s = \"XY\" Then\ns = s & \"!\"\nEnd If\nMsgBox s\nEnd Sub",
       "choices": [
         "XY!",
         "XYZ",
@@ -391,7 +391,7 @@ window.PRACTICE_SET = {
       "answers": [
         0
       ],
-      "explanation": "i=1で「X」、i=2で「XY」となります。そこで「!」を付けてFor文を終了するので「XY!」です。",
+      "explanation": "1回目にX、2回目にYを連結します。文字数が2になった後は追加せず、最後に「!」を付けるため「XY!」です。",
       "tags": [
         "if",
         "loop"
