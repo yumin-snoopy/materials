@@ -1,7 +1,7 @@
 window.PRACTICE_SET = {
   "number": 4,
   "title": "VBA エキスパート 練習問題④",
-  "description": "If・For...Next・Withを使い、セルのコピー、表示形式、範囲指定、シート追加を読み解く10問です。",
+  "description": "If・For...Next・Withを使い、セルのコピー、Format関数、範囲指定、シート追加を読み解く10問です。",
   "pageUrl": "https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_04/",
   "questions": [
     {
@@ -25,19 +25,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 2,
-      "title": "表示形式とセルの値を区別する",
+      "title": "Format関数で割合を表示する",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q2()\nRange(\"A1\").Value = 0.25\nRange(\"A1\").NumberFormat = \"0%\"\nMsgBox Range(\"A1\").Value * 100\nEnd Sub",
+      "code": "Sub Q2()\nRange(\"A1\").Value = 0.25\nMsgBox Format(Range(\"A1\").Value, \"0%\")\nEnd Sub",
       "choices": [
-        "25",
+        "25%",
         "0.25",
-        "100",
+        "25",
         "0%"
       ],
       "answers": [
         0
       ],
-      "explanation": "表示形式を0%にしても、セルの値は0.25のままです。0.25×100で25が表示されます。",
+      "explanation": "Format関数の「0%」は数値を100倍し、%を付けた文字列にします。A1の値0.25は「25%」と表示されます。",
       "tags": [
         "other"
       ]
@@ -197,4 +197,3 @@ window.PRACTICE_SET = {
     }
   ]
 };
-
