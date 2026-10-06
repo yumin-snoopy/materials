@@ -8,11 +8,11 @@ window.PRACTICE_SET = {
       "id": 1,
       "title": "2行2列の範囲をコピーする",
       "prompt": "表示される結果はどれですか。",
-      "code": "Sub Q1()\nRange(\"B2\").Value = \"印\"\nRange(\"A1:B2\").Copy Destination:=Range(\"D4\")\nMsgBox Range(\"E5\").Value\nEnd Sub",
+      "code": "Sub Q1()\nRange(\"B2\").Value = \"★\"\nRange(\"A1:B2\").Copy Destination:=Range(\"D4\")\nMsgBox Range(\"E5\").Value\nEnd Sub",
       "choices": [
         "空白",
         "9",
-        "印",
+        "★",
         "エラー"
       ],
       "answers": [
