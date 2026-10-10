@@ -122,38 +122,38 @@ window.PRACTICE_SET = {
     },
     {
       "id": 7,
-      "title": "変数を確認する",
-      "prompt": "次のコードのうち、プロシージャレベル変数はどれか。正しいものを1つ選びなさい。",
-      "code": "Dim X As Integer\nSub Sample()\nDim Y As Integer\nStatic Z As Integer\nEnd Sub",
+      "title": "変数の適用範囲を確認する",
+      "prompt": "次のコードで、プロシージャレベルの変数はどれですか。正しいものを1つ選びなさい。",
+      "code": "Dim x As Integer\nSub Sample()\n    Dim y As Integer\nEnd Sub",
       "choices": [
-        "YとZ",
-        "X",
-        "Y",
-        "Z"
+        "y",
+        "x",
+        "xとy",
+        "どちらも該当しない"
       ],
       "answers": [
         0
       ],
-      "explanation": "どちらもプロシージャ内宣言。",
+      "explanation": "yはSampleプロシージャ内で宣言されているため、このプロシージャ内で使用する変数です。xはプロシージャの外で宣言され、同じモジュール内で使用できます。",
       "tags": [
         "other"
       ]
     },
     {
       "id": 8,
-      "title": "関数と文字列を確認する",
-      "prompt": "次のステートメントを実行したとき、メッセージボックスに表示される文字列はどれか。正しいものを1つ選びなさい。 ただし、RTrim関数の引数「\" ABCDEFGH \"」には、「A」の前、「H」の後にそれぞれ半角スペースが2つずつ含まれているものとする。",
-      "code": "MsgBox Mid(RTrim(\"  ABCDEFGH  \"), 3, 4)",
+      "title": "文字列を整えて長さを調べる",
+      "prompt": "次のステートメントを実行したとき、表示される値はどれですか。正しいものを1つ選びなさい。",
+      "code": "MsgBox Len(Trim(\"  VBA  \"))",
       "choices": [
-        "DEFG",
-        "ABCD",
-        "BCDE",
-        "CDEF"
+        "3",
+        "5",
+        "7",
+        "0"
       ],
       "answers": [
-        1
+        0
       ],
-      "explanation": "RTrimで右側の半角スペースだけが削除され、左側の2文字分のスペースは残ります。3文字目のAから4文字を取り出すため、ABCDです。",
+      "explanation": "Trim関数で文字列の前後の半角スペースを除くと「VBA」になり、Len関数で文字数の3を求めます。",
       "tags": [
         "other"
       ]
@@ -179,20 +179,20 @@ window.PRACTICE_SET = {
     },
     {
       "id": 10,
-      "title": "変数を確認する",
-      "prompt": "VBAの変数に関する説明として、正しいものはどれか。次の中から2つ選びなさい。",
+      "title": "変数と定数を確認する",
+      "prompt": "変数と定数に関する説明として、正しいものを2つ選びなさい。",
       "code": "",
       "choices": [
-        "Dimステートメントで宣言した変数は、プロシージャが終了すると値が保持されない",
-        "Staticステートメントで宣言した変数は、プロシージャが終了しても値が保持される",
-        "Publicステートメントで宣言した変数は、同じモジュール内でのみ使用できる",
-        "変数を宣言せずに使用することはできない"
+        "Dimステートメントで変数を宣言できる",
+        "Constステートメントで宣言した定数には、後から別の値を代入できる",
+        "宣言した変数には、後から値を代入できる",
+        "As Stringは整数型の変数を宣言するときに使う"
       ],
       "answers": [
         0,
-        1
+        2
       ],
-      "explanation": "スコープと寿命の基本。",
+      "explanation": "Dimは変数の宣言に使い、変数には値を代入できます。Constで宣言した定数の値は変更できず、As Stringは文字列型です。",
       "tags": [
         "other"
       ]
@@ -276,12 +276,12 @@ window.PRACTICE_SET = {
     },
     {
       "id": 15,
-      "title": "VBAの基本を確認する",
-      "prompt": "For...Nextステートメントに関する説明として、誤っているものはどれか。次の中から２つ選びなさい。",
+      "title": "For...Nextの繰り返しを確認する",
+      "prompt": "For...Nextステートメントに関する説明として、誤っているものを2つ選びなさい。",
       "code": "",
       "choices": [
         "Stepに負の値を指定することはできない",
-        "Exit Forステートメントでループを途中で抜けることができる",
+        "For i = 1 To 3 の繰り返しでは、iは1、2、3の順に変化する",
         "Nextの後にカウンタ変数名を記述することは必須である",
         "Stepを省略すると、増分値は1となる"
       ],
@@ -289,9 +289,9 @@ window.PRACTICE_SET = {
         0,
         2
       ],
-      "explanation": "Stepには負の値も指定でき、Nextの後のカウンタ変数名は省略できます。Exit Forで途中終了できることと、Step省略時の増分値が1になることは正しい説明です。",
+      "explanation": "Stepには負の値も指定でき、Nextの後のカウンタ変数名は省略できます。Step省略時の増分値は1です。",
       "tags": [
-        "other"
+        "loop"
       ]
     },
     {
@@ -356,7 +356,7 @@ window.PRACTICE_SET = {
     {
       "id": 19,
       "title": "VBAの基本を確認する",
-      "prompt": "セルA1が空白かどうかを判定する条件式はどれか。正しいものを2つ選びなさい。",
+      "prompt": "セルA1に値も数式も入力されていないとき、Trueになる条件式を2つ選びなさい。",
       "code": "",
       "choices": [
         "IsEmpty(Range(\"A1\"))",
@@ -368,7 +368,7 @@ window.PRACTICE_SET = {
         0,
         3
       ],
-      "explanation": "空文字・未入力セルの判定。",
+      "explanation": "未入力のセルではIsEmpty(Range(\"A1\"))がTrueになり、Range(\"A1\").Valueも空文字列と等しくなります。",
       "tags": [
         "other"
       ]
@@ -471,22 +471,22 @@ window.PRACTICE_SET = {
     },
     {
       "id": 25,
-      "title": "VBAの基本を確認する",
-      "prompt": "Do...Loopステートメントに関する説明として、正しいものはどれか。次の中から2つ選びなさい。",
-      "code": "",
+      "title": "WithとOffsetでセルを指定する",
+      "prompt": "次のコードの実行結果として正しいものを2つ選びなさい。",
+      "code": "With Range(\"B2\")\n    .Value = 5\n    .Offset(1, 0).Value = 8\nEnd With",
       "choices": [
-        "Stepキーワードで増分値を指定できる",
-        "While条件を使用すると、条件がTrueの間ループを繰り返す",
-        "Until条件を使用すると、条件がTrueの間ループを繰り返す",
-        "Exit Doステートメントでループを途中で抜けることができる"
+        "セルB2の値は5になる",
+        "セルB3の値は8になる",
+        "セルC2の値は8になる",
+        "セルB2の値は8になる"
       ],
       "answers": [
-        1,
-        3
+        0,
+        1
       ],
-      "explanation": "Untilは「Trueになるまで」。",
+      "explanation": "Withの基準はB2です。.ValueでB2に5を入れ、.Offset(1, 0)で1行下のB3に8を入れます。",
       "tags": [
-        "loop"
+        "other"
       ]
     },
     {
