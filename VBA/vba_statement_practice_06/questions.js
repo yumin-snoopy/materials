@@ -141,19 +141,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "title": "文字列を整えて長さを調べる",
-      "prompt": "次のステートメントを実行したとき、表示される値はどれですか。正しいものを1つ選びなさい。",
-      "code": "MsgBox Len(Trim(\"  VBA  \"))",
+      "title": "関数と文字列を確認する",
+      "prompt": "次のステートメントを実行したとき、メッセージボックスに表示される文字列はどれか。正しいものを1つ選びなさい。 ただし、RTrim関数の引数「\" ABCDEFGH \"」には、「A」の前、「H」の後にそれぞれ半角スペースが2つずつ含まれているものとする。",
+      "code": "MsgBox Mid(RTrim(\"  ABCDEFGH  \"), 3, 4)",
       "choices": [
-        "3",
-        "5",
-        "7",
-        "0"
+        "DEFG",
+        "ABCD",
+        "BCDE",
+        "CDEF"
       ],
       "answers": [
-        0
+        1
       ],
-      "explanation": "Trim関数で文字列の前後の半角スペースを除くと「VBA」になり、Len関数で文字数の3を求めます。",
+      "explanation": "RTrimで右側の半角スペースだけが削除され、左側の2文字分のスペースは残ります。3文字目のAから4文字を取り出すため、ABCDです。",
       "tags": [
         "other"
       ]
@@ -355,22 +355,21 @@ window.PRACTICE_SET = {
     },
     {
       "id": 19,
-      "title": "VBAの基本を確認する",
-      "prompt": "セルA1に値も数式も入力されていないとき、Trueになる条件式を2つ選びなさい。",
-      "code": "",
+      "title": "セルの値とIfを読み解く",
+      "prompt": "次のマクロを実行したとき、メッセージボックスに表示される文字列はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub CheckCell()\n    Range(\"A1\").Value = 8\n    If Range(\"A1\").Value >= 5 Then\n        MsgBox \"合格\"\n    Else\n        MsgBox \"再確認\"\n    End If\nEnd Sub",
       "choices": [
-        "IsEmpty(Range(\"A1\").Value)",
-        "Range(\"A1\") = Null",
-        "Range(\"A1\").IsEmpty = True",
-        "Range(\"A1\").Value = \"\""
+        "合格",
+        "再確認",
+        "8",
+        "何も表示されない"
       ],
       "answers": [
-        0,
-        3
+        0
       ],
-      "explanation": "未入力のセルではIsEmpty(Range(\"A1\").Value)がTrueになり、Range(\"A1\").Valueも空文字列と等しくなります。",
+      "explanation": "A1には8が入ります。8は5以上なのでIfの条件がTrueとなり、「合格」が表示されます。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
