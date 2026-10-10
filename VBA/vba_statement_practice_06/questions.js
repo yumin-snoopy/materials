@@ -359,7 +359,7 @@ window.PRACTICE_SET = {
       "prompt": "セルA1に値も数式も入力されていないとき、Trueになる条件式を2つ選びなさい。",
       "code": "",
       "choices": [
-        "IsEmpty(Range(\"A1\"))",
+        "IsEmpty(Range(\"A1\").Value)",
         "Range(\"A1\") = Null",
         "Range(\"A1\").IsEmpty = True",
         "Range(\"A1\").Value = \"\""
@@ -368,7 +368,7 @@ window.PRACTICE_SET = {
         0,
         3
       ],
-      "explanation": "未入力のセルではIsEmpty(Range(\"A1\"))がTrueになり、Range(\"A1\").Valueも空文字列と等しくなります。",
+      "explanation": "未入力のセルではIsEmpty(Range(\"A1\").Value)がTrueになり、Range(\"A1\").Valueも空文字列と等しくなります。",
       "tags": [
         "other"
       ]
@@ -549,18 +549,18 @@ window.PRACTICE_SET = {
     {
       "id": 29,
       "title": "VBAの基本を確認する",
-      "prompt": "現在のブックを名前を付けて保存するステートメントはどれか。正しいものを1つ選びなさい。",
+      "prompt": "このマクロが保存されているマクロ有効ブックを、別名のマクロ有効ブックとして保存するステートメントはどれか。正しいものを1つ選びなさい。",
       "code": "",
       "choices": [
-        "ActiveWorkbook.SaveAs Path:=\"C:\\Desktop\\NewBook.xlsx\"",
-        "ThisWorkbook.Close Filename:=\"C:\\Desktop\\NewBook.xlsx\"",
-        "ThisWorkbook.SaveAs Filename:=\"C:\\Desktop\\NewBook.xlsx\"",
-        "ThisWorkbook.Save Filename:=\"C:\\Desktop\\NewBook.xlsx\""
+        "ActiveWorkbook.SaveAs Path:=\"C:\\Data\\NewBook.xlsm\"",
+        "ThisWorkbook.Close Filename:=\"C:\\Data\\NewBook.xlsm\"",
+        "ThisWorkbook.SaveAs Filename:=\"C:\\Data\\NewBook.xlsm\"",
+        "ThisWorkbook.Save Filename:=\"C:\\Data\\NewBook.xlsm\""
       ],
       "answers": [
         2
       ],
-      "explanation": "別名保存は SaveAs メソッドを使い、Filename にドライブ記号を含む完全なパスを指定します。",
+      "explanation": "ThisWorkbookは、このマクロが保存されているブックを指します。別名保存はSaveAsメソッドのFilenameに、保存先とマクロ有効ブックのファイル名を指定します。",
       "tags": [
         "other"
       ]
