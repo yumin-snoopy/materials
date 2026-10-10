@@ -6,39 +6,39 @@ window.PRACTICE_SET = {
   "questions": [
     {
       "id": 1,
-      "title": "変数を確認する",
-      "prompt": "次のマクロを実行したとき、変数resultの値はいくつになるか。",
-      "code": "Sub Sample()\nDim x As Integer, y As Integer, result As Integer\nx = 10\ny = 3\nresult = x / y + x Mod y\nEnd Sub",
+      "title": "変数と演算子を確認する",
+      "prompt": "次のマクロを実行したとき、変数resultの値はいくつになりますか。",
+      "code": "Sub Sample()\nDim x As Integer, y As Integer, result As Integer\nx = 10\ny = 3\nresult = x + y * 2\nEnd Sub",
       "choices": [
-        "4",
-        "6",
-        "7",
-        "3"
+        "16",
+        "26",
+        "13",
+        "7"
       ],
       "answers": [
         0
       ],
-      "explanation": "/ は実数除算。10/3=3.33…＋(10 Mod 3)=1 → 4.33… を Integer に代入で4。",
+      "explanation": "乗算を先に計算するので、10 + (3 × 2) = 16です。",
       "tags": [
         "other"
       ]
     },
     {
       "id": 2,
-      "title": "VBAの基本を確認する",
-      "prompt": "ワークシートのイベントプロシージャについて、正しい記述を2つ選択しなさい。",
+      "title": "マクロ記録を確認する",
+      "prompt": "マクロ記録に関する説明として、正しいものを2つ選びなさい。",
       "code": "",
       "choices": [
-        "Worksheet_Changeイベントは、セルの値が変更されたときに発生する。",
-        "Worksheet_SelectionChangeイベントは、セルが選択されるたびに発生する。",
-        "ワークシートのイベントプロシージャは、標準モジュールに記述する。",
-        "Worksheet_Activateイベントは、ワークブックを開いたときに必ず発生する。"
+        "記録したマクロのコードはVBEで編集できる",
+        "記録先に個人用マクロブックを選べる",
+        "マクロ記録はすべての操作を必ず記録する",
+        "相対参照の設定は記録中に変更できない"
       ],
       "answers": [
         0,
         1
       ],
-      "explanation": "1,2（Worksheet_Change / Worksheet_SelectionChange） どちらもワークシートイベント。③は標準モジュールではない。",
+      "explanation": "記録したコードはVBEで編集でき、記録先に個人用マクロブックを選べます。記録されない操作もあり、相対参照の設定は記録中にも切り替えられます。",
       "tags": [
         "other"
       ]
@@ -83,40 +83,40 @@ window.PRACTICE_SET = {
     },
     {
       "id": 5,
-      "title": "VBAの基本を確認する",
-      "prompt": "次のコードのエラー処理について、正しい記述を選択しなさい。",
-      "code": "Sub Sample()\nOn Error GoTo ErrorHandler\nDim x As Integer\nx = 100 / 0\nExit Sub\nErrorHandler:\nMsgBox \"エラーが発生しました\"\nEnd Sub",
+      "title": "シート名を変更する",
+      "prompt": "ワークシート「Sheet1」の名前を「集計」に変更するステートメントはどれですか。正しいものを1つ選びなさい。",
+      "code": "",
       "choices": [
-        "エラーが発生し、プログラムが強制終了する。",
-        "Exit Subが実行され、ErrorHandlerには到達しない。",
-        "エラーが発生せず、xには0が代入される。",
-        "エラーが発生し、メッセージボックスが表示される。"
+        "Worksheets(\"Sheet1\").Name = \"集計\"",
+        "Worksheets(\"Sheet1\").Title = \"集計\"",
+        "Worksheets(\"Sheet1\").Rename \"集計\"",
+        "Worksheets(\"Sheet1\").Name(\"集計\")"
       ],
       "answers": [
-        3
+        0
       ],
-      "explanation": "0除算で ErrorHandler に飛ぶ。",
+      "explanation": "ワークシート名はNameプロパティに文字列を代入して変更します。",
       "tags": [
         "other"
       ]
     },
     {
       "id": 6,
-      "title": "Select Caseを読み解く",
-      "prompt": "次のSelect Case文を実行したとき、メッセージボックスに表示される内容を選択しなさい。",
-      "code": "Sub Sample()\nDim score As Integer\nscore = 75\nSelect Case score\nCase Is >= 80\nMsgBox \"優\"\nCase Is >= 60\nMsgBox \"良\"\nCase Else\nMsgBox \"可\"\nEnd Select\nEnd Sub",
+      "title": "If...Then...Elseを読み解く",
+      "prompt": "次のマクロを実行したとき、表示される文字列はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nDim score As Integer\nscore = 75\nIf score >= 80 Then\n    MsgBox \"優\"\nElseIf score >= 60 Then\n    MsgBox \"良\"\nElse\n    MsgBox \"可\"\nEnd If\nEnd Sub",
       "choices": [
-        "メッセージボックスに「良」と表示される",
-        "メッセージボックスに「可」と表示される",
+        "良",
+        "可",
         "エラーが発生する",
-        "メッセージボックスに「優」と表示される"
+        "優"
       ],
       "answers": [
         0
       ],
-      "explanation": "75は80以上ではないが60以上。",
+      "explanation": "75は80以上ではありませんが60以上なので、ElseIfの処理で「良」が表示されます。",
       "tags": [
-        "other"
+        "if"
       ]
     },
     {
@@ -140,22 +140,21 @@ window.PRACTICE_SET = {
     },
     {
       "id": 8,
-      "title": "関数と文字列を確認する",
-      "prompt": "ユーザー定義関数について、正しい記述をすべて選択しなさい。",
-      "code": "",
+      "title": "Offsetでセルに値を入れる",
+      "prompt": "次のマクロを実行したとき、セルA2の値はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nRange(\"A1\").Value = 5\nRange(\"A1\").Offset(1, 0).Value = Range(\"A1\").Value * 2\nEnd Sub",
       "choices": [
-        "Functionプロシージャの名前に計算結果を代入することで、値を返すことができる。",
-        "Functionプロシージャは引数を持つことができない。",
-        "Functionプロシージャで作成した関数は、ワークシート上でも使用できる。",
-        "Functionプロシージャは必ず戻り値を返す必要がある。"
+        "5",
+        "8",
+        "10",
+        "15"
       ],
       "answers": [
-        0,
         2
       ],
-      "explanation": "Function名に値を代入すると戻り値を返せ、Public Functionはワークシートからも利用できます。Functionは引数を持つことができ、戻り値を代入しなかった場合は型の初期値が返ります。",
+      "explanation": "A1の値5を2倍し、Offset(1, 0)で1行下のA2に10を入れます。",
       "tags": [
-        "other"
+        "cell"
       ]
     },
     {
@@ -179,21 +178,21 @@ window.PRACTICE_SET = {
     },
     {
       "id": 10,
-      "title": "Do...Loopを読み解く",
-      "prompt": "変数iの初期値が1のとき、無限ループにならず終了するDo...Loop文はどれですか。",
-      "code": "Dim i As Integer\ni = 1",
+      "title": "WithとOffsetでセルを指定する",
+      "prompt": "次のマクロを実行したとき、「済」が入力されるセルはどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nWith Range(\"C3\")\n    .Offset(0, 1).Value = \"済\"\nEnd With\nEnd Sub",
       "choices": [
-        "Do\n    MsgBox i\nLoop While i < 10",
-        "Do Until i = 10\n    MsgBox i\nLoop",
-        "Do While i < 10\n    MsgBox i\nLoop",
-        "Do While i < 10\n    MsgBox i\n    i = i + 1\nLoop"
+        "B2",
+        "C2",
+        "C3",
+        "D3"
       ],
       "answers": [
         3
       ],
-      "explanation": "ループ内に「i = i + 1」がある処理だけは、iが10になると「i < 10」がFalseになって終了します。それ以外はiが1のままで、継続条件または終了条件が変化しません。",
+      "explanation": "C3から列方向へ1つ右にずらすので、D3に「済」が入ります。",
       "tags": [
-        "loop"
+        "cell"
       ]
     },
     {
@@ -205,38 +204,37 @@ window.PRACTICE_SET = {
         "ActiveWorkbook.Worksheets.Countで、アクティブブックのシート数を取得できる。",
         "Worksheets(\"Sheet1\").Nameで、シート名を変更することはできない。",
         "ThisWorkbookは、コードが記述されているワークブックを参照する。",
-        "Workbooks(1)は、現在開いているなかで、最初に開いたワークブックを指す。"
+        "Workbooks(1)は、Workbooksコレクションの1番目のブックを指す。"
       ],
       "answers": [
         0,
         2,
         3
       ],
-      "explanation": "Workbooks(1) はコレクション先頭のブック、Worksheets.Count はシート数、ThisWorkbook はコードを含むブックを参照します。",
+      "explanation": "ActiveWorkbook.Worksheets.Countでアクティブブックのワークシート数が分かり、ThisWorkbookはコードを含むブックを参照します。Workbooks(1)はコレクションの1番目のブックです。",
       "tags": [
         "cell"
       ]
     },
     {
       "id": 12,
-      "title": "For文を読み解く",
-      "prompt": "セルA1:A10には数式や空文字列（\"\"）がなく、値が未入力のセルだけを空白として数えるものとします。【 】に入る正しい条件式をすべて選択しなさい。",
-      "code": "Sub Sample()\nDim i As Integer, count As Integer\ncount = 0\nFor i = 1 To 10\nIf 【 】 Then\ncount = count + 1\nEnd If\nNext i\nMsgBox count\nEnd Sub",
+      "title": "セルの値で空欄を数える",
+      "prompt": "次のマクロを実行したとき、表示される値はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nDim i As Long, count As Long\nRange(\"A1\").Value = \"\"\nRange(\"A2\").Value = \"VBA\"\nRange(\"A3\").Value = \"\"\nFor i = 1 To 3\n    If Cells(i, 1).Value = \"\" Then\n        count = count + 1\n    End If\nNext i\nMsgBox count\nEnd Sub",
       "choices": [
-        "Cells(i, 1).Value = Null",
-        "IsEmpty(Cells(i, 1))",
-        "Cells(i, 1).Value = \"\"",
-        "Len(Cells(i, 1).Value) = 0"
+        "1",
+        "2",
+        "3",
+        "0"
       ],
       "answers": [
-        1,
-        2,
-        3
+        1
       ],
-      "explanation": "未入力セルではIsEmptyがTrueになり、Valueは空文字列として比較でき、文字列長も0です。Nullとの比較結果はNullになり、If条件のTrueにはなりません。",
+      "explanation": "A1とA3の値が空文字列なので、countは2になります。",
       "tags": [
         "if",
-        "loop"
+        "loop",
+        "cell"
       ]
     },
     {
@@ -279,21 +277,21 @@ window.PRACTICE_SET = {
     },
     {
       "id": 15,
-      "title": "If文を読み解く",
-      "prompt": "以下のマクロを実行したとき、メッセージボックスに表示される値として正しいものを選択しなさい。",
-      "code": "Sub Sample()\nDim result As String\nresult = Test(10, 5)\nMsgBox result\nEnd Sub\nFunction Test(a As Integer, b As Integer) As String\nIf a > b Then\nTest = \"大きい\"\nElse\nTest = \"小さい\"\nEnd If\nEnd Function",
+      "title": "WithとResizeで範囲に入力する",
+      "prompt": "次のマクロを実行したとき、セルC3の値はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nWith Range(\"B2\").Resize(2, 2)\n    .Value = \"済\"\nEnd With\nMsgBox Range(\"C3\").Value\nEnd Sub",
       "choices": [
-        "小さい",
-        "True",
-        "エラーが発生する",
-        "大きい"
+        "空白",
+        "済",
+        "B2",
+        "エラー"
       ],
       "answers": [
-        3
+        1
       ],
-      "explanation": "Test(10,5) は a>b が真なので「大きい」。",
+      "explanation": "B2から2行2列の範囲はB2:C3です。その全セルに「済」を入れるため、C3も「済」です。",
       "tags": [
-        "if"
+        "cell"
       ]
     },
     {
@@ -341,19 +339,19 @@ window.PRACTICE_SET = {
     },
     {
       "id": 18,
-      "title": "VBAの基本を確認する",
-      "prompt": "Do While ループが1回も実行されない条件はどれか。",
-      "code": "",
+      "title": "負のStepで数を合計する",
+      "prompt": "次のマクロを実行したとき、表示される値はどれですか。正しいものを1つ選びなさい。",
+      "code": "Sub Sample()\nDim i As Long, total As Long\nFor i = 5 To 1 Step -2\n    total = total + i\nNext i\nMsgBox total\nEnd Sub",
       "choices": [
-        "Exit Do がある",
-        "条件がTrue",
-        "条件がFalse",
-        "カウンタが0"
+        "6",
+        "8",
+        "9",
+        "15"
       ],
       "answers": [
         2
       ],
-      "explanation": "Whileは最初に判断する条件がFalseの場合は処理を行わない。",
+      "explanation": "iは5、3、1の順に変化するので、合計は9です。",
       "tags": [
         "loop"
       ]
