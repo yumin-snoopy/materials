@@ -73,9 +73,9 @@ window.PRACTICE_SET = {
         "空白"
       ],
       "answers": [
-        2
+        0
       ],
-      "explanation": "i=3、2、1の順にA1、B1、C1へC、B、Aを書きます。C1に残るのはAです。",
+      "explanation": "i=3でA3の「C」をA1に書き、i=2でA2の「B」をB1に書きます。i=1では、すでに「C」に変わったA1の値をC1に書くため、表示は「C」です。",
       "tags": [
         "loop"
       ]
