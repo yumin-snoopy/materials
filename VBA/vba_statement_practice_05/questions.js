@@ -63,7 +63,7 @@ window.PRACTICE_SET = {
     },
     {
       "id": 4,
-      "title": "Step -1でセルの並びを逆にする",
+      "title": "Step -1でセルを上書きしながら値を移す",
       "prompt": "表示される結果はどれですか。",
       "code": "Sub Q4()\nDim i As Long\nRange(\"A1\").Value = \"A\"\nRange(\"A2\").Value = \"B\"\nRange(\"A3\").Value = \"C\"\nFor i = 3 To 1 Step -1\n    Cells(1, 4 - i).Value = Cells(i, 1).Value\nNext i\nMsgBox Range(\"C1\").Value\nEnd Sub",
       "choices": [
