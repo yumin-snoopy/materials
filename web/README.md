@@ -12,6 +12,7 @@ HTML・CSS・JavaScriptを学ぶための教材を `web/` にまとめていま�
 | フォルダ | 内容 | 開く |
 | --- | --- | --- |
 | [`css_box_model/`](./css_box_model/) | CSSボックスモデル体験ツール | [公開ページ](https://yumin-snoopy.github.io/materials/web/css_box_model/) |
+| [`slideshow/`](./slideshow/) | スライドショー サンプル集 | [公開ページ](https://yumin-snoopy.github.io/materials/web/slideshow/) |
 
 ## このディレクトリのファイル
 
