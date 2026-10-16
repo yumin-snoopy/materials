@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSボックスモデル体験ツール | Web制作教材</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="back-link" href="../">← Web制作教材一覧</a>
+      <p class="eyebrow">見て、動かして、計算する</p>
+      <h1>CSSボックスモデル体験ツール</h1>
+      <p class="intro">数値を変えると、ボックスの見た目・実際のサイズ・CSSコードが一緒に変わります。</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="tabs" role="tablist" aria-label="学習モード">
+      <button type="button" class="tab is-active" id="tab-experience" role="tab" aria-selected="true" aria-controls="experience-panel">体験モード</button>
+      <button type="button" class="tab" id="tab-practice" role="tab" aria-selected="false" aria-controls="practice-panel">練習問題</button>
+    </div>
+
+    <section id="practice-panel" class="practice-panel" role="tabpanel" aria-labelledby="tab-practice" hidden>
+      <div class="section-heading"><span class="step">練習問題</span><h2>設定を変えて答えよう</h2></div>
+      <p>問題1〜4は下の「CSS設定」を操作します。関係のない設定値は採点に影響しません。</p>
+      <div class="question-nav" aria-label="問題を選ぶ">
+        <button type="button" class="question-button is-active" data-question="0" aria-current="true">問題 1</button>
+        <button type="button" class="question-button" data-question="1">問題 2</button>
+        <button type="button" class="question-button" data-question="2">問題 3</button>
+        <button type="button" class="question-button" data-question="3">問題 4</button>
+        <button type="button" class="question-button" data-question="4">問題 5</button>
+      </div>
+      <h3 id="question-title">問題 1</h3>
+      <p id="question-text" class="question-text"></p>
+      <label id="calculation-answer-label" class="calculation-answer" for="calculation-answer" hidden>実際の横幅 <input id="calculation-answer" type="number" inputmode="numeric" min="0" step="1"> px</label>
+      <div class="action-row"><button type="button" id="check-answer" class="primary-button">答え合わせ</button><span id="answer-feedback" role="status" aria-live="polite"></span></div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel controls-panel" aria-labelledby="settings-title">
+        <div class="section-heading"><span class="step">01</span><h2 id="settings-title">CSS設定</h2></div>
+        <p class="panel-lead">スライダー、または数値欄で変更できます。数値の単位は px です。</p>
+        <div id="controls"></div>
+        <div class="select-row">
+          <label for="border-style">border-style <button type="button" class="help-button" data-help="border-style" aria-label="border-style の説明" aria-expanded="false">？</button></label>
+          <select id="border-style"><option value="solid">solid（実線）</option><option value="dashed">dashed（破線）</option><option value="dotted">dotted（点線）</option></select>
+        </div>
+        <div class="select-row">
+          <label for="box-sizing">box-sizing <button type="button" class="help-button" data-help="box-sizing" aria-label="box-sizing の説明" aria-expanded="false">？</button></label>
+          <select id="box-sizing"><option value="content-box">content-box</option><option value="border-box">border-box</option></select>
+        </div>
+        <div id="help-text" class="help-text" role="status" hidden></div>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="section-heading"><span class="step">02</span><h2 id="preview-title">プレビュー</h2></div>
+        <p class="panel-lead">色のついた領域と数値の変化を比べましょう。</p>
+        <h3>実際の表示</h3>
+        <p class="small-note">ピンクは外側の余白です。ボックス本体の大きさには含みません。</p>
+        <div class="actual-viewport"><div id="margin-guide" class="margin-guide"><div id="sample-box" class="sample-box"><div class="sample-content">content<br><span>内容</span></div></div></div></div>
+        <div class="legend" aria-label="領域の色"><span class="legend-margin">margin（外側）</span><span class="legend-border">border（枠線）</span><span class="legend-padding">padding（内側）</span><span class="legend-content">content（内容）</span></div>
+        <details class="diagram-details"><summary>ボックスモデル図解を見る</summary><div class="diagram-margin"><span>margin</span><div class="diagram-border"><span>border</span><div class="diagram-padding"><span>padding</span><div class="diagram-content">content</div></div></div></div><p>この図は領域の位置を示す模式図です。実際の大きさは上の表示で確認してください。</p></details>
+        <div class="calculation" aria-live="polite">
+          <h3>実際のボックスサイズ</h3>
+          <p id="width-formula"></p>
+          <p id="height-formula"></p>
+          <p id="margin-formula" class="small-note"></p>
+          <p id="box-warning" class="small-note" hidden></p>
+        </div>
+      </section>
+
+      <section id="experience-panel" class="panel code-panel" role="tabpanel" aria-labelledby="tab-experience">
+        <div class="section-heading"><span class="step">03</span><h2>CSSコード</h2></div>
+        <p class="panel-lead">現在の設定をそのままCSSで確認できます。</p>
+        <pre><code id="css-code"></code></pre>
+        <div class="action-row"><button type="button" id="copy-code" class="primary-button">コードをコピー</button><button type="button" id="reset" class="secondary-button">初期状態に戻す</button></div>
+        <p id="copy-feedback" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
