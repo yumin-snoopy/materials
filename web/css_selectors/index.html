@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSSセレクター体験ツール | Web制作教材</title>
+  <link rel="stylesheet" href="./style.css?v=20261016-1">
+  <script src="./script.js?v=20261016-1" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">どこにCSSが効くか、見てみよう</p>
+      <h1>CSSセレクター体験ツール</h1>
+      <p class="intro">セレクターを選ぶと、CSSが当たる要素だけ色が変わります。</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="tabs" role="tablist" aria-label="学習モード">
+      <button type="button" class="tab is-active" id="tab-experience" role="tab" aria-selected="true" aria-controls="experience-panel">体験モード</button>
+      <button type="button" class="tab" id="tab-practice" role="tab" aria-selected="false" aria-controls="practice-panel">練習問題</button>
+    </div>
+    <section id="experience-panel" role="tabpanel" aria-labelledby="tab-experience">
+      <p class="mode-note">セレクターは、CSSを当てる相手を選ぶ「宛先」です。同じHTMLでも、宛先を変えると色が付く場所が変わります。</p>
+    </section>
+    <section id="practice-panel" class="practice-panel" role="tabpanel" aria-labelledby="tab-practice" hidden>
+      <div class="section-heading"><span class="step">練習</span><h2>どのセレクターを使う？</h2></div>
+      <p>問題を選び、下の「セレクター」欄で答えてください。プレビューの色も答えの手がかりです。</p>
+      <div class="question-nav" aria-label="問題を選ぶ">
+        <button type="button" class="question-button is-active" data-question="0" aria-current="true">問題 1</button>
+        <button type="button" class="question-button" data-question="1">問題 2</button>
+        <button type="button" class="question-button" data-question="2">問題 3</button>
+        <button type="button" class="question-button" data-question="3">問題 4</button>
+        <button type="button" class="question-button" data-question="4">問題 5</button>
+      </div>
+      <h3 id="question-title">問題 1</h3>
+      <p id="question-text" class="question-text"></p>
+      <div class="action-row"><button type="button" id="check-answer" class="primary-button">答え合わせ</button><span id="answer-feedback" role="status" aria-live="polite"></span></div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel controls-panel" aria-labelledby="settings-title">
+        <div class="section-heading"><span class="step">01</span><h2 id="settings-title">セレクターを選ぶ</h2></div>
+        <p class="panel-lead">どのHTML要素にCSSを当てるか選びます。</p>
+        <label class="control-label" for="selector-choice">セレクター</label>
+        <select id="selector-choice">
+          <option value="">選択してください</option>
+          <option value="p">p ― 要素名</option>
+          <option value=".note">.note ― クラス名</option>
+          <option value="#main-title">#main-title ― ID名</option>
+          <option value=".card p">.card p ― 子孫</option>
+          <option value="h2, .note">h2, .note ― グループ</option>
+          <option value="a:hover">a:hover ― マウスを重ねたリンク</option>
+        </select>
+        <div id="selector-explanation" class="explanation" aria-live="polite"></div>
+        <div class="syntax-guide">
+          <h3>記号の読み方</h3>
+          <p><code>p</code> はタグ名、<code>.note</code> の「.」はクラス、<code>#main-title</code> の「#」はIDを表します。</p>
+          <p><code>.card p</code> の空白は「cardの中のp」、<code>h2, .note</code> のカンマは「h2とnoteの両方」です。</p>
+          <p><code>a:hover</code> は、リンクにマウスを重ねている間だけ当たります。</p>
+        </div>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="section-heading"><span class="step">02</span><h2 id="preview-title">プレビュー</h2></div>
+        <p class="panel-lead">ピンク色の部分が、選んだセレクターに一致した要素です。</p>
+        <p id="match-status" class="match-status" role="status" aria-live="polite"></p>
+        <div id="sample-page" class="sample-page" aria-label="CSSセレクターのプレビュー">
+          <h1 id="main-title" data-demo="title">サイトの見出し</h1>
+          <p class="intro-text" data-demo="intro">サイト全体の紹介文です。</p>
+          <section class="cards" aria-label="記事カード">
+            <article class="card" data-demo="card1">
+              <h2 data-demo="heading1">記事A</h2>
+              <p data-demo="paragraph1">記事Aの説明文です。</p>
+              <a class="demo-link" data-demo="link1" href="#">記事Aを読む</a>
+            </article>
+            <article class="card" data-demo="card2">
+              <h2 data-demo="heading2">記事B</h2>
+              <p class="note" data-demo="paragraph2">記事Bの説明文です。</p>
+              <a class="demo-link" data-demo="link2" href="#">記事Bを読む</a>
+            </article>
+          </section>
+          <p class="note" data-demo="outside-note">カードの外にある補足文です。</p>
+        </div>
+        <p class="small-note">「a:hover」を選んだときは、上のリンクにマウスを重ねてください。</p>
+        <details class="html-details">
+          <summary>プレビューのHTML構造を見る</summary>
+          <pre aria-label="プレビューのHTML"><code>&lt;h1 id="main-title"&gt;サイトの見出し&lt;/h1&gt;
+&lt;p class="intro-text"&gt;サイト全体の紹介文&lt;/p&gt;
+&lt;section class="cards"&gt;
+  &lt;article class="card"&gt;
+    &lt;h2&gt;記事A&lt;/h2&gt;
+    &lt;p&gt;記事Aの説明文&lt;/p&gt;
+    &lt;a class="demo-link" href="#"&gt;記事Aを読む&lt;/a&gt;
+  &lt;/article&gt;
+  &lt;article class="card"&gt;
+    &lt;h2&gt;記事B&lt;/h2&gt;
+    &lt;p class="note"&gt;記事Bの説明文&lt;/p&gt;
+    &lt;a class="demo-link" href="#"&gt;記事Bを読む&lt;/a&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+&lt;p class="note"&gt;カードの外にある補足文&lt;/p&gt;</code></pre>
+        </details>
+      </section>
+
+      <section class="panel code-panel" aria-labelledby="code-title">
+        <div class="section-heading"><span class="step">03</span><h2 id="code-title">CSSコード</h2></div>
+        <p class="panel-lead">選んだセレクターを使ったCSSです。</p>
+        <pre><code id="css-code"></code></pre>
+        <div class="action-row"><button type="button" id="copy-code" class="primary-button">コードをコピー</button><button type="button" id="reset" class="secondary-button">初期状態に戻す</button></div>
+        <p id="copy-feedback" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <section class="panel lesson" aria-labelledby="lesson-title">
+      <div class="section-heading"><span class="step">解説</span><h2 id="lesson-title">セレクターの基本</h2></div>
+      <div class="lesson-grid">
+        <div><h3>タグ名</h3><p><code>p</code> と書くと、ページ内のすべての段落が対象です。同じタグをまとめて整えたいときに使います。</p></div>
+        <div><h3>クラス</h3><p><code>.note</code> は <code>class="note"</code> が付いた要素を選びます。同じクラスを複数の場所で使えます。</p></div>
+        <div><h3>ID</h3><p><code>#main-title</code> は <code>id="main-title"</code> の要素を選びます。IDは1ページ内で重複させません。</p></div>
+        <div><h3>子孫</h3><p><code>.card p</code> は、cardの中にある段落だけを選びます。カードの外の段落には当たりません。</p></div>
+        <div><h3>グループ</h3><p><code>h2, .note</code> のようにカンマで区切ると、異なる相手に同じCSSをまとめて指定できます。</p></div>
+        <div><h3>hover</h3><p><code>a:hover</code> は、リンクにマウスを重ねたときだけ当たります。スマートフォンではマウス操作がないので、PCで試しましょう。</p></div>
+      </div>
+    </section>
+  </main>
+  <style id="demo-style"></style>
+</body>
+</html>
