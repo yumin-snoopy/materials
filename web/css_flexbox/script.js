@@ -26,8 +26,8 @@ const questions = [
   },
   {
     text: "子ボックスの間隔を20pxにし、親の幅が足りないときに折り返す設定にしてください。6個の子ボックスで試せます。",
-    check: s => s.display === "flex" && s.gap === 20 && s.wrap !== "nowrap",
-    hint: "display を flex、gap を 20px、flex-wrap を wrap または wrap-reverse にします。"
+    check: s => s.display === "flex" && s.direction.startsWith("row") && s.gap === 20 && s.wrap !== "nowrap",
+    hint: "親の幅で折り返すには横並びにします。display を flex、flex-direction を row または row-reverse、gap を 20px、flex-wrap を wrap または wrap-reverse にします。"
   }
 ];
 const explanations = {
@@ -238,3 +238,4 @@ $("reset").addEventListener("click", () => {
 
 selectQuestion(0);
 switchMode(false);
+
