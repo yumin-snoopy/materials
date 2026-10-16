@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Flexbox体験ツール | Web制作教材</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="back-link" href="../">← Web制作教材一覧</a>
+      <p class="eyebrow">見て、動かして、並べてみよう</p>
+      <h1>CSS Flexbox体験ツール</h1>
+      <p class="intro">親ボックスのCSSを変えると、子ボックスの並び方がすぐに変わります。</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="tabs" role="tablist" aria-label="学習モード">
+      <button type="button" class="tab is-active" id="tab-experience" role="tab" aria-selected="true" aria-controls="experience-panel">体験モード</button>
+      <button type="button" class="tab" id="tab-practice" role="tab" aria-selected="false" aria-controls="practice-panel">練習問題</button>
+    </div>
+    <section id="experience-panel" role="tabpanel" aria-labelledby="tab-experience">
+      <p class="mode-note">Flexboxは<strong>親要素</strong>に指定します。下の親ボックスにCSSを設定し、中の子ボックスがどう動くか見てみましょう。</p>
+    </section>
+    <section id="practice-panel" class="practice-panel" role="tabpanel" aria-labelledby="tab-practice" hidden>
+      <div class="section-heading"><span class="step">練習</span><h2>設定を変えて答えよう</h2></div>
+      <p>下のCSS設定を操作します。指示に関係のない値は採点に影響しません。</p>
+      <div class="question-nav" aria-label="問題を選ぶ">
+        <button type="button" class="question-button is-active" data-question="0" aria-current="true">問題 1</button>
+        <button type="button" class="question-button" data-question="1">問題 2</button>
+        <button type="button" class="question-button" data-question="2">問題 3</button>
+        <button type="button" class="question-button" data-question="3">問題 4</button>
+        <button type="button" class="question-button" data-question="4">問題 5</button>
+      </div>
+      <h3 id="question-title">問題 1</h3>
+      <p id="question-text" class="question-text"></p>
+      <div class="action-row"><button type="button" id="check-answer" class="primary-button">答え合わせ</button><span id="answer-feedback" role="status" aria-live="polite"></span></div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel controls-panel" aria-labelledby="settings-title">
+        <div class="section-heading"><span class="step">01</span><h2 id="settings-title">CSS設定</h2></div>
+        <p class="panel-lead">まず display を flex にして、ほかの設定を試しましょう。</p>
+        <div class="control-group"><div class="control-title"><label for="display">display</label><button type="button" class="help-button" data-help="display" aria-label="display の説明" aria-expanded="false" aria-controls="help-text">？</button></div><select id="display"><option value="block">block</option><option value="flex">flex</option></select></div>
+        <div class="control-group"><div class="control-title"><label for="flex-direction">flex-direction</label><button type="button" class="help-button" data-help="flex-direction" aria-label="flex-direction の説明" aria-expanded="false" aria-controls="help-text">？</button></div><select id="flex-direction"><option value="row">row（左から右）</option><option value="row-reverse">row-reverse（右から左）</option><option value="column">column（上から下）</option><option value="column-reverse">column-reverse（下から上）</option></select></div>
+        <div class="control-group"><div class="control-title"><label for="justify-content">justify-content</label><button type="button" class="help-button" data-help="justify-content" aria-label="justify-content の説明" aria-expanded="false" aria-controls="help-text">？</button></div><select id="justify-content"><option value="flex-start">flex-start（始点）</option><option value="center">center（中央）</option><option value="flex-end">flex-end（終点）</option><option value="space-between">space-between（両端と間を均等に）</option><option value="space-around">space-around（各子の周囲に余白）</option><option value="space-evenly">space-evenly（すべての余白を均等に）</option></select></div>
+        <div class="control-group"><div class="control-title"><label for="align-items">align-items</label><button type="button" class="help-button" data-help="align-items" aria-label="align-items の説明" aria-expanded="false" aria-controls="help-text">？</button></div><select id="align-items"><option value="stretch">stretch（伸ばす）</option><option value="flex-start">flex-start（始点）</option><option value="center">center（中央）</option><option value="flex-end">flex-end（終点）</option><option value="baseline">baseline（文字の基準線）</option></select></div>
+        <div class="control-group"><div class="control-title"><label for="flex-wrap">flex-wrap</label><button type="button" class="help-button" data-help="flex-wrap" aria-label="flex-wrap の説明" aria-expanded="false" aria-controls="help-text">？</button></div><select id="flex-wrap"><option value="nowrap">nowrap（折り返さない）</option><option value="wrap">wrap（折り返す）</option><option value="wrap-reverse">wrap-reverse（逆方向に折り返す）</option></select></div>
+        <div class="control-group"><div class="control-title"><label for="gap">gap <output id="gap-value" for="gap">12px</output></label><button type="button" class="help-button" data-help="gap" aria-label="gap の説明" aria-expanded="false" aria-controls="help-text">？</button></div><input id="gap" type="range" min="0" max="50" step="1" value="12"></div>
+        <div id="help-text" class="help-text" role="status" hidden></div>
+        <h3>プレビュー用の設定</h3>
+        <p class="small-note">これらは配置を観察しやすくするための設定です。上の親要素のCSSとは別です。</p>
+        <div class="control-group"><label for="item-count">子ボックスの数 <output id="item-count-value" for="item-count">3個</output></label><input id="item-count" type="range" min="3" max="6" step="1" value="3"></div>
+        <div class="control-group"><label for="container-width">親ボックスの幅 <output id="container-width-value" for="container-width">520px</output></label><input id="container-width" type="range" min="280" max="640" step="10" value="520"></div>
+        <div class="control-group"><label for="container-height">親ボックスの高さ <output id="container-height-value" for="container-height">320px</output></label><input id="container-height" type="range" min="220" max="480" step="10" value="320"></div>
+        <div class="control-group"><label for="item-height">子ボックスの高さ</label><select id="item-height"><option value="fixed">固定（76px）</option><option value="auto">auto（stretchを試す）</option></select><p class="small-note">縦並びでautoを選ぶと、左右に伸ばせるよう幅もautoにします。</p></div>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-title">
+        <div class="section-heading"><span class="step">02</span><h2 id="preview-title">プレビュー</h2></div>
+        <p class="panel-lead">水色が親ボックス、ピンク・緑色が子ボックスです。</p>
+        <div class="axis-guide" id="axis-guide" aria-live="polite">
+          <div><span class="axis-label">主軸</span><span id="main-axis"></span></div>
+          <div><span class="axis-label cross">交差軸</span><span id="cross-axis"></span></div>
+        </div>
+        <p id="layout-note" class="small-note"></p>
+        <div class="preview-scroll"><div id="sample-container" class="sample-container" aria-label="Flexboxのプレビュー"></div></div>
+        <p class="small-note">折り返しを試すには、子ボックスを6個にして親の幅を狭くします。縦並びでは親の高さを低くします。</p>
+      </section>
+
+      <section class="panel code-panel" aria-labelledby="code-title">
+        <div class="section-heading"><span class="step">03</span><h2 id="code-title">CSSコード</h2></div>
+        <p class="panel-lead">親ボックスに指定しているCSSです。</p>
+        <pre><code id="css-code"></code></pre>
+        <div class="action-row"><button type="button" id="copy-code" class="primary-button">コードをコピー</button><button type="button" id="reset" class="secondary-button">初期状態に戻す</button></div>
+        <p id="copy-feedback" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <section class="lesson panel" aria-labelledby="lesson-title">
+      <div class="section-heading"><span class="step">解説</span><h2 id="lesson-title">Flexboxの見方</h2></div>
+      <div class="lesson-grid">
+        <div><h3>親要素に設定する</h3><p>子を並べたいときは、子を囲む親に <code>display: flex</code> を指定します。子1つずつに指定するのではありません。</p></div>
+        <div><h3>主軸と交差軸</h3><p>主軸は子が並んでいく道、交差軸はそれと直角の道です。<code>row</code> は横が主軸、<code>column</code> は縦が主軸になります。</p></div>
+        <div><h3>2つの位置合わせ</h3><p><code>justify-content</code> は主軸の方向に寄せ、<code>align-items</code> は交差軸の方向に寄せます。<code>column</code> にすると、justify-content が上下、align-items が左右を担当します。</p></div>
+        <div><h3>gap と margin</h3><p><code>gap</code> は並んだ子同士のすき間をまとめて作ります。<code>margin</code> は各要素の外側に付ける余白で、外端にも影響することがあります。</p></div>
+        <div><h3>幅が足りないとき</h3><p>子が入りきらないときは <code>flex-wrap: wrap</code> で次の行へ送れます。横並びは親の幅を、縦並びは親の高さを狭くして確かめましょう。</p></div>
+        <div><h3>stretch と baseline</h3><p><code>stretch</code> は交差軸に子を伸ばします。高さを固定していると伸びにくいので「auto」にしてください。<code>baseline</code> は文字の下側の基準線をそろえます。</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
