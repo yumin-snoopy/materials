@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>webフォルダ一覧 | materials</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color: #273444; background: #f7fbfc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 980px; margin: auto; padding: clamp(24px, 5vw, 64px); }
+    .eyebrow { color: #446c83; font-weight: 700; letter-spacing: .08em; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: .3em 0; }
+    h2 { font-size: 1.45rem; margin: 38px 0 16px; }
+    p { font-size: 1.08rem; line-height: 1.7; }
+    .list { display: grid; gap: 16px; }
+    .card { background: white; border: 1px solid #d8e6ec; border-radius: 18px; padding: 24px; box-shadow: 0 8px 30px #2544610d; }
+    .card h3 { margin: 0; font-size: 1.3rem; }
+    .card p { margin: 10px 0 18px; }
+    .button { display: inline-block; background: #286b82; color: white; font-weight: 700; padding: 11px 19px; border-radius: 11px; text-decoration: none; }
+    .button:hover, .button:focus-visible { background: #174d61; }
+    a:focus-visible { outline: 3px solid #eb8caf; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">WEB ディレクトリ</p>
+    <h1>webフォルダ一覧</h1>
+    <p>教材のフォルダと、このディレクトリの一覧ページを開けます。</p>
+
+    <section aria-labelledby="folder-title">
+      <h2 id="folder-title">教材フォルダ</h2>
+      <div class="list">
+        <!-- 教材フォルダを追加したら、このカードを複製します。 -->
+        <article class="card">
+          <h3>css_box_model/</h3>
+          <p>CSSボックスモデル体験ツール。余白・枠線・実際のサイズを操作して学べます。</p>
+          <a class="button" href="./css_box_model/index.html">フォルダの教材を開く</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="page-title">
+      <h2 id="page-title">このディレクトリのページ</h2>
+      <div class="list">
+        <article class="card">
+          <h3>index.html</h3>
+          <p>現在のWeb制作教材一覧ページです。</p>
+          <a class="button" href="./index.html">現在の index.html を開く</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
