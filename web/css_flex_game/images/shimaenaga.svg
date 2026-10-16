@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">シマエナガ</title>
+  <path d="M16 59Q3 49 9 40Q16 39 28 49" fill="#80696b"/>
+  <path d="M82 53q13-8 16-3-1 12-16 15" fill="#d6b7b9"/>
+  <ellipse cx="50" cy="55" rx="39" ry="37" fill="#fff" stroke="#d5c6c9" stroke-width="2"/>
+  <path d="M20 57q-13 2-13 12 8 9 19-1M80 57q13 2 13 12-8 9-19-1" fill="#f3e8e9" stroke="#d5c6c9" stroke-width="2"/>
+  <circle cx="36" cy="45" r="4" fill="#29272d"/><circle cx="64" cy="45" r="4" fill="#29272d"/>
+  <path d="m45 54 5 5 5-5z" fill="#e9ad66"/>
+  <circle cx="25" cy="55" r="4" fill="#f6ced3" opacity=".85"/><circle cx="75" cy="55" r="4" fill="#f6ced3" opacity=".85"/>
+  <path d="M42 89v5m16-5v5" stroke="#9b7873" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
