@@ -56,9 +56,9 @@ window.PRACTICE_SET = {
         "6"
       ],
       "answers": [
-        1
+        0
       ],
-      "explanation": "B5は(i=5, j=3)なので 5+3。",
+      "explanation": "B5は(i=5, j=2)なので 5+2。",
       "tags": [
         "loop",
         "cell"
