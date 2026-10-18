@@ -250,6 +250,9 @@ function codeText(){
  if(i.group==="pseudo")return pseudoSelector(i)+" {\n  color: #c83371;\n  background-color: #ffe7f0;\n}";
  if(i.name==="float")return ".photo {\n  float: "+value+";\n}";
  if(i.name==="clear")return ".next {\n  clear: "+value+";\n}";
+ if(i.name==="position")return ".sample {\n  position: "+value+";\n  top: 30px;\n  left: 65px;\n}";
+ if(["top","right","bottom","left"].includes(i.name))return ".sample {\n  position: absolute;\n  "+i.name+": "+value+";\n}";
+ if(i.name==="z-index")return ".sample {\n  position: absolute;\n  z-index: "+value+";\n}";
  return ".sample {\n  "+declaration()+";\n}";
 }
 function selectorCode(i){
