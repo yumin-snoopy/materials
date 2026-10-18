@@ -123,7 +123,7 @@ window.PRACTICE_SET = {
     {
       "id": 6,
       "title": "For文を読み解く",
-      "prompt": "社員番号の右4桁を抜き出したいとき、【 】に入るコードとして、正しいものをすべて選択しなさい。",
+      "prompt": "社員番号の下4桁を抜き出したいとき、【 】に入るコードとして、正しいものをすべて選択しなさい。",
       "code": "Sub Sample()\nDim i As Long\nFor i = 2 To Cells(Rows.Count, 1).End(xlUp).Row\nCells(i, 2) = 【  】\nNext i\nEnd Sub",
       "tableImage": "assets/q06-table.png",
       "tableAlt": "社員番号と下4桁の表",
