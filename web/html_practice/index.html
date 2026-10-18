@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML5 入力練習ガイド</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lesson-data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">手入力で覚える HTML5</p>
+      <h1>HTML5 入力練習ガイド</h1>
+      <p class="subtitle">サクラエディタで作りながら学ぶHTML</p>
+      <p>1つの <code>index.html</code> に少しずつ書き足します。コードを見て、自分の手で入力しましょう。</p>
+    </div>
+  </header>
+  <div class="wrap layout">
+    <nav class="step-nav" aria-label="学習ステップ">
+      <h2>学習ステップ</h2>
+      <ol id="step-list"></ol>
+      <a class="download" href="html_practice_files.zip" download>画像とCSSをまとめてダウンロード</a>
+      <p class="small">ZIPを展開し、<code>images</code> フォルダと2つのCSSを、作成した <code>index.html</code> と同じ場所に置きます。</p>
+    </nav>
+    <main id="main-content">
+      <div class="progress-box">
+        <div><span id="step-count"></span><h2 id="step-title"></h2></div>
+        <progress id="progress" max="10" value="1"></progress>
+        <span id="progress-label"></span>
+      </div>
+      <section class="panel goal"><h3>① 今回の学習目標</h3><p id="goal"></p></section>
+      <section class="panel"><h3>② 今回入力するコード</h3><p class="hint">まずサクラエディタで手入力しましょう。コピーは確認や講師用に使えます。</p><p id="placement"></p><p id="extra-note" hidden></p>
+        <div class="code-controls" role="group" aria-label="コード表示">
+          <button type="button" id="addition-tab" class="selected" aria-pressed="true">今回追加・変更するコード</button>
+          <button type="button" id="whole-tab" aria-pressed="false">ここまでのHTML全体</button>
+          <button type="button" id="copy-code">表示中のコードをコピー</button>
+        </div>
+        <pre><code id="code"></code></pre><p class="small" id="copy-status" role="status"></p>
+      </section>
+      <section class="panel"><h3>③ コードの解説</h3><dl id="terms"></dl><details><summary>タグをまとめて確認</summary><p>開始タグは <code>&lt;p&gt;</code>、終了タグは <code>&lt;/p&gt;</code> のように書きます。外側のタグを最後に閉じると入れ子が整います。<code>img</code>・<code>br</code>・<code>hr</code> などには終了タグがありません。</p></details></section>
+      <section class="panel"><h3>④ 完成イメージ</h3><p class="small">下の枠は「ここまでのHTML全体」と同じコードをブラウザで表示したものです。STEP 1は画面に見える本文がまだありません。</p><iframe id="preview" title="HTMLの完成イメージ" sandbox="allow-same-origin"></iframe><div id="diagram"></div></section>
+      <section class="panel"><h3>⑤ やってみよう！</h3><ol id="tasks"></ol><details id="answers"><summary>解答例を表示・非表示</summary><ol id="answer-list"></ol></details></section>
+      <section class="panel"><h3>⑥ よくある間違い</h3><ul id="mistakes"></ul></section>
+      <div class="pager"><button type="button" id="prev">← 前へ</button><button type="button" id="next">次へ →</button></div>
+    </main>
+  </div>
+</body>
+</html>
