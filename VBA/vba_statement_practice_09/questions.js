@@ -56,7 +56,7 @@ window.PRACTICE_SET = {
     {
       "id": 3,
       "title": "For文を読み解く",
-      "prompt": "左側の表において、在庫数が安全在庫を下回っている商品を、右側の表にコピーするコードとして【 】に入るコードを１つ選択しなさい。ただし、コピーするときは右側の表の2行目以降にある空白行のうち、一番上から順にコピーするものとする。",
+      "prompt": "表において、在庫数が安全在庫を下回っている商品を、右側の表にコピーするコードとして【 】に入るコードを１つ選択しなさい。ただし、コピーするときは右側の表の2行目以降にある空白行のうち、一番上から順にコピーするものとする。",
       "code": "Sub Sample()\nDim i As Long\nWith ActiveSheet\nFor i = 2 To .Cells(Rows.Count, 1).End(xlUp).Row\nIf .Cells(i, 2).Value < .Cells(i, 3).Value Then\n【  】\nEnd If\nNext i\nEnd With\nEnd Sub",
       "tableImage": "assets/q03-table.png",
       "tableAlt": "商品、在庫数、安全在庫とコピー先の表",
