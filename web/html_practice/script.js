@@ -69,7 +69,15 @@
     fillItems('answer-list', lesson.answers);
     fillItems('mistakes', lesson.mistakes);
     $('answers').open = false;
-    $('preview').srcdoc = lesson.source;
+    // srcdoc resolves #links against the parent page URL. Keep navigation
+    // inside the preview without changing the code students type.
+    const previewNavigation = `<script>document.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const target = document.getElementById(link.getAttribute('href').slice(1));
+      if (target) { event.preventDefault(); target.scrollIntoView(); }
+    });<\/script>`;
+    $('preview').srcdoc = lesson.source.replace('</body>', previewNavigation + '</body>');
     renderDiagram(lesson.step);
     $('prev').disabled = current === 0;
     $('next').disabled = current === lessons.length - 1;
