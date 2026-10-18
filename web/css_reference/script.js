@@ -199,12 +199,56 @@ const valueMeanings={
  "1個":"四辺に同じ値を使う","2個":"上・下／左・右の順に使う","3個":"上／左・右／下の順に使う","4個":"上／右／下／左の順に使う",
  "#RGB":"短い16進数の色指定","#RRGGBB":"6桁の16進数の色指定","色名":"redなどの色の名前","rgb()":"赤・緑・青の量で色を指定","rgba()":"赤・緑・青と透明度で色を指定","hsl()":"色相・鮮やかさ・明るさで指定","hsla()":"HSLと透明度で指定","transparent":"透明",
  "px":"CSSピクセル単位の長さ","em":"文字サイズを基準にした長さ","%":"基準となる親などに対する割合","none":"指定しない、または表示しない",
- "2":"2番目を選ぶ","1～4個の値":"1個なら四辺共通。2～4個なら順に各辺へ割り当てる"
+ "2":"2番目を選ぶ","1～4個の値":"1個なら四辺共通。2～4個なら順に各辺へ割り当てる",
+ "複数画像はカンマで区切る":"カンマで区切った画像を前から順に重ねる",
+ "横 縦":"1つ目が横方向、2つ目が縦方向の設定",
+ "画像 位置 / サイズ 繰り返し 色":"画像、位置と大きさ、繰り返し、色を一行にまとめる",
+ "複数背景はカンマで区切る":"カンマで区切って背景を複数重ねる",
+ "1～4個の色":"上・右・下・左の順に色を割り当てる",
+ "太さ 形 色":"枠線の太さ・線の種類・色をまとめて指定する",
+ "0～1":"0が透明、1が不透明。間の数値で透明度を調整する",
+ "書体名":"端末に入っている書体の名前を指定する",
+ "数値":"単位を付けない行高の倍率。例：1.5は文字サイズの1.5倍",
+ "style weight size/line-height family":"傾き・太さ・サイズと行高・書体の順にまとめる",
+ "type image position":"記号の種類・画像・位置をまとめる",
+ "整数":"重なり順を整数で指定する。大きいほど手前",
+ "inherit":"親の要素で使われている値を引き継ぐ",
+ "値 !important":"指定値の後ろに付け、宣言の優先度を強くする"
 };
 function valueHelp(item,raw){
  const v=String(raw).trim(),n=item.name,g=item.group;
  if(n==="@charset")return "このCSSファイルをUTF-8として読むように示す";
  if(n==="@import")return "指定した別のCSSファイルを読み込む";
+ if(n==="background"&&v.includes(" "))return "背景画像・繰り返し・位置・色をまとめて指定する";
+ if(n==="background-position"&&v.includes(" "))return "1つ目が横方向、2つ目が縦方向の位置";
+ if(n==="font"&&v.includes(" "))return "文字の傾き・太さ・サイズと行高・書体をまとめて指定する";
+ if(n==="list-style"&&v.includes(" "))return "記号の種類・画像・位置をまとめて指定する";
+ if((n==="border"||/^border-(top|right|bottom|left)$/.test(n))&&v.includes(" "))return "枠線の太さ・種類・色をまとめて指定する";
+ if(n==="border-spacing"&&v.includes(" "))return "1つ目が横方向、2つ目が縦方向のセル間隔";
+ if(g==="selector"){
+   const syntaxHelp={
+    "CSSの基本書式":"左に対象、波括弧の中にプロパティ名と値を書く",
+    "複数のプロパティ指定":"波括弧の中に「名前: 値;」を複数行書く",
+    "複数のセレクター指定":"カンマで区切ったタグを同じ設定の対象にする",
+    "inherit":"親の値を引き継ぐ",
+    "!important":"値の後ろに付けて宣言の優先度を強くする",
+    "タイプセレクター":"その名前のHTMLタグを選ぶ",
+    "ユニバーサルセレクター":"すべての要素を選ぶ",
+    "子孫セレクター":"左の要素の内側にある右の要素を選ぶ",
+    "IDセレクター":"指定したidの要素を選ぶ",
+    "クラスセレクター":"指定したclassの要素を選ぶ",
+    "IDとクラスの組み合わせ":"idとclassの両方が一致する要素を選ぶ",
+    "属性セレクター":"属性の有無、または属性値が一致する要素を選ぶ"
+   };
+   return syntaxHelp[n];
+ }
+ if(g==="pseudo"){
+   if(valueMeanings[v])return valueMeanings[v];
+   if(v==="なし")return "括弧内の値は不要。疑似クラス名だけを付ける";
+   if(/^a:/.test(v))return n===":link"?"まだ訪問していないリンクを選ぶ":"訪問済みのリンクを選ぶ";
+   if(/^button:/.test(v))return meaningFor(item)+"ボタンを選ぶ";
+ }
+ if(g==="unit")return "例として "+v.replace(/^例:\s*/,"")+" を指定する。"+meaningFor(item)+"で大きさを表す";
  if(v==="none"&&g==="border")return "枠線を表示しない";
  if(v==="hidden"&&g==="border")return "枠線を表示しない。表の枠線ではnoneと扱いが異なる";
  if(v==="none"&&n==="display")return "要素を表示せず、その場所もなくす";
@@ -277,6 +321,7 @@ function select(item){
   $("item-index").textContent=(items.indexOf(item)+1)+" / "+items.length;
   $("item-title").textContent=item.name;$("item-meaning").textContent="日本語の意味： "+meaningFor(item);
   $("supplement-tag").hidden=item.name!=="background-size";
+  $("values-title").textContent=["selector","pseudo"].includes(item.group)?"代表的な書き方と意味":"代表的な値と意味";
   $("description").textContent=item.description;
   $("usage").textContent=item.usage;$("example").textContent=exampleFor(item);
   $("values").innerHTML=item.values.map(v=>'<div class="value-row"><dt>'+escapeHtml(v)+'</dt><dd>'+escapeHtml(valueHelp(item,v))+'</dd></div>').join("");
