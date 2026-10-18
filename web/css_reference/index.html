@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS体験リファレンス | Webクリエーター スタンダード</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-head">
+    <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">☰ 項目一覧</button>
+    <div><span class="eyebrow">Webクリエーター スタンダード</span><h1>CSS体験リファレンス</h1></div>
+    <p>左から選んで、値を変えて、表示を確かめよう</p>
+  </header>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="CSS項目一覧">
+      <label for="search">CSS名・日本語で探す</label>
+      <input id="search" type="search" placeholder="例：余白、border、中央" autocomplete="off">
+      <p id="search-count" class="search-count" aria-live="polite"></p>
+      <nav id="menu"></nav>
+    </aside>
+    <main id="main" class="main" tabindex="-1">
+      <div class="item-head"><span id="category-tag" class="tag"></span><span id="item-index" class="item-index"></span></div>
+      <h2 id="item-title"></h2>
+      <p id="description" class="lead"></p>
+      <section class="info-grid">
+        <div class="info-card"><h3>いつ使う？</h3><p id="usage"></p></div>
+        <div class="info-card"><h3>基本の書き方</h3><code id="syntax"></code></div>
+      </section>
+      <section class="values-section"><h3>主な指定値</h3><div id="values" class="chips"></div></section>
+      <section class="lab"><div class="section-title"><h3>動作を確認</h3><span>値を変えると、下の見本とコードが変わります</span></div><div id="controls" class="controls"></div><div id="preview" class="preview"></div></section>
+      <section class="code-section"><div class="section-title"><h3>CSSコード</h3><span>この項目で使う例</span></div><pre><code id="code"></code></pre><details id="edit-panel"><summary>値をコードで直接試す</summary><label for="editor">この項目のCSS値を入力</label><div class="edit-row"><input id="editor" type="text" spellcheck="false"><button id="apply-code" type="button">適用</button></div></details><div class="actions"><button id="copy" type="button">コードをコピー</button><button id="reset" type="button" class="subtle">初期値に戻す</button></div><p id="status" role="status"></p></section>
+      <section class="note"><h3>覚えておこう</h3><p id="note"></p></section>
+    </main>
+  </div>
+</body>
+</html>
+
