@@ -16,6 +16,7 @@ add("背景", "background", [
   'background-image|要素の背景に画像を置きます。|模様やイラストを敷きたいときに使います。|url(...)、none、複数画像はカンマで区切る|url("assets/pattern.svg")|背景画像は内容の大きさを決めません。',
   'background-repeat|背景画像をどの方向に繰り返すか決めます。|タイル模様の広がり方を変えるときに使います。|repeat、repeat-x、repeat-y、no-repeat、横 縦|repeat|繰り返しの差は小さな画像で確かめましょう。',
   'background-position|背景画像を置く位置を決めます。|背景を中央や右下へ寄せたいときに使います。|left、center、right、top、bottom、px、%|center center|横・縦の順に指定します。',
+  'background-size|背景画像の大きさを決めます。|背景画像を箱に合わせたいときに使います。|32px、64px、96px、cover、contain|64px|PDFには載っていない補足項目です。coverは箱を覆い、containは画像全体を収めます。',
   'background-color|背景を単色で塗ります。|画像がない部分にも色を付けたいときに使います。|色名、#RGB、#RRGGBB、rgb()、rgba()、hsl()、hsla()、transparent|#dff3fb|透明も指定できます。'
 ]);
 add("ボーダー", "border", [
@@ -136,10 +137,118 @@ add("単位", "unit", [
   'pt|印刷で使われるポイント単位です。|印刷用の文字サイズなどに使います。|例: 18pt|18pt|画面向けにはpxやemの方が扱いやすい場合があります。'
 ]);
 
+const learningOrder = {
+ "背景":["background-color","background-image","background-repeat","background-position","background-size","background"],
+ "ボーダー":["border-style","border-width","border-color","border-top-style","border-right-style","border-bottom-style","border-left-style","border-top-width","border-right-width","border-bottom-width","border-left-width","border-top-color","border-right-color","border-bottom-color","border-left-color","border-top","border-right","border-bottom","border-left","border"],
+ "テキストとフォント":["font-size","font-weight","font-style","font-family","line-height","text-align","text-decoration","text-indent","vertical-align","font"],
+ "マージンとパディング":["margin","padding","margin-top","margin-right","margin-bottom","margin-left","padding-top","padding-right","padding-bottom","padding-left"],
+ "リスト":["list-style-type","list-style-image","list-style-position","list-style"],
+ "ボックス":["width","height","min-width","max-width","min-height","max-height"],
+ "表示と配置":["display","overflow","overflow-x","overflow-y","position","top","right","bottom","left","z-index","float","clear"],
+ "テーブル":["border-collapse","border-spacing","table-layout"],
+ "単位":["px","em","pt"]
+};
+categories.forEach(c => {const order=learningOrder[c.title];if(order)c.items.sort((a,b)=>order.indexOf(a.name)-order.indexOf(b.name));});
 const items = categories.flatMap(c => c.items);
+const meanings = {
+ "@charset":"文字コードの指定","@import":"別のCSSの読み込み",
+ "background-color":"背景の色","background-image":"背景の画像","background-repeat":"背景画像の繰り返し","background-position":"背景画像の位置","background-size":"背景画像の大きさ","background":"背景の一括指定",
+ "border-style":"枠線の種類","border-width":"枠線の太さ","border-color":"枠線の色","border":"枠線の一括指定",
+ "color":"文字の色","opacity":"透明度",
+ "text-align":"文字の横方向の揃え方","text-decoration":"文字の線や装飾","text-indent":"段落の一行目の字下げ","vertical-align":"行内や表セルの縦方向の揃え方",
+ "font-size":"文字の大きさ","font-weight":"文字の太さ","font-style":"文字の傾き","font-family":"書体","line-height":"一行の高さ","font":"文字設定の一括指定",
+ "margin":"枠線の外側の余白","padding":"枠線の内側の余白",
+ "list-style-type":"リストの記号","list-style-image":"記号に使う画像","list-style-position":"記号の位置","list-style":"リスト記号の一括指定",
+ "width":"横幅","height":"高さ","min-width":"横幅の下限","max-width":"横幅の上限","min-height":"高さの下限","max-height":"高さの上限",
+ "display":"表示と並び方","overflow":"はみ出した内容の扱い","overflow-x":"横方向のはみ出し","overflow-y":"縦方向のはみ出し",
+ "position":"配置方法","top":"上からの距離","right":"右からの距離","bottom":"下からの距離","left":"左からの距離","z-index":"重なりの前後","float":"要素を左右に寄せて文章を回り込ませる","clear":"回り込みの解除",
+ "table-layout":"表の列幅の決め方","border-collapse":"表の枠線の重ね方","border-spacing":"表のセル間の距離",
+ "CSSの基本書式":"CSSの書き方","複数のプロパティ指定":"一つの対象に複数の設定","複数のセレクター指定":"複数の対象をまとめて選ぶ",
+ "inherit":"親の値を引き継ぐ","!important":"宣言の優先度を強くする",
+ "タイプセレクター":"タグ名で選ぶ","ユニバーサルセレクター":"すべてを選ぶ","子孫セレクター":"内側の要素を選ぶ","IDセレクター":"idで選ぶ","クラスセレクター":"classで選ぶ","IDとクラスの組み合わせ":"idとclassの両方で選ぶ","属性セレクター":"属性で選ぶ",
+ ":link":"未訪問のリンク",":visited":"訪問済みのリンク",":hover":"ポインターが乗った状態",":focus":"操作対象になった状態",":active":"押している状態",
+ ":nth-child()":"兄弟全体の先頭から数えて選ぶ",":nth-last-child()":"兄弟全体の末尾から数えて選ぶ",":first-child":"兄弟全体の最初",":last-child":"兄弟全体の最後",
+ ":nth-of-type()":"同じタグの先頭から数えて選ぶ",":nth-last-of-type()":"同じタグの末尾から数えて選ぶ",":first-of-type":"同じタグの最初",":last-of-type":"同じタグの最後",
+ "px":"CSSピクセル","em":"文字サイズを基準にした単位","pt":"印刷用のポイント"
+};
+const directions={top:"上",right:"右",bottom:"下",left:"左"};
+function meaningFor(item){
+ const n=item.name;if(meanings[n])return meanings[n];
+ const match=n.match(/^(border|margin|padding)-(top|right|bottom|left)(?:-(width|style|color))?$/);
+ if(match){const side=directions[match[2]],part=match[3];if(match[1]==="border")return side+"の枠線"+(part?{"width":"の太さ","style":"の種類","color":"の色"}[part]:"の一括指定");return side+"の"+(match[1]==="margin"?"外側":"内側")+"の余白";}
+ return item.description;
+}
+const valueMeanings={
+ "repeat":"縦にも横にも画像を繰り返す","repeat-x":"横方向だけ画像を繰り返す","repeat-y":"縦方向だけ画像を繰り返す","no-repeat":"画像を繰り返さず1回だけ表示する","repeat no-repeat":"横に繰り返し、縦には繰り返さない",
+ "cover":"箱が画像で埋まるまで拡大する。画像の一部は切れることがある","contain":"画像全体が箱に入る大きさにする。空きが残ることがある",
+ "solid":"実線","dashed":"破線","dotted":"点線","double":"二重線","groove":"溝のような線","ridge":"盛り上がった線","inset":"内側に沈んで見える線","outset":"外側に浮いて見える線",
+ "thin":"細い線","medium":"標準的な太さ","thick":"太い線",
+ "block":"前後で改行され、幅いっぱいに広がる形式","inline":"文章の途中に並ぶ形式。幅と高さの指定は基本的に効かない","inline-block":"横に並びながら幅と高さも指定できる形式",
+ "visible":"箱の外にはみ出しても見せる","hidden":"はみ出した部分を隠す","scroll":"常にスクロールできる領域にする","auto":"必要な場合だけ自動でスクロールなどを決める",
+ "static":"通常の位置。topなどによる移動はできない","relative":"通常の位置を基準に動かす。元の場所は残る","absolute":"位置指定された祖先を基準に置く。通常の並びから外れる","fixed":"画面の表示領域を基準に固定する",
+ "left":"左側に寄せる","center":"中央に寄せる","right":"右側に寄せる","top":"上側に寄せる","bottom":"下側に寄せる",
+ "underline":"文字の下に線を引く","overline":"文字の上に線を引く","line-through":"文字の中央に取り消し線を引く",
+ "baseline":"文字の基準線に揃える","sub":"下付きにする","super":"上付きにする","text-top":"文字の上端に揃える","middle":"中央付近に揃える","text-bottom":"文字の下端に揃える",
+ "normal":"通常の表示に戻す","italic":"斜体の字形にする","oblique":"文字を傾けて表示する","bold":"太字にする","bolder":"親より太くする","lighter":"親より細くする",
+ "serif":"文字の端に飾りのある書体","sans-serif":"飾りの少ない書体","cursive":"手書き風の書体","fantasy":"装飾的な書体","monospace":"文字幅が揃った書体",
+ "xx-small":"非常に小さい文字","x-small":"小さい文字","small":"やや小さい文字","large":"やや大きい文字","x-large":"大きい文字","xx-large":"非常に大きい文字","larger":"親より大きい文字","smaller":"親より小さい文字",
+ "disc":"黒丸","circle":"白丸","square":"四角","decimal":"1、2、3の番号","inside":"記号を文章の行の内側に置く","outside":"記号を文章の外側に置く",
+ "collapse":"隣り合うセルの枠線を重ねる","separate":"セルごとに枠線を分ける",
+ "both":"左右両方の回り込みを終える",
+ "odd":"1、3、5番目など奇数番目","even":"2、4、6番目など偶数番目","2n+1":"1、3、5番目など2つおき","3n+1":"1、4、7番目など3つおき",
+ "1個":"四辺に同じ値を使う","2個":"上・下／左・右の順に使う","3個":"上／左・右／下の順に使う","4個":"上／右／下／左の順に使う",
+ "#RGB":"短い16進数の色指定","#RRGGBB":"6桁の16進数の色指定","色名":"redなどの色の名前","rgb()":"赤・緑・青の量で色を指定","rgba()":"赤・緑・青と透明度で色を指定","hsl()":"色相・鮮やかさ・明るさで指定","hsla()":"HSLと透明度で指定","transparent":"透明",
+ "px":"CSSピクセル単位の長さ","em":"文字サイズを基準にした長さ","%":"基準となる親などに対する割合","none":"指定しない、または表示しない",
+ "2":"2番目を選ぶ","1～4個の値":"1個なら四辺共通。2～4個なら順に各辺へ割り当てる"
+};
+function valueHelp(item,raw){
+ const v=String(raw).trim(),n=item.name,g=item.group;
+ if(v==="none"&&g==="border")return "枠線を表示しない";
+ if(v==="hidden"&&g==="border")return "枠線を表示しない。表の枠線ではnoneと扱いが異なる";
+ if(v==="none"&&n==="display")return "要素を表示せず、その場所もなくす";
+ if(v==="none"&&g==="list")return "記号や画像を表示しない";
+ if(v==="none"&&n==="max-width"||v==="none"&&n==="max-height")return "上限を設けない";
+ if(v==="auto"&&g==="size")return "内容や親の幅に合わせて自動で決める";
+ if(v==="auto"&&g==="boxmodel")return "利用できる外側の空きを自動で割り当てる";
+ if(v==="auto"&&["top","right","bottom","left"].includes(n))return "この方向の距離を自動で決める";
+ if(v==="left"&&n==="float")return "箱を左へ寄せ、文章を右に回り込ませる";
+ if(v==="right"&&n==="float")return "箱を右へ寄せ、文章を左に回り込ませる";
+ if(v==="none"&&n==="float")return "左右へ寄せず、通常の位置に置く";
+ if(v==="left"&&n==="clear"||v==="right"&&n==="clear")return v==="left"?"左側の回り込みを終える":"右側の回り込みを終える";
+ if(v==="none"&&n==="clear")return "回り込みを解除しない";
+ if(v==="fixed"&&n==="table-layout")return "表の幅と指定された列幅を使って列を配置する";
+ if(v==="auto"&&n==="table-layout")return "内容を見て列幅を調整する";
+ if(valueMeanings[v])return valueMeanings[v];
+ if(/^#|^rgb|^hsl/.test(v))return "この色を使う";
+ if(/^url\(/.test(v))return "指定した画像ファイルを使う";
+ if(v==="2n+1"||v==="3n+1")return valueMeanings[v];
+ if(/^\d+(?:\.\d+)?$/.test(v))return n==="opacity"?"0は透明、1は不透明。値が大きいほど濃くなる":n==="z-index"?"大きい整数ほど手前に表示される":"数値を指定する";
+ if(/^[-\d.]+(?:px|em|pt|%)$/.test(v))return (g==="text"&&n==="font-size"?"文字の大きさ":g==="boxmodel"?"余白の幅":g==="background"?"背景画像の大きさや位置":g==="size"?"箱の大きさ":"距離や大きさ")+"をこの値で指定する";
+ if(v.includes(" "))return "複数の値を順番に組み合わせて指定する";
+ return "この指定で表示を変える";
+}
+const exampleTargets={background:"カード",border:"見出しの枠",color:"見出し",text:"段落",boxmodel:"カード",list:"箇条書き",size:"カード",layout:"見本の箱",table:"表",selector:"見本のHTML",pseudo:"見本の要素",unit:"見本の文字",at:"CSSファイル"};
+function exampleFor(i){
+ const specialExamples={
+ "background-color":"例：お知らせカードの背景を淡い水色にする。",
+ "background-repeat":"例：小さな模様を横方向だけに並べる。",
+ "background-size":"例：背景の模様を64pxの大きさで表示する。",
+ "margin":"例：カードの外側に余白を作り、隣のカードと離す。",
+ "padding":"例：カードの文字と枠線の間を広げる。",
+ "opacity":"例：カード全体を少し透かして見せる。",
+ "display":"例：横に並べたい箱をinline-blockにする。",
+ "position":"例：見本の箱を通常の位置から少し動かす。",
+ "z-index":"例：重なった2枚のカードのうち、桃色のカードを前に出す。",
+ "float":"例：画像を左へ寄せ、その右に文章を流す。",
+ "clear":"例：画像の下から次の段落を始める。",
+ ":nth-child()":"例：兄弟全体で3番目の段落を選ぶ。",
+ ":nth-of-type()":"例：段落の中で2番目を選ぶ。"
+ };
+ return specialExamples[i.name]||"例："+exampleTargets[i.group]+"に「"+(i.group==="selector"||i.group==="pseudo"?syntax(i):i.name+": "+i.initial+";")+"」を使う。";
+}
 const $ = id => document.getElementById(id);
-let current = items[0], value = current.initial, extra = {};
-const special = new Set(["at","selector","pseudo","unit","boxmodel"]);
+let current = items[0], value = current.initial, extra = {}, selectedValue=current.initial;
+const special = new Set(["at","selector","pseudo","unit"]);
 const sideName = name => /-(top|right|bottom|left)(-|$)/.test(name) ? name.match(/-(top|right|bottom|left)(-|$)/)[1] : "";
 const groupProp = item => item.group === "unit" ? "font-size" : item.name;
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
@@ -147,7 +256,7 @@ function cssSafe(s){return String(s).replace(/<\/style/gi,"<\\/style");}
 function menu(filter=""){
   let total=0; $("menu").innerHTML="";
   categories.forEach(cat=>{
-    const found=cat.items.filter(i=>(i.name+" "+i.description+" "+i.usage+" "+i.values.join(" ")+" "+i.note).toLowerCase().includes(filter.toLowerCase()));
+    const found=cat.items.filter(i=>(i.name+" "+meaningFor(i)+" "+i.description+" "+i.usage+" "+i.values.join(" ")+" "+i.values.map(v=>valueHelp(i,v)).join(" ")+" "+i.note).toLowerCase().includes(filter.toLowerCase()));
     if(!found.length)return;
     total+=found.length;
     const d=document.createElement("details"); d.open=!!filter || cat.items.includes(current);
@@ -160,16 +269,20 @@ function menu(filter=""){
   $("search-count").textContent=total+" 件の項目";
 }
 function select(item){
-  current=item;value=item.initial;extra=item.group==="boxmodel"&&!sideName(item.name)?{count:"4個"}:{};$("category-tag").textContent=item.category;
+  current=item;value=item.initial;selectedValue=item.initial;extra=item.group==="boxmodel"&&!sideName(item.name)?{count:"1個"}:{};$("category-tag").textContent=item.category;
   $("item-index").textContent=(items.indexOf(item)+1)+" / "+items.length;
-  $("item-title").textContent=item.name;$("description").textContent=item.description;
-  $("usage").textContent=item.usage;$("syntax").textContent=syntax(item);
-  $("values").innerHTML=item.values.map(v=>'<span class="chip">'+escapeHtml(v)+'</span>').join("");
+  $("item-title").textContent=item.name;$("item-meaning").textContent="日本語の意味： "+meaningFor(item);
+  $("supplement-tag").hidden=item.name!=="background-size";
+  $("description").textContent=item.description;
+  $("usage").textContent=item.usage;$("example").textContent=exampleFor(item);
+  $("values").innerHTML=item.values.map(v=>'<div class="value-row"><dt>'+escapeHtml(v)+'</dt><dd>'+escapeHtml(valueHelp(item,v))+'</dd></div>').join("");
   $("note").textContent=item.note;$("status").textContent="";
   $("edit-panel").hidden=special.has(item.group);
   renderControls();update();menu($("search").value);
   if(innerWidth<=800){$("sidebar").classList.remove("open");$("menu-toggle").setAttribute("aria-expanded","false");}
   $("main").scrollTop=0;
+  document.querySelector(".explain-column").scrollTop=0;
+  document.querySelector(".try-column").scrollTop=0;
 }
 function syntax(i){
  if(i.group==="at")return i.name==="@charset"?'@charset "UTF-8";':'@import url("common.css");';
@@ -183,11 +296,11 @@ function control(label, values, selected, callback){
  const sel=document.createElement("select");sel.id=id;
  values.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;sel.append(o)});
  if(!values.includes(selected)){const o=document.createElement("option");o.value=selected;o.textContent=selected;sel.prepend(o)}
- sel.value=selected;sel.addEventListener("change",()=>callback(sel.value));wrap.append(sel);$("controls").append(wrap);
+ sel.value=selected;sel.addEventListener("change",()=>{selectedValue=sel.value;callback(sel.value)});wrap.append(sel);$("controls").append(wrap);
 }
 function range(label,min,max,step,initial,callback){
  const wrap=document.createElement("div");wrap.className="control";const lab=document.createElement("label");lab.textContent=label+"：";const output=document.createElement("strong");output.textContent=initial;lab.append(output);wrap.append(lab);
- const input=document.createElement("input");input.type="range";input.min=min;input.max=max;input.step=step;input.value=initial;input.addEventListener("input",()=>{output.textContent=input.value;callback(input.value)});wrap.append(input);$("controls").append(wrap);
+ const input=document.createElement("input");input.type="range";input.min=min;input.max=max;input.step=step;input.value=initial;input.addEventListener("input",()=>{output.textContent=input.value;selectedValue=input.value;callback(input.value)});wrap.append(input);$("controls").append(wrap);
 }
 function renderControls(){
  $("controls").innerHTML="";
@@ -200,13 +313,14 @@ function renderControls(){
  }
  if(g==="unit"){range("値",n==="em"?.5:8,n==="em"?3:50,n==="em"?.1:1,parseFloat(value),v=>{value=v+n;update()});return;}
  if(g==="boxmodel"){
-   if(sideName(n)){const index=["top","right","bottom","left"].indexOf(sideName(n));range(["上","右","下","左"][index],0,50,1,28,v=>{extra[index]=v;update()});}
-   else{control("値の個数",["1個","2個","3個","4個"],extra.count||"4個",v=>{extra.count=v;renderControls();update()});["上","右","下","左"].slice(0,Number((extra.count||"4個")[0])).forEach((s,index)=>range(s,0,50,1,extra[index]??24,v=>{extra[index]=v;update()}));}
+   if(sideName(n)){const index=["top","right","bottom","left"].indexOf(sideName(n));range(["上","右","下","左"][index],0,50,1,28,v=>{extra[index]=v;extra.direct=null;update()});}
+   else{control("値の個数",["1個","2個","3個","4個"],extra.count||"1個",v=>{extra.count=v;extra.direct=null;renderControls();update()});["上","右","下","左"].slice(0,Number((extra.count||"1個")[0])).forEach((s,index)=>range(s,0,50,1,extra[index]??24,v=>{extra[index]=v;extra.direct=null;update()}));}
    return;
  }
  if(g==="background"){
    if(n==="background-repeat")control("繰り返し",["repeat","repeat-x","repeat-y","no-repeat","repeat no-repeat"],value,v=>{value=v;update()});
    else if(n==="background-position")control("位置",["left top","center center","right bottom","25% 70%","20px 30px"],value,v=>{value=v;update()});
+   else if(n==="background-size")control("画像の大きさ",["32px","64px","96px","cover","contain"],value,v=>{value=v;update()});
    else if(n==="background-color")colorInput(value,v=>{value=v;update()});
    else control("背景画像",["url(\"assets/pattern.svg\")","none","url(\"assets/pattern.svg\"), url(\"assets/marker.svg\")"],n==="background"?"url(\"assets/pattern.svg\")":"url(\"assets/pattern.svg\")",v=>{if(n==="background")value=v+" no-repeat center #eaf7ff";else value=v;update()});
    return;
@@ -240,9 +354,15 @@ function renderControls(){
  }
  if(g==="table"){if(n==="border-spacing")range("間隔(px)",0,24,1,parseFloat(value),v=>{value=v+"px";update()});else control("指定値",i.values,value,v=>{value=v;update()});}
 }
-function colorInput(initial,callback){const w=document.createElement("div");w.className="control";const l=document.createElement("label");l.textContent="色を選ぶ";const x=document.createElement("input");x.type="color";x.value=initial;x.addEventListener("input",()=>callback(x.value));w.append(l,x);$("controls").append(w);}
-function boxValue(){const a=[0,1,2,3].map(j=>(extra[j]??(sideName(current.name)?j===["top","right","bottom","left"].indexOf(sideName(current.name))?28:0:24))+"px");return extra.count==="2個"?a[0]+" "+a[1]:extra.count==="3個"?a[0]+" "+a[1]+" "+a[2]:extra.count==="4個"?a.join(" "):a[0];}
-function declaration(){const i=current;if(i.group==="boxmodel")return i.name+": "+(sideName(i.name)?((extra[["top","right","bottom","left"].indexOf(sideName(i.name))]??28)+"px"):boxValue());if(i.group==="unit")return "font-size: "+value;return i.name+": "+value;}
+function colorInput(initial,callback){const w=document.createElement("div");w.className="control";const l=document.createElement("label");l.textContent="色を選ぶ";const x=document.createElement("input");x.type="color";x.value=initial;x.addEventListener("input",()=>{selectedValue=x.value;callback(x.value)});w.append(l,x);$("controls").append(w);}
+function boxValue(){if(extra.direct)return extra.direct;const a=[0,1,2,3].map(j=>(extra[j]??(sideName(current.name)?j===["top","right","bottom","left"].indexOf(sideName(current.name))?28:0:24))+"px");return extra.count==="2個"?a[0]+" "+a[1]:extra.count==="3個"?a[0]+" "+a[1]+" "+a[2]:extra.count==="4個"?a.join(" "):a[0];}
+function declaration(){
+ const i=current;
+ if(i.group==="boxmodel")return i.name+": "+(extra.direct|| (sideName(i.name)?((extra[["top","right","bottom","left"].indexOf(sideName(i.name))]??28)+"px"):boxValue()));
+ if(i.group==="border"&&extra.sides==="上・右・下・左を別々"){const vals=i.name==="border-width"?[value,"3px","9px","14px"]:i.name==="border-style"?[value,"solid","dotted","double"]:[value,"#5ba5bc","#e9a25c","#7fbc83"];return i.name+": "+vals.join(" ")}
+ if(i.group==="unit")return "font-size: "+value;
+ return i.name+": "+value;
+}
 function codeText(){
  const i=current;
  if(i.group==="at")return syntax(i)+(i.name==="@import"?"\n/* common.css に別のスタイルを書く */":"");
@@ -250,10 +370,24 @@ function codeText(){
  if(i.group==="pseudo")return pseudoSelector(i)+" {\n  color: #c83371;\n  background-color: #ffe7f0;\n}";
  if(i.name==="float")return ".photo {\n  float: "+value+";\n}";
  if(i.name==="clear")return ".next {\n  clear: "+value+";\n}";
- if(i.name==="position")return ".sample {\n  position: "+value+";\n  top: 30px;\n  left: 65px;\n}";
- if(["top","right","bottom","left"].includes(i.name))return ".sample {\n  position: absolute;\n  "+i.name+": "+value+";\n}";
- if(i.name==="z-index")return ".sample {\n  position: absolute;\n  z-index: "+value+";\n}";
+ if(i.name==="position")return ".sample {\n  position: "+value+";\n}";
+ if(["top","right","bottom","left","z-index"].includes(i.name))return ".sample {\n  "+i.name+": "+value+";\n}";
  return ".sample {\n  "+declaration()+";\n}";
+}
+function supportCode(i){
+ const n=i.name,g=i.group;
+ if(g==="at")return "";
+ if(n==="background-repeat"||n==="background-position"||n==="background-size")return '.sample {\n  background-image: url("assets/pattern.svg");\n}';
+ if(g==="border"&&n.includes("style"))return ".sample {\n  border-width: 6px;\n  border-color: #5ba5bc;\n}";
+ if(g==="border"&&(n.includes("width")||n.includes("color")))return ".sample {\n  border-style: solid;\n}";
+ if(n==="vertical-align")return ".sample {\n  display: inline-block;\n}";
+ if(n==="z-index")return ".sample {\n  position: absolute;\n}";
+ if(n==="position")return ".sample {\n  top: 30px;\n  left: 65px;\n}";
+ if(["top","right","bottom","left"].includes(n))return ".sample {\n  position: absolute;\n}";
+ if(n==="clear")return ".photo {\n  float: left;\n}";
+ if(n==="border-spacing")return "table {\n  border-collapse: separate;\n}";
+ if(g==="boxmodel")return ".sample {\n  border: 8px solid #ad8bcb;\n}";
+ return "/* 見本の読みやすさのため、背景色・余白・枠などを補助的に設定しています。 */";
 }
 function selectorCode(i){
  const n=i.name;
@@ -264,7 +398,9 @@ function selectorCode(i){
 }
 function pseudoSelector(i){const n=i.name;if(n.startsWith(":nth-"))return "p"+n.replace("()", "("+(extra.expr||"2")+")");if(n.includes("child")||n.includes("type"))return "p"+n;return n.startsWith(":link")||n.startsWith(":visited")?"a"+n:"button"+n;}
 function update(){
- const code=codeText();$("code").textContent=code;$("editor").value=special.has(current.group)?"":current.group==="boxmodel"?(sideName(current.name)?value:boxValue()):value;
+ const code=codeText();$("code").textContent=code;$("support-code").textContent=supportCode(current);$("support-panel").hidden=current.group==="at";
+ $("value-explain").textContent="今の値： "+selectedValue+" — "+valueHelp(current,selectedValue);
+ $("editor").value=special.has(current.group)?"":current.group==="boxmodel"?(extra.direct|| (sideName(current.name)?declaration().split(": ")[1]:boxValue())):value;
  $("preview").innerHTML="";
  if(current.group==="at"){$("preview").innerHTML='<div class="explanation"><strong>ファイルのつながり</strong><p>HTML → style.css → common.css</p><p>HTMLがCSSを読み込み、@import はCSSから別のCSSを読み込みます。@charset はそのCSSファイルの文字を正しく読むための宣言です。</p></div>';return;}
  const f=document.createElement("iframe");f.title=current.name+" の動作見本";f.setAttribute("sandbox","allow-same-origin");f.srcdoc=frameHtml(current,code);$("preview").append(f);
@@ -276,7 +412,7 @@ function frameHtml(item,code){
  if(g==="border"){html='<div class="sample">四辺の線を見比べよう</div>';base='.sample{margin:35px auto;width:220px;min-height:150px;padding:25px;background:#fff6fa;border:6px solid #5ba5bc;text-align:center;font-weight:bold}';}
  if(g==="color"){html='<div class="sample">文字も <span>子要素も</span> 変わる</div><p>下の背景が透けて見えます</p>';base='body{background:repeating-linear-gradient(45deg,#fff,#fff 14px,#e7f2f5 14px,#e7f2f5 28px)}.sample{margin:35px auto;width:75%;padding:26px;background:#ffe2ed;color:#274c65;font-size:25px;font-weight:bold;text-align:center}.sample span{display:inline-block;padding:8px;background:#fff}';}
  if(g==="text"){html=n==="vertical-align"?'<p class="line">基準の文字 <span class="sample">小さな箱</span> 基準の文字</p><table><tr><td>表セル</td><td class="sample">縦位置</td></tr></table>':'<div class="sample">一行目の文章をここに書きます。読みやすい間隔と文字の見え方を確かめましょう。<br>二行目にも文章を置きます。<br>三行目で行高の差を確認します。</div>';base=n==="vertical-align"?'.line{font-size:25px;line-height:85px}.sample{display:inline-block;font-size:14px;background:#ffe2ed;padding:4px}table{border-collapse:collapse;width:80%;height:85px}td{border:1px solid #8eb6c4}':'.sample{margin:20px auto;width:90%;padding:16px;background:#eaf7ff;color:#244b60;font-size:22px;line-height:1.5;border-radius:9px}';}
- if(g==="boxmodel"){const margin=item.name.startsWith("margin"), side=sideName(n);let vals=[0,1,2,3].map(j=>extra[j]??(side?j===["top","right","bottom","left"].indexOf(side)?28:0:24));if(!side&&extra.count!=="4個"){const count=extra.count==="2個"?2:extra.count==="3個"?3:1;vals=count===1?[vals[0],vals[0],vals[0],vals[0]]:count===2?[vals[0],vals[1],vals[0],vals[1]]:[vals[0],vals[1],vals[2],vals[1]]}const q=vals.join("px ")+"px";html='<div class="key"><span>外側の余白 margin</span><span>枠線 border</span><span>内側の余白 padding</span><span>内容 content</span></div><div class="outer"><div class="sample"><div class="inside">内容 content</div></div></div><p>1個: 四辺同じ　2個: 上下 / 左右　3個: 上 / 左右 / 下　4個: 上 / 右 / 下 / 左</p>';base='.key{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.key span{padding:4px 7px;border-radius:5px;font-size:12px}.key span:nth-child(1),.outer{background:#fce3ed}.key span:nth-child(2){background:#dac9e9}.key span:nth-child(3){background:#dff2de}.key span:nth-child(4),.inside{background:#d9effa}.outer{min-height:160px;overflow:auto}.sample{display:inline-block;background:#dff2de;border:8px solid #ad8bcb;'+(margin?'margin:'+q+';padding:16px':'margin:14px;padding:'+q)+'}.inside{padding:14px;color:#24566b;font-weight:bold}p{font-size:13px}';}
+ if(g==="boxmodel"){const margin=item.name.startsWith("margin"), side=sideName(n);let vals=[0,1,2,3].map(j=>extra[j]??(side?j===["top","right","bottom","left"].indexOf(side)?28:0:24));if(!side&&extra.count!=="4個"){const count=extra.count==="2個"?2:extra.count==="3個"?3:1;vals=count===1?[vals[0],vals[0],vals[0],vals[0]]:count===2?[vals[0],vals[1],vals[0],vals[1]]:[vals[0],vals[1],vals[2],vals[1]]}const q=extra.direct||vals.join("px ")+"px";html='<div class="key"><span>外側の余白 margin</span><span>枠線 border</span><span>内側の余白 padding</span><span>内容 content</span></div><div class="outer"><div class="sample"><div class="inside">内容 content</div></div></div><p>1個: 四辺同じ　2個: 上下 / 左右　3個: 上 / 左右 / 下　4個: 上 / 右 / 下 / 左</p>';base='.key{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.key span{padding:4px 7px;border-radius:5px;font-size:12px}.key span:nth-child(1),.outer{background:#fce3ed}.key span:nth-child(2){background:#dac9e9}.key span:nth-child(3){background:#dff2de}.key span:nth-child(4),.inside{background:#d9effa}.outer{min-height:160px;overflow:auto}.sample{display:inline-block;background:#dff2de;border:8px solid #ad8bcb;'+(margin?'margin:'+q+';padding:16px':'margin:14px;padding:'+q)+'}.inside{padding:14px;color:#24566b;font-weight:bold}p{font-size:13px}';}
  if(g==="list"){html='<ul class="sample"><li>最初の項目は長い文章です。折り返したとき、記号の位置を確かめます。</li><li>二番目の項目</li><li>三番目の項目</li></ul>';base='.sample{margin:25px 15px;padding-left:42px;width:85%;font-size:20px;line-height:1.6;background:#eef9fc}.sample li{padding:4px}';}
  if(g==="size"){html='<div class="parent"><div class="sample">箱の内容<br>折り返しと親幅を比べる</div></div><p>水色の枠が親の幅です。親の幅も動かしてみましょう。</p>';const baseWidth=n==="min-width"?"120px":n==="max-width"?"100%":"150px",baseHeight=n==="min-height"?"55px":n==="max-height"?"175px":"80px";base='.parent{width:'+Number(extra.parent||280)+'px;max-width:100%;height:205px;border:3px dashed #83b5c5;background:#eff9fc;overflow:auto}.sample{width:'+baseWidth+';height:'+baseHeight+';padding:12px;border:2px solid #4b98b2;background:#ffe7ef;box-sizing:border-box}p{font-size:14px}';}
  if(g==="layout"){
@@ -318,6 +454,6 @@ $("search").addEventListener("input",e=>menu(e.target.value));
 $("menu-toggle").addEventListener("click",()=>{const open=$("sidebar").classList.toggle("open");$("menu-toggle").setAttribute("aria-expanded",String(open));if(open)$("search").focus()});
 $("reset").addEventListener("click",()=>select(current));
 $("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("code").textContent);$("status").textContent="コードをコピーしました。"}catch{$("status").textContent="コピーできませんでした。コードを選択してコピーしてください。"}});
-$("apply-code").addEventListener("click",()=>{const raw=$("editor").value.trim();const prop=groupProp(current);if(!raw||raw.length>180||/[{};]/.test(raw)||!CSS.supports(prop,raw)){$("status").textContent="このCSS値は使えません。値だけを入力してください。";return}value=raw;extra={};$("status").textContent="入力した値を適用しました。";renderControls();update()});
+$("apply-code").addEventListener("click",()=>{const raw=$("editor").value.trim();const prop=groupProp(current);if(!raw||raw.length>180||/[{};]/.test(raw)||!CSS.supports(prop,raw)){$("status").textContent="このCSS値は使えません。値だけを入力してください。";return}value=raw;selectedValue=raw;extra=current.group==="boxmodel"?{direct:raw,count:"1個"}:{};$("status").textContent="入力した値を適用しました。";renderControls();update()});
 select(items[0]);
 

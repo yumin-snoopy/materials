@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CSS体験リファレンス | Webクリエーター スタンダード</title>
-  <link rel="stylesheet" href="style.css?v=20261018b">
-  <script src="script.js?v=20261018b" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261018c">
+  <script src="script.js?v=20261018c" defer></script>
 </head>
 <body>
   <header class="site-head">
@@ -22,16 +22,19 @@
     </aside>
     <main id="main" class="main" tabindex="-1">
       <div class="item-head"><span id="category-tag" class="tag"></span><span id="item-index" class="item-index"></span></div>
-      <h2 id="item-title"></h2>
-      <p id="description" class="lead"></p>
-      <section class="info-grid">
-        <div class="info-card"><h3>いつ使う？</h3><p id="usage"></p></div>
-        <div class="info-card"><h3>基本の書き方</h3><code id="syntax"></code></div>
-      </section>
-      <section class="values-section"><h3>主な指定値</h3><div id="values" class="chips"></div></section>
-      <section class="lab"><div class="section-title"><h3>動作を確認</h3><span>値を変えると、下の見本とコードが変わります</span></div><div id="controls" class="controls"></div><div id="preview" class="preview"></div></section>
-      <section class="code-section"><div class="section-title"><h3>CSSコード</h3><span>この項目で使う例</span></div><pre><code id="code"></code></pre><details id="edit-panel"><summary>値をコードで直接試す</summary><label for="editor">この項目のCSS値を入力</label><div class="edit-row"><input id="editor" type="text" spellcheck="false"><button id="apply-code" type="button">適用</button></div></details><div class="actions"><button id="copy" type="button">コードをコピー</button><button id="reset" type="button" class="subtle">初期値に戻す</button></div><p id="status" role="status"></p></section>
-      <section class="note"><h3>覚えておこう</h3><p id="note"></p></section>
+      <div class="item-title-row"><h2 id="item-title"></h2><span id="supplement-tag" class="supplement-tag" hidden>PDF外の補足</span></div>
+      <p id="item-meaning" class="meaning"></p>
+      <div class="learning-grid">
+        <div class="explain-column">
+          <section class="concept-card"><h3>何を変える？</h3><p id="description"></p><h3>いつ使う？</h3><p id="usage"></p><h3>かんたんな使用例</h3><p id="example"></p></section>
+          <section class="values-section"><h3>代表的な値と意味</h3><dl id="values" class="value-list"></dl></section>
+          <section class="note"><h3>覚えておこう</h3><p id="note"></p></section>
+        </div>
+        <div class="try-column">
+          <section class="lab"><div class="section-title"><h3>値を変えて見比べる</h3><span>操作すると見本とコードが変わります</span></div><div id="controls" class="controls"></div><p id="value-explain" class="value-explain" aria-live="polite"></p><div id="preview" class="preview"></div></section>
+          <section class="code-section"><div class="section-title"><h3>この項目のCSS</h3><span>見本に必要な補助設定は下に分けて表示</span></div><pre><code id="code"></code></pre><details id="support-panel"><summary>見本を支える補助CSSを見る</summary><pre><code id="support-code"></code></pre></details><details id="edit-panel"><summary>値をコードで直接試す</summary><label for="editor">CSS値だけを入力</label><div class="edit-row"><input id="editor" type="text" spellcheck="false"><button id="apply-code" type="button">適用</button></div></details><div class="actions"><button id="copy" type="button">コードをコピー</button><button id="reset" type="button" class="subtle">初期値に戻す</button></div><p id="status" role="status"></p></section>
+        </div>
+      </div>
     </main>
   </div>
 </body>
