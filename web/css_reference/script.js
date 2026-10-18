@@ -203,6 +203,8 @@ const valueMeanings={
 };
 function valueHelp(item,raw){
  const v=String(raw).trim(),n=item.name,g=item.group;
+ if(n==="@charset")return "このCSSファイルをUTF-8として読むように示す";
+ if(n==="@import")return "指定した別のCSSファイルを読み込む";
  if(v==="none"&&g==="border")return "枠線を表示しない";
  if(v==="hidden"&&g==="border")return "枠線を表示しない。表の枠線ではnoneと扱いが異なる";
  if(v==="none"&&n==="display")return "要素を表示せず、その場所もなくす";
@@ -230,6 +232,8 @@ function valueHelp(item,raw){
 const exampleTargets={background:"カード",border:"見出しの枠",color:"見出し",text:"段落",boxmodel:"カード",list:"箇条書き",size:"カード",layout:"見本の箱",table:"表",selector:"見本のHTML",pseudo:"見本の要素",unit:"見本の文字",at:"CSSファイル"};
 function exampleFor(i){
  const specialExamples={
+ "@charset":"例：CSSファイルの先頭に @charset \"UTF-8\"; と書く。",
+ "@import":"例：CSSファイルの先頭付近に @import url(\"common.css\"); と書く。",
  "background-color":"例：お知らせカードの背景を淡い水色にする。",
  "background-repeat":"例：小さな模様を横方向だけに並べる。",
  "background-size":"例：背景の模様を64pxの大きさで表示する。",
@@ -277,6 +281,8 @@ function select(item){
   $("usage").textContent=item.usage;$("example").textContent=exampleFor(item);
   $("values").innerHTML=item.values.map(v=>'<div class="value-row"><dt>'+escapeHtml(v)+'</dt><dd>'+escapeHtml(valueHelp(item,v))+'</dd></div>').join("");
   $("note").textContent=item.note;$("status").textContent="";
+  $("lab-title").textContent=item.group==="at"?"書き方と役割を確認":"値を変えて見比べる";
+  $("lab-hint").textContent=item.group==="at"?"この項目は画面上の見た目を直接変えません":"操作すると見本とコードが変わります";
   $("edit-panel").hidden=special.has(item.group);
   renderControls();update();menu($("search").value);
   if(innerWidth<=800){$("sidebar").classList.remove("open");$("menu-toggle").setAttribute("aria-expanded","false");}
@@ -377,7 +383,10 @@ function codeText(){
 function supportCode(i){
  const n=i.name,g=i.group;
  if(g==="at")return "";
- if(n==="background-repeat"||n==="background-position"||n==="background-size")return '.sample {\n  background-image: url("assets/pattern.svg");\n}';
+ if(n==="background-color")return ".sample {\n  background-image: none;\n}";
+ if(n==="background-image")return ".sample {\n  background-repeat: no-repeat;\n  background-size: 64px;\n}";
+ if(n==="background-repeat")return '.sample {\n  background-image: url("assets/pattern.svg");\n  background-size: 64px;\n}';
+ if(n==="background-position"||n==="background-size")return '.sample {\n  background-image: url("assets/pattern.svg");\n  background-repeat: no-repeat;\n}';
  if(g==="border"&&n.includes("style"))return ".sample {\n  border-width: 6px;\n  border-color: #5ba5bc;\n}";
  if(g==="border"&&(n.includes("width")||n.includes("color")))return ".sample {\n  border-style: solid;\n}";
  if(n==="vertical-align")return ".sample {\n  display: inline-block;\n}";
@@ -399,7 +408,8 @@ function selectorCode(i){
 function pseudoSelector(i){const n=i.name;if(n.startsWith(":nth-"))return "p"+n.replace("()", "("+(extra.expr||"2")+")");if(n.includes("child")||n.includes("type"))return "p"+n;return n.startsWith(":link")||n.startsWith(":visited")?"a"+n:"button"+n;}
 function update(){
  const code=codeText();$("code").textContent=code;$("support-code").textContent=supportCode(current);$("support-panel").hidden=current.group==="at";
- $("value-explain").textContent="今の値： "+selectedValue+" — "+valueHelp(current,selectedValue);
+ $("value-explain").hidden=current.group==="at";
+ $("value-explain").textContent=current.group==="at"?"":"今の値： "+selectedValue+" — "+valueHelp(current,selectedValue);
  $("editor").value=special.has(current.group)?"":current.group==="boxmodel"?(extra.direct|| (sideName(current.name)?declaration().split(": ")[1]:boxValue())):value;
  $("preview").innerHTML="";
  if(current.group==="at"){$("preview").innerHTML='<div class="explanation"><strong>ファイルのつながり</strong><p>HTML → style.css → common.css</p><p>HTMLがCSSを読み込み、@import はCSSから別のCSSを読み込みます。@charset はそのCSSファイルの文字を正しく読むための宣言です。</p></div>';return;}
@@ -408,7 +418,7 @@ function update(){
 function frameHtml(item,code){
  let html="", base="", css="";
  const g=item.group,n=item.name,decl=declaration();
- if(g==="background"){html='<div class="sample">背景の見本<br><small>模様の繰り返し・位置・色を確認</small></div>';base='.sample{width:100%;height:235px;border:2px solid #aacbd8;border-radius:12px;padding:18px;background-color:#eaf7ff;background-image:url("assets/pattern.svg");background-repeat:no-repeat;background-position:center;background-size:64px;color:#244c61;font-weight:bold}';}
+ if(g==="background"){const label={"background-color":"背景色","background-image":"背景画像","background-repeat":"画像の繰り返し","background-position":"画像の位置","background-size":"画像の大きさ","background":"背景のまとめ指定"}[n];html='<div class="sample">'+label+'の見本</div>';base='.sample{width:100%;height:235px;border:2px solid #aacbd8;border-radius:12px;padding:18px;background-color:#eaf7ff;background-image:url("assets/pattern.svg");background-repeat:no-repeat;background-position:center;background-size:64px;color:#244c61;font-weight:bold}';}
  if(g==="border"){html='<div class="sample">四辺の線を見比べよう</div>';base='.sample{margin:35px auto;width:220px;min-height:150px;padding:25px;background:#fff6fa;border:6px solid #5ba5bc;text-align:center;font-weight:bold}';}
  if(g==="color"){html='<div class="sample">文字も <span>子要素も</span> 変わる</div><p>下の背景が透けて見えます</p>';base='body{background:repeating-linear-gradient(45deg,#fff,#fff 14px,#e7f2f5 14px,#e7f2f5 28px)}.sample{margin:35px auto;width:75%;padding:26px;background:#ffe2ed;color:#274c65;font-size:25px;font-weight:bold;text-align:center}.sample span{display:inline-block;padding:8px;background:#fff}';}
  if(g==="text"){html=n==="vertical-align"?'<p class="line">基準の文字 <span class="sample">小さな箱</span> 基準の文字</p><table><tr><td>表セル</td><td class="sample">縦位置</td></tr></table>':'<div class="sample">一行目の文章をここに書きます。読みやすい間隔と文字の見え方を確かめましょう。<br>二行目にも文章を置きます。<br>三行目で行高の差を確認します。</div>';base=n==="vertical-align"?'.line{font-size:25px;line-height:85px}.sample{display:inline-block;font-size:14px;background:#ffe2ed;padding:4px}table{border-collapse:collapse;width:80%;height:85px}td{border:1px solid #8eb6c4}':'.sample{margin:20px auto;width:90%;padding:16px;background:#eaf7ff;color:#244b60;font-size:22px;line-height:1.5;border-radius:9px}';}
@@ -425,6 +435,12 @@ function frameHtml(item,code){
  if(g==="table"){html='<table class="sample"><tr><th>品名</th><th>説明がとても長い商品</th><th>価格</th></tr><tr><td>ノート</td><td>書きやすいノートです</td><td>300円</td></tr><tr><td>ペン</td><td>青いインク</td><td>120円</td></tr></table>';base='.sample{width:100%;table-layout:auto;border-collapse:separate;border-spacing:4px}th,td{border:2px solid #80aeca;padding:12px;background:#ecf9fc;overflow:hidden;text-overflow:ellipsis}';}
  if(g==="selector"||g==="pseudo"){return selectorFrame(item,code);}
  if(g==="unit"){html='<div class="sample">文字サイズを比較</div><p>基準の文字は 16px です。<br>1em はこの例では約 16px、1pt は約 1.33px です。</p>';base='.sample{background:#e8f7fc;padding:20px}p{font-size:16px}';}
+ if(g==="layout"&&n!=="position")html=html.replace("<p>fixed はこの見本フレームの表示領域を基準にします。</p>","");
+ if(g==="background"){css=n==="background-color"||n==="background-image"||n==="background"?'.sample{background-image:none;height:150px}':'.sample{height:150px}';}
+ if(g==="border")css='.sample{margin:12px auto;min-height:115px}';
+ if(g==="boxmodel")css='.outer{min-height:115px}.key{margin-bottom:5px}';
+ if(g==="size")css='.parent{height:155px}';
+ if(g==="layout"&&["position","top","right","bottom","left"].includes(n))css='.position-area{height:155px}';
  let custom=decl+";";if(g==="boxmodel")custom="";if(g==="layout"&&(n==="float"||n==="clear"))custom=n==="float"?".photo{float:"+value+"}":".next{clear:"+value+"}";
  else if(g==="layout"&&["position","top","right","bottom","left"].includes(n))custom=".sample{position:"+(n==="position"?value:"absolute")+";"+(n==="position"?"top:30px;left:65px":n+":"+value)+"}";
  else custom=".sample{"+decl+"}";
@@ -432,7 +448,7 @@ function frameHtml(item,code){
  if(g==="background"&&n==="background-image")custom='.sample{'+decl+';background-size:64px,32px}';
  if(g==="boxmodel")custom="";
  const frameBase='*{box-sizing:border-box}body{margin:0;padding:16px;font-family:system-ui,"Yu Gothic",sans-serif;color:#294b5c;overflow:auto}';
- return '<!doctype html><html lang="ja"><head><meta charset="utf-8"><base href="'+location.href.replace(/[^/]*$/,"")+'"><style>'+frameBase+base+cssSafe(custom)+'</style></head><body>'+html+'</body></html>';
+ return '<!doctype html><html lang="ja"><head><meta charset="utf-8"><base href="'+location.href.replace(/[^/]*$/,"")+'"><style>'+frameBase+base+css+cssSafe(custom)+'</style></head><body>'+html+'</body></html>';
 }
 function selectorFrame(item,code){
  const n=item.name, pseudo=item.group==="pseudo";
