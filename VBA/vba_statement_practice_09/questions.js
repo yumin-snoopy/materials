@@ -31,8 +31,8 @@ window.PRACTICE_SET = {
     {
       "id": 2,
       "title": "For文を読み解く",
-      "prompt": "A列にある郵便番号から、ハイフンより前の3桁の数字をB列に抽出するコードとして、正しいものをすべて選択しなさい。",
-      "code": "Sub Sample()\nDim i As Long\nFor i = 2 To 6\nCells(i, 2) = 【  】に入るコード\nNext i\nEnd Sub",
+      "prompt": "【  】に入るコードとして、正しいものをすべて選択しなさい。",
+      "code": "Sub Sample()\nDim i As Long\nFor i = 2 To 6\nCells(i, 2) = 【  】\nNext i\nEnd Sub",
       "tableImage": "assets/q02-table.png",
       "tableAlt": "郵便番号と上3桁の表",
       "tableWidth": 210,
@@ -56,7 +56,7 @@ window.PRACTICE_SET = {
     {
       "id": 3,
       "title": "For文を読み解く",
-      "prompt": "表において、在庫数が安全在庫を下回っている商品を、右側の表にコピーするコードとして【 】に入るコードを１つ選択しなさい。ただし、コピーするときは右側の表の2行目以降にある空白行のうち、一番上から順にコピーするものとする。",
+      "prompt": "【 】に入るコードを１つ選択しなさい。",
       "code": "Sub Sample()\nDim i As Long\nWith ActiveSheet\nFor i = 2 To .Cells(Rows.Count, 1).End(xlUp).Row\nIf .Cells(i, 2).Value < .Cells(i, 3).Value Then\n【  】\nEnd If\nNext i\nEnd With\nEnd Sub",
       "tableImage": "assets/q03-table.png",
       "tableAlt": "商品、在庫数、安全在庫とコピー先の表",
@@ -123,7 +123,7 @@ window.PRACTICE_SET = {
     {
       "id": 6,
       "title": "For文を読み解く",
-      "prompt": "A列にある社員番号から、ハイフンより後ろの4桁の数字をB列に抽出するコードとして、【 】に入る正しいものをすべて選択しなさい。",
+      "prompt": "【 】に入るコードとして、正しいものをすべて選択しなさい。",
       "code": "Sub Sample()\nDim i As Long\nFor i = 2 To Cells(Rows.Count, 1).End(xlUp).Row\nCells(i, 2) = 【  】\nNext i\nEnd Sub",
       "tableImage": "assets/q06-table.png",
       "tableAlt": "社員番号と下4桁の表",
