@@ -320,7 +320,7 @@ function select(item){
   current=item;value=item.initial;selectedValue=item.initial;extra=item.group==="boxmodel"&&!sideName(item.name)?{count:"1個"}:{};$("category-tag").textContent=item.category;
   $("item-index").textContent=(items.indexOf(item)+1)+" / "+items.length;
   $("item-title").textContent=item.name;$("item-meaning").textContent="日本語の意味： "+meaningFor(item);
-  $("supplement-tag").hidden=item.name!=="background-size";
+  // $("supplement-tag").hidden=item.name!=="background-size"; // バッジを復活するときに使用
   $("values-title").textContent=["selector","pseudo"].includes(item.group)?"代表的な書き方と意味":"代表的な値と意味";
   $("description").textContent=item.description;
   $("values").innerHTML=item.values.map(v=>'<div class="value-row"><dt>'+escapeHtml(v)+'</dt><dd>'+escapeHtml(valueHelp(item,v))+'</dd></div>').join("");
