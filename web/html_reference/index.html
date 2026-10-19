@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTMLタグリファレンス | Webクリエーター スタンダード</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-head">
+    <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false">☰ 項目一覧</button>
+    <div><span class="eyebrow">Webクリエーター スタンダード</span><h1>HTMLタグリファレンス</h1></div>
+    <p>左から選んで、コードと表示を確かめよう</p>
+  </header>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="HTMLタグ一覧">
+      <label for="search">タグ名・日本語で探す</label>
+      <input id="search" type="search" placeholder="例：table、画像、見出し" autocomplete="off">
+      <p id="search-count" class="search-count" aria-live="polite"></p>
+      <nav id="menu" aria-label="カテゴリー別の項目"></nav>
+    </aside>
+    <main id="main" class="main" tabindex="-1">
+      <div class="item-head"><span id="category-tag" class="tag"></span><span id="item-index" class="item-index"></span></div>
+      <h2 id="item-title"></h2>
+      <p id="item-meaning" class="meaning"></p>
+      <section class="concept-card"><h3>意味</h3><p id="description"></p></section>
+      <section id="attribute-section" class="values-section" hidden><h3>主な属性と意味</h3><dl id="attributes" class="value-list"></dl></section>
+      <div class="learning-grid">
+        <section class="code-section">
+          <h3>HTMLの記述例</h3>
+          <p class="section-hint">コードを直接変えると、表示結果も変わります。サクラエディタでも同じように入力できます。</p>
+          <div class="editor-wrap"><pre id="highlight" aria-hidden="true"></pre><textarea id="editor" aria-label="HTMLの記述例を編集" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea></div>
+          <div class="actions"><button id="copy" type="button">コードをコピー</button><button id="reset" class="subtle" type="button">元に戻す</button></div>
+          <p id="status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="lab">
+          <h3>ブラウザでの表示結果</h3>
+          <p id="preview-note" class="section-hint"></p>
+          <div class="preview"><iframe id="preview" title="HTMLの表示結果" sandbox="allow-same-origin" referrerpolicy="no-referrer"></iframe></div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
