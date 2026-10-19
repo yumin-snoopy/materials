@@ -14,7 +14,10 @@
     p { font-size: 1.12rem; line-height: 1.75; }
     .list { display: grid; gap: 18px; margin-top: 36px; }
     .card { background: white; border: 1px solid #d8e6ec; border-radius: 20px; padding: 26px; box-shadow: 0 8px 30px #2544610d; }
-    .card h2 { margin: 0; font-size: 1.55rem; }
+    .group { margin-top: 36px; }
+    .group h2 { font-size: 1.55rem; margin: 0; }
+    .group .list { margin-top: 18px; }
+    .card h3 { margin: 0; font-size: 1.55rem; }
     .button { display: inline-block; background: #286b82; color: white; font-weight: 700; padding: 12px 22px; border-radius: 12px; text-decoration: none; }
     .button:hover, .button:focus-visible { background: #174d61; }
   </style>
@@ -24,29 +27,59 @@
     <p class="eyebrow">WEB 制作教材</p>
     <h1>Web制作教材一覧</h1>
     <p>HTMLやCSSのしくみを、操作しながら学べる教材をまとめています。</p>
-    <div class="list">
-      <!-- 新しい教材は、このカードを複製して追加します。 -->
-      <article class="card">
-        <h2>CSSボックスモデル体験ツール</h2>
-        <p>width・height、内側の余白、枠線、外側の余白を変え、実際のサイズを確かめましょう。練習問題もあります。</p>
-        <a class="button" href="./css_box_model/">教材を開く</a>
-      </article>
-      <article class="card">
-        <h2>CSS Flexbox体験ツール</h2>
-        <p>親要素の設定を変えて、子ボックスの並び方・間隔・折り返しを目で確かめましょう。練習問題もあります。</p>
-        <a class="button" href="./css_flexbox/">教材を開く</a>
-      </article>
-      <article class="card">
-        <h2>CSSセレクター体験ツール</h2>
-        <p>セレクターを選び、どのHTML要素にCSSが効くかを色の変化で確かめましょう。練習問題もあります。</p>
-        <a class="button" href="./css_selectors/">教材を開く</a>
-      </article>
-      <article class="card">
-        <h2>スライドショー</h2>
-        <p>画像の切り替え方が異なる10種類のサンプルです。動きとソースコードを見比べられます。</p>
-        <a class="button" href="./slideshow/index.html">教材を開く</a>
-      </article>
-    </div>
+    <section class="group" aria-label="HTML関連">
+      <h2>HTML関連</h2>
+      <div class="list">
+        <!-- 新しい教材は、このカードを複製して該当する分類に追加します。 -->
+        <article class="card">
+          <h3>HTML入力練習</h3>
+          <p>HTMLの基本的なタグを入力し、書き方と表示結果を確かめながら練習できます。</p>
+          <a class="button" href="./html_practice/index.html">教材を開く</a>
+        </article>
+      </div>
+    </section>
+    <section class="group" aria-label="CSS関連">
+      <h2>CSS関連</h2>
+      <div class="list">
+        <!-- 新しい教材は、このカードを複製して該当する分類に追加します。 -->
+        <article class="card">
+          <h3>CSS体験リファレンス</h3>
+          <p>CSSの項目を探して値を変え、見本とコードで効果を確かめられます。</p>
+          <a class="button" href="./css_reference/index.html">教材を開く</a>
+        </article>
+        <article class="card">
+          <h3>CSSボックスモデル体験</h3>
+          <p>幅・高さ、内側と外側の余白、枠線を変え、実際のサイズを確かめられます。</p>
+          <a class="button" href="./css_box_model/index.html">教材を開く</a>
+        </article>
+        <article class="card">
+          <h3>CSSセレクター体験</h3>
+          <p>セレクターを選び、どのHTML要素にCSSが効くかを色の変化で確かめられます。</p>
+          <a class="button" href="./css_selectors/index.html">教材を開く</a>
+        </article>
+        <article class="card">
+          <h3>CSS Flexbox体験</h3>
+          <p>親要素の設定を変えて、子ボックスの並び方・間隔・折り返しを確かめられます。</p>
+          <a class="button" href="./css_flexbox/index.html">教材を開く</a>
+        </article>
+        <article class="card">
+          <h3>Flexboxゲーム</h3>
+          <p>CSS Flexboxの値を入力し、シマエナガを見本どおりに並べるゲームです。</p>
+          <a class="button" href="./css_flex_game/index.html">教材を開く</a>
+        </article>
+      </div>
+    </section>
+    <section class="group" aria-label="その他の教材">
+      <h2>その他の教材</h2>
+      <div class="list">
+        <!-- 新しい教材は、このカードを複製して該当する分類に追加します。 -->
+        <article class="card">
+          <h3>スライドショー</h3>
+          <p>画像の切り替え方が異なる10種類のサンプルで、動きとソースコードを見比べられます。</p>
+          <a class="button" href="./slideshow/index.html">教材を開く</a>
+        </article>
+      </div>
+    </section>
   </main>
 </body>
 </html>

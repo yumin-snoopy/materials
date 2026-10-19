@@ -323,9 +323,8 @@ function select(item){
   $("supplement-tag").hidden=item.name!=="background-size";
   $("values-title").textContent=["selector","pseudo"].includes(item.group)?"代表的な書き方と意味":"代表的な値と意味";
   $("description").textContent=item.description;
-  $("usage").textContent=item.usage;$("example").textContent=exampleFor(item);
   $("values").innerHTML=item.values.map(v=>'<div class="value-row"><dt>'+escapeHtml(v)+'</dt><dd>'+escapeHtml(valueHelp(item,v))+'</dd></div>').join("");
-  $("note").textContent=item.note;$("status").textContent="";
+  $("status").textContent="";
   $("lab-title").textContent=item.group==="at"?"書き方と役割を確認":"値を変えて見比べる";
   $("lab-hint").textContent=item.group==="at"?"この項目は画面上の見た目を直接変えません":"操作すると見本とコードが変わります";
   $("edit-panel").hidden=special.has(item.group);
@@ -452,7 +451,7 @@ function selectorCode(i){
 }
 function pseudoSelector(i){const n=i.name;if(n.startsWith(":nth-"))return "p"+n.replace("()", "("+(extra.expr||"2")+")");if(n.includes("child")||n.includes("type"))return "p"+n;return n.startsWith(":link")||n.startsWith(":visited")?"a"+n:"button"+n;}
 function update(){
- const code=codeText();$("code").textContent=code;$("support-code").textContent=supportCode(current);$("support-panel").hidden=current.group==="at";
+ const code=codeText();$("code").textContent=code;
  $("value-explain").hidden=current.group==="at";
  $("value-explain").textContent=current.group==="at"?"":"今の値： "+selectedValue+" — "+valueHelp(current,selectedValue);
  $("editor").value=special.has(current.group)?"":current.group==="boxmodel"?(extra.direct|| (sideName(current.name)?declaration().split(": ")[1]:boxValue())):value;
