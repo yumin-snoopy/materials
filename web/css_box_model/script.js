@@ -18,6 +18,7 @@ const explanations = {
   "border-style": "枠線の形です。solid は実線、dashed は破線、dotted は点線です。",
   "box-sizing": "content-box は width・height が内容部分のサイズです。border-box は padding と border を含むサイズです。"
 };
+/* 練習問題を再開するときは、問題データと下部の処理を戻してください。
 const questions = [
   { text: "横幅 200px、高さ 100px のボックスを作成してください。", check: s => s.width === 200 && s.height === 100, hint: "width を 200px、height を 100px にします。" },
   { text: "padding を上下左右すべて 20px にしてください。", check: s => sides.every(side => s.padding[side] === 20), hint: "padding は内側の余白です。上下左右の4か所を確認しましょう。" },
@@ -26,9 +27,12 @@ const questions = [
   { text: "width が 200px、padding が左右 20px、border が左右 5px の content-box。実際の横幅は何 px ですか？", check: (_s, answer) => Number(answer) === 250 && answer.trim() !== "", hint: "200 ＋ 左右の padding（20 ＋ 20）＋ 左右の border（5 ＋ 5）を計算します。" }
 ];
 
+*/
 let state = structuredClone(defaults);
+/*
 let currentQuestion = 0;
 let practiceStarted = false;
+*/
 const $ = id => document.getElementById(id);
 const controls = $("controls");
 
@@ -204,6 +208,7 @@ $("reset").addEventListener("click", () => {
   render();
 });
 
+/* 練習問題の表示・採点・タブ切り替え
 function selectQuestion(index) {
   currentQuestion = index;
   document.querySelectorAll(".question-button").forEach((button, i) => {
@@ -247,4 +252,5 @@ $("tab-experience").addEventListener("click", () => switchTab(false));
 $("tab-practice").addEventListener("click", () => switchTab(true));
 
 selectQuestion(0);
+*/
 render();
