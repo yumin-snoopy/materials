@@ -11,7 +11,8 @@
   ];
   const all = [];
   const add = (category, title, tags, description, html, css, keywords = []) => {
-    const id = `csss-${String(all.length + 1).padStart(3, "0")}`;
+    const numberInCategory = all.filter(item => item.category === category).length + 1;
+    const id = `css-sample-${category}-${String(numberInCategory).padStart(2, "0")}`;
     const htmlText = html.replaceAll('class="@', `class="${id}`);
     const cssText = `.${id}, .${id} * { box-sizing: border-box; }\n.${id} { color: #263846; }\n` + css.replaceAll("@", `.${id}`);
     all.push({category, categoryName: categories.find(entry => entry[0] === category)[1], title, tags, description, html: htmlText.trim(), css: cssText.trim(), keywords});
@@ -274,7 +275,7 @@
   add("form","淡い背景の入力欄",["やさしい","かわいい"],"淡い色を背景に使った、やわらかな入力欄です。",`<label class="@">ニックネーム<input type="text" placeholder="お名前を入力"></label>`,`@ { display: grid; gap: 7px; width: min(100%, 340px); color: #805366; font: 700 .95rem/1.5 system-ui, sans-serif; }
 @ input { width: 100%; padding: 12px 14px; border: 1px solid #f0c5d2; border-radius: 10px; background: #fff5f8; color: #59434d; font: 1rem system-ui, sans-serif; }
 @ input:focus { outline: 2px solid #de8fa7; outline-offset: 1px; }`,["ピンク","角丸"]);
-  add("form","説明を添えた入力欄",["ビジネス","シンプル"],"入力欄の下に短い説明を置き、迷わず入力できます。",`<div class="@"><label for="csss-phone">電話番号</label><input id="csss-phone" type="tel" placeholder="090-1234-5678" aria-describedby="csss-phone-help"><small id="csss-phone-help">ハイフンを入れて入力してください。</small></div>`,`@ { display: grid; gap: 6px; width: min(100%, 340px); color: #3e5663; font: .95rem/1.5 system-ui, sans-serif; }
+  add("form","説明を添えた入力欄",["ビジネス","シンプル"],"入力欄の下に短い説明を置き、迷わず入力できます。",`<div class="@"><label for="css-sample-form-phone">電話番号</label><input id="css-sample-form-phone" type="tel" placeholder="090-1234-5678" aria-describedby="css-sample-form-phone-help"><small id="css-sample-form-phone-help">ハイフンを入れて入力してください。</small></div>`,`@ { display: grid; gap: 6px; width: min(100%, 340px); color: #3e5663; font: .95rem/1.5 system-ui, sans-serif; }
 @ label { font-weight: 700; }
 @ input { width: 100%; padding: 10px 12px; border: 1px solid #b5cbd4; border-radius: 5px; color: #263d49; font: 1rem system-ui, sans-serif; }
 @ input:focus { outline: 2px solid #4e8aa0; }
