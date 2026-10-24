@@ -71,7 +71,17 @@
     $('answers').open = false;
     // srcdoc resolves #links against the parent page URL. Keep navigation
     // inside the preview without changing the code students type.
-    const previewNavigation = `<script>document.addEventListener('click', event => {
+    const previewNavigation = `<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', event => {
+      const key = String(event.key).toLowerCase();
+      const ctrl = event.ctrlKey && !event.metaKey;
+      const mac = event.metaKey && !event.ctrlKey;
+      if (key === 'f12' || ((ctrl || mac) && key === 'u') ||
+        (ctrl && event.shiftKey && ['i','j','c'].includes(key)) ||
+        (mac && event.altKey && ['i','j','c'].includes(key))) event.preventDefault();
+    });
+    document.addEventListener('click', event => {
       const link = event.target.closest('a[href^="#"]');
       if (!link) return;
       const target = document.getElementById(link.getAttribute('href').slice(1));
