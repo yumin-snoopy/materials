@@ -33,13 +33,20 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 | [VBA IF文 読み解き練習 BASIC](VBA/vba_if_practice/README.md) | If・ElseIf・ElseやAnd・Orを使う条件分岐を読み解く全10問の教材です。 |
 | [VBA FOR文 読み解き練習 BASIC](VBA/vba_for_practice/README.md) | For・Nextの回数、Step、Ifとの組み合わせや入れ子を読み解く全10問の教材です。 |
 
-## 基本情報技術者試験・情報セキュリティ
+## 情報セキュリティマネジメント試験
 
-[基本情報技術者試験・情報セキュリティ教材一覧](fe/README.md)
+[情報セキュリティマネジメント試験教材の説明](security_management/README.md)
 
 | 名前 | 概要 |
 | --- | --- |
 | [SG すきま学習を開く](https://yumin-snoopy.github.io/materials/security_management/index.html)（[index.html](security_management/index.html)） | 情報セキュリティマネジメント試験の用語カード・クイズ・苦手復習ができる教材です。 |
+
+## 基本情報技術者試験
+
+[基本情報技術者試験教材一覧](fe/README.md)
+
+| 名前 | 概要 |
+| --- | --- |
 | [情報セキュリティ JIS用語検索](fe/CS/readme.md) | 情報セキュリティに関する用語と説明を検索できる教材です。 |
 | [配列を調べる基本アルゴリズム](fe/array/README.md) | 配列に入った値を順に調べる処理を、動きを見ながら学ぶ教材です。 |
 | [二分探索の可視化教材](fe/array/FE_binary_search/README.md) | 並んだ配列の中央を調べ、探す範囲を半分ずつ狭める二分探索を学びます。 |
