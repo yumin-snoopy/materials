@@ -2,6 +2,8 @@
 
 情報セキュリティマネジメント試験向けの、ブラウザだけで使える短時間学習ツールです。
 
+[学習ツールを開く（GitHub Pages）](https://yumin-snoopy.github.io/materials/security_management/index.html) / [index.html のソースを見る](./index.html)
+
 ## 内容
 
 - 用語カード300語：意味・具体例・3段階自己評価
