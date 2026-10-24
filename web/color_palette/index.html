@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>カラー見本・配色パレット | Web制作教材</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="layout">
+    <header class="page-header">
+      <p class="eyebrow">HTML・CSSの色選び</p>
+      <h1>カラー見本・配色パレット</h1>
+      <p>好きな色を見つけて、3色の組み合わせをWebページで試してみましょう。カラーコードを押すとコピーできます。</p>
+    </header>
+
+    <section class="section" aria-labelledby="swatches-title">
+      <div class="section-heading">
+        <div><span class="step">01</span><h2 id="swatches-title">カラー見本一覧</h2></div>
+        <p>色系統を選んで、気になる色のコードをコピーしましょう。</p>
+      </div>
+      <div class="tabs" id="swatch-tabs" role="group" aria-label="カラー見本の色系統"></div>
+      <p class="result-heading" id="swatch-heading"></p>
+      <div class="swatch-grid" id="swatch-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="palettes-title">
+      <div class="section-heading">
+        <div><span class="step">02</span><h2 id="palettes-title">おすすめ3色配色</h2></div>
+        <p>背景・メイン・アクセントの組み合わせを選びましょう。</p>
+      </div>
+      <div class="tabs" id="palette-tabs" role="group" aria-label="配色の色系統"></div>
+      <div class="palette-toolbar">
+        <p class="result-heading" id="palette-heading"></p>
+        <button class="secondary-button" id="favorites-filter" type="button" aria-pressed="false">☆ お気に入りだけ表示</button>
+      </div>
+      <div class="palette-grid" id="palette-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="preview-title">
+      <div class="section-heading">
+        <div><span class="step">03</span><h2 id="preview-title">Webページでの使用イメージ</h2></div>
+        <p>3色を変えると、下の見本にすぐ反映されます。</p>
+      </div>
+      <div class="editor-bar">
+        <div class="selection-label"><strong id="selected-title"></strong><span id="selected-family"></span></div>
+        <div class="editor-actions">
+          <button class="secondary-button" id="copy-all" type="button">3色のコードをまとめてコピー</button>
+          <button class="secondary-button" id="reset-colors" type="button">元の配色に戻す</button>
+        </div>
+      </div>
+      <div class="color-controls" id="color-controls"></div>
+      <p class="contrast-warning" id="contrast-warning" role="status" hidden></p>
+      <div class="preview-frame">
+        <div class="site-preview" id="site-preview">
+          <div class="preview-nav"><span class="preview-logo">SAMPLE SITE</span><span>ホーム　｜　お知らせ</span></div>
+          <div class="preview-hero">
+            <p class="preview-kicker">COLOR PALETTE</p>
+            <h3>色から、あなたらしいページを。</h3>
+            <p class="preview-description">見出し・文章・ボタンを、選んだ3色で組み合わせた見本です。色を変えて、読みやすさも確かめましょう。</p>
+            <button class="preview-button" type="button">詳しく見る</button>
+          </div>
+          <div class="preview-cards">
+            <article class="preview-card"><span class="card-mark">01</span><h4>お知らせ</h4><p>新しい情報を、見やすいカードで紹介します。</p></article>
+            <article class="preview-card"><span class="card-mark">02</span><h4>サービス</h4><p>伝えたい内容を、すっきり整理して並べます。</p></article>
+          </div>
+        </div>
+      </div>
+      <p class="tip">使い方のヒント：コピーした <code>#</code> から始まるコードは、CSSの <code>background-color</code> や <code>color</code> に使えます。</p>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
