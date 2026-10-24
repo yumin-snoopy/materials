@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="完成見本を見ながら、HTMLとCSSをコピーできるWeb制作教材です。">
+  <title>CSSデザインサンプル集 | Web制作教材</title>
+  <link rel="stylesheet" href="./style.css?v=1">
+  <script src="../source-guard.js" defer></script>
+  <script src="./data.js?v=1" defer></script>
+  <script src="./script.js?v=1" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="app-header__inner">
+        <p class="app-eyebrow">WEB DESIGN LIBRARY</p>
+        <h1>CSSデザインサンプル集</h1>
+        <p class="app-lead">完成見本から選んで、HTMLとCSSをそれぞれコピー。自分のページに貼り付けて試せます。</p>
+      </div>
+    </header>
+    <div class="app-toolbar">
+      <div class="app-toolbar__inner">
+        <label class="app-search-label" for="search">デザインを探す</label>
+        <input id="search" type="search" placeholder="例：角丸、影、ピンク、見出し" autocomplete="off">
+        <div id="tagFilters" class="app-tags" aria-label="雰囲気で絞り込む"></div>
+      </div>
+    </div>
+    <div class="app-layout">
+      <aside class="app-sidebar" aria-label="カテゴリメニュー">
+        <button id="menuToggle" class="app-menu-toggle" type="button" aria-controls="categoryMenu" aria-expanded="false">カテゴリを選ぶ <span aria-hidden="true">＋</span></button>
+        <nav id="categoryMenu" class="app-category-menu" aria-label="カテゴリ"></nav>
+      </aside>
+      <main class="app-main" id="main">
+        <div class="app-results-heading"><div><p class="app-overline">DESIGN SAMPLES</p><h2 id="currentCategory">すべてのデザイン</h2></div><p id="resultCount" class="app-result-count" aria-live="polite"></p></div>
+        <div id="samples" class="app-samples"></div>
+        <p id="emptyState" class="app-empty" hidden>該当するデザインがありません。別の言葉で検索してみてください。</p>
+      </main>
+    </div>
+  </div>
+  <div id="copyStatus" class="app-sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
