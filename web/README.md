@@ -4,6 +4,8 @@ HTML・CSS・JavaScriptを学ぶための教材を `web/` にまとめていま�
 
 ## ページを開く
 
-- [Web制作教材一覧・現在の index.html（公開ページ）](https://yumin-snoopy.github.io/materials/web/index.html)
+- [Web制作教材一覧・現在の index.html（公開ページ）](https://yumin-snoopy.github.io/materials/web/)
+
+- [生徒ページ](https://yumin-snoopy.github.io/materials/web/student.html)
 
 
