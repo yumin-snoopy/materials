@@ -1,44 +1,27 @@
 # ① VBA 初級ステートメント 4択問題 BASIC
 
-VBAの初級ステートメントを読み解く4択問題のWebアプリです。Excel VBA ベーシックの出題範囲に合わせた問題を、スマートフォンでも学習しやすい形式にしています。
+## 概要
 
-## Webアプリ
-
-以下のURLから利用できます。
-
-https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/
+VBAエキスパートBASICのコードを読む選択式教材です。Ifの条件分岐、ForのStep、Withによるセル参照を扱い、全10問に挑戦できます。
 
 ## 主な機能
 
-- 選択式の練習問題（10問）
-- Ifによる条件分岐、For...NextとStep、Withによるセル参照の読み解き
-- 正解・不正解の判定
-- 各問題の解説表示
-- 得点と進捗の表示
-- 問題フィルター
-- 問題ナビ
-- 回答のリセット
-- スマートフォン対応
-- このページを開くためのQRコード表示
+- 選択式の練習問題 10問
+- 回答の判定・解説・得点と進捗の表示
+- 問題の切り替え・回答のリセット・ページのQRコード表示
 
-## 利用方法
+## 使い方
 
-1. 上記のWebアプリURLへアクセスします。
-2. VBAコードを読み、表示される結果を選択します。
-3. 回答すると、正解・不正解と解説が表示されます。
-4. 10問すべて回答すると、最終結果が表示されます。
+問題を選んでVBAコードを読み、答えを選択します。判定と解説を確認しながら次の問題へ進みます。
 
-## ファイル構成
+## 起動・体験
 
-- `index.html`：読み取りにくくした最小構成の画面と共通ファイルの読み込み
-- `questions.js`：この問題集の問題データ
-- `../vba_statement_common/`：共通のデザイン、採点処理、QRコード処理
+[**① VBA 初級ステートメント 4択問題 BASICを開く**](https://yumin-snoopy.github.io/materials/VBA/vba_statement_practice_01/)
 
-## メンテナンスについて
+## 使用技術
 
-問題文・選択肢・正解・解説を変更する場合は、`questions.js` の `questions` 配列を編集します。
+HTML・CSS・JavaScript
 
-QRコードのリンク先を変更する場合は、`questions.js` の `pageUrl` を編集します。
+## ライセンス・外部ライブラリ
 
-HTMLは読みづらく、CSSとJavaScriptは別ファイルで管理しています。
-
+画面と採点には [共通ファイル](../vba_statement_common/README.md) を使用します。QRコード表示に [QRCode.js](https://github.com/davidshimjs/qrcodejs) を使用しています。Copyright (c) 2012 davidshimjs、[MITライセンス](https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE)。この教材自体のライセンスは明示されていません。

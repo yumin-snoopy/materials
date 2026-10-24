@@ -1,47 +1,46 @@
 # VBA IF文 読み解き練習 BASIC
 
-VBAの `If` / `ElseIf` / `Else`、`And`、`Or` の読み方を練習するWebアプリです。
+## 概要
 
-## Webアプリ
-
-以下のURLから利用できます。
-
-https://yumin-snoopy.github.io/materials/VBA/vba_if_practice/
+If・ElseIf・ElseやAnd・Orを使う条件分岐を読み解く全10問の教材です。
 
 ## 主な機能
 
-- 選択式の練習問題（10問）
-- 正解・不正解の判定
-- 各問題の解説表示
-- 得点と進捗の表示
-- `If / ElseIf`、`And`、`Or` の問題フィルター
-- 問題ナビ
-- 回答のリセット
-- スマートフォン対応
-- このページを開くためのQRコード表示
+- 10問の選択式練習
+- 回答の判定・解説・得点表示
+- 問題ナビ・フィルター・QRコード表示
 
-## 利用方法
+## 使い方
 
-1. 上記のWebアプリURLへアクセスします。
-2. VBAコードを読み、表示される結果を選択します。
-3. 回答すると、正解・不正解と解説が表示されます。
-4. 10問すべて回答すると、最終結果が表示されます。
+VBAコードの条件を順番に確かめ、実行される分岐を選びます。回答後の解説で考え方を確認します。
 
-## ファイル構成
+## 起動・体験
 
-- `index.html`：画面の構成・右クリック抑止・CSS / JavaScriptの読み込み
-- `style.css`：画面デザイン
-- `script.js`：問題データ・判定処理・QRコード処理
-- `qrcode.min.js`：QRコード生成用ライブラリ
+[**VBA IF文 読み解き練習 BASICを開く**](https://yumin-snoopy.github.io/materials/VBA/vba_if_practice/)
 
-## メンテナンスについて
+## 使用技術
 
-問題文・選択肢・正解・解説を変更する場合は、`script.js` の `questions` 配列を編集します。
+HTML・CSS・JavaScript
 
-QRコードのリンク先を変更する場合は、`script.js` の `pageUrl` を編集します。
+## ライセンス・外部ライブラリ
 
-CSSとJavaScriptは、今後の修正がしやすいように読みやすい形式で管理しています。
+QRコード表示に [QRCode.js](https://github.com/davidshimjs/qrcodejs) を使用しています。Copyright (c) 2012 davidshimjs、[MITライセンス](https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE)。この教材自体のライセンスは明示されていません。
 
-`index.html` では `Date.now()` を利用し、`style.css` と `script.js` のURLに毎回異なる値を付けて読み込んでいます。これにより、ブラウザに古いCSSやJavaScriptが残っていても、更新後のファイルを読み込みやすくしています。
+### QRCode.js のライセンス全文
 
-右クリック抑止は `index.html` 側で行っています。JavaScript側には、F12やショートカットキーを無効化するための処理は入れていません。
+```text
+The MIT License (MIT)
+---------------------
+Copyright (c) 2012 davidshimjs
+
+Permission is hereby granted, free of charge,
+to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
