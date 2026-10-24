@@ -2,6 +2,10 @@
 
 コードを読み、結果を考えるブラウザ教材です。
 
+## 生徒用ページ
+
+[**VBAの練習ページを開く**](https://yumin-snoopy.github.io/materials/VBA/students.html)
+
 ## 収録内容
 
 | 名前 | 概要 |

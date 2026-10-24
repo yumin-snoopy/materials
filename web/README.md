@@ -2,6 +2,10 @@
 
 HTMLやCSSのしくみを、見本や操作を通して学ぶ教材です。
 
+## 生徒用ページ
+
+[**Web教材の生徒用ページを開く**](https://yumin-snoopy.github.io/materials/web/student.html)
+
 ## 収録内容
 
 | 名前 | 概要 |

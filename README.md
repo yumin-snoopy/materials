@@ -16,6 +16,8 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 
 [VBA教材一覧](VBA/README.md)
 
+[VBAの生徒用ページを開く](https://yumin-snoopy.github.io/materials/VBA/students.html)
+
 | 名前 | 概要 |
 | --- | --- |
 | [① VBA 初級ステートメント 4択問題 BASIC](VBA/vba_statement_practice_01/README.md) | VBAエキスパートBASICのコードを読む選択式教材です。 |
@@ -52,6 +54,8 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 ## Web制作
 
 [Web制作教材一覧](web/README.md)
+
+[Web制作の生徒用ページを開く](https://yumin-snoopy.github.io/materials/web/student.html)
 
 | 名前 | 概要 |
 | --- | --- |
