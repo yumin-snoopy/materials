@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f2f8">
+<title>SG学習トレーナー</title>
+<link rel="stylesheet" href="./style.css?v=20261025-1">
+<script src="../../assets/source-guard.js" defer></script>
+<script src="./app.js?v=20261025-1" defer></script>
+</head>
+<body>
+<div class="shell">
+  <header class="site-header">
+    <div><span class="eyebrow">情報セキュリティマネジメント試験</span><h1>SG学習トレーナー</h1></div>
+    <button class="subtle" id="settingsShortcut" type="button">設定</button>
+  </header>
+  <nav class="nav" aria-label="学習メニュー">
+    <button type="button" data-view="home" class="active">ホーム</button>
+    <button type="button" data-view="practice">過去問を解く</button>
+    <button type="button" data-view="law">法律・規格</button>
+    <button type="button" data-view="review">復習</button>
+    <button type="button" data-view="case">科目B</button>
+    <button type="button" data-view="analysis">学習記録</button>
+  </nav>
+  <main id="main" tabindex="-1"><p class="loading">問題データを読み込んでいます…</p></main>
+  <footer>問題の出典と収録範囲は <a href="./README.md">README</a> に記載しています。履歴はこのブラウザに保存されます。</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[
+  {"id":"card-personal-info","term":"個人情報","meaning":"生存する個人に関する情報で、特定の個人を識別できるものなど。","example":"氏名と所属が記載された名刺。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq3-q2-1/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"card-personal-data","term":"個人データ","meaning":"個人情報データベース等を構成する個人情報。","example":"検索できる顧客データベース内の個人情報。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq2-q2-3/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"card-retained-data","term":"保有個人データ","meaning":"事業者が開示や訂正、利用停止などを行う権限を有する個人データ。","example":"事業者が開示請求等に対応できる管理下の顧客データ。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq3-q2-1/","verifiedOn":"2026-10-25","tag":"義務"},
+  {"id":"card-isms","term":"ISMS","meaning":"組織の情報セキュリティを管理する仕組み。","example":"情報セキュリティ方針、リスク対応、評価と改善を継続する。","sourceUrl":"https://isms.jp/isms/about.html","verifiedOn":"2026-10-25","tag":"規格"},
+  {"id":"card-iso27001","term":"ISO/IEC 27001","meaning":"ISMSに対する要求事項を定めた国際規格。","example":"ISMS認証で組織の仕組みを評価する基準。","sourceUrl":"https://isms.jp/isms/about.html","verifiedOn":"2026-10-25","tag":"規格"},
+  {"id":"card-jis27001","term":"JIS Q 27001","meaning":"ISO/IEC 27001に対応する日本産業規格。","example":"国際規格と国内規格の関係を区別する。","sourceUrl":"https://isms.jp/isms/about.html","verifiedOn":"2026-10-25","tag":"規格"},
+  {"id":"card-risk-avoid","term":"リスク回避","meaning":"リスクを生じさせる活動を行わない、または継続しない対応。","example":"危険が大きいサービスの利用を中止する。","sourceUrl":"https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/000055520.pdf","verifiedOn":"2026-10-25","tag":"対応"},
+  {"id":"card-risk-transfer","term":"リスク移転","meaning":"保険や契約などで損失の負担を他者と分担・移す対応。","example":"サイバー保険に加入する。","sourceUrl":"https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/000055520.pdf","verifiedOn":"2026-10-25","tag":"対応"},
+  {"id":"card-risk-retain","term":"リスク保有","meaning":"リスクを把握した上で受け入れる対応。","example":"受容基準以下のリスクを認識して残す。","sourceUrl":"https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/000055520.pdf","verifiedOn":"2026-10-25","tag":"対応"}
+]

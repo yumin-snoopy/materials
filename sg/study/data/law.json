@@ -1,0 +1,10 @@
+[
+  {"id":"law-tf-001","question":"個人情報保護法の「個人情報」は、生存する個人に関する情報を対象とする。","answer":0,"explanation":"個人情報保護委員会は、生存する個人に関する情報で、特定の個人を識別できるものなどを個人情報と説明しています。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq3-q2-1/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"law-tf-002","question":"「個人データ」は、個人情報データベース等を構成する個人情報をいう。","answer":0,"explanation":"個人情報保護委員会の説明どおりです。個人情報のすべてが個人データになるわけではありません。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq2-q2-3/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"law-tf-003","question":"「個人情報」と「保有個人データ」は、法律上まったく同じ範囲を指す。","answer":1,"explanation":"保有個人データは、事業者が開示・訂正・利用停止などの権限を持つ個人データを指します。個人情報全体より範囲が狭くなります。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq3-q2-1/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"law-tf-004","question":"公刊物などで公開されている情報は、個人情報に該当することがない。","answer":1,"explanation":"公開されている情報でも、識別可能な生存する個人に関する情報なら個人情報になり得ます。","sourceUrl":"https://www.ppc.go.jp/all_faq_index/faq3-q2-1/","verifiedOn":"2026-10-25","tag":"対象"},
+  {"id":"law-tf-005","question":"ISMSは、ISO/IEC 27001という規格の名称そのものである。","answer":1,"explanation":"ISMSは組織の情報セキュリティマネジメントシステムです。ISO/IEC 27001は、その要求事項を定める規格です。","sourceUrl":"https://isms.jp/isms/about.html","verifiedOn":"2026-10-25","tag":"規格"},
+  {"id":"law-tf-006","question":"JIS Q 27001は、ISO/IEC 27001に対応する日本の規格である。","answer":0,"explanation":"ISMS-ACは、JIS Q 27001をISO/IEC 27001に対応するJIS規格として説明しています。","sourceUrl":"https://isms.jp/isms/about.html","verifiedOn":"2026-10-25","tag":"規格"},
+  {"id":"law-tf-007","question":"リスク移転とは、損失などの負担を保険や契約を通じて他者と分担・移す対応である。","answer":0,"explanation":"保険加入などはリスク移転の例です。発生の可能性がゼロになることを意味しません。","sourceUrl":"https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/000055520.pdf","verifiedOn":"2026-10-25","tag":"対応"},
+  {"id":"law-tf-008","question":"リスク回避とは、リスクを生じさせる活動を続けたまま、残るリスクを受け入れることである。","answer":1,"explanation":"リスクを生じさせる活動をやめるのが回避です。残るリスクを受け入れるのは保有です。","sourceUrl":"https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/000055520.pdf","verifiedOn":"2026-10-25","tag":"対応"}
+]
