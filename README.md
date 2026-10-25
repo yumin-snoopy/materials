@@ -40,6 +40,7 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 | 名前 | 概要 |
 | --- | --- |
 | [SG すきま学習を開く](https://yumin-snoopy.github.io/materials/security_management/index.html)（[index.html](security_management/index.html)） | 情報セキュリティマネジメント試験の用語カード・クイズ・苦手復習ができる教材です。 |
+| [SG学習トレーナー](sg/study/README.md)（[アプリを開く](https://yumin-snoopy.github.io/materials/sg/study/)） | IPA公式公開問題の演習、間違い復習、法律・規格の暗記、学習記録ができる教材です。 |
 
 ## 基本情報技術者試験
 
