@@ -17,6 +17,7 @@ HTMLやCSSのしくみを、見本や操作を通して学ぶ教材です。
 | [CSSリファレンス](css_reference/README.md) | CSSの項目を日本語やプロパティ名で探し、値を変えながら効果を確かめる教材です。 |
 | [CSSデザインサンプル集](css_samples/README.md) | 完成見本からWebデザインを選び、対応するHTMLとCSSをコピーできる教材です。 |
 | [CSSセレクター体験ツール](css_selectors/README.md) | セレクターがどのHTML要素に当たるかを、色の変化で確かめる教材です。 |
+| [Web入門：Webの仕組みとHTML・CSS・JavaScript](introduction/README.md) | ブラウザとサーバーの仕組みやHTML・CSS・JavaScriptの役割、基本的な書き方を学ぶ導入教材です。 |
 | [HTML5 入力練習ガイド](html_practice/README.md) | HTMLを1つのファイルに少しずつ手入力して学ぶ教材です。 |
 | [HTMLタグリファレンス](html_reference/README.md) | HTMLタグの意味や主な属性を調べ、コードと表示結果を一緒に確認できる教材です。 |
 | [スライドショー サンプル集](slideshow/README.md) | 画像の切り替え方が異なる10種類のスライドショーを見比べる教材です。 |
