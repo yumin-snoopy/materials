@@ -4,9 +4,8 @@ Web制作の授業の最初に、Webページの仕組みと3つの基本技術�
 
 ## 教材を開く
 
-[**Web入門の教材を開く（GitHub Pages）**](https://yumin-snoopy.github.io/materials/web/introduction/)
+[**Web入門の教材を開く**](https://yumin-snoopy.github.io/materials/web/introduction/)
 
-[**index.html（ソースコード）**](index.html)
 
 ## 学べる内容
 
