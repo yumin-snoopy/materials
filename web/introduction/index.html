@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web入門：Webの仕組みとHTML・CSS・JavaScript</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --sub: #5b6472;
+    --line: #cbd5e1;
+    --paper: #ffffff;
+    --tint: #f1f5f9;
+    --web: #2b8a3e; --web-bg: #ebfbee;
+    --html: #d9480f; --html-bg: #fff4e6;
+    --css: #1971c2; --css-bg: #e7f5ff;
+    --js: #b37400; --js-bg: #fff3bf;
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    --mono: "SFMono-Regular", Consolas, "Courier New", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { background: #e8eef5; }
+  body {
+    margin: 0 auto;
+    max-width: 54rem;
+    padding: 3rem 2.2rem 4rem;
+    margin-top: 1.5rem; margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(31,41,51,.12);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.1rem;
+    line-height: 1.9;
+  }
+  h1 {
+    font-size: 1.9rem;
+    line-height: 1.4;
+    margin: 0 0 .6rem;
+    letter-spacing: .02em;
+    color: var(--web);
+  }
+  .lead { color: var(--sub); margin: 0 0 2rem; padding-bottom: 1.2rem; border-bottom: 4px solid var(--web); }
+  h2 {
+    font-size: 1.45rem;
+    margin: 3rem 0 .9rem;
+    padding: .35rem .9rem;
+    background: var(--web-bg);
+    border-left: 8px solid var(--web);
+    border-radius: 0 6px 6px 0;
+    break-after: avoid;
+  }
+  h2.h-html { background: var(--html-bg); border-color: var(--html); }
+  h2.h-css { background: var(--css-bg); border-color: var(--css); }
+  h2.h-js { background: var(--js-bg); border-color: #f2b705; }
+  body.t-html pre { border-left-color: var(--html); }
+  h3 { font-size: 1.05rem; margin: 1.6rem 0 .4rem; break-after: avoid; }
+  p { margin: .6rem 0; }
+  ul, ol { margin: .6rem 0; padding-left: 1.4rem; }
+  li { margin: .2rem 0; }
+  code, pre { font-family: var(--mono); }
+  :not(pre) > code {
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0 .3em;
+    font-size: .92em;
+  }
+  pre {
+    margin: .8rem 0;
+    padding: .9rem 1.1rem;
+    background: var(--tint);
+    border-left: 5px solid var(--sub);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    overflow-x: auto;
+    break-inside: avoid;
+  }
+  .note { background: var(--js-bg); border-radius: 6px; padding: .6rem 1rem; margin: 1.1rem 0; font-size: 1rem; }
+
+  /* 表 */
+  .scroll { overflow-x: auto; margin: .8rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .96rem; break-inside: avoid; }
+  th, td { border: 1px solid var(--line); padding: .6rem .9rem; text-align: left; vertical-align: top; }
+  th { background: var(--ink); color: #fff; font-weight: 700; white-space: nowrap; }
+  .c-html { color: var(--html); } .c-css { color: var(--css); } .c-js { color: var(--js); }
+  tr.r-html td:first-child { background: var(--html-bg); } tr.r-css td:first-child { background: var(--css-bg); } tr.r-js td:first-child { background: var(--js-bg); }
+
+  /* 図 */
+  figure { margin: 1.2rem 0; break-inside: avoid; }
+  figure svg { width: 100%; height: auto; display: block; }
+  svg text { font-family: var(--font); fill: var(--ink); }
+
+  /* タグ・CSSの部品解説 */
+  .anat { display: flex; justify-content: center; margin: 1.2rem 0; break-inside: avoid; }
+  .anat > div { text-align: center; padding: 0 .9rem; }
+  .anat code { font-size: 1.5rem; display: block; padding-bottom: .5rem; border-bottom: 3px solid var(--html); color: var(--html); margin-bottom: .4rem; }
+  .anat span { font-size: .88rem; color: var(--sub); line-height: 1.4; display: block; }
+  .anat .mid code { border-bottom-style: dashed; color: var(--ink); border-bottom-color: var(--sub); }
+
+  .u1 { color: var(--css); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .u2 { color: var(--html); text-decoration: underline dashed; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .u3 { color: var(--web); text-decoration: underline double; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .legend { list-style: none; padding: 0; margin: .4rem 0 1rem; }
+  .legend li { margin: .15rem 0; }
+
+  @media (max-width: 30rem) {
+    body { padding: 1.5rem 1rem 4rem; }
+    h1 { font-size: 1.55rem; }
+    body { margin: 0; border-radius: 0; }
+    .anat > div { padding: 0 .4rem; }
+    .anat code { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Web入門<br>Webの仕組みとHTML・CSS・JavaScript</h1>
+<p class="lead">この資料は、授業の最初に「全体像」をつかむためのものです。細かい書き方は、このあと実際に手を動かしながら学びます。</p>
+
+<h2>1. Webとは</h2>
+<p>Webとは、インターネットを使って<strong>ページ（情報）を見たり届けたりするしくみ</strong>のことです。<br>
+私たちが普段使っているブラウザ（Chrome、Edge、Safari など）は、次の流れでページを表示しています。</p>
+
+<figure>
+  <svg viewBox="0 0 640 230" role="img" aria-label="ブラウザがサーバーにページを頼み、サーバーがHTML・CSS・JavaScriptを返し、ブラウザが組み立てて表示する流れ">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/>
+      </marker>
+    </defs>
+    <rect x="10" y="40" width="170" height="110" rx="8" fill="#e7f5ff" stroke="#1971c2" stroke-width="3"/>
+    <text x="95" y="88" text-anchor="middle" font-size="20" font-weight="700">ブラウザ</text>
+    <text x="95" y="118" text-anchor="middle" font-size="14">あなたのパソコン</text>
+    <rect x="460" y="40" width="170" height="110" rx="8" fill="#fff4e6" stroke="#d9480f" stroke-width="3"/>
+    <text x="545" y="88" text-anchor="middle" font-size="20" font-weight="700">サーバー</text>
+    <text x="545" y="118" text-anchor="middle" font-size="14">ページを保管</text>
+    <line x1="185" y1="68" x2="455" y2="68" stroke="#1971c2" stroke-width="3" marker-end="url(#ah)"/>
+    <text x="320" y="56" text-anchor="middle" font-size="15">① 「このページをください」</text>
+    <line x1="455" y1="124" x2="185" y2="124" stroke="#d9480f" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#ah)"/>
+    <text x="330" y="149" text-anchor="middle" font-size="14">② 「どうぞ」（HTML・CSS・JavaScript）</text>
+    <line x1="95" y1="155" x2="95" y2="185" stroke="#2b8a3e" stroke-width="3" marker-end="url(#ah)"/>
+    <text x="95" y="210" text-anchor="middle" font-size="15" fill="#2b8a3e">③ 組み立てて画面に表示</text>
+  </svg>
+</figure>
+
+<ul>
+  <li><strong>ブラウザ</strong>：Webページを表示するソフト</li>
+  <li><strong>サーバー</strong>：Webページのデータをしまっておくコンピューター</li>
+  <li><strong>URL</strong>：ページの住所（例：https://example.com/）</li>
+</ul>
+
+<h2>2. Webページは3つの材料でできている</h2>
+<p>Webページは、<strong>HTML・CSS・JavaScript</strong> の3つを組み合わせて作ります。家にたとえると、次のようになります。</p>
+
+<div class="scroll">
+<table>
+  <thead><tr><th>材料</th><th>役割</th><th>家でたとえると</th></tr></thead>
+  <tbody>
+    <tr class="r-html"><td><strong class="c-html">HTML</strong></td><td>ページの中身・構造</td><td>柱や壁などの骨組み</td></tr>
+    <tr class="r-css"><td><strong class="c-css">CSS</strong></td><td>見た目（色・大きさ・配置）</td><td>壁紙・床・家具などの内装</td></tr>
+    <tr class="r-js"><td><strong class="c-js">JavaScript</strong></td><td>動き・しかけ</td><td>電気・ドアの自動開閉などの設備</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="h-html">3. HTML：中身をつくる</h2>
+<p>HTMLは、文章に<strong>「ここは見出し」「ここは段落」「ここは画像」</strong>といった目印をつけるための言葉です。この目印を<strong>タグ</strong>と呼びます。</p>
+
+<h3>タグの基本</h3>
+<pre>&lt;タグ名&gt;内容&lt;/タグ名&gt;</pre>
+
+<div class="anat" aria-label="タグの構造">
+  <div><code>&lt;p&gt;</code><span>開始タグ</span></div>
+  <div class="mid"><code>こんにちは</code><span>内容</span></div>
+  <div><code>&lt;/p&gt;</code><span>終了タグ</span></div>
+</div>
+
+<ul>
+  <li>開始タグから終了タグまでで、ひとかたまりです。</li>
+  <li>終了タグには <code>/</code>（スラッシュ）がつきます。</li>
+</ul>
+
+<h3>例</h3>
+<pre>&lt;h1&gt;はじめてのWebページ&lt;/h1&gt;
+&lt;p&gt;これは段落です。&lt;/p&gt;</pre>
+<ul>
+  <li><code>&lt;h1&gt;</code>：大見出し</li>
+  <li><code>&lt;p&gt;</code>：段落（文章のかたまり）</li>
+</ul>
+<p class="note">HTMLだけだと、白い背景に黒い文字の「飾りのないページ」になります。</p>
+
+<h2 class="h-css">4. CSS：見た目を整える</h2>
+<p>CSSは、HTMLで作った中身に<strong>色・大きさ・配置などの見た目</strong>をつけるための言葉です。</p>
+
+<h3>CSSの基本の形</h3>
+<pre>セレクタ {
+  プロパティ: 値;
+}</pre>
+<ul class="legend">
+  <li><span class="u1"><strong>セレクタ</strong></span>：「どこに」見た目をつけるか（対象を選ぶ）</li>
+  <li><span class="u2"><strong>プロパティ</strong></span>：「何を」変えるか（色、大きさ など）</li>
+  <li><span class="u3"><strong>値</strong></span>：「どう」変えるか（赤、20px など）</li>
+</ul>
+
+<h3>例</h3>
+<pre><span class="u1">h1</span> {
+  <span class="u2">color</span>: <span class="u3">red</span>;
+}</pre>
+<p>「<code>h1</code>（大見出し）の文字色（<code>color</code>）を赤（<code>red</code>）にする」という意味です。</p>
+
+<h3>セレクタの種類（名前だけ覚えればOK）</h3>
+<div class="scroll">
+<table>
+  <thead><tr><th>種類</th><th>書き方の例</th><th>選ぶ対象</th></tr></thead>
+  <tbody>
+    <tr><td>要素セレクタ</td><td><code>p</code></td><td>すべての <code>&lt;p&gt;</code> タグ</td></tr>
+    <tr><td>クラスセレクタ</td><td><code>.memo</code></td><td><code>class="memo"</code> をつけた場所</td></tr>
+    <tr><td>IDセレクタ</td><td><code>#title</code></td><td><code>id="title"</code> をつけた場所（1か所だけ）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="h-js">5. JavaScript：動きをつける</h2>
+<p>JavaScriptは、ページに<strong>動きやしかけ</strong>をつけるためのプログラミング言語です。</p>
+<ul>
+  <li>ボタンを押したら文字が変わる</li>
+  <li>画像が自動で切り替わる</li>
+  <li>入力内容をチェックする</li>
+  <li>ゲームや計算ツールを作る</li>
+</ul>
+<p class="note">この授業ではまず HTML → CSS を学びます。JavaScript は「こんなことができる」を知っておけば十分です。</p>
+
+<h2>6. まとめ</h2>
+<div class="scroll">
+<table>
+  <thead><tr><th></th><th>一言で言うと</th><th>書くもの</th></tr></thead>
+  <tbody>
+    <tr class="r-html"><td><strong class="c-html">HTML</strong></td><td>中身（何があるか）</td><td>タグ <code>&lt;p&gt;</code> など</td></tr>
+    <tr class="r-css"><td><strong class="c-css">CSS</strong></td><td>見た目（どう見えるか）</td><td>セレクタ <code>{ プロパティ: 値; }</code></td></tr>
+    <tr class="r-js"><td><strong class="c-js">JavaScript</strong></td><td>動き（どう動くか）</td><td>プログラム</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+</body>
+</html>
