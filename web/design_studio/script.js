@@ -49,6 +49,26 @@
     const scene=kind==="flower"?`<circle cx="300" cy="118" r="42" fill="${p[1]}"/><path d="M0 240 Q150 120 300 230 T600 210 V320 H0" fill="${p[2]}"/>`:kind==="city"?`<rect x="55" y="140" width="120" height="180" fill="${p[2]}"/><rect x="210" y="95" width="140" height="225" fill="${p[2]}"/><rect x="395" y="155" width="145" height="165" fill="${p[2]}"/>`:`<circle cx="470" cy="75" r="42" fill="${p[1]}"/><path d="M0 250 L160 95 290 220 385 120 600 300 V320 H0" fill="${p[2]}"/>`;
     return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320"><rect width="600" height="320" fill="${p[0]}"/>${scene}</svg>`)}`;
   };
+  const previewFrame = $("preview");
+  let previewObserver;
+  function fitPreviewHeight(){
+    const body=previewFrame.contentDocument?.body;
+    if(!body)return;
+    const height=Math.max(360,body.scrollHeight+4);
+    if(previewFrame.style.height!==`${height}px`)previewFrame.style.height=`${height}px`;
+  }
+  previewFrame.addEventListener("load",()=>{
+    previewObserver?.disconnect();
+    const body=previewFrame.contentDocument?.body;
+    if(!body)return;
+    fitPreviewHeight();
+    if(typeof ResizeObserver!=="undefined"){
+      previewObserver=new ResizeObserver(fitPreviewHeight);
+      previewObserver.observe(body);
+    }
+    body.querySelectorAll("img").forEach(image=>image.addEventListener("load",fitPreviewHeight,{once:true}));
+  });
+  window.addEventListener("resize",fitPreviewHeight);
   const field = (key,label,help,input) => `<div class="field"><label class="field-label" for="field-${key}">${label}</label><small>${help}</small>${input}</div>`;
   function renderControls(){
     const s=current();
@@ -105,7 +125,7 @@
   }
   function render(){
     const s=current();
-    $("preview").srcdoc=documentFor(part,s);
+    previewFrame.srcdoc=documentFor(part,s);
     $("html-code").textContent=htmlFor(part,s);
     $("css-code").textContent=cssFor(part,s);
     // お題モード再開時：if(mode==="challenge") updateChallengeResult();
@@ -174,6 +194,7 @@
   */
   document.querySelectorAll("[data-device]").forEach(button=>button.addEventListener("click",()=>{
     device=button.dataset.device;$("preview-shell").dataset.device=device;document.querySelectorAll("[data-device]").forEach(b=>b.setAttribute("aria-pressed",b===button));
+    fitPreviewHeight();
   }));
   document.querySelectorAll("[data-copy]").forEach(button=>button.addEventListener("click",()=>copyText(button.dataset.copy==="html"?htmlFor(part,current()):cssFor(part,current()),button.dataset.copy.toUpperCase())));
   $("copy-all").addEventListener("click",()=>copyText(documentFor(part,current()),"完成コード"));
