@@ -86,8 +86,10 @@ a {
 }
 
 .topbar .mode {
+  display:inline-block;
   border-radius:999px;
-  padding:11px 20px
+  padding:11px 20px;
+  font-weight:700
 }
 
 .topbar .active {
@@ -329,6 +331,7 @@ select,.text-input {
   line-height:1.5
 }
 
+/* お題モードを再開するときに戻します。
 .challenge {
   border-top:1px solid #e5edf2;
   margin-top:24px;
@@ -387,6 +390,7 @@ select,.text-input {
   color:#4b6378;
   min-height:1.5em
 }
+*/
 
 .code-panel {
   margin-top:20px

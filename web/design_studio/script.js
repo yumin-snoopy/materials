@@ -27,6 +27,7 @@
     ["shadow","影の強さ","box-shadow：影をつけて浮いた印象にする",0,4,1,""]
   ];
   const colors = [["bg","背景色","background-color：パーツの背景の色"],["color","文字色","color：文字の色"],["borderColor","枠線の色","border-color：枠線の色"],["hoverColor","ホバー時の色","hover：マウスを乗せたときの色"]];
+  /* お題モードを再開するときに戻します。
   const challenges = [
     {part:"button",title:"ピンクの角丸ボタンを作ろう",description:"ピンク色、丸い角、白い文字のボタンを作ってみましょう。",hint:"背景色と文字色、角の丸みを調整します。",answer:{bg:"#d85d95",color:"#ffffff",radius:24},keys:["bg","color","radius"]},
     {part:"card",title:"影のあるカードを作ろう",description:"やさしい背景色と影を組み合わせます。",hint:"影の強さを3にし、内側の余白を広げます。",answer:{bg:"#fff4f8",shadow:3,padding:36},keys:["bg","shadow","padding"]},
@@ -34,8 +35,10 @@
     {part:"nav",title:"横並びのナビゲーションを作ろう",description:"項目の間に余裕のある横並びのメニューを作ります。",hint:"項目の間隔と背景色を調整します。",answer:{gap:24,bg:"#e8f6fc",hover:true},keys:["gap","bg","hover"]},
     {part:"image",title:"画像付きの紹介カードを作ろう",description:"画像を左に置いた紹介カードを作ります。",hint:"画像と配置、角の丸みを確認します。",answer:{image:"flower",layout:"side",radius:30},keys:["image","layout","radius"]}
   ];
+  */
   const deepCopy = value => JSON.parse(JSON.stringify(value));
-  let designs = deepCopy(defaults), part = "button", mode = "free", challengeIndex = 0, device = "pc";
+  // お題モード再開時：mode = "free", challengeIndex = 0 も追加します。
+  let designs = deepCopy(defaults), part = "button", device = "pc";
   const current = () => designs[part];
   const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[ch]);
   const safeColor = value => /^#[0-9a-f]{6}$/i.test(value) ? value.toLowerCase() : null;
@@ -105,7 +108,7 @@
     $("preview").srcdoc=documentFor(part,s);
     $("html-code").textContent=htmlFor(part,s);
     $("css-code").textContent=cssFor(part,s);
-    if(mode==="challenge") updateChallengeResult();
+    // お題モード再開時：if(mode==="challenge") updateChallengeResult();
   }
   function updateValue(key,value){
     const s=current();
@@ -123,6 +126,7 @@
       render();
     }
   }
+  /* お題モードを再開するときに戻します。
   function colorDistance(a,b){const x=[1,3,5].map(i=>parseInt(a.slice(i,i+2),16)),y=[1,3,5].map(i=>parseInt(b.slice(i,i+2),16));return Math.sqrt(x.reduce((sum,n,i)=>sum+(n-y[i])**2,0));}
   function updateChallengeResult(){
     const c=challenges[challengeIndex],s=current();
@@ -136,6 +140,7 @@
     $("challenge-help").textContent="";
     $("target").srcdoc=documentFor(c.part,{...deepCopy(defaults[c.part]),...c.answer});
   }
+  */
   function setStatus(message){$("status").textContent=message;}
   async function copyText(value,label){
     try{await navigator.clipboard.writeText(value);setStatus(`${label}をコピーしました。`);}catch{
@@ -161,10 +166,12 @@
     const s=current();s.bg=part==="button"?t.button:t.bg;s.color=part==="button"?"#ffffff":t.color;s.borderColor=t.borderColor;s.hoverColor=part==="button"?t.color:t.hoverColor;
     renderControls();render();setStatus("配色を適用しました。");
   });
+  /* お題モードを再開するときに戻します。
   document.querySelectorAll("[data-mode]").forEach(button=>button.addEventListener("click",()=>{
     mode=button.dataset.mode;$("part").disabled=mode==="challenge";document.querySelectorAll("[data-mode]").forEach(b=>{b.classList.toggle("active",b===button);b.setAttribute("aria-pressed",b===button);});
     $("challenge").hidden=mode!=="challenge";if(mode==="challenge")showChallenge();else render();setStatus(mode==="challenge"?"お題モードを開始しました。":"自由作成モードです。");
   }));
+  */
   document.querySelectorAll("[data-device]").forEach(button=>button.addEventListener("click",()=>{
     device=button.dataset.device;$("preview-shell").dataset.device=device;document.querySelectorAll("[data-device]").forEach(b=>b.setAttribute("aria-pressed",b===button));
   }));
@@ -174,8 +181,10 @@
   $("save").addEventListener("click",()=>{try{localStorage.setItem("design-studio-v1",JSON.stringify({part,designs}));setStatus("このブラウザに保存しました。");}catch{setStatus("保存できませんでした。ブラウザの空き容量を確認してください。");}});
   $("load").addEventListener("click",()=>{try{const saved=JSON.parse(localStorage.getItem("design-studio-v1"));if(!saved){setStatus("保存したデザインがありません。");return;}if(!names[saved.part]||!saved.designs)throw Error();const next=deepCopy(defaults);for(const type of Object.keys(next)){const source=saved.designs[type];if(!source||typeof source!=="object")throw Error();for(const key of Object.keys(next[type])){const value=source[key];if(typeof value===typeof next[type][key])next[type][key]=value;}}designs=next;part=saved.part;$("part").value=part;renderControls();render();setStatus("保存したデザインを読み込みました。");}catch{setStatus("保存データを読み込めませんでした。");}});
   $("reset").addEventListener("click",()=>{designs[part]=deepCopy(defaults[part]);renderControls();render();setStatus(`${names[part]}を初期状態に戻しました。`);});
+  /* お題モードを再開するときに戻します。
   $("hint-button").addEventListener("click",()=>{$("challenge-help").textContent=challenges[challengeIndex].hint;});
   $("answer-button").addEventListener("click",()=>{const c=challenges[challengeIndex];Object.assign(current(),c.answer);renderControls();render();$("challenge-help").textContent=`答えの設定値：${c.keys.map(key=>`${key} = ${c.answer[key]}`).join("、")}`;});
   $("next-button").addEventListener("click",()=>{challengeIndex=(challengeIndex+1)%challenges.length;showChallenge();});
+  */
   renderControls();render();$("preview-shell").dataset.device=device;
 })();
