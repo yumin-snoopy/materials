@@ -59,9 +59,12 @@ window.javascriptSamples = [
     <span></span><span></span><span></span>
   </button>
   <nav id="js-nav-links" class="js-nav-links" aria-label="メインメニュー">
-    <a href="#home">ホーム</a><a href="#about">紹介</a><a href="#contact">お問い合わせ</a>
+    <a href="#js-nav-home">ホーム</a><a href="#js-nav-about">紹介</a><a href="#js-nav-contact">お問い合わせ</a>
   </nav>
-</header>`,
+</header>
+<div id="js-nav-home">ホームの内容</div>
+<div id="js-nav-about">紹介の内容</div>
+<div id="js-nav-contact">お問い合わせの内容</div>`,
     css:`.js-nav-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 16px; background:#e7f5fb; border-radius:10px; }
 .js-nav-brand { white-space:nowrap; }
 .js-nav-links { display:flex; gap:18px; }
@@ -94,7 +97,11 @@ window.javascriptSamples = [
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
   });
-  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    closeMenu();
+    document.querySelector(link.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  }));
   window.matchMedia('(min-width: 601px)').addEventListener('change', event => {
     if (event.matches) closeMenu();
   });
