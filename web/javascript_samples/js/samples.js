@@ -8,6 +8,7 @@ window.javascriptSamples = [
     js:`(() => {
   const button = document.querySelector('#js-message-button');
   const output = document.querySelector('#js-message-output');
+  if (!button || !output) return;
   button.addEventListener('click', () => {
     output.textContent = 'こんにちは！';
   });
@@ -19,7 +20,9 @@ window.javascriptSamples = [
 <button id="js-change-button" type="button">文字を切り替える</button>`, css:'',
     js:`(() => {
   const text = document.querySelector('#js-change-text');
-  document.querySelector('#js-change-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-change-button');
+  if (!text || !button) return;
+  button.addEventListener('click', () => {
     text.textContent = text.textContent === '最初の文章' ? '変更後の文章' : '最初の文章';
   });
 })();`
@@ -32,7 +35,9 @@ window.javascriptSamples = [
 .js-color-box.is-changed { background: #f8dce9; color: #7c2853; }`,
     js:`(() => {
   const box = document.querySelector('#js-color-box');
-  document.querySelector('#js-color-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-color-button');
+  if (!box || !button) return;
+  button.addEventListener('click', () => {
     box.classList.toggle('is-changed');
   });
 })();`
@@ -44,6 +49,7 @@ window.javascriptSamples = [
     js:`(() => {
   const button = document.querySelector('#js-show-button');
   const content = document.querySelector('#js-show-content');
+  if (!button || !content) return;
   button.addEventListener('click', () => {
     content.hidden = !content.hidden;
     button.setAttribute('aria-expanded', String(!content.hidden));
@@ -85,6 +91,7 @@ window.javascriptSamples = [
     js:`(() => {
   const button = document.querySelector('.js-nav-toggle');
   const menu = document.querySelector('#js-nav-links');
+  if (!button || !menu) return;
   function closeMenu() {
     button.classList.remove('is-open');
     menu.classList.remove('is-open');
@@ -121,6 +128,7 @@ window.javascriptSamples = [
 .js-tab-panel { padding:18px 4px; }`,
     js:`(() => {
   const tabs = [...document.querySelectorAll('.js-tabs [role="tab"]')];
+  if (tabs.length === 0 || tabs.some(tab => !document.getElementById(tab.getAttribute('aria-controls')))) return;
   function selectTab(index) {
     tabs.forEach((tab, position) => {
       const active = position === index;
@@ -173,9 +181,11 @@ window.javascriptSamples = [
   ];
   const image = document.querySelector('#js-switch-image');
   const caption = document.querySelector('#js-image-caption');
+  const button = document.querySelector('#js-image-next');
+  if (!image || !caption || !button) return;
   let index = 0;
   function showImage() { image.src = images[index].src; image.alt = images[index].alt; caption.textContent = images[index].caption; }
-  document.querySelector('#js-image-next').addEventListener('click', () => { index = (index + 1) % images.length; showImage(); });
+  button.addEventListener('click', () => { index = (index + 1) % images.length; showImage(); });
   showImage();
 })();`
   },
@@ -186,7 +196,9 @@ window.javascriptSamples = [
 <button id="js-top-button" type="button">ページの先頭に戻る</button>`,
     css:`.js-scroll-space { height:350px; background:linear-gradient(#e9f5fb,#fbe7f0); padding:12px; margin-bottom:12px; }`,
     js:`(() => {
-  document.querySelector('#js-top-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-top-button');
+  if (!button) return;
+  button.addEventListener('click', () => {
     window.scrollTo({top:0, behavior:'smooth'});
   });
 })();`
@@ -198,7 +210,9 @@ window.javascriptSamples = [
     js:`(() => {
   const input = document.querySelector('#js-name-input');
   const result = document.querySelector('#js-name-result');
-  document.querySelector('#js-name-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-name-button');
+  if (!input || !result || !button) return;
+  button.addEventListener('click', () => {
     const name = input.value.trim();
     result.textContent = name ? name + 'さん、こんにちは！' : 'お名前を入力してください。';
   });
@@ -217,6 +231,7 @@ window.javascriptSamples = [
   const form = document.querySelector('#js-required-form');
   const input = document.querySelector('#js-required-name');
   const result = document.querySelector('#js-required-result');
+  if (!form || !input || !result) return;
   form.addEventListener('submit', event => {
     event.preventDefault(); // 見本では実際の送信を行わない
     const valid = input.value.trim().length > 0;
@@ -236,6 +251,7 @@ window.javascriptSamples = [
     js:`(() => {
   const input = document.querySelector('#js-count-input');
   const result = document.querySelector('#js-count-result');
+  if (!input || !result) return;
   input.addEventListener('input', () => {
     result.textContent = input.value.length + ' / ' + input.maxLength + '文字';
   });
@@ -246,6 +262,7 @@ window.javascriptSamples = [
     html:`<p>現在の日時：<time id="js-clock"></time></p>`, css:'',
     js:`(() => {
   const clock = document.querySelector('#js-clock');
+  if (!clock) return;
   const format = new Intl.DateTimeFormat('ja-JP', {year:'numeric',month:'long',day:'numeric',weekday:'long',hour:'2-digit',minute:'2-digit',second:'2-digit'});
   function updateClock() {
     const now = new Date();
@@ -267,7 +284,9 @@ window.javascriptSamples = [
   const first = document.querySelector('#js-calc-a');
   const second = document.querySelector('#js-calc-b');
   const result = document.querySelector('#js-calc-result');
-  document.querySelector('#js-calc-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-calc-button');
+  if (!first || !second || !result || !button) return;
+  button.addEventListener('click', () => {
     if (first.value.trim() === '' || second.value.trim() === '' || !first.validity.valid || !second.validity.valid) {
       result.textContent = '数字を2つ入力してください。'; return;
     }
@@ -282,7 +301,9 @@ window.javascriptSamples = [
     js:`(() => {
   const results = ['大吉', '中吉', '小吉', '吉'];
   const result = document.querySelector('#js-fortune-result');
-  document.querySelector('#js-fortune-button').addEventListener('click', () => {
+  const button = document.querySelector('#js-fortune-button');
+  if (!result || !button) return;
+  button.addEventListener('click', () => {
     const index = Math.floor(Math.random() * results.length);
     result.textContent = '結果：' + results[index];
   });

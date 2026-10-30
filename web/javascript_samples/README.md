@@ -19,9 +19,9 @@ HTMLとCSSで基本的なWebページを作ったことがある初学者。
 2. プレビューで動きを試します。ハンバーガーメニューは幅を切り替えて確認できます。
 3. HTML・CSS・JavaScriptのタブからコードをコピーします。CSSが不要なサンプルもあります。
 4. HTMLを自分のページの `<body>` 内へ、CSSを `css/style.css` へ、JavaScriptを `js/script.js` へ追加します。
-5. HTMLの `<head>` 内で `<script src="js/script.js" defer></script>` を読み込みます。ファイルの場所が異なる場合はパスを変えます。
+5. HTMLの `<head>` 内で `<script src="js/script.js" defer></script>` を読み込みます。`defer` はHTMLの解析が完了してからJavaScriptを実行する指定です。ファイルパスは自分のフォルダ構成に合わせて変更します。
 
-各サンプルのコードは独立した関数にまとめてあります。複数使う場合も、HTMLのIDを変える際は対応するJavaScriptのセレクターを同じ名前に変更してください。
+複数のサンプルを1つのページで使う場合は、必要なHTMLをページへ、各CSSを `css/style.css` へ、各JavaScriptを `js/script.js` へ順番に追加します。各JavaScriptは即時実行関数で分けられ、必要なHTML要素がない場合は処理を行いません。IDを変更するときは、HTMLの参照先とJavaScriptの指定も同じ名前に変更してください。CSSの指定が別のサンプルに影響していないかも確認します。
 
 教材ページでは一般的なソース確認操作を抑制していますが、公開されたファイルの閲覧を完全に防ぐ仕組みではありません。
 

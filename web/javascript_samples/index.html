@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JavaScriptサンプル集 | Web制作教材</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/samples.js?v=20261030b" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261030c">
+  <script src="js/samples.js?v=20261030c" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/guard.js" defer></script>
 </head>
@@ -22,11 +22,21 @@
       <nav id="menu" aria-label="サンプル選択"></nav>
     </aside>
     <main id="main" class="main" tabindex="-1">
+      <section class="combine-guide" aria-labelledby="combine-title">
+        <h2 id="combine-title">複数のサンプルを組み合わせるとき</h2>
+        <p>JavaScriptのサンプルは、1つのWebページに複数組み込めます。</p>
+        <ol>
+          <li><strong>HTML：</strong>使いたいサンプルのHTMLをページの <code>&lt;body&gt;</code> 内に追加します。</li>
+          <li><strong>CSS：</strong>各サンプルのCSSを <code>css/style.css</code> に追加します。</li>
+          <li><strong>JavaScript：</strong>各サンプルのJavaScriptを <code>js/script.js</code> に順番に追加します。</li>
+        </ol>
+        <p class="combine-note">同じページでIDが重複しないように注意しましょう。CSSの指定が別のサンプルに影響する場合もあります。</p>
+      </section>
       <div class="item-meta"><span id="category" class="tag"></span><span id="number"></span></div>
       <h2 id="title"></h2>
       <div class="intro-grid"><section class="info-card"><h3>どんな機能？</h3><p id="description"></p></section><section class="info-card"><h3>いつ使う？</h3><p id="usage"></p></section></div>
       <section class="panel preview-panel" aria-labelledby="preview-title"><div class="panel-head"><h3 id="preview-title">操作できるプレビュー</h3><div id="preview-options"></div></div><div class="preview-stage"><iframe id="preview" title="サンプルのプレビュー" sandbox="allow-scripts allow-same-origin allow-forms"></iframe></div></section>
-      <section class="panel" aria-labelledby="code-title"><h3 id="code-title">組み込み用コード</h3><p>HTMLは <code>&lt;body&gt;</code> 内に、CSSは <code>css/style.css</code> に、JavaScriptは <code>js/script.js</code> に追加します。</p><p><code>&lt;head&gt;</code> 内で <code>&lt;script src="js/script.js" defer&gt;&lt;/script&gt;</code> を読み込みます。パスは自分のフォルダ構成に合わせて変更してください。</p><div class="code-tabs" role="tablist" aria-label="コードの種類"><button type="button" role="tab" data-kind="html" aria-selected="true">HTML</button><button type="button" role="tab" data-kind="css" aria-selected="false">CSS</button><button type="button" role="tab" data-kind="js" aria-selected="false">JavaScript</button></div><div id="code-panel" role="tabpanel"><div class="code-toolbar"><span id="code-label">HTML</span><button id="copy" type="button">コードをコピー</button></div><pre><code id="code"></code></pre></div><p id="copy-status" role="status" aria-live="polite"></p></section>
+      <section class="panel" aria-labelledby="code-title"><h3 id="code-title">組み込み用コード</h3><p>HTMLは <code>&lt;body&gt;</code> 内に、CSSは <code>css/style.css</code> に、JavaScriptは <code>js/script.js</code> に追加します。</p><p><code>&lt;head&gt;</code> 内で <code>&lt;script src="js/script.js" defer&gt;&lt;/script&gt;</code> を読み込みます。<code>defer</code> はHTMLの解析が完了してからJavaScriptを実行する指定です。ファイルパスは自分のフォルダ構成に合わせて変更してください。</p><div class="code-tabs" role="tablist" aria-label="コードの種類"><button type="button" role="tab" data-kind="html" aria-selected="true">HTML</button><button type="button" role="tab" data-kind="css" aria-selected="false">CSS</button><button type="button" role="tab" data-kind="js" aria-selected="false">JavaScript</button></div><div id="code-panel" role="tabpanel"><div class="code-toolbar"><span id="code-label">HTML</span><button id="copy" type="button">コードをコピー</button></div><pre><code id="code"></code></pre></div><p id="copy-status" role="status" aria-live="polite"></p></section>
       <div class="intro-grid"><section class="info-card"><h3>コードのポイント</h3><p id="explanation"></p></section><section class="info-card"><h3>自分の作品で変えるところ</h3><p id="customize"></p></section></div>
     </main>
   </div>
