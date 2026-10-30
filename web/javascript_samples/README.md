@@ -33,10 +33,11 @@ javascript_samples/
 ├── css/style.css
 ├── js/script.js
 ├── js/samples.js
+├── js/guard.js
 └── README.md
 ```
 
-`js/samples.js` に表示用のサンプルコードと説明を、`js/script.js` に教材画面の操作を分けています。共通の `../source-guard.js` は既存教材と同じものを読み込みます。
+`js/samples.js` に表示用のサンプルコードと説明を、`js/script.js` に教材画面の操作を分けています。`js/guard.js` は教材画面とプレビューで一般的なソース確認操作を抑制します。
 
 ## 公開ページ
 
