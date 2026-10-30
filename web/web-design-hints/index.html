@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="自作のHTML・CSSサイトを作るときに、レイアウト、配色、文字、画像、ボタンを見比べながら学べる初心者向け教材。">
   <title>Webデザインのヒント・リファレンス</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261030-2">
   <script src="js/app.js" defer></script>
   <script src="../../assets/source-guard.js" defer></script>
 </head>
@@ -82,17 +82,17 @@ strong { font-weight: 700; }</code></pre></div><div class="css-help" id="css-hel
       </section>
       <section class="content-section" id="image" aria-labelledby="image-title">
         <div class="section-heading"><span class="section-number">05</span><div><h2 id="image-title">画像</h2><p>形をそろえ、何を伝える画像かも考えましょう。</p></div></div>
-        <article class="lesson-card"><div class="lesson-copy"><span class="tag">写真・イラスト</span><h3>幅と切り抜き方を整える</h3><p>画像は横幅を親要素に合わせると、画面からはみ出しにくくなります。同じ形で並べたいときは <code>aspect-ratio</code> と <code>object-fit</code> を使います。内容が伝わる代替テキストも付けましょう。</p><div class="codebox"><div class="code-top"><span>画像のCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="image-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-6">説明</button></div></div><pre id="image-code"><code>img {
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">写真・イラスト</span><h3>幅と切り抜き方を整える</h3><p>画像を同じ大きさのカードに並べるときは、<code>aspect-ratio</code> で表示枠の形を決め、<code>object-fit: cover</code> で枠いっぱいに表示します。元の画像と枠の形が違う場合、はみ出た部分は切り取られます。<code>alt</code> には「山と緑の丘のイラスト」のように画像の内容を短く書きます。</p><div class="codebox"><div class="code-top"><span>画像のCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="image-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-6">説明</button></div></div><pre id="image-code"><code>img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 12px;
-}</code></pre></div><div class="css-help" id="css-help-6" hidden><h4>このCSSの意味</h4><dl><dt><code>display: block</code></dt><dd>画像の下にできやすい小さな隙間をなくします。</dd><dt><code>width: 100%</code></dt><dd>画像を親要素の幅に合わせます。</dd><dt><code>aspect-ratio: 4 / 3</code></dt><dd>横4：縦3の形を保ちます。</dd><dt><code>object-fit: cover</code></dt><dd>指定した形を埋めるように画像を切り抜きます。</dd><dt><code>border-radius</code></dt><dd>画像の角を丸くします。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">画像の見せ方</p><div class="image-compare"><figure><img src="images/landscape.svg" alt="淡い空の下に山と緑の丘が広がるイラスト"><figcaption>4:3で形をそろえる</figcaption></figure><figure><img class="image-round" src="images/landscape.svg" alt=""><figcaption>角を丸くして印象を変える</figcaption></figure></div><p class="preview-note">この見本は教材用のオリジナルイラストです。</p></div></article>
+}</code></pre></div><div class="css-help" id="css-help-6" hidden><h4>このCSSの意味</h4><dl><dt><code>display: block</code></dt><dd>画像の下にできやすい小さな隙間をなくします。</dd><dt><code>width: 100%</code></dt><dd>画像を親要素の幅に合わせます。</dd><dt><code>aspect-ratio: 4 / 3</code></dt><dd>横4：縦3の形を保ちます。</dd><dt><code>object-fit: cover</code></dt><dd>指定した形を埋めるように画像を切り抜きます。</dd><dt><code>border-radius</code></dt><dd>画像の角を丸くします。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">画像の見せ方</p><div class="image-compare"><figure><img src="images/landscape.svg" alt="淡い空の下に山と緑の丘が広がるイラスト"><figcaption>4:3：元の画像全体が見える</figcaption></figure><figure><img class="image-wide" src="images/landscape.svg" alt="同じ山と緑の丘のイラストを横長に切り抜いた見本"><figcaption>16:9：上下を切り取って横長に</figcaption></figure></div><p class="preview-note">同じ画像でも、表示枠の縦横比を変えると見える範囲が変わります。この見本は教材用のオリジナルイラストです。</p></div></article>
       </section>
       <section class="content-section" id="button" aria-labelledby="button-title">
         <div class="section-heading"><span class="section-number">06</span><div><h2 id="button-title">ボタン</h2><p>押せる場所だと分かり、言葉で行き先が伝わるようにします。</p></div></div>
-        <article class="lesson-card"><div class="lesson-copy"><span class="tag">操作の目印</span><h3>役割が分かるラベルに</h3><p>「こちら」だけより「作品を見る」のように具体的な言葉を選びます。リンク先へ移動するなら <code>&lt;a&gt;</code>、その場で操作するなら <code>&lt;button&gt;</code> を使います。</p><div class="codebox"><div class="code-top"><span>リンクボタンのCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="button-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-7">説明</button></div></div><pre id="button-code"><code>.button {
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">操作の目印</span><h3>役割が分かるラベルに</h3><p>「こちら」だけより「作品を見る」のように具体的な言葉を選びます。別のページやページ内の見出しへ移動するものは <code>&lt;a&gt;</code> です。クリックして説明を開く、CSSをコピーするなど、今見ているページで動作するものは <code>&lt;button&gt;</code> です。この教材の「説明」と「コピー」がその例です。</p><div class="codebox"><div class="code-top"><span>リンクボタンのCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="button-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-7">説明</button></div></div><pre id="button-code"><code>.button {
   display: inline-block;
   padding: 12px 20px;
   color: #fff;
