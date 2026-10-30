@@ -106,12 +106,12 @@ window.javascriptSamples = [
   <button id="js-tab-a" type="button" role="tab" aria-controls="js-panel-a" aria-selected="true">特徴</button>
   <button id="js-tab-b" type="button" role="tab" aria-controls="js-panel-b" aria-selected="false" tabindex="-1">使い方</button>
 </div>
-<div id="js-panel-a" role="tabpanel" aria-labelledby="js-tab-a">使いやすい機能です。</div>
-<div id="js-panel-b" role="tabpanel" aria-labelledby="js-tab-b" hidden>ボタンを押して切り替えます。</div>`,
+<div id="js-panel-a" class="js-tab-panel" role="tabpanel" aria-labelledby="js-tab-a">使いやすい機能です。</div>
+<div id="js-panel-b" class="js-tab-panel" role="tabpanel" aria-labelledby="js-tab-b" hidden>ボタンを押して切り替えます。</div>`,
     css:`.js-tabs { display:flex; gap:8px; border-bottom:2px solid #bed8e5; }
 .js-tabs button { padding:9px 16px; border:0; background:#eef5f8; border-radius:8px 8px 0 0; }
 .js-tabs button[aria-selected="true"] { background:#f8dce9; font-weight:bold; }
-[role="tabpanel"] { padding:18px 4px; }`,
+.js-tab-panel { padding:18px 4px; }`,
     js:`(() => {
   const tabs = [...document.querySelectorAll('.js-tabs [role="tab"]')];
   function selectTab(index) {
