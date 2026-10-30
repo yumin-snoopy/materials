@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RX7JMCQLZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RX7JMCQLZ');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="自作のHTML・CSSサイトを作るときに、レイアウト、配色、文字、画像、ボタンを見比べながら学べる初心者向け教材。">
+  <title>Webデザインのヒント・リファレンス</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="../../assets/source-guard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div class="site-shell">
+    <aside class="sidebar" aria-label="カテゴリメニュー">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>Webデザイン<br><strong>ヒント・リファレンス</strong></span></a>
+      <p class="sidebar-caption">つくりながら、見比べよう。</p>
+      <nav aria-label="カテゴリ">
+        <p class="nav-label">CONTENTS</p>
+        <a href="#start">はじめに</a><a href="#layout">01 レイアウト</a><a href="#color">02 配色</a>
+        <a href="#scale">03 ジャンプ率</a><a href="#type">04 文字組み</a><a href="#image">05 画像</a>
+        <a href="#button">06 ボタン</a><a href="#readability">07 見やすさ</a><a href="#responsive">08 レスポンシブ</a><a href="#basics">09 制作の基礎</a><a href="#finish">制作のチェック</a>
+      </nav>
+      <div class="sidebar-tip">↗ 気になる見本を選び、CSSをコピーして自分のページで試しましょう。</div>
+    </aside>
+    <main id="main">
+      <header class="hero" id="top">
+        <div class="hero-text"><p class="eyebrow">HTML + CSS DESIGN GUIDE</p><h1>見て、比べて、<br><em>自分らしい</em>Webページへ。</h1><p class="hero-lead">レイアウトや色、文字の大きさを少し変えるだけで、ページの印象は変わります。右の見本で違いを確かめながら、使いたいCSSを探しましょう。</p><a class="hero-button" href="#layout">見本を見る <span aria-hidden="true">↘</span></a></div>
+        <div class="hero-art" aria-hidden="true"><div class="art-window"><div class="art-dots"><i></i><i></i><i></i></div><div class="art-title"></div><div class="art-line short"></div><div class="art-line"></div><div class="art-grid"><div></div><div></div><div></div></div></div><span class="art-spark spark-a">✳</span><span class="art-spark spark-b">✦</span></div>
+      </header>
+      <section class="intro content-section" id="start" aria-labelledby="start-title">
+        <div class="section-heading"><span class="section-number">START</span><div><h2 id="start-title">この教材の使い方</h2><p>「どんな見た目にしたい？」から選べる、制作中のヒント集です。</p></div></div>
+        <div class="intro-grid"><div><span class="step-num">01</span><h3>見比べる</h3><p>同じ内容でも、配置や色で印象がどう変わるか確かめます。</p></div><div><span class="step-num">02</span><h3>コピーして試す</h3><p>各行の意味を読んでからCSSをコピーし、自分のファイルで数値を変えてみます。</p></div><div><span class="step-num">03</span><h3>自分の目的で選ぶ</h3><p>「読みやすい」「楽しい」など、伝えたい印象に合わせて決めます。</p></div></div>
+        <p class="note"><strong>ほかの教材との使い分け：</strong> HTMLリファレンスはタグの書き方、CSSリファレンスはプロパティの意味、CSSデザインサンプルは表現のアイデア探しに。このページは、見本を比べて自分のサイトのデザインを決めるために使います。</p>
+      </section>
+      <section class="content-section" id="layout" aria-labelledby="layout-title">
+        <div class="section-heading"><span class="section-number">01</span><div><h2 id="layout-title">レイアウト</h2><p>何をいくつ並べるかで、情報の伝わり方が変わります。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">カラム</span><h3>1・2・3カラムを比べる</h3><p>1カラムは文章をじっくり読ませたいとき、2カラムは画像と説明、3カラムは同じ種類の情報を一覧にしたいときに便利です。</p><p class="tiny">画面が狭いときは、無理に横並びにせず縦に並べます。</p><div class="codebox"><div class="code-top"><span>2カラムのCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="layout-columns">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-1">説明</button></div></div><pre id="layout-columns"><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}</code></pre></div><div class="css-help" id="css-help-1" hidden><h4>このCSSの意味</h4><dl><dt><code>.cards</code></dt><dd>このクラス名を付けた要素に、囲まれた指定を適用します。</dd><dt><code>display: grid</code></dt><dd>子要素を格子状に並べます。</dd><dt><code>grid-template-columns</code></dt><dd><code>repeat(2, 1fr)</code> は、同じ幅の列を2本作る指定です。1frは空き幅の1つ分。</dd><dt><code>gap: 16px</code></dt><dd>カードどうしの間隔を16px空けます。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">比較プレビュー</p><div class="columns-demo"><div><span>1カラム</span><div class="mini-grid one"><i></i></div></div><div><span>2カラム</span><div class="mini-grid two"><i></i><i></i></div></div><div><span>3カラム</span><div class="mini-grid three"><i></i><i></i><i></i></div></div></div></div></article>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">余白・整列</span><h3>余白でグループをつくる</h3><p>関係するものは近づけ、別の内容との間を広げます。内側の余白は <code>padding</code>、外側の余白は <code>margin</code>。並べ方にはFlexboxが便利です。</p><div class="codebox"><div class="code-top"><span>余白とFlexbox</span><div class="code-actions"><button class="copy" type="button" data-copy="layout-space">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-2">説明</button></div></div><pre id="layout-space"><code>.item-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}</code></pre></div><div class="css-help" id="css-help-2" hidden><h4>このCSSの意味</h4><dl><dt><code>.item-list</code></dt><dd>横並びにしたい要素を包む親要素のクラス名です。</dd><dt><code>display: flex</code></dt><dd>子要素を横方向に並べます。</dd><dt><code>justify-content: space-between</code></dt><dd>横方向の両端に要素を寄せ、間を空けます。</dd><dt><code>align-items: center</code></dt><dd>縦方向の中心をそろえます。</dd><dt><code>gap / padding</code></dt><dd>gapは子要素どうしの間隔、paddingは枠の内側の余白です。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">比較プレビュー</p><div class="space-demo"><div class="space-example cramped"><span>余白 4px</span><div><b>見出し</b><small>説明文がここに入ります。</small></div></div><div class="space-example roomy"><span>余白 24px</span><div><b>見出し</b><small>説明文がここに入ります。</small></div></div></div><p class="preview-note">余白をそろえると、内容を追いやすくなります。</p></div></article>
+      </section>
+      <section class="content-section" id="color" aria-labelledby="color-title">
+        <div class="section-heading"><span class="section-number">02</span><div><h2 id="color-title">配色</h2><p>使う色をしぼると、ページ全体にまとまりが生まれます。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">3つの役割</span><h3>ベース・メイン・アクセント</h3><p><strong>ベース</strong>は背景など広い面積、<strong>メイン</strong>は見出しや主役、<strong>アクセント</strong>はボタンなど注目させたい場所に使います。色の面積は「多い・中くらい・少ない」を意識しましょう。</p><div class="codebox"><div class="code-top"><span>色をまとめて指定</span><div class="code-actions"><button class="copy" type="button" data-copy="color-vars">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-3">説明</button></div></div><pre id="color-vars"><code>:root {
+  --base: #f7f8fb;
+  --main: #346c87;
+  --accent: #e76f86;
+}
+body { background: var(--base); }
+h2 { color: var(--main); }</code></pre></div><div class="css-help" id="css-help-3" hidden><h4>このCSSの意味</h4><dl><dt><code>:root</code></dt><dd>ページ全体から使える色の変数をまとめる場所です。</dd><dt><code>--base / --main / --accent</code></dt><dd>自分で付けた変数名です。<code>#</code>から始まる6桁の値がカラーコードです。</dd><dt><code>var(--base)</code></dt><dd>保存した色を呼び出します。1か所の色を変えるだけで、使った場所すべてに反映されます。</dd><dt><code>body / h2</code></dt><dd>bodyはページ全体、h2は2番目の大きさの見出しを選びます。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">配色例とカラーコード</p><div class="palette-list"><div class="palette"><div class="swatches"><i style="background:#f7f8fb"></i><i style="background:#346c87"></i><i style="background:#e76f86"></i></div><span>やさしい・清潔感</span><small>#f7f8fb / #346c87 / #e76f86</small></div><div class="palette"><div class="swatches"><i style="background:#fff8ed"></i><i style="background:#875e45"></i><i style="background:#e6994b"></i></div><span>あたたかい・親しみ</span><small>#fff8ed / #875e45 / #e6994b</small></div><div class="palette"><div class="swatches"><i style="background:#f5f7f2"></i><i style="background:#3d6854"></i><i style="background:#cc735d"></i></div><span>落ち着き・自然</span><small>#f5f7f2 / #3d6854 / #cc735d</small></div><div class="palette"><div class="swatches"><i style="background:#edf8fa"></i><i style="background:#236b7b"></i><i style="background:#efad61"></i></div><span>さわやか・軽やか</span><small>#edf8fa / #236b7b / #efad61</small></div><div class="palette"><div class="swatches"><i style="background:#f8f4fa"></i><i style="background:#594f79"></i><i style="background:#bf6f97"></i></div><span>上品・やわらか</span><small>#f8f4fa / #594f79 / #bf6f97</small></div><div class="palette"><div class="swatches"><i style="background:#fff9e8"></i><i style="background:#315b86"></i><i style="background:#d95d51"></i></div><span>元気・はっきり</span><small>#fff9e8 / #315b86 / #d95d51</small></div></div></div></article>
+      </section>
+      <section class="content-section" id="scale" aria-labelledby="scale-title">
+        <div class="section-heading"><span class="section-number">03</span><div><h2 id="scale-title">ジャンプ率</h2><p>見出しと本文の文字サイズの差を、目で確かめましょう。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">文字の大小</span><h3>差をつけると、目を引く</h3><p>ここでは「見出しサイズ ÷ 本文サイズ」をジャンプ率として比べます。差が小さいと落ち着いた印象、大きいと元気で目立つ印象になります。</p><label class="range-label" for="scale-range">見出しサイズ <strong><output id="scale-output">32px</output></strong></label><input id="scale-range" type="range" min="20" max="48" value="32" step="2"><div class="range-ends"><span>控えめ</span><span>大きく</span></div><div class="codebox"><div class="code-top"><span>見出しと本文</span><div class="code-actions"><button class="copy" type="button" data-copy="scale-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-4">説明</button></div></div><pre id="scale-code"><code>h2 { font-size: 32px; }
+p  { font-size: 16px; }</code></pre></div><div class="css-help" id="css-help-4" hidden><h4>このCSSの意味</h4><dl><dt><code>h2 / p</code></dt><dd>見出しと段落をそれぞれ選ぶセレクターです。</dd><dt><code>font-size</code></dt><dd>文字の大きさです。数値を変えると、見出しと本文の差が変わります。</dd><dt><code>px</code></dt><dd>画面上の大きさを指定する単位です。ここでは本文16pxを基準にしています。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">動かして比較 · 本文は16px</p><div class="scale-sample"><span class="sample-kicker">SAMPLE HEADING</span><h3 id="scale-heading">季節を楽しむ週末</h3><p>近くの景色に目を向けて、ゆったりと過ごす小さな旅。</p></div><p class="preview-note">ジャンプ率 <strong id="scale-ratio">2.0倍</strong>　見出しと本文をセットで見ましょう。</p></div></article>
+      </section>
+      <section class="content-section" id="type" aria-labelledby="type-title">
+        <div class="section-heading"><span class="section-number">04</span><div><h2 id="type-title">文字組み</h2><p>文字の大きさ、行間、強弱を整えると読みやすくなります。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">行間</span><h3>詰めすぎない、広げすぎない</h3><p>本文は16px程度から試すと、読みやすさを確認しやすくなります。行間は <code>line-height</code> で調整します。長い文章は行間と横幅も一緒に見てください。</p><div class="codebox"><div class="code-top"><span>本文の基本</span><div class="code-actions"><button class="copy" type="button" data-copy="type-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-5">説明</button></div></div><pre id="type-code"><code>body { font-size: 16px; }
+p {
+  line-height: 1.8;
+  max-width: 65ch;
+}
+strong { font-weight: 700; }</code></pre></div><div class="css-help" id="css-help-5" hidden><h4>このCSSの意味</h4><dl><dt><code>body</code></dt><dd>ページ全体の文字サイズの基準を指定します。</dd><dt><code>line-height: 1.8</code></dt><dd>行の高さを文字サイズの1.8倍にします。単位を付けない書き方です。</dd><dt><code>max-width: 65ch</code></dt><dd>文章が長い1行になりすぎないよう、最大幅を制限します。</dd><dt><code>font-weight: 700</code></dt><dd>strongで囲んだ文字を太くします。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">行間の比較</p><div class="type-compare"><div><span>狭い · 1.1</span><p class="tight-lines">お気に入りの場所を紹介します。駅から少し歩くと、静かな公園が見えてきます。季節ごとに違う景色を楽しめます。</p></div><div><span>ゆとり · 1.8</span><p class="open-lines">お気に入りの場所を紹介します。駅から少し歩くと、静かな公園が見えてきます。季節ごとに違う景色を楽しめます。</p></div></div></div></article>
+      </section>
+      <section class="content-section" id="image" aria-labelledby="image-title">
+        <div class="section-heading"><span class="section-number">05</span><div><h2 id="image-title">画像</h2><p>形をそろえ、何を伝える画像かも考えましょう。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">写真・イラスト</span><h3>幅と切り抜き方を整える</h3><p>画像は横幅を親要素に合わせると、画面からはみ出しにくくなります。同じ形で並べたいときは <code>aspect-ratio</code> と <code>object-fit</code> を使います。内容が伝わる代替テキストも付けましょう。</p><div class="codebox"><div class="code-top"><span>画像のCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="image-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-6">説明</button></div></div><pre id="image-code"><code>img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}</code></pre></div><div class="css-help" id="css-help-6" hidden><h4>このCSSの意味</h4><dl><dt><code>display: block</code></dt><dd>画像の下にできやすい小さな隙間をなくします。</dd><dt><code>width: 100%</code></dt><dd>画像を親要素の幅に合わせます。</dd><dt><code>aspect-ratio: 4 / 3</code></dt><dd>横4：縦3の形を保ちます。</dd><dt><code>object-fit: cover</code></dt><dd>指定した形を埋めるように画像を切り抜きます。</dd><dt><code>border-radius</code></dt><dd>画像の角を丸くします。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">画像の見せ方</p><div class="image-compare"><figure><img src="images/landscape.svg" alt="淡い空の下に山と緑の丘が広がるイラスト"><figcaption>4:3で形をそろえる</figcaption></figure><figure><img class="image-round" src="images/landscape.svg" alt=""><figcaption>角を丸くして印象を変える</figcaption></figure></div><p class="preview-note">この見本は教材用のオリジナルイラストです。</p></div></article>
+      </section>
+      <section class="content-section" id="button" aria-labelledby="button-title">
+        <div class="section-heading"><span class="section-number">06</span><div><h2 id="button-title">ボタン</h2><p>押せる場所だと分かり、言葉で行き先が伝わるようにします。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">操作の目印</span><h3>役割が分かるラベルに</h3><p>「こちら」だけより「作品を見る」のように具体的な言葉を選びます。リンク先へ移動するなら <code>&lt;a&gt;</code>、その場で操作するなら <code>&lt;button&gt;</code> を使います。</p><div class="codebox"><div class="code-top"><span>リンクボタンのCSS</span><div class="code-actions"><button class="copy" type="button" data-copy="button-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-7">説明</button></div></div><pre id="button-code"><code>.button {
+  display: inline-block;
+  padding: 12px 20px;
+  color: #fff;
+  background: #346c87;
+  border-radius: 8px;
+}
+.button:hover { background: #254f64; }</code></pre></div><div class="css-help" id="css-help-7" hidden><h4>このCSSの意味</h4><dl><dt><code>.button</code></dt><dd>HTMLのリンクなどに付けるクラス名です。例：<code>class=&quot;button&quot;</code>。</dd><dt><code>display: inline-block</code></dt><dd>文字の流れの中に置きながら、幅や余白を付けやすくします。</dd><dt><code>padding / color / background</code></dt><dd>内側の余白、文字色、背景色を指定します。</dd><dt><code>border-radius</code></dt><dd>角を丸くします。</dd><dt><code>:hover</code></dt><dd>マウスを重ねたときだけ背景色を変えます。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">比較プレビュー</p><div class="button-demo"><div><span>目立つ操作</span><a class="demo-primary" href="#finish">制作のチェックを見る →</a></div><div><span>補助の操作</span><a class="demo-secondary" href="#responsive">レスポンシブを見る →</a></div></div><p class="preview-note">キーボードでも選べるよう、選択中の枠を消さないようにします。</p></div></article>
+      </section>
+      <section class="content-section" id="readability" aria-labelledby="readability-title">
+        <div class="section-heading"><span class="section-number">07</span><div><h2 id="readability-title">見やすさ</h2><p>見た目の好みと一緒に、読み取れるかを確認しましょう。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">読みやすさ</span><h3>色・幅・強調を確かめる</h3><p>薄い文字色は背景と重なると読みにくくなります。長い文章は横幅を広げすぎず、大切な情報は色だけに頼らず文字でも伝えます。</p><div class="codebox"><div class="code-top"><span>読みやすい文字幅</span><div class="code-actions"><button class="copy" type="button" data-copy="read-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-8">説明</button></div></div><pre id="read-code"><code>.article {
+  max-width: 65ch;
+  margin-inline: auto;
+  color: #27343b;
+  line-height: 1.8;
+}</code></pre></div><div class="css-help" id="css-help-8" hidden><h4>このCSSの意味</h4><dl><dt><code>.article</code></dt><dd>文章を包む要素に付けるクラス名です。</dd><dt><code>max-width</code></dt><dd>文章の横幅が広がりすぎるのを防ぎます。</dd><dt><code>margin-inline: auto</code></dt><dd>左右の外側の余白を自動で分け、中央に置きます。</dd><dt><code>color / line-height</code></dt><dd>読みやすい文字色と行の高さを指定します。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">文字色の比較</p><div class="contrast-demo"><div class="faint-text"><span>薄すぎる文字</span><p>お知らせを掲載しています。</p></div><div class="clear-text"><span>読み取りやすい文字</span><p>お知らせを掲載しています。</p></div></div><p class="preview-note">実際のページで、スマートフォンの明るさでも確かめましょう。</p></div></article>
+      </section>
+      <section class="content-section" id="responsive" aria-labelledby="responsive-title">
+        <div class="section-heading"><span class="section-number">08</span><div><h2 id="responsive-title">レスポンシブ</h2><p>画面の幅に合わせて、無理のない並び方へ。</p></div></div>
+        <article class="lesson-card"><div class="lesson-copy"><span class="tag">画面幅</span><h3>狭い画面では1列に</h3><p>パソコンでは横に並ぶカードも、スマートフォンでは縦に並べると読みやすくなります。ブラウザの幅を縮めて、文字やボタンがはみ出していないか確認しましょう。</p><div class="codebox"><div class="code-top"><span>画面幅で切り替える</span><div class="code-actions"><button class="copy" type="button" data-copy="responsive-code">コピー</button><button class="explain-toggle" type="button" aria-haspopup="dialog" aria-controls="css-explanation-dialog" data-explain="css-help-9">説明</button></div></div><pre id="responsive-code"><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .cards { grid-template-columns: 1fr; }
+}</code></pre></div><div class="css-help" id="css-help-9" hidden><h4>このCSSの意味</h4><dl><dt><code>repeat(3, 1fr)</code></dt><dd>広い画面では同じ幅の3列にします。</dd><dt><code>@media (max-width: 700px)</code></dt><dd>画面幅が700px以下のときだけ、中の指定を使います。</dd><dt><code>grid-template-columns: 1fr</code></dt><dd>狭い画面では1列に切り替えます。</dd><dt><code>gap</code></dt><dd>列や行の間隔です。1列になってもカードの間隔に使われます。</dd></dl></div></div><div class="lesson-preview"><p class="preview-label">画面幅の比較</p><div class="device-compare"><div class="desktop-device"><span>広い画面</span><div><i></i><i></i><i></i></div></div><div class="phone-device"><span>狭い画面</span><div><i></i><i></i><i></i></div></div></div></div></article>
+      </section>
+      <section class="content-section" id="basics" aria-labelledby="basics-title">
+        <div class="section-heading"><span class="section-number">09</span><div><h2 id="basics-title">制作の基礎</h2><p>見た目を整える前に、ファイルと指定の仕組みを押さえましょう。</p></div></div>
+        <div class="basics-grid">
+          <article class="basic-card"><span class="tag">HTMLとCSS</span><h3>役割とファイルのつながり</h3><p>HTMLは見出しや段落など内容の骨組み、CSSは色や余白など見た目を担当します。CSSが反映されないときは、ファイル名と場所を確認しましょう。</p><div class="codebox"><div class="code-top"><span>HTMLからCSSを読み込む</span><button class="copy" type="button" data-copy="basic-link">コピー</button></div><pre id="basic-link"><code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code></pre></div><p class="basic-hint"><code>href</code> は、今開いているHTMLから見たCSSの場所です。この例は「cssフォルダーの中のstyle.css」を示します。</p></article>
+          <article class="basic-card"><span class="tag">セレクター</span><h3>どこを変えるか決める</h3><p>CSSの最初に書く名前は、見た目を変える対象を選びます。同じデザインを複数の場所に使うなら、クラス名が便利です。</p><div class="codebox"><div class="code-top"><span>クラスを付けて選ぶ</span><button class="copy" type="button" data-copy="basic-class">コピー</button></div><pre id="basic-class"><code>&lt;p class="notice"&gt;お知らせ&lt;/p&gt;
+.notice { color: #346c87; }</code></pre></div><p class="basic-hint"><code>class="notice"</code> と <code>.notice</code> が対応します。CSSの点 <code>.</code> はクラスを選ぶ印です。</p></article>
+          <article class="basic-card"><span class="tag">ボックスモデル</span><h3>余白の場所を見分ける</h3><p>要素は箱として考えます。内容の周りに内側の余白、枠線、外側の余白があります。幅が合わないときに、この違いが役立ちます。</p><div class="box-model"><span>margin（外側）</span><div><span>border（枠）</span><div><span>padding（内側）</span><strong>内容</strong></div></div></div><p class="basic-hint"><code>box-sizing: border-box</code> を使うと、指定した幅にpaddingとborderを含めて計算できます。</p></article>
+          <article class="basic-card"><span class="tag">仕上げと公開</span><h3>表示できるか、使えるか</h3><ul><li>画像やCSSのファイル名は大文字・小文字まで一致させる。</li><li>見出しの順番を整え、画像には内容に合う <code>alt</code> を付ける。</li><li>マウスがなくてもリンクやボタンを選べるか試す。</li><li>使用する写真・イラスト・文章の利用条件を確かめる。</li><li>スマートフォンとパソコンの両方で表示を確認する。</li></ul></article>
+        </div>
+      </section>
+      <section class="finish content-section" id="finish" aria-labelledby="finish-title"><div class="section-heading"><span class="section-number">CHECK</span><div><h2 id="finish-title">制作の最後にチェック</h2><p>自分のページを、使う人の目線で見直しましょう。</p></div></div><ul class="check-list"><li>見出しを追うだけで内容が分かる？</li><li>本文の文字と背景の色は読み取りやすい？</li><li>余白や画像の形に、ばらつきはない？</li><li>スマートフォン幅でも横にはみ出さない？</li><li>ボタンの言葉から行き先が分かる？</li></ul><a class="back-top" href="#top">ページの先頭へ ↑</a></section>
+      <footer>Webデザインのヒント・リファレンス <span>授業で自由に試しながら使ってください。</span></footer>
+    </main>
+  </div>
+  <dialog id="css-explanation-dialog" class="explanation-dialog" aria-labelledby="explanation-title">
+    <div class="dialog-heading"><h2 id="explanation-title">CSSの説明</h2><button class="dialog-close" type="button">閉じる ✕</button></div>
+    <div id="explanation-content" class="explanation-content"></div>
+  </dialog>
+</body>
+</html>
