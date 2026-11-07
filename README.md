@@ -77,3 +77,10 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 | [HTML5 入力練習ガイド](web/html_practice/README.md) | HTMLを1つのファイルに少しずつ手入力して学ぶ教材です。 |
 | [HTMLタグリファレンス](web/html_reference/README.md) | HTMLタグの意味や主な属性を調べ、コードと表示結果を一緒に確認できる教材です。 |
 | [スライドショー サンプル集](web/slideshow/README.md) | 画像の切り替え方が異なる10種類のスライドショーを見比べる教材です。 |
+
+## 生成AIパスポート
+
+[生成AIパスポート 教材一覧](AI_Passport/README.md)
+
+- [解説資料](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/)
+- [練習問題（指導者用）](https://yumin-snoopy.github.io/materials/AI_Passport/practice/)

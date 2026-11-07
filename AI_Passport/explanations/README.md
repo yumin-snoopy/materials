@@ -49,3 +49,14 @@
 - [6-1](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/chapter6/6-1.html)
 - [6-2](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/chapter6/6-2.html)
 - [第6章確認問題](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/chapter6/%E7%AC%AC6%E7%AB%A0%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C.html)
+
+## 練習問題 指導者用
+
+[練習問題の目次を開く](https://yumin-snoopy.github.io/materials/AI_Passport/practice/)
+
+- [第1章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter1.html)
+- [第2章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter2.html)
+- [第3章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter3.html)
+- [第4章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter4.html)
+- [第5章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter5.html)
+- [第6章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter6.html)
