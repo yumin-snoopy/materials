@@ -83,4 +83,4 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 [生成AIパスポート 教材一覧](AI_Passport/README.md)
 
 - [解説資料](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/)
-- [練習問題（指導者用）](https://yumin-snoopy.github.io/materials/AI_Passport/practice/)
+- [練習問題](https://yumin-snoopy.github.io/materials/AI_Passport/practice/)

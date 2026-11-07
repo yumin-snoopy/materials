@@ -8,13 +8,13 @@
 
 ## 練習問題
 
-指導者用の確認問題解説資料です。第1～6章、各20問を掲載しています。
+確認問題解説資料です。第1～6章、各20問を掲載しています。
 
 [練習問題の目次](https://yumin-snoopy.github.io/materials/AI_Passport/practice/) ・ [練習問題のREADME](practice/README.md)
 
-- [第1章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter1.html)
-- [第2章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter2.html)
-- [第3章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter3.html)
-- [第4章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter4.html)
-- [第5章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter5.html)
-- [第6章 指導者用](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter6.html)
+- [第1章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter1.html)
+- [第2章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter2.html)
+- [第3章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter3.html)
+- [第4章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter4.html)
+- [第5章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter5.html)
+- [第6章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter6.html)
