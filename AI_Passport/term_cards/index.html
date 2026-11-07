@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>生成AIの用語カード｜第1章・試作版</title>
-  <link rel="stylesheet" href="css/style.css?v=1">
+  <link rel="stylesheet" href="css/style.css?v=2">
   <script src="../../assets/source-guard.js" defer></script>
   <script src="js/terms.js?v=1" defer></script>
-  <script src="js/script.js?v=1" defer></script>
+  <script src="js/script.js?v=2" defer></script>
 </head>
 <body>
   <main class="wrap">
@@ -15,7 +15,6 @@
       <p class="eyebrow">生成AIパスポート講座｜第1章・試作版</p>
       <h1>生成AIの用語カード</h1>
       <p>用語を見て意味を思い出してから、「説明を見る」を押しましょう。</p>
-      <a href="../explanations/chapter1/1-1AI（人工知能）の定義.html">第1章の解説教材を見る</a>
     </header>
     <section class="panel" aria-label="学習設定">
       <label for="filter">表示するカード</label>
@@ -41,6 +40,8 @@
         </div>
       </article>
       <div id="finish" class="card finish" hidden><h2 id="finishTitle"></h2><p id="finishText"></p><button id="restart" type="button">もう一巡する</button><button id="retryOnly" type="button" class="secondary">「もう一度」を復習する</button></div>
+      <nav id="cardNav" class="card-nav" aria-label="用語カードの移動"><button id="previous" type="button" class="secondary">前の単語</button><button id="next" type="button" class="secondary">次の単語</button></nav>
+      <p id="skipHint" class="hint">説明を見ずに移動しても、学習状況は変わりません。</p>
     </section>
     <footer><p id="storageNote">学習状況は、この端末のブラウザに保存されます。</p><button id="reset" type="button" class="text-button">学習状況をリセット</button><p><a href="../">教材一覧へ戻る</a></p></footer>
   </main>

@@ -63,6 +63,11 @@
     const term = byId.get(id);
     $("card").hidden = !term;
     $("finish").hidden = !!term;
+    $("cardNav").hidden = state.order.length === 0;
+    $("skipHint").hidden = state.order.length === 0;
+    $("previous").disabled = state.index === 0;
+    $("next").hidden = !term;
+    $("next").textContent = state.index === state.order.length - 1 ? "学習結果を見る" : "次の単語";
     if (!term) {
       $("position").textContent = state.order.length ? `${state.order.length} / ${state.order.length}` : "0 / 0";
       $("finishTitle").textContent = state.order.length ? "一巡しました" : "対象のカードは0件です";
@@ -103,6 +108,20 @@
   $("shuffle").addEventListener("click", () => startPass(state.filter, true));
   $("restart").addEventListener("click", () => startPass(state.filter));
   $("retryOnly").addEventListener("click", () => startPass("retry"));
+  $("previous").addEventListener("click", () => {
+    if (state.index === 0) return;
+    state.index -= 1;
+    save();
+    render();
+    $("previous").focus();
+  });
+  $("next").addEventListener("click", () => {
+    if (state.index >= state.order.length) return;
+    state.index += 1;
+    save();
+    render();
+    ($("card").hidden ? $("previous") : $("next")).focus();
+  });
   $("reset").addEventListener("click", () => {
     if (!window.confirm("学習状況をすべてリセットしますか？")) return;
     state.statuses = {};
