@@ -6,6 +6,10 @@
 
 [解説資料の目次](https://yumin-snoopy.github.io/materials/AI_Passport/explanations/) ・ [解説資料のREADME](explanations/README.md)
 
+## 用語カード
+
+[生成AIの用語カード（第1章・試作版）](https://yumin-snoopy.github.io/materials/AI_Passport/term_cards/)
+
 ## 練習問題
 
 確認問題解説資料です。第1～6章、各20問を掲載しています。
@@ -18,3 +22,4 @@
 - [第4章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter4.html)
 - [第5章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter5.html)
 - [第6章](https://yumin-snoopy.github.io/materials/AI_Passport/practice/chapter6.html)
+
