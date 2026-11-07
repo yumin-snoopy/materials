@@ -1,0 +1,218 @@
+
+    :root {
+      --main: #0b3d91;
+      --accent: #ff8c00;
+      --danger: #c62828;
+      --ok: #0f7b3f;
+      --light: #f5f8ff;
+      --cream: #fff8e6;
+      --gray: #f2f2f2;
+      --text: #1f1f1f;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      font-size: 22px;
+      line-height: 1.75;
+    }
+
+	.container {
+	  max-width: none;
+	  width: auto;
+	  margin: 0;
+	  padding: 18px 18px 56px;
+	}
+
+    header {
+      border-left: 14px solid var(--main);
+      background: linear-gradient(90deg, #eef4ff, #ffffff);
+      padding: 26px 32px;
+      margin-bottom: 28px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      color: var(--main);
+    }
+
+    .subtitle {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-top: 44px;
+      padding: 12px 18px;
+      background: var(--main);
+      color: white;
+      border-radius: 10px;
+    }
+
+    h3 {
+      font-size: 28px;
+      margin-top: 34px;
+      padding-left: 14px;
+      border-left: 9px solid var(--accent);
+      color: #111;
+    }
+
+	.card {
+	  background: #ffffff;
+	  border: 2px solid #d9e2f3;
+	  border-radius: 14px;
+	  padding: 18px 22px;
+	  margin: 20px 0;
+	  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+	}
+
+    .learn {
+      background: var(--light);
+      border: 3px solid #b9cff7;
+    }
+
+    .point {
+      background: var(--cream);
+      border: 3px solid var(--accent);
+      border-radius: 14px;
+      padding: 20px 26px;
+      margin: 24px 0;
+    }
+
+    .point-title {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .exam {
+      background: #fff5f5;
+      border: 3px solid var(--danger);
+      border-radius: 14px;
+      padding: 20px 26px;
+      margin: 24px 0;
+    }
+
+    .exam-title {
+      display: inline-block;
+      background: var(--danger);
+      color: white;
+      font-weight: bold;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .term {
+      display: inline-block;
+      font-weight: bold;
+      color: #ffffff;
+      background: var(--main);
+      padding: 1px 10px;
+      border-radius: 7px;
+      margin: 0 3px;
+      white-space: nowrap;
+    }
+
+    .marker {
+      background: linear-gradient(transparent 58%, #fff176 58%);
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 1.4em;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
+      font-size: 21px;
+    }
+
+    th {
+      background: #1f4e99;
+      color: white;
+      padding: 14px;
+      border: 2px solid #ffffff;
+    }
+
+    td {
+      padding: 14px;
+      border: 2px solid #cfd8dc;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #f7faff;
+    }
+
+    tr:nth-child(odd) td {
+      background: #ffffff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .mini {
+      font-size: 19px;
+      color: #555;
+    }
+
+    .summary {
+      background: #eefaf1;
+      border: 3px solid var(--ok);
+    }
+
+    .summary h2 {
+      background: var(--ok);
+    }
+
+    .quiz {
+      background: #f8f8f8;
+      border-left: 10px solid #555;
+      padding: 16px 22px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 34px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 18px;
+      }
+      table {
+        font-size: 18px;
+      }
+    }

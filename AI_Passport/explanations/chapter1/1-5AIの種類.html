@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1-5 AIの種類｜生成AIパスポート試験対策</title>
+  <link rel="stylesheet" href="1-5AIの種類-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+
+<body>
+  <main class="page">
+
+    <header>
+      <div class="label">生成AIパスポート試験対策｜1-5</div>
+      <h1>AIの種類<br>AIのレベル別分類・ANIとAGI</h1>
+      <div class="subtitle">「何ができるAIなのか」で分類して、試験頻出ポイントを整理する</div>
+    </header>
+
+    <section>
+      <h2>このページで学ぶこと</h2>
+      <div class="learn-list">
+        <div class="learn-card">
+          ① AIの4つのレベル<br>
+          <span class="small-note">レベル1〜4の違いと代表例を覚える</span>
+        </div>
+        <div class="learn-card">
+          ② 特徴量<br>
+          <span class="small-note">AIが判断に使う「注目ポイント」を理解する</span>
+        </div>
+        <div class="learn-card">
+          ③ ANIとAGI<br>
+          <span class="small-note">弱いAI・強いAIの違いを試験用に整理する</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>本文解説</h2>
+
+<h3>1. AIは「できることのレベル」で分類できる</h3>
+
+<p>
+  教科書では、AIを処理できる内容に応じて
+  <span class="keyword">4つのレベル</span>
+  に分けています。
+  この分類は、AIを「どれくらい賢いか」ではなく、
+  <strong>どのような仕組みで判断しているか</strong>
+  で整理するものです。
+</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>AIのレベル</th>
+      <th>一言でいうと</th>
+      <th>仕組み</th>
+      <th>身近な例</th>
+      <th>試験での覚え方</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="level">レベル1</td>
+      <td>
+        <strong>決められた条件どおりに動く</strong>
+      </td>
+      <td>
+        単純な制御プログラム。<br>
+        「もし○○なら△△する」という
+        <strong>あらかじめ決められたルール</strong>
+        に従って動く。
+        自分で学習するわけではない。
+      </td>
+      <td>
+        エアコン、冷蔵庫、洗濯機などのAI家電<br>
+        例：室温が高ければ冷房を強くする
+      </td>
+      <td>
+        <span class="keyword">条件分岐</span><br>
+        「もし○○なら△△」
+      </td>
+    </tr>
+
+    <tr>
+      <td class="level">レベル2</td>
+      <td>
+        <strong>人が作ったルールで判断する</strong>
+      </td>
+      <td>
+        <span class="keyword">ルールベースシステム</span>
+        を利用したAI。<br>
+        人間が用意した知識やルールを組み合わせて、
+        入力に対する判断や回答を行う。
+      </td>
+      <td>
+        FAQ型チャットボット、簡単な診断システムなど<br>
+        例：「返品したい」と入力されたら返品案内を表示する
+      </td>
+      <td>
+        <span class="keyword">ルールベース</span><br>
+        人が用意したルールで判断
+      </td>
+    </tr>
+
+    <tr>
+      <td class="level">レベル3</td>
+      <td>
+        <strong>データからパターンを学ぶ</strong>
+      </td>
+      <td>
+        <span class="keyword">機械学習</span>
+        を利用したAI。<br>
+        大量のデータから規則性や傾向を見つけ、
+        新しい入力に対して予測や分類を行う。
+      </td>
+      <td>
+        検索エンジン、迷惑メール判定、商品レコメンドなど<br>
+        例：過去の購入履歴からおすすめ商品を表示する
+      </td>
+      <td>
+        <span class="keyword">機械学習</span><br>
+        データからパターンを学ぶ
+      </td>
+    </tr>
+
+    <tr>
+      <td class="level">レベル4</td>
+      <td>
+        <strong>特徴量までAIが学ぶ</strong>
+      </td>
+      <td>
+        <span class="keyword">ディープラーニング</span>
+        を利用したAI。<br>
+        判断に必要な
+        <span class="keyword">特徴量</span>
+        を、人間が細かく指定しなくても、
+        AIが大量のデータから自動的に学習できる。
+      </td>
+      <td>
+        画像認識、自動運転技術、生成AIなど<br>
+        例：画像の中から人・車・信号などを見分ける
+      </td>
+      <td>
+        <span class="keyword">ディープラーニング</span><br>
+        特徴量までAIが学ぶ
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="point">
+  まずは次の順番で覚えます。<br>
+  <span class="keyword">レベル1：条件分岐</span>
+  →
+  <span class="keyword">レベル2：ルールベース</span>
+  →
+  <span class="keyword">レベル3：機械学習</span>
+  →
+  <span class="keyword">レベル4：ディープラーニング</span>
+</div>
+
+<h3>分類の見分け方：まずは2回だけ考える</h3>
+
+
+<p>
+  4つのレベルを見分けるときに、最初から全部を覚えようとすると難しくなります。
+  まずは、次の
+  <span class="keyword">2つの質問</span>
+  だけで考えます。
+</p>
+
+<div class="point">
+  ① このAIは、データから学習している？<br>
+  ② 学習しているなら、特徴量までAIが自動で見つけている？
+</div>
+
+
+
+<div class="decision-flow">
+  <div class="decision-card no">
+<h4>質問①の答えが「いいえ」：データから学習していない</h4>
+    <p>
+      人間が決めたルールどおりに動くAIです。
+      この場合は
+      <span class="keyword">レベル1</span>
+      または
+      <span class="keyword">レベル2</span>
+      です。
+    </p>
+<div class="level-lines">
+  <div class="level-line">
+    <span class="level-mini">レベル1</span>
+    <span>単純な「もし○○なら△△」</span>
+  </div>
+  <div class="level-line">
+    <span class="level-mini">レベル2</span>
+    <span>人間が用意したルールを使って判断</span>
+  </div>
+</div>
+
+  </div>
+
+  <div class="decision-card yes">
+<h4>質問①の答えが「はい」：データから学習している</h4>
+    <p>
+      過去のデータから、AIがパターンや傾向を学んでいます。
+      この場合は
+      <span class="keyword">レベル3</span>
+      または
+      <span class="keyword">レベル4</span>
+      です。
+    </p>
+<div class="level-lines">
+  <div class="level-line">
+    <span class="level-mini">レベル3</span>
+    <span>データからパターンを学ぶ</span>
+  </div>
+  <div class="level-line">
+    <span class="level-mini">レベル4</span>
+    <span>特徴量までAIが自動で学ぶ</span>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!--div class="example">
+  <h3>特徴量とは？</h3>
+  <p>
+    <span class="keyword">特徴量</span>
+    とは、AIが判断するときに使う
+    <strong>注目ポイント</strong>
+    や
+    <strong>判断材料</strong>
+    のことです。
+  </p>
+
+  <p>
+    たとえば、果物を見分けるAIなら、
+    「色」「形」「大きさ」「模様」「表面のつや」などが特徴量になります。
+  </p>
+
+  <p>
+    人間でいうと、りんごを見たときに
+    「赤い」「丸い」「つやがある」といった手がかりを見て判断するのと同じです。
+  </p>
+
+  <div class="point">
+    試験ポイント：<br>
+    <span class="keyword">特徴量</span>
+    ＝ AIが判断に使う「データの特徴・注目ポイント」。
+    <span class="keyword">レベル4</span>
+    では、この特徴量までAIが自動で学習します。
+  </div>
+</div-->
+
+<table class="simple-level-table">
+  <colgroup>
+    <col>
+    <col>
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>見分ける質問</th>
+      <th>答えが「いいえ」なら</th>
+      <th>答えが「はい」なら</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>① データから学習している？</strong>
+      </td>
+      <td>
+        <span class="keyword">レベル1・2</span><br>
+        人間が決めたルールで動く
+      </td>
+      <td>
+        <span class="keyword">レベル3・4</span><br>
+        AIがデータから学ぶ
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>② 特徴量までAIが見つけている？</strong>
+      </td>
+      <td>
+        <span class="keyword">レベル3</span><br>
+        機械学習。判断に使う特徴は、人間が設計する場合がある。
+      </td>
+      <td>
+        <span class="keyword">レベル4</span><br>
+        ディープラーニング。特徴量までAIが自動で学習する。
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="example">
+  たとえ話：果物を見分けるAI
+  <ul>
+    <li>
+      <strong>レベル1：</strong>
+      「赤ければりんご」と決め打ちする。
+    </li>
+    <li>
+      <strong>レベル2：</strong>
+      「赤い」「丸い」「甘い」など、人間が用意したルールで判断する。
+    </li>
+    <li>
+      <strong>レベル3：</strong>
+      たくさんの果物データから、りんごらしいパターンを学ぶ。
+    </li>
+    <li>
+      <strong>レベル4：</strong>
+      色・形・模様・輪郭など、どこを見ればよいかまでAIが自動で学ぶ。
+    </li>
+  </ul>
+</div>
+
+<div class="point">
+  試験ポイント：<br>
+  <span class="keyword">学習していない</span>
+  ならレベル1・2、
+  <span class="keyword">データから学習</span>
+  ならレベル3・4、
+  <span class="keyword">特徴量まで自動で学習</span>
+  ならレベル4です。
+</div>
+
+
+<h3>身近な例で理解：迷惑メール判定なら？</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>レベル</th>
+      <th>迷惑メール判定のイメージ</th>
+      <th>ポイント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="level">レベル1</td>
+      <td>
+        「件名に『無料』が入っていたら迷惑メールにする」
+        と決め打ちで処理する。
+      </td>
+      <td>単純な条件分岐</td>
+    </tr>
+    <tr>
+      <td class="level">レベル2</td>
+      <td>
+        「無料」「今すぐ」「当選」など、
+        人間が用意した複数のルールを組み合わせて判定する。
+      </td>
+      <td>人が作ったルールで判断</td>
+    </tr>
+    <tr>
+      <td class="level">レベル3</td>
+      <td>
+        過去の迷惑メールと通常メールのデータから、
+        迷惑メールに多いパターンを学習して判定する。
+      </td>
+      <td>データから学習</td>
+    </tr>
+    <tr>
+      <td class="level">レベル4</td>
+      <td>
+        文面の表現、単語の関係、文章全体の雰囲気など、
+        人間が指定しにくい特徴までAIが自動的に学習して判定する。
+      </td>
+      <td>特徴量まで自動で学習</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="point">
+  試験ポイント：<br>
+  問題文に
+  <span class="keyword">単純な条件に従う制御</span>
+  ならレベル1、
+  <span class="keyword">ルールベース</span>
+  とあればレベル2、
+  <span class="keyword">データからパターンを学習</span>
+  とあればレベル3、
+  <span class="keyword">特徴量の調整を含めた学習</span>
+  とあればレベル4の特徴です。<br>
+  ただし、「あらかじめ決められたルール」という言葉だけでは、レベル1とレベル2を区別できません。単純な制御なのか、知識やルールを組み合わせて推論する仕組みなのかを確認します。
+</div>
+
+<div class="caution">
+  注意：<br>
+  レベルが高いほど「何でもできる万能AI」という意味ではありません。
+  レベル4のディープラーニングを使っていても、
+  画像認識なら画像認識、文章生成なら文章生成というように、
+  多くの場合は特定の目的に向けて作られたAIです。
+</div>
+
+
+      <!--div class="point">
+        試験ポイント：
+        <br>
+        レベル1は「条件分岐」、レベル2は「ルールベース」、レベル3は「機械学習」、レベル4は「ディープラーニング」と結びつけて覚えます。
+      </div-->
+
+      <h3>2. 特徴量とは何か</h3>
+      <p>
+        <span class="keyword">特徴量</span>
+        とは、AIが判断するときに注目する
+        <strong>データの特徴・判断材料</strong>
+        のことです。
+      </p>
+
+      <div class="example">
+        例：犬と猫を見分けるAIの場合
+        <ul>
+          <li>耳の形</li>
+          <li>目の位置</li>
+          <li>鼻や口の形</li>
+          <li>体の大きさ</li>
+          <li>毛の模様</li>
+        </ul>
+        こうした「見分けるためのポイント」が特徴量です。
+      </div>
+
+      <p>
+        レベル3の機械学習では、人間が「どの特徴に注目するか」をある程度設計する場合があります。
+        一方、レベル4のディープラーニングでは、AIが大量のデータから
+        <strong>重要な特徴量を自動的に見つける</strong>
+        ことができる点が重要です。
+      </p>
+
+      <div class="point">
+        試験ポイント：
+        <br>
+        「特徴量の調整を含めた学習が可能」＝
+        <span class="keyword">レベル4</span>
+        と押さえます。
+      </div>
+
+      <h3>3. ANIとAGI：弱いAIと強いAI</h3>
+      <p>
+        教科書では、AIには
+        <span class="keyword">ANI</span>
+        と
+        <span class="keyword">AGI</span>
+        という2つの概念があると説明されています。
+        試験では英語名・日本語訳・特徴をセットで覚えることが大切です。
+      </p>
+
+      <div class="two-col">
+        <div class="compare-card ani">
+          <div class="big">ANI</div>
+          <p>
+            <strong>Artificial Narrow Intelligence</strong><br>
+            人工的な狭い知能
+          </p>
+          <ul>
+            <li>別名：<span class="keyword">弱いAI</span></li>
+            <li>特定のタスクに強い</li>
+            <li>限定された範囲では人間並み、または人間以上の性能を発揮する</li>
+            <li>現在、身近で使われている多くのAIはANIに分類される</li>
+          </ul>
+        </div>
+
+        <div class="compare-card agi">
+          <div class="big">AGI</div>
+          <p>
+            <strong>Artificial General Intelligence</strong><br>
+            人工的な広い知能
+          </p>
+          <ul>
+            <li>別名：<span class="keyword">強いAI</span></li>
+            <li>幅広い知的タスクに対応できる</li>
+            <li>学習・理解・推論・計画など、人間の知能が持つ多様な能力を備える</li>
+            <li>教科書上、現時点では実現していないと整理される</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="caution">
+  注意：<br>
+  <span class="keyword">弱いAI</span>
+  は「性能が低いAI」という意味ではありません。
+  特定のタスクに限定されているAIという意味です。
+  将棋AIや画像認識AIのように、特定分野では人間以上の性能を出す場合もあります。
+  <br>
+  <span class="keyword">強いAI</span>
+  は、人間のように幅広い知的タスクをこなせるAIです。
+  現時点ではまだ実現していないとされています。
+</div>
+
+      <h3>4. ANIは「専門家」のようなAI</h3>
+      <p>
+        <span class="keyword">ANI</span>
+        は、ある1つの分野では非常に優秀ですが、
+        それ以外のことは基本的にできないAIです。
+        たとえるなら、<strong>特定分野だけに強い専門家</strong>です。
+      </p>
+
+      <div class="example">
+        具体例：
+        <ul>
+          <li>チェスをプレイするコンピュータは、チェスでは強いが、別のゲームを自然にうまくプレイできるわけではない。</li>
+          <li>音声をテキストに変換する音声認識システムは、音声認識には強いが、画像を分析する目的では作られていない。</li>
+        </ul>
+      </div>
+
+      <div class="point">
+        試験ポイント：
+        <br>
+        「特定のタスク」「限定的なタスク」「専門家のようなAI」＝
+        <span class="keyword">ANI</span>
+        と判断します。
+      </div>
+
+      <h3>5. AGIは「幅広い課題に対応できる人」のようなAI</h3>
+      <p>
+        <span class="keyword">AGI</span>
+        は、1つの分野だけでなく、さまざまな知的タスクをこなせるAIです。
+        たとえるなら、学習・理解・推論・計画を幅広くこなす
+        <strong>幅広い課題に対応できる人</strong>
+        のようなAIです。
+      </p>
+
+      <div class="example">
+        AGIが実現した場合のイメージ：
+        <ul>
+          <li>初めて見る問題でも、状況を理解して解決策を考える。</li>
+          <li>新しい環境に適応する。</li>
+          <li>人間が行うような幅広い知的タスクを実行する。</li>
+        </ul>
+      </div>
+
+      <div class="caution">
+        注意：
+        <br>
+        AGIは、現時点では存在しておらず、実現には多くの技術的課題が残っているとされています。
+        「便利な生成AI＝AGI」と早合点しないことが重要です。
+      </div>
+
+      <h3>6. 間違えやすいポイント</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>間違えやすい内容</th>
+            <th>正しい理解</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>レベル4のAIならAGIである</td>
+            <td>
+              そうとは限りません。ディープラーニングを使っていても、特定タスク向けならANIです。
+            </td>
+          </tr>
+          <tr>
+            <td>チャットボットはすべてレベル2である</td>
+            <td>
+              教科書のレベル2の例は、主にルールベースの単純なチャットボットです。
+              現在の生成AI型チャットボットは、ディープラーニングや大規模言語モデルを使うものもあります。
+            </td>
+          </tr>
+          <tr>
+            <td>ANIは性能が低いAIである</td>
+            <td>
+              性能が低いという意味ではありません。
+              「範囲が狭い」という意味です。
+              特定分野では人間以上の性能を発揮することがあります。
+            </td>
+          </tr>
+          <tr>
+            <td>AGIはすでに一般利用されている</td>
+            <td>
+              教科書では、AGIは現時点では存在していないと整理されています。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>7. 試験直前チェック</h3>
+      <div class="quiz">
+        <p>Q1. 室温に応じて冷房を強めるなど、単純な条件に従って制御するAIは？</p>
+        <p class="answer">A. レベル1</p>
+
+        <p>Q2. 入力データからパターンを見つけるAIは？</p>
+        <p class="answer">A. レベル3：機械学習を利用したAI</p>
+
+        <p>Q3. 特徴量の調整を含めた学習ができるAIは？</p>
+        <p class="answer">A. レベル4：ディープラーニングを利用したAI</p>
+
+        <p>Q4. 特定のタスクに対して人間並みの性能を発揮するAIは？</p>
+        <p class="answer">A. ANI、弱いAI</p>
+
+        <p>Q5. 幅広い知的タスクに対して人間並みの性能を発揮するAIは？</p>
+        <p class="answer">A. AGI、強いAI</p>
+      </div>
+    </section>
+
+    <section class="summary">
+      <h2>まとめ</h2>
+      <ul>
+        <li>
+          AIのレベルは、
+          <span class="keyword">レベル1：条件分岐</span>
+          →
+          <span class="keyword">レベル2：ルールベース</span>
+          →
+          <span class="keyword">レベル3：機械学習</span>
+          →
+          <span class="keyword">レベル4：ディープラーニング</span>
+          の順で高度になる。
+        </li>
+        <li>
+          <span class="keyword">特徴量</span>
+          は、AIが判断に使うデータの特徴・注目ポイントである。
+        </li>
+        <li>
+          <span class="keyword">ANI</span>
+          は「特定タスクに強いAI」。試験では
+          <span class="keyword">弱いAI</span>
+          と結びつける。
+        </li>
+        <li>
+          <span class="keyword">AGI</span>
+          は「幅広い知的タスクをこなすAI」。試験では
+          <span class="keyword">強いAI</span>
+          と結びつける。
+        </li>
+        <li>
+          AGIは現時点では実現していないとされている。現在使われている多くのAIは、基本的にANIとして理解する。
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>生成AIパスポート試験対策｜第2章 第3節 ChatGPTの概要</title>
+<link rel="stylesheet" href="2-3ChatGPTの概要-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+<body>
+<div class="page">
+
+<h1>生成AIパスポート試験対策<br>第2章 第3節　ChatGPTの概要</h1>
+
+<div class="lead">
+  このページでは、教科書の「ChatGPTの概要」をもとに、試験で問われやすい
+  <span class="keyword">ChatGPTの意味</span>
+  <span class="keyword">GPTの変遷</span>
+  <span class="keyword">重要用語</span>
+  <span class="keyword">関連サービス</span>
+  を整理します。
+</div>
+
+<h2>1. このページで学ぶこと</h2>
+<div class="box learn">
+  <ul>
+    <li><span class="check">ChatGPTとは何か</span>：Chat、G、P、T の意味を理解する。</li>
+    <li><span class="check">GPTモデルの変遷</span>：GPT-1からGPT-5まで、何が進化したかを押さえる。</li>
+    <li><span class="check">試験頻出語句</span>：パラメータ、データセット、NLP、RLHF、アライメント、ファインチューニング、ハルシネーション、マルチモーダル。</li>
+    <li><span class="check">関連機能・サービス</span>：Code Interpreter、GPTs、Sora、Operator、Codex、Image Generation の違いを整理する。</li>
+  </ul>
+</div>
+
+<h2>2. ChatGPTとは</h2>
+<div class="box">
+  <p>
+    <span class="keyword">ChatGPT</span>は、OpenAIが開発した自然言語処理モデルを使った対話型AIです。
+    人間と会話しているような自然なやり取りができる点が特徴です。
+  </p>
+
+  <table>
+    <tr>
+      <th>文字</th>
+      <th>意味</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td><strong>Chat</strong></td>
+      <td>対話型</td>
+      <td>質問に対して文章で返すだけでなく、会話の流れを踏まえて応答する。</td>
+    </tr>
+    <tr>
+      <td><strong>G</strong></td>
+      <td>Generative：生成</td>
+      <td>文章、要約、アイデア、コードなどを新しく作り出す。</td>
+    </tr>
+    <tr>
+      <td><strong>P</strong></td>
+      <td>Pre-trained：事前学習済み</td>
+      <td>大量の文章データであらかじめ学習している。</td>
+    </tr>
+    <tr>
+      <td><strong>T</strong></td>
+      <td>Transformer</td>
+      <td>文章中の単語同士の関係を見ながら処理するAIモデルの仕組み。</td>
+    </tr>
+  </table>
+</div>
+
+<div class="box point">
+  <h3>たとえで理解</h3>
+  <p>
+    ChatGPTは「大量の本や文章を読んで、次に来る言葉や自然な返答を予測できるようになったアシスタント」
+    と考えるとわかりやすいです。ただし、本当に意味を人間と同じように理解しているわけではなく、
+    学習したパターンをもとにもっともらしい文章を生成します。
+  </p>
+</div>
+
+<h2>3. 試験で押さえる重要語句</h2>
+
+<div class="box exam">
+  <h3>この章の学習ポイント</h3>
+  <p>
+    ChatGPTの仕組みを理解するうえで重要なのは、
+    「AIがどのように言葉を扱うのか」「なぜ人間らしい回答ができるのか」
+    「なぜ間違えることがあるのか」を、用語とセットで理解することです。
+  </p>
+  <p>
+    試験では、単語の丸暗記だけでなく、
+    <span class="mark">意味・具体例・似た用語との違い</span>
+    が問われやすいので、以下の用語を丁寧に押さえましょう。
+  </p>
+</div>
+
+<div class="box">
+  <h3>① 自然言語処理（NLP）</h3>
+  <p>
+    <span class="keyword">自然言語処理（NLP：Natural Language Processing）</span>とは、
+    人間が普段使っている言葉、つまり日本語や英語などの
+    <strong>自然言語をコンピュータに処理させる技術</strong>です。
+  </p>
+  <p>
+    たとえば、私たちは「明日の予定を教えて」と自然に話します。
+    このような文章をAIが読み取り、意味を推測し、適切な返答を作るために使われるのが自然言語処理です。
+  </p>
+
+  <div class="box point">
+    <h3>具体例</h3>
+    <ul>
+      <li>文章を要約する</li>
+      <li>日本語を英語に翻訳する</li>
+      <li>質問に答える</li>
+      <li>メール文を作成する</li>
+      <li>文章の誤字脱字を修正する</li>
+    </ul>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      ChatGPTは、自然言語処理を活用した対話型AIです。
+      NLPは「人間の言葉をAIが扱うための技術」と覚えましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>② データセット</h3>
+  <p>
+    <span class="keyword">データセット</span>とは、
+    AIが学習するために使うデータのまとまりです。
+    文章生成AIの場合、Web上の文章、書籍、記事、会話文、コードなど、
+    大量のテキストデータが学習に使われます。
+  </p>
+  <p>
+    人間が試験勉強をするときに、教科書や問題集を使うのと同じように、
+    AIもデータセットを使って「言葉の使い方」や「文章のパターン」を学習します。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      データセットは、AIにとっての
+      <span class="mark">教科書・参考書・問題集のセット</span>
+      のようなものです。
+      良い教材で学ぶほど理解が深まりやすいように、
+      AIも学習データの量や質によって性能が変わります。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>注意点</h3>
+    <p>
+      データセットに誤った情報、偏った情報、攻撃的な表現などが含まれていると、
+      AIの出力にもその影響が出る可能性があります。
+      そのため、学習データの品質はとても重要です。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      データセットは「AIが学習するためのデータの集まり」。
+      生成AIの性能や偏りに関係する重要語句です。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>③ パラメータ</h3>
+  <p>
+    <span class="keyword">パラメータ</span>とは、
+    AIモデルの内部にある調整用の数値です。
+    AIは学習を通じて、このパラメータを少しずつ調整し、
+    より自然な文章や適切な回答を生成できるようになります。
+  </p>
+  <p>
+    パラメータ数が多いモデルほど、複雑な表現や文脈を扱える可能性が高くなります。
+    GPT-1、GPT-2、GPT-3、GPT-3.5、GPT-4と進むにつれて、    モデルが大規模化しています。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      パラメータは、料理でいう
+      <span class="mark">味つけを調整する無数のつまみ</span>
+      のようなものです。
+      塩加減、火加減、香り、食感などを細かく調整することで料理の完成度が上がるように、
+      AIも大量のパラメータを調整して回答の精度を高めます。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>誤解しやすい点</h3>
+    <p>
+      パラメータ数が多ければ必ず性能が高い、というわけではありません。
+      学習データの質、モデルの設計、調整方法、安全対策なども性能に関係します。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      パラメータは「モデル内部の調整値」。
+      GPTの変遷では、モデルの大規模化を説明する語句として出やすいです。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>④ ファインチューニング</h3>
+  <p>
+    <span class="keyword">ファインチューニング</span>とは、
+    すでに学習済みのAIモデルを、特定の目的や用途に合わせて追加で調整することです。
+  </p>
+  <p>
+    たとえば、一般的な知識を持つAIに対して、
+    「医療相談向け」「社内FAQ向け」「カスタマーサポート向け」など、
+    特定分野のデータを追加で学習させることで、その用途に合った回答ができるようにします。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      ファインチューニングは、
+      一般的な研修を受けた社員に対して、
+      配属先に合わせた専門研修を行うイメージです。
+    </p>
+    <p>
+      たとえば、新入社員が基本的なビジネスマナーを学んだあと、
+      経理部では会計知識、営業部では提案資料の作り方を追加で学ぶようなものです。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      ファインチューニングは
+      <span class="mark">「事前学習済みモデルを特定用途向けに微調整すること」</span>
+      と覚えましょう。
+      ChatGPTが対話向けに調整された、という説明と関連します。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>⑤ RLHF</h3>
+  <p>
+    <span class="keyword">RLHF</span>は、
+    <strong>Reinforcement Learning from Human Feedback</strong>
+    の略で、日本語では
+    <strong>人間のフィードバックによる強化学習</strong>
+    と訳されます。
+  </p>
+  <p>
+    AIが出した複数の回答に対して、人間が
+    「この回答はわかりやすい」
+    「この回答は危険」
+    「この回答は指示に合っていない」
+    などと評価します。
+    その評価をもとに、AIがより望ましい回答を出せるように調整されます。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      RLHFは、先生が生徒の作文を添削するようなものです。
+      生徒が作文を書く → 先生が良い点・悪い点を指摘する → 生徒が次はより良い作文を書く、
+      という流れに似ています。
+    </p>
+  </div>
+
+  <div class="box">
+    <h3>RLHFの流れ</h3>
+    <ol>
+      <li>AIが回答を生成する。</li>
+      <li>人間が回答の良し悪しを評価する。</li>
+      <li>その評価をもとに、AIが望ましい回答の傾向を学習する。</li>
+      <li>より自然で安全な回答を出しやすくなる。</li>
+    </ol>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      RLHFは、InstructGPTやGPT-3.5の説明と関連して出やすい重要語句です。
+      「人間の評価を使って、AIの出力を改善する仕組み」と押さえましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>⑥ アライメント（Alignment）</h3>
+  <p>
+    <span class="keyword">アライメント</span>とは、
+    AIの出力や行動を、人間の意図・価値観・安全性に合うように調整することです。
+  </p>
+  <p>
+    高性能なAIであっても、利用者の意図と違う回答をしたり、
+    危険な内容を出力したりする可能性があります。
+    そのため、AIが「人間にとって望ましい方向」に動作するように整えることが重要になります。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      アライメントは、車のハンドルの向きを調整することに似ています。
+      エンジンが強力でも、進む方向がずれていたら危険です。
+      AIも高性能であるほど、
+      <span class="mark">人間の目的に沿った方向へ調整すること</span>
+      が大切になります。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>RLHFとの関係</h3>
+    <p>
+      RLHFは、アライメントを実現するための代表的な方法の一つです。
+      つまり、アライメントは「目標・考え方」、
+      RLHFは「そのための具体的な手法」と整理できます。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      アライメントは
+      <span class="mark">「AIを人間の意図や価値観に合わせること」</span>
+      です。
+      安全性・倫理・望ましい回答と関連して理解しましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>⑦ ハルシネーション（Hallucination）</h3>
+  <p>
+    <span class="keyword">ハルシネーション</span>とは、
+    AIが不正確な情報や存在しない情報を、
+    あたかも正しい情報であるかのように生成してしまう現象です。
+  </p>
+  <p>
+    「Hallucination」は本来「幻覚」という意味です。
+    AIが事実ではない内容をもっともらしく言ってしまうため、
+    生成AIを使ううえで特に注意が必要な用語です。
+  </p>
+
+  <div class="box point">
+    <h3>具体例</h3>
+    <ul>
+      <li>存在しない法律名を作って説明する。</li>
+      <li>実在しない本や論文を引用する。</li>
+      <li>人名、会社名、日付を間違える。</li>
+      <li>最新情報を知らないのに、知っているように答える。</li>
+    </ul>
+  </div>
+
+  <div class="box warn">
+    <h3>注意点</h3>
+    <p>
+      ハルシネーションは、モデルの性能が向上しても完全にはなくなりません。
+      特に、法律・医療・金融・試験情報・最新ニュースなどでは、
+      必ず一次情報や信頼できる資料で確認する必要があります。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      ハルシネーションは
+      <span class="mark">「誤情報を正しいように生成すること」</span>
+      です。
+      生成AIのリスクとして非常に問われやすい用語です。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>⑧ マルチモーダル</h3>
+  <p>
+    <span class="keyword">マルチモーダル</span>とは、
+    テキスト、画像、音声、動画など、
+    複数の種類のデータを扱えるAIの仕組みや性質を指します。
+  </p>
+  <p>
+    「モーダル」とは、AIの分野では
+    <strong>入力や出力の形式・情報の種類</strong>
+    のことです。
+    文章だけを扱うAIは単一モーダル、
+    文章と画像、音声などを組み合わせて扱えるAIはマルチモーダルです。
+  </p>
+
+  <div class="box point">
+    <h3>具体例</h3>
+    <ul>
+      <li>画像を見せて「この写真の内容を説明して」と質問する。</li>
+      <li>音声で質問して、音声で回答してもらう。</li>
+      <li>文章と画像を組み合わせて広告案を作る。</li>
+      <li>グラフ画像を読み取って、内容を文章で説明する。</li>
+    </ul>
+  </div>
+
+  <div class="box warn">
+    <h3>オムニモーダルとの違い</h3>
+    <p>
+      マルチモーダルは、複数の種類のデータを扱えることです。
+      一方、GPT-4oの説明で出てくる
+      <span class="keyword">オムニモーダル</span>は、
+      テキスト・画像・音声などをより統合的、自然、シームレスに扱うイメージです。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      マルチモーダルは
+      <span class="mark">「テキストだけでなく、画像・音声・動画など複数種類のデータを扱えること」</span>
+      と覚えましょう。
+      GPT-4、GPT-4o、画像生成AI、動画生成AIの理解にもつながります。
+    </p>
+  </div>
+</div>
+
+<div class="box exam">
+  <h3>重要語句の最終チェック</h3>
+  <table>
+    <tr>
+      <th>用語</th>
+      <th>一言でいうと</th>
+    </tr>
+    <tr>
+      <td><strong>自然言語処理（NLP）</strong></td>
+      <td>人間の言葉をAIが処理する技術</td>
+    </tr>
+    <tr>
+      <td><strong>データセット</strong></td>
+      <td>AIが学習するためのデータの集まり</td>
+    </tr>
+    <tr>
+      <td><strong>パラメータ</strong></td>
+      <td>AIモデル内部で調整される数値</td>
+    </tr>
+    <tr>
+      <td><strong>ファインチューニング</strong></td>
+      <td>学習済みモデルを特定用途向けに微調整すること</td>
+    </tr>
+    <tr>
+      <td><strong>RLHF</strong></td>
+      <td>人間の評価を使ってAIの出力を改善する方法</td>
+    </tr>
+    <tr>
+      <td><strong>アライメント</strong></td>
+      <td>AIを人間の意図や価値観に合わせること</td>
+    </tr>
+    <tr>
+      <td><strong>ハルシネーション</strong></td>
+      <td>誤情報を正しいように生成すること</td>
+    </tr>
+    <tr>
+      <td><strong>マルチモーダル</strong></td>
+      <td>テキスト・画像・音声など複数種類のデータを扱えること</td>
+    </tr>
+  </table>
+</div>
+
+<h2>4. GPTモデルの変遷</h2>
+
+<div class="box exam">
+  <h3>試験ポイント</h3>
+  <p>
+    GPTの進化は、単なる年表暗記ではなく、
+    <span class="mark">文章生成の自然さ</span>、
+    <span class="mark">対話能力</span>、
+    <span class="mark">推論力</span>、
+    <span class="mark">マルチモーダル化</span>、
+    <span class="mark">AIエージェント化</span>
+    がどのように広がったかで理解しましょう。
+  </p>
+</div>
+
+<table>
+  <tr>
+    <th>モデル・機能</th>
+    <th>概要</th>
+    <th>覚え方</th>
+  </tr>
+  <tr>
+    <td><strong>GPT-1</strong><br>2018年6月</td>
+    <td>自然な文章生成が可能になった初期モデル。パラメータ数は約1億1,700万。</td>
+    <td>「GPTの出発点」。文脈理解はまだ限定的。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-2</strong><br>2019年2月</td>
+    <td>GPT-1より大規模化。自然な文章生成能力が向上した一方、誤用・悪用リスクが注目された。パラメータ数は約15億。</td>
+    <td>「高性能化によりリスクも問題化」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-3</strong><br>2020年5月</td>
+    <td>約1,750億パラメータの大規模モデル。幅広い自然言語処理タスクに対応しやすくなった。</td>
+    <td>「一気に巨大化」。ただし誤回答は残る。</td>
+  </tr>
+  <tr>
+    <td><strong>InstructGPT</strong><br>2022年1月</td>
+    <td>GPT-3をベースに、人間の指示により適切に従うよう調整されたモデル。RLHFを採用。</td>
+    <td>「人間の指示に合わせるための改良」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-3.5</strong><br>2022年</td>
+    <td>GPT-3の改良版。より多様な文章生成や対話が可能。ChatGPTはGPT-3.5をベースに対話向けに調整された。</td>
+    <td>「ChatGPT登場の土台」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-4</strong><br>2023年3月</td>
+    <td>GPT-3.5より性能が向上。ハルシネーションの減少、マルチモーダル、多言語の文章生成精度向上などがポイント。</td>
+    <td>「精度・安全性・多言語・画像対応が進化」。</td>
+  </tr>
+  <tr>
+    <td><strong>Code Interpreter</strong><br>2023年</td>
+    <td>ChatGPTがPythonコードを自分で書いて実行できる機能。データ分析、グラフ作成、数学計算、ファイル処理に使える。</td>
+    <td>「ChatGPT内の計算・分析担当」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPTs</strong><br>2023年11月</td>
+    <td>用途に合わせてカスタマイズしたオリジナルのChatGPTを作れる機能。振る舞い、参照ファイル、外部API連携などを設定できる。</td>
+    <td>「自分専用のChatGPTを作る」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-4o</strong><br>2024年5月</td>
+    <td>テキスト、画像、音声を統合的に扱うオムニモーダルモデル。「o」はomni、すべてを意味する。</td>
+    <td>「文章・画像・音声を自然につなぐ」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-o1</strong><br>2024年9月<br><span class="small">公式表記例：OpenAI o1</span></td>
+    <td>速さより推論の質を重視するリーズニングモデル。数学、コード設計、仕様理解など論理的課題に強い。</td>
+    <td>「じっくり考えるAI」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-o3</strong><br>2025年4月<br><span class="small">公式表記例：OpenAI o3</span></td>
+    <td>GPT-o1より長く熟考する設計のリーズニングモデル。難しい数学・コード設計問題への正答率が向上。</td>
+    <td>「o1よりさらに熟考」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-o4</strong><br>2025年4月<br><span class="small">公式表記例：o4-miniなど</span></td>
+    <td>速さとコスト効率を意識しながら、数学・コード・画像を含む課題に対応するリーズニング系モデル。</td>
+    <td>「考える＋道具を使う」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-4.1</strong><br>2025年4月</td>
+    <td>開発実務で使いやすく強化された改良版。長文や大規模コードを扱い、コーディングやバグ修正の精度と速度が向上。</td>
+    <td>「開発・コーディング向け改良」。</td>
+  </tr>
+  <tr>
+    <td><strong>GPT-5</strong><br>2025年8月</td>
+    <td>難問にも対応し、推論力とスピードが大幅に進化。GPT-5 Thinkingでは深い思考を取り入れ、誤情報の減少が強調される。</td>
+    <td>「推論力と速度の進化」。</td>
+  </tr>
+</table>
+
+
+<h2>5. GPT-1〜GPT-3.5までの説明</h2>
+
+<!--div class="box exam">
+  <h3>この部分を追加する理由</h3>
+  <p>
+    表でGPT-1からGPT-3.5までの流れを確認したあと、すぐにGPT-4以降へ進むと、
+    「GPT-1・GPT-2・GPT-3・InstructGPT・GPT-3.5が何を意味するのか」が少しわかりにくくなります。
+  </p>
+  <p>
+    ここでは、GPT-4以降を理解する前の土台として、
+    <span class="mark">GPTがどのように文章生成AIとして成長し、ChatGPTにつながったのか</span>
+    を丁寧に整理します。
+  </p>
+</div-->
+
+<div class="box">
+  <h3>① GPT-1：GPTシリーズの出発点</h3>
+  <p>
+    <span class="keyword">GPT-1</span>は、2018年に登場したGPTシリーズの初期モデルです。
+    GPTという名前のとおり、
+    <strong>Generative Pre-trained Transformer</strong>
+    の考え方を使っています。
+  </p>
+  <p>
+    まず大量の文章を読ませて、
+    「この文章の次には、どのような単語が来やすいか」を学習させます。
+    このように、あらかじめ大量のデータで学習しておくことを
+    <span class="keyword">事前学習</span>といいます。
+  </p>
+
+  <div class="box point">
+    <h3>イメージ</h3>
+    <p>
+      GPT-1は、たくさんの文章を読んで
+      <span class="mark">「言葉のつながり方」や「文章の流れ」</span>
+      を学んだAIです。
+      たとえば、「今日はとても天気が」という文があれば、
+      次に「よい」「悪い」「いい」などが来やすいと予測します。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>押さえ方</h3>
+    <p>
+      GPT-1は、現在のChatGPTのように自然な会話をするというより、
+      <strong>GPT方式の有効性を示した出発点</strong>です。
+      「大量の文章で事前学習し、その知識をさまざまな言語処理に活用する」という流れがここから始まりました。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      GPT-1は
+      <span class="mark">「GPTシリーズの出発点」「事前学習の考え方を活用した初期モデル」</span>
+      と覚えましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>② GPT-2：文章生成能力が大きく向上</h3>
+  <p>
+    <span class="keyword">GPT-2</span>は、2019年に登場したモデルです。
+    GPT-1よりも大規模になり、文章の続きをより自然に生成できるようになりました。
+  </p>
+  <p>
+    GPT-2では、短い入力文を与えると、その続きを長く自然に書く能力が注目されました。
+    たとえば、ニュース記事の書き出しや物語の冒頭を入力すると、
+    それに続く文章をもっともらしく作成できます。
+  </p>
+
+  <div class="box point">
+    <h3>イメージ</h3>
+    <p>
+      GPT-1が「文章の流れを学び始めたAI」だとすると、
+      GPT-2は
+      <span class="mark">「文章の続きをかなり自然に書けるようになったAI」</span>
+      です。
+    </p>
+    <p>
+      文章生成能力が上がったことで、便利さだけでなく、
+      偽ニュースやスパムなどへの悪用リスクも話題になりました。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>注意して説明したい点</h3>
+    <p>
+      GPT-2は高性能化したことで、
+      「AIが自然な文章を作れることには、社会的な影響やリスクもある」
+      という点が強く意識されるようになったモデルです。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      GPT-2は
+      <span class="mark">「文章生成能力の向上」と「悪用リスクへの注目」</span>
+      をセットで覚えると理解しやすいです。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>③ GPT-3：一気に大規模化し、できることが広がった</h3>
+  <p>
+    <span class="keyword">GPT-3</span>は、2020年に登場した大規模言語モデルです。
+    パラメータ数は約1,750億とされ、GPT-2から大きく規模が拡大しました。
+  </p>
+  <p>
+    GPT-3の大きな特徴は、文章生成だけでなく、
+    要約、翻訳、質問応答、文章分類、コード作成など、
+    さまざまな自然言語処理タスクに対応しやすくなったことです。
+  </p>
+
+  <div class="box point">
+    <h3>Few-shot learning（少数例からの学習）のイメージ</h3>
+    <p>
+      GPT-3では、プロンプトの中に少しだけ例を入れると、
+      その例を見て似た形式で答えやすくなりました。
+    </p>
+    <p>
+      たとえば、
+      「りんご → apple」「みかん → orange」と例を見せてから
+      「ぶどう → ?」と入力すると、
+      「grape」のように形式を推測して答えるイメージです。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>誤解しやすい点</h3>
+    <p>
+      GPT-3は非常に高性能ですが、
+      人間のように事実を完全に理解しているわけではありません。
+      学習したパターンをもとに、もっともらしい文章を作るため、
+      <span class="mark">誤情報を自然な文章で出してしまうこと</span>
+      があります。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      GPT-3は
+      <span class="mark">「大規模化」「約1,750億パラメータ」「少数例からの対応力」</span>
+      が重要です。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>④ InstructGPT：人間の指示に従いやすくしたモデル</h3>
+  <p>
+    <span class="keyword">InstructGPT</span>は、GPT-3をもとに、
+    人間の指示により適切に従うよう調整したモデルです。
+  </p>
+  <p>
+    GPT-3は文章生成能力が高い一方で、
+    利用者の指示どおりに答えなかったり、
+    必要以上に長い文章を出したり、
+    安全でない内容を出してしまったりすることがありました。
+  </p>
+
+  <div class="box point">
+    <h3>イメージ</h3>
+    <p>
+      GPT-3が「文章を書く力が高い人」だとすると、
+      InstructGPTは
+      <span class="mark">「相手の依頼を聞いて、依頼に合う形で答える練習をした人」</span>
+      です。
+    </p>
+  </div>
+
+  <div class="box">
+    <h3>RLHFとの関係</h3>
+    <p>
+      InstructGPTでは、
+      <span class="keyword">RLHF</span>
+      という方法が重要です。
+      AIが出した回答を人間が評価し、
+      「この回答はよい」「この回答は指示に合っていない」
+      というフィードバックをもとに、より望ましい回答へ調整します。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      InstructGPTは
+      <span class="mark">「GPT-3を人間の指示に従いやすく調整したモデル」</span>
+      です。
+      RLHFやアライメントの説明とセットで押さえましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>⑤ GPT-3.5：ChatGPT登場の土台</h3>
+  <p>
+    <span class="keyword">GPT-3.5</span>は、GPT-3をさらに改良したモデル群です。
+    ChatGPTの初期版は、このGPT-3.5系のモデルをもとに対話向けに調整されました。
+  </p>
+  <p>
+    GPT-3.5では、文章生成だけでなく、
+    会話の流れを踏まえた応答、追加質問への対応、要約、説明、コード作成などがより使いやすくなりました。
+  </p>
+
+  <div class="box point">
+    <h3>ChatGPTにつながるポイント</h3>
+    <p>
+      これまでのGPTは「文章を生成するAI」という印象が強かったのに対し、
+      GPT-3.5をもとにしたChatGPTでは、
+      <span class="mark">人と会話しながら作業を進めるAI</span>
+      として利用しやすくなりました。
+    </p>
+    <p>
+      たとえば、最初に質問し、その回答に対して
+      「もう少し短くして」「初心者向けにして」「表にして」
+      と追加で指示できるような使い方です。
+    </p>
+  </div>
+
+  <div class="box warn">
+    <h3>注意点</h3>
+    <p>
+      GPT-3.5は対話が得意になりましたが、
+      ハルシネーションがなくなったわけではありません。
+      事実確認が必要な内容では、必ず信頼できる情報源で確認する必要があります。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      GPT-3.5は
+      <span class="mark">「ChatGPT登場の土台」「対話向けに使いやすくなったモデル」</span>
+      と覚えましょう。
+    </p>
+  </div>
+</div>
+
+<div class="box exam">
+  <h3>GPT-1〜GPT-3.5までの流れを一言で整理</h3>
+  <table>
+    <tr>
+      <th>モデル</th>
+      <th>一言でいうと</th>
+      <th>授業での説明例</th>
+    </tr>
+    <tr>
+      <td><strong>GPT-1</strong></td>
+      <td>GPTシリーズの出発点</td>
+      <td>大量の文章で事前学習し、言葉のつながりを学ぶ考え方を示した。</td>
+    </tr>
+    <tr>
+      <td><strong>GPT-2</strong></td>
+      <td>自然な文章生成が大きく向上</td>
+      <td>文章の続きを長く自然に書けるようになり、悪用リスクも注目された。</td>
+    </tr>
+    <tr>
+      <td><strong>GPT-3</strong></td>
+      <td>一気に大規模化</td>
+      <td>プロンプトだけで要約・翻訳・質問応答などに対応しやすくなった。</td>
+    </tr>
+    <tr>
+      <td><strong>InstructGPT</strong></td>
+      <td>指示に従いやすく調整</td>
+      <td>人間の評価を使って、より望ましい回答を出すように調整した。</td>
+    </tr>
+    <tr>
+      <td><strong>GPT-3.5</strong></td>
+      <td>ChatGPTの土台</td>
+      <td>会話形式で使いやすくなり、ChatGPTの初期版につながった。</td>
+    </tr>
+  </table>
+</div>
+
+<div class="box point">
+  <h3>ここまでの大きな流れ</h3>
+  <p>
+    GPT-1からGPT-3までは、主に
+    <span class="mark">モデルの大規模化と文章生成能力の向上</span>
+    が大きなポイントです。
+  </p>
+  <p>
+    InstructGPTとGPT-3.5では、
+    ただ文章を作るだけでなく、
+    <span class="mark">人間の指示に従いやすい対話型AIへ近づいたこと</span>
+    が重要です。
+  </p>
+</div>
+
+
+<h2>6. GPT-4で特に押さえる性能向上</h2>
+
+<div class="two">
+  <div class="box">
+    <h3>ハルシネーションの減少</h3>
+    <p>
+      <span class="keyword">ハルシネーション</span>とは、AIが不正確または誤った情報を、
+      あたかも正しい情報のように生成することです。
+    </p>
+    <p>
+      GPT-4ではGPT-3.5より減少したとされますが、
+      <span class="mark">完全になくなったわけではありません</span>。
+    </p>
+  </div>
+
+  <div class="box">
+    <h3>マルチモーダル</h3>
+    <p>
+      <span class="keyword">モーダル</span>は、AIでは「入力方法・情報の種類」という意味で使われます。
+      テキスト、画像、音声、動画などを複数扱えるのがマルチモーダルです。
+    </p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>多言語の文章生成精度の向上</h3>
+  <p>
+    GPT-3.5では英語に比べて日本語などの精度が低く、不自然さや誤りが見られることがありました。
+    GPT-4では日本語を含む多くの言語で出力精度が改善された点が教科書で示されています。
+  </p>
+</div>
+
+<div class="box warn">
+  <h3>注意：ハルシネーション対策</h3>
+  <ul>
+    <li>AIの回答をそのまま信用しない。</li>
+    <li>法律、医療、金融、試験範囲、最新情報は必ず確認する。</li>
+    <li>「もっともらしい文章」と「正しい情報」は別物と考える。</li>
+  </ul>
+</div>
+
+<h2>7. ChatGPTのその後の進化（表の項目を詳しく解説）</h2>
+
+<div class="box exam">
+  <h3>この章での見方</h3>
+  <p>
+    GPT-4以降は、単に「文章がうまくなった」だけではありません。
+    <span class="mark">画像・音声を扱う</span>、
+    <span class="mark">じっくり考える</span>、
+    <span class="mark">道具を使って作業する</span>、
+    <span class="mark">コード開発を支援する</span>
+    というように、できることの方向性が広がっています。
+  </p>
+  <p>
+    試験対策では、モデル名を丸暗記するよりも、
+    <strong>「何を強化したモデル・機能なのか」</strong>をセットで覚えることが大切です。
+  </p>
+</div>
+
+<h3>Code Interpreter：計算・分析・ファイル処理を手伝う機能</h3>
+<div class="box">
+  <p>
+    <span class="keyword">Code Interpreter</span>は、ChatGPTがPythonというプログラミング言語を使って、
+    自分でコードを書き、実行し、結果をもとに回答できる機能です。
+  </p>
+  <p>
+    通常のChatGPTは文章で説明することが中心ですが、Code Interpreterでは、
+    実際に計算したり、表データを読み込んだり、グラフを作成したりできます。
+    そのため、<span class="mark">データ分析・数学計算・ファイル処理</span>に向いています。
+  </p>
+
+  <table>
+    <tr>
+      <th>できること</th>
+      <th>具体例</th>
+    </tr>
+    <tr>
+      <td><strong>データ分析</strong></td>
+      <td>ExcelやCSVを読み取り、合計、平均、割合、相関などを計算する。</td>
+    </tr>
+    <tr>
+      <td><strong>グラフ作成</strong></td>
+      <td>売上推移の折れ線グラフ、構成比の円グラフ、比較用の棒グラフを作る。</td>
+    </tr>
+    <tr>
+      <td><strong>数学計算</strong></td>
+      <td>複雑な計算や統計処理を、実際にコードで確認しながら行う。</td>
+    </tr>
+    <tr>
+      <td><strong>ファイル処理</strong></td>
+      <td>ファイルを読み込む、整形する、別形式に変換するなどの作業を行う。</td>
+    </tr>
+  </table>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      Code Interpreterは、ChatGPTの中にいる
+      <span class="mark">計算と分析が得意なアシスタント</span>です。
+      文章で考えるだけでなく、実際に電卓やExcelのような道具を使って確認してくれるイメージです。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      Code Interpreterは、AIモデルの名前というより、
+      <strong>ChatGPTがコードを実行して分析・計算を行うための機能</strong>として押さえましょう。
+    </p>
+  </div>
+</div>
+
+<h3>GPTs：目的別に作るオリジナルChatGPT</h3>
+<div class="box">
+  <p>
+    <span class="keyword">GPTs</span>は、ユーザーが目的に合わせてカスタマイズできるChatGPTです。
+    たとえば、授業用の教材作成GPT、社内マニュアル回答GPT、旅行計画GPTなど、
+    特定の用途に合わせた「専用アシスタント」を作るイメージです。
+  </p>
+  <p>
+    GPTモデルそのものを新しく作るというより、
+    <span class="mark">既存のChatGPTに役割・指示・参照資料などを設定して、使いやすくする機能</span>
+    と考えるとわかりやすいです。
+  </p>
+
+  <table>
+    <tr>
+      <th>設定できるもの</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td><strong>役割・口調</strong></td>
+      <td>先生風、ビジネス文書添削風、初心者向け講師風など、振る舞いを決める。</td>
+    </tr>
+    <tr>
+      <td><strong>参照ファイル</strong></td>
+      <td>マニュアル、教材、商品資料などを入れて、その内容をもとに回答させる。</td>
+    </tr>
+    <tr>
+      <td><strong>外部サービス連携</strong></td>
+      <td>APIなどと連携して、情報取得や操作を行えるようにする。</td>
+    </tr>
+  </table>
+
+  <div class="box warn">
+    <h3>混同注意：GPTモデルとGPTs</h3>
+    <p>
+      <strong>GPTモデル</strong>は、ChatGPTの土台となるAIそのものです。
+      一方、<strong>GPTs</strong>は、その土台を使って目的別に作るカスタム版ChatGPTです。
+    </p>
+  </div>
+</div>
+
+<h3>GPT-4o：文章・画像・音声を自然につなぐモデル</h3>
+<div class="box">
+  <p>
+    <span class="keyword">GPT-4o</span>は、2024年5月に発表されたモデルです。
+    「o」は <strong>omni</strong> を表し、「すべての」「包括的な」という意味があります。
+  </p>
+  <p>
+    それまでのChatGPTは、文章を中心にしたやり取りが主でした。
+    GPT-4oでは、<span class="mark">テキスト・画像・音声</span>をより自然に扱えるようになり、
+    画像を見て説明したり、音声で会話したりする方向へ進化しました。
+  </p>
+
+  <div class="two">
+    <div class="box point">
+      <h3>何がすごいのか</h3>
+      <ul>
+        <li>文章だけでなく、画像や音声も扱える。</li>
+        <li>音声会話の反応が速く、会話に近い使い方ができる。</li>
+        <li>画像の内容を読み取り、説明や分析に活用できる。</li>
+      </ul>
+    </div>
+    <div class="box point">
+      <h3>授業でのたとえ</h3>
+      <p>
+        GPT-4oは、文字だけでなく、写真を見たり、声を聞いたりしながら対応できる
+        <span class="mark">多機能な先生</span>のようなものです。
+      </p>
+    </div>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      GPT-4oは、<strong>オムニモーダル</strong>が重要語句です。
+      「テキスト・画像・音声を統合的に扱う」と覚えましょう。
+    </p>
+  </div>
+</div>
+
+<h3>リーズニングモデル：GPT-o1・GPT-o3・GPT-o4</h3>
+<div class="box">
+  <p>
+    <span class="keyword">リーズニングモデル</span>は、すぐに答えることよりも、
+    問題を段階的に検討し、より正確に答えることを重視したモデルです。
+  </p>
+  <p>
+    通常のモデルが「すばやく返答するアシスタント」だとすると、リーズニングモデルは
+    <span class="mark">難しい問題をじっくり考えてから答えるアシスタント</span>です。
+    数学、プログラミング、論理問題、複雑な手順の整理などに向いています。
+  </p>
+
+  <div class="box warn">
+    <h3>表記についての注意</h3>
+    <p>
+      教材や表では「GPT-o1」「GPT-o3」「GPT-o4」と書かれることがあります。
+      公式情報では、<strong>OpenAI o1</strong>、<strong>OpenAI o3</strong>、<strong>o4-mini</strong>のような表記が使われることがあります。
+      試験対策では、表記の違いよりも、<span class="mark">推論を重視するoシリーズ</span>として理解することが大切です。
+    </p>
+  </div>
+
+  <table>
+    <tr>
+      <th>モデル</th>
+      <th>わかりやすい説明</th>
+      <th>覚え方</th>
+    </tr>
+    <tr>
+      <td><strong>GPT-o1</strong></td>
+      <td>
+        回答前により多くの時間をかけて考えるモデル。
+        数学、科学、コード、複雑な推論問題などで力を発揮する。
+      </td>
+      <td>「まず、じっくり考えるAI」。</td>
+    </tr>
+    <tr>
+      <td><strong>GPT-o3</strong></td>
+      <td>
+        o1の考え方をさらに発展させた高性能なリーズニングモデル。
+        複数の条件を整理する問題、コード設計、画像やグラフを含む分析などに強い。
+      </td>
+      <td>「より難しい問題を深く考えるAI」。</td>
+    </tr>
+    <tr>
+      <td><strong>GPT-o4</strong><br><span class="small">※公式では主にo4-miniなど</span></td>
+      <td>
+        小型で高速・効率的なリーズニングモデルとして説明されることが多い。
+        数学、コーディング、画像を含む課題に対して、速さと推論力のバランスを取る。
+      </td>
+      <td>「考える力を、軽く速く使うAI」。</td>
+    </tr>
+  </table>
+
+  <div class="box point">
+    <h3>図解イメージ</h3>
+    <p>
+      通常モデル：質問 → すばやく回答<br>
+      リーズニングモデル：質問 → 条件を整理 → 手順を考える → 必要なら道具を使う → 回答
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      oシリーズは、<strong>推論・数学・コード・複雑な問題解決</strong>に強いモデルとして押さえます。
+      GPT-4oの「オムニモーダル」と、oシリーズの「リーズニング」を分けて覚えると混同しにくいです。
+    </p>
+  </div>
+</div>
+
+<h3>GPT-4.1：コーディング・指示追従・長文処理を強化</h3>
+<div class="box">
+  <p>
+    <span class="keyword">GPT-4.1</span>は、GPT-4系をさらに実務向けに改良したモデルとして理解するとよいです。
+    特に、<span class="mark">コーディング</span>、<span class="mark">指示に正確に従う力</span>、
+    <span class="mark">長い文章や大きなコードを扱う力</span>が強化された点がポイントです。
+  </p>
+
+  <table>
+    <tr>
+      <th>強化された点</th>
+      <th>説明</th>
+    </tr>
+    <tr>
+      <td><strong>コーディング</strong></td>
+      <td>プログラムの作成、修正、バグの発見、仕様に沿った実装を支援しやすい。</td>
+    </tr>
+    <tr>
+      <td><strong>指示追従</strong></td>
+      <td>ユーザーが指定した条件や形式に、より正確に合わせやすい。</td>
+    </tr>
+    <tr>
+      <td><strong>長文・長いコード</strong></td>
+      <td>長い資料や大規模なコードを読み取り、内容を整理しやすい。</td>
+    </tr>
+  </table>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      GPT-4.1は、ざっくりした相談よりも、
+      「この仕様どおりにコードを書いて」「この条件に合わせて修正して」のような
+      <span class="mark">実務の細かい指示に対応する作業者</span>に近いイメージです。
+    </p>
+  </div>
+</div>
+
+<h3>GPT-5：速さと深い思考を使い分ける方向へ</h3>
+<div class="box">
+  <p>
+    <span class="keyword">GPT-5</span>は、2025年に発表された重要モデルです。
+    教材では「推論力と速度の進化」として押さえるとわかりやすいです。
+  </p>
+  <p>
+    GPT-5のポイントは、すべての質問に同じ答え方をするのではなく、
+    簡単な質問にはすばやく答え、難しい質問にはより深く考えるというように、
+    <span class="mark">状況に応じて応答の仕方を切り替える</span>方向に進化したことです。
+  </p>
+
+  <div class="two">
+    <div class="box point">
+      <h3>得意な場面</h3>
+      <ul>
+        <li>複雑な文章作成や要約</li>
+        <li>調査・分析・問題解決</li>
+        <li>コーディングや仕様整理</li>
+        <li>画像を含む理解や説明</li>
+      </ul>
+    </div>
+    <div class="box point">
+      <h3>GPT-5 Thinkingのイメージ</h3>
+      <p>
+        GPT-5 Thinkingは、より深く考える必要がある課題で使うモードです。
+        難しい問題を、手順を整理しながら検討するイメージです。
+      </p>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <h3>注意点</h3>
+    <p>
+      性能が上がっても、ハルシネーションが完全になくなるわけではありません。
+      試験情報、法律、医療、金融、最新ニュースなどは、必ず公式情報や信頼できる資料で確認する必要があります。
+    </p>
+  </div>
+</div>
+
+<h2>8. 関連サービス・機能の詳しい説明</h2>
+
+<div class="box exam">
+  <h3>ここで押さえるポイント</h3>
+  <p>
+    Sora、Operator、Codex、Image Generationは、GPTモデルそのものというより、
+    <strong>生成AIを使って何をするサービス・機能なのか</strong>で整理するとわかりやすいです。
+  </p>
+</div>
+
+<h3>Sora：文章や画像から動画を作るAI</h3>
+<div class="box">
+  <p>
+    <span class="keyword">Sora</span>は、文章や画像をもとに動画を生成するAIです。
+    「夕焼けの海辺を犬が走っている動画を作って」のように、
+    文章で場面を指示すると、その内容に合う映像を作るイメージです。
+  </p>
+  <p>
+    画像生成AIが「1枚の絵や写真」を作るのに対し、Soraは
+    <span class="mark">時間の流れがある映像</span>を作る点が特徴です。
+    そのため、人物や物体の動き、カメラワーク、場面の変化なども扱います。
+  </p>
+
+  <div class="box point">
+    <h3>たとえで理解</h3>
+    <p>
+      Image Generationが「ポスターやイラストを作るデザイナー」だとすると、
+      Soraは「短い映像を作る映像クリエイター」です。
+    </p>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      Soraは、<strong>動画生成AI</strong>として覚えます。
+      Image Generationと混同しないように、<span class="mark">Sora＝動画</span>と押さえましょう。
+    </p>
+  </div>
+</div>
+
+<h3>Operator：Web画面を操作するAIエージェント</h3>
+<div class="box">
+  <p>
+    <span class="keyword">Operator</span>は、AIがWebブラウザを使い、画面を見ながら、
+    クリック・入力・スクロールなどの操作を行うAIエージェントです。
+  </p>
+  <p>
+    普通のChatGPTは「調べ方を教える」「文章で説明する」ことが中心です。
+    Operatorはそれに加えて、<span class="mark">実際にWeb画面を操作して作業を進める</span>点が特徴です。
+  </p>
+
+  <table>
+    <tr>
+      <th>通常のChatGPT</th>
+      <th>Operator</th>
+    </tr>
+    <tr>
+      <td>操作方法を文章で説明する。</td>
+      <td>画面を見て、クリックや入力などの操作を行う。</td>
+    </tr>
+    <tr>
+      <td>ユーザーが自分でWebサイトを操作する。</td>
+      <td>ユーザーの代わりにWeb上のタスクを実行する。</td>
+    </tr>
+  </table>
+
+<div class="box point">
+  <h3>AIエージェントのイメージ</h3>
+  <p>
+    従来のChatGPTが「質問に答える先生」だとすると、
+    <span class="keyword">AIエージェント</span>は「目標を聞いて、必要な手順を考え、道具を使って作業を進める秘書」です。
+  </p>
+  <p>
+    例：旅行予約を頼むと、検索 → 候補比較 → フォーム入力 → 予約確認という流れを自動で進めるイメージです。
+  </p>
+</div>
+
+  <div class="box point">
+    <h3>具体例</h3>
+    <ul>
+      <li>Webページを開いて情報を探す。</li>
+      <li>フォームに必要事項を入力する。</li>
+      <li>候補を比較して、条件に合うものを探す。</li>
+      <li>予約や購入の前段階まで作業を進める。</li>
+    </ul>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      Operatorは、<strong>AIエージェント</strong>の例として重要です。
+      「質問に答えるAI」から、「作業を実行するAI」へ進んだ例と考えましょう。
+    </p>
+  </div>
+</div>
+
+<h3>Codex：ソフトウェア開発を支援するAIエージェント</h3>
+<div class="box">
+  <p>
+    <span class="keyword">Codex</span>は、プログラム開発を支援するAIエージェントです。
+    コードを書くだけでなく、バグ修正、機能追加、テスト、コードベースに関する質問への回答など、
+    開発作業全体を支援します。
+  </p>
+  <p>
+    Code Interpreterが「Pythonを実行して分析・計算する機能」なのに対し、Codexは
+    <span class="mark">ソフトウェア開発そのものを手伝うエージェント</span>です。
+  </p>
+
+  <table>
+    <tr>
+      <th>項目</th>
+      <th>Code Interpreter</th>
+      <th>Codex</th>
+    </tr>
+    <tr>
+      <td><strong>主な目的</strong></td>
+      <td>計算、データ分析、グラフ作成</td>
+      <td>プログラム開発、バグ修正、機能追加</td>
+    </tr>
+    <tr>
+      <td><strong>イメージ</strong></td>
+      <td>分析担当</td>
+      <td>開発担当</td>
+    </tr>
+    <tr>
+      <td><strong>使う場面</strong></td>
+      <td>ExcelやCSVを分析したいとき</td>
+      <td>アプリやWebシステムのコードを作りたいとき</td>
+    </tr>
+  </table>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      Codexは、<strong>ソフトウェア開発支援AI</strong>として覚えます。
+      Code Interpreterとの違いは、
+      <span class="mark">分析・計算か、開発支援か</span>です。
+    </p>
+  </div>
+</div>
+
+<h3>Image Generation：画像を作るAI</h3>
+<div class="box">
+  <p>
+    <span class="keyword">Image Generation</span>は、文章で指示した内容をもとに画像を生成する機能です。
+    たとえば、「白背景で、初心者向けのAI講座を表すやさしいイラスト」のように指示すると、
+    そのイメージに合う画像を作ります。
+  </p>
+  <p>
+    近年の画像生成では、単にきれいな画像を作るだけでなく、
+    <span class="mark">文字入り画像</span>、<span class="mark">レイアウト</span>、
+    <span class="mark">既存画像の編集</span>など、実用的な用途にも使われます。
+  </p>
+
+  <div class="two">
+    <div class="box point">
+      <h3>得意なこと</h3>
+      <ul>
+        <li>教材用イラストの作成</li>
+        <li>アイコンやバナーの作成</li>
+        <li>商品のイメージ画像の作成</li>
+        <li>既存画像の雰囲気変更や補正</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <h3>注意点</h3>
+      <p>
+        画像内の文字、細かい指の形、正確な図表などは誤りが出る場合があります。
+        授業や実務で使う場合は、必ず目視で確認しましょう。
+      </p>
+    </div>
+  </div>
+
+  <div class="box exam">
+    <h3>試験ポイント</h3>
+    <p>
+      Image Generationは、<strong>画像生成AI</strong>です。
+      Soraは動画、Image Generationは画像、と対比して覚えましょう。
+    </p>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>名称</th>
+    <th>何をするものか</th>
+    <th>混同しやすい点</th>
+  </tr>
+  <tr>
+    <td><strong>Sora</strong></td>
+    <td>文章や画像から動画を生成するAI。</td>
+    <td>静止画生成ではなく、動画生成AI。</td>
+  </tr>
+  <tr>
+    <td><strong>Operator</strong></td>
+    <td>Web画面を見て、クリック・入力・スクロールなどの操作を行うAIエージェント。</td>
+    <td>単なるチャットではなく、Web上の作業を実行する。</td>
+  </tr>
+  <tr>
+    <td><strong>Codex</strong></td>
+    <td>ソフトウェア開発を支援するAIエージェント。</td>
+    <td>Code Interpreterは分析・計算、Codexは開発支援。</td>
+  </tr>
+  <tr>
+    <td><strong>Image Generation</strong></td>
+    <td>文章や画像をもとに画像を生成・編集する機能。</td>
+    <td>Soraは動画、Image Generationは画像。</td>
+  </tr>
+</table>
+
+
+<!--div class="box exam">
+  <h3>表の項目チェック</h3>
+  <p>
+    ここまでで、表に掲載されている
+    GPT-1、GPT-2、GPT-3、InstructGPT、GPT-3.5、GPT-4、Code Interpreter、GPTs、GPT-4o、GPT-o1、GPT-o3、GPT-o4、GPT-4.1、GPT-5、
+    さらに関連サービスのSora、Operator、Codex、Image Generationまで説明しました。
+  </p>
+</div-->
+
+<aside class="revision-note"><strong>補足</strong><p>試験シラバスの「GPT-o1・GPT-o3・GPT-o4」に対応して、公式情報ではOpenAI o1、OpenAI o3、o4-miniなどの名称が使われます。GPT-4oの「o（omni）」と、推論モデルのoシリーズは区別しましょう。また、GPT-3.5やGPT-4のパラメータ数は公開されていないため、世代ごとの増加を公開値で確認できるわけではありません。</p></aside><h2>9. 似た用語の違い</h2>
+
+<table class="term-compare-table">
+  <tr>
+    <th>似た用語</th>
+    <th>違い</th>
+  </tr>
+  <tr>
+    <td><strong>GPTモデル</strong> と <strong>GPTs</strong></td>
+    <td>GPTモデルは土台となるAIモデル。GPTsは目的に合わせて作るカスタム版ChatGPT。</td>
+  </tr>
+  <tr>
+    <td><strong>ファインチューニング</strong> と <strong>RLHF</strong></td>
+    <td>ファインチューニングは用途に合わせた微調整。RLHFは人間の評価を使って望ましい応答を学ばせる手法。</td>
+  </tr>
+  <tr>
+  <td><strong>マルチモーダル</strong> と <strong>オムニモーダル</strong></td>
+  <td>
+    マルチモーダルは、テキスト・画像・音声など複数種類のデータを扱えること。
+    オムニモーダルは、それらを別々ではなく、より統合的・自然に扱えること。
+    <br>
+    <span class="mark">試験では「オムニモーダル＝マルチモーダルをさらに自然に統合したもの」と覚える。</span>
+  </td>
+</tr>
+
+<tr>
+  <td><strong>Code Interpreter</strong> と <strong>Codex</strong></td>
+  <td>
+    Code Interpreterは、Pythonを実行してデータ分析・計算・グラフ作成を行う機能。
+    Codexは、バグ修正・機能追加・テストなど、ソフトウェア開発を支援するAIエージェント。
+    <br>
+    <span class="mark">Code Interpreter＝データ分析係、Codex＝プログラム開発係。</span>
+  </td>
+</tr>
+  <tr>
+    <td><strong>Sora</strong> と <strong>Image Generation</strong></td>
+    <td>Soraは動画生成AI。Image Generationは画像生成AI。</td>
+  </tr>
+</table>
+
+<h2>10. 試験で問われやすいポイント</h2>
+
+<div class="box exam">
+  <ol>
+    <li>
+      <strong>ChatGPTの名前の意味</strong><br>
+      Chat＝対話、G＝Generative、P＝Pre-trained、T＝Transformer。
+    </li>
+    <li>
+      <strong>GPT-1 → GPT-2 → GPT-3 → GPT-3.5 → GPT-4 の流れ</strong><br>
+      文章生成能力、対話能力、モデル規模、精度が段階的に向上。
+    </li>
+    <li>
+      <strong>InstructGPT・RLHF・アライメント</strong><br>
+      人間の指示や価値観に合うように出力を調整する考え方。
+    </li>
+    <li>
+      <strong>ハルシネーション</strong><br>
+      AIが誤情報をもっともらしく出すこと。性能向上後も確認が必要。
+    </li>
+    <li>
+      <strong>マルチモーダルとGPT-4o</strong><br>
+      テキストだけでなく、画像や音声も扱える方向へ進化。
+    </li>
+    <li>
+      <strong>リーズニングモデル</strong><br>
+      GPT-o1、GPT-o3、GPT-o4は、速さよりも推論の質を重視。
+    </li>
+    <li>
+      <strong>AIエージェント</strong><br>
+      OperatorやCodexのように、目標を分解し、計画し、ツールを使って実行するAI。
+    </li>
+  </ol>
+</div>
+
+<h2>11. まとめ</h2>
+
+<div class="summary">
+  <ul>
+    <li>ChatGPTは、自然言語処理モデルを使った対話型AIである。</li>
+    <li>GPTの進化では、文章生成の自然さ、対話能力、推論力、マルチモーダル処理が重要。</li>
+    <li>RLHFは、人間のフィードバックを使ってAIの応答を改善する仕組み。</li>
+    <li>アライメントは、AIの出力を人間の意図や価値観に合わせること。</li>
+    <li>ハルシネーションは、AIが誤情報を正しそうに出す現象。試験でも実務でも重要。</li>
+    <li>GPT-4oはオムニモーダル、GPT-o1/o3/o4はリーズニングモデルとして押さえる。</li>
+    <li>Soraは動画生成、OperatorはWeb操作を行うAIエージェント、Codexはソフトウェア開発支援、Image Generationは画像生成。</li>
+  </ul>
+</div>
+
+<div class="box warn">
+  <h3>最後の確認</h3>
+  <p>
+    試験では、「どのモデルが何を強化したか」「似た用語の違い」「ハルシネーションやRLHFなどの重要語句」が問われやすいです。
+    年号だけでなく、<span class="mark">進化の方向性</span>をセットで覚えましょう。
+  </p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>生成AIパスポート 第6章 確認問題 解説</title>
+<link rel="stylesheet" href="第6章確認問題-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+<body>
+<div class="container">
+
+<header>
+  <h1>生成AIパスポート試験<br>第6章 確認問題 解答・解説</h1>
+  <div class="subtitle">LM・LLM／プロンプティング／Zero-Shot・Few-Shot／テキスト生成AIの不得意分野</div>
+</header>
+
+<section>
+  <h2>このページで学ぶこと</h2>
+  <div class="box learn">
+    <ul>
+      <li>確認問題14問の正誤と、ひっかけポイントを理解する</li>
+      <li>LMとLLM、プレトレーニングとファインチューニングの違いを整理する</li>
+      <li>Temperature、Top-p、ハイパーパラメータの意味を押さえる</li>
+      <li>プロンプトの4要素と、Zero-Shot／Few-Shotの違いを覚える</li>
+      <li>テキスト生成AIの限界として、偏り、タスク抽出、文字数指定、芸術批評を確認する</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>解答一覧</h2>
+  <table>
+    <tr>
+      <th>問題</th><th>解答</th><th>試験で押さえるポイント</th>
+    </tr>
+    <tr><td>1</td><td class="answer-ng">×</td><td>大規模データで学習した言語モデルはLMではなくLLM</td></tr>
+    <tr><td>2</td><td class="answer-ok">○</td><td>LLMの学習はプレトレーニング＋ファインチューニング</td></tr>
+    <tr><td>3</td><td class="answer-ng">×</td><td>TemperatureやTop-pの設定はモデルや利用条件で異なる</td></tr>
+    <tr><td>4</td><td class="answer-ok">○</td><td>プレトレーニングは大量のテキストからパターンを学ぶ</td></tr>
+    <tr><td>5</td><td class="answer-ok">○</td><td>ファインチューニングは特定タスク向けの微調整</td></tr>
+    <tr><td>6</td><td class="answer-ok">○</td><td>ハイパーパラメータは学習前に設定・調整する値</td></tr>
+    <tr><td>7</td><td class="answer-ok">○</td><td>プロンプトの4要素は命令・文脈・入力データ・出力指示</td></tr>
+    <tr><td>8</td><td class="answer-ng">×</td><td>例示を2〜3個入れるのはFew-Shot</td></tr>
+    <tr><td>9</td><td class="answer-ng">×</td><td>例示なしで質問するのはZero-Shot</td></tr>
+    <tr><td>10</td><td class="answer-ok">○</td><td>簡単な質問にはZero-Shotが適している</td></tr>
+    <tr><td>11</td><td class="answer-ok">○</td><td>学習データの偏りや不完全さは出力に影響する</td></tr>
+    <tr><td>12</td><td class="answer-ng">×</td><td>文章からすべてのタスクを漏れなく抽出できるとは限らない</td></tr>
+    <tr><td>13</td><td class="answer-ok">○</td><td>GPT-3.5は正確な文字数指定が不得意とされる</td></tr>
+    <tr><td>14</td><td class="answer-ok">○</td><td>AIは独自の感情や価値観を持たないため芸術批評は不得意</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>本文解説</h2>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">1</span><span class="tag tag-ng">×</span></div>
+    <div class="question">LMは、LLMと比較して非常に大規模なデータセットを用いてトレーニングされた自然言語処理モデルである。</div><aside class="revision-note"><strong>補足</strong><p>LMは言語モデルの総称で、LLMはLMの一種です。「LMとLLMは完全に別種類」「LMは必ず小さい」とは覚えないようにしましょう。</p></aside>
+    <p>誤りです。非常に大規模なデータセットを用いてトレーニングされた言語モデルは、一般に<span class="keyword">LLM（Large Language Model：大規模言語モデル）</span>です。</p>
+    <p><span class="keyword">LM（Language Model：言語モデル）</span>は、文章中の単語や文字のつながりを確率的に扱うモデルの総称です。LLMは、LMの中でも特に大規模なものと考えると整理しやすいです。</p>
+    <table>
+      <tr><th>用語</th><th>意味</th><th>覚え方</th></tr>
+      <tr><td>LM</td><td>言語の並びを確率的に扱うモデル</td><td>Language Model</td></tr>
+      <tr><td>LLM</td><td>大規模なデータ・計算資源で学習した言語モデル</td><td>Large Language Model</td></tr>
+    </table>
+    <div class="point">試験ポイント：<span class="danger">「大規模」＝LLM</span>。LMとLLMを入れ替えるひっかけに注意。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">2</span><span class="tag tag-ok">○</span></div>
+    <div class="question">LLMのトレーニングでは、一般に、プレトレーニングとファインチューニングの2つの手法が用いられる。</div><aside class="revision-note"><strong>補足</strong><p>教科書の○判定を維持しています。ここでは代表的な流れを2段階で整理しており、すべてのLLMが同一の2段階だけで学習するという意味ではありません。</p></aside>
+    <p>正しいです。LLMは、まず大量のテキストから言語の一般的なパターンを学び、その後、用途に合わせて調整されることがあります。</p>
+    <table>
+      <tr><th>段階</th><th>何をするか</th><th>身近なたとえ</th></tr>
+      <tr><td>プレトレーニング</td><td>大量データから一般的な言語知識を学ぶ</td><td>基礎学力を身につける</td></tr>
+      <tr><td>ファインチューニング</td><td>特定の目的に合わせて追加学習・微調整する</td><td>試験対策や職業訓練をする</td></tr>
+    </table>
+    <div class="point">試験ポイント：LLMの学習の流れは<span class="keyword">プレトレーニング → ファインチューニング</span>で押さえる。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">3</span><span class="tag tag-ng">×</span></div>
+    <div class="question">LLMのパラメータには、TemperatureとTop-pがあるが、これらは使用するLLMのバージョンに関わらず同一の設定がされている。</div><aside class="revision-note"><strong>補足</strong><p>Temperature・Top-pは主に生成時の設定で、学習で獲得するモデル内部の重みとは区別します。利用できる設定・数値範囲・初期値はサービスによって異なります。</p></aside>
+    <p>誤りです。<span class="keyword">Temperature</span>や<span class="keyword">Top-p</span>は、出力のランダム性や多様性に関係する設定です。モデルの種類、バージョン、サービスの設計、利用目的によって設定値や効き方が異なる場合があります。</p>
+    <table>
+      <tr><th>項目</th><th>ざっくりした意味</th><th>出力への影響</th></tr>
+      <tr><td>Temperature</td><td>出力の偶然性を調整する値</td><td>高いほど多様・創造的、低いほど安定しやすい</td></tr>
+      <tr><td>Top-p</td><td>候補単語を確率の範囲で絞る値</td><td>回答のばらつきや自然さに影響する</td></tr>
+    </table>
+    <div class="point">試験ポイント：「どのLLMでも同一設定」と断定されたら<span class="danger">×</span>。出力は設定値で変わる。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">4</span><span class="tag tag-ok">○</span></div>
+    <div class="question">LLMのトレーニングにおけるプレトレーニングとは、大量のテキストデータを使用して自然言語の知識を獲得するための学習方法であり、ラベルのないテキストデータからパターンを発見させる教師なし学習が用いられる。</div><aside class="revision-note"><strong>補足</strong><p>教科書の○判定を維持しています。GPT系の次トークン予測などは、厳密には自己教師あり学習と呼ばれます。文章自体から正解を作るため、人手の正解ラベルなしで学べることがポイントです。</p></aside>
+    <p>正しいです。プレトレーニングでは、大量の文章を使って、単語の並び、文法、文脈、知識の関係などを学びます。</p>
+    <p>ここで重要なのは、人間が1つ1つの文章に「正解ラベル」を付けなくても、文章データ自体からパターンを学習する点です。</p>
+    <div class="example">例：「今日は雨が降っているので、傘を＿＿」のような文脈から、次に来やすい言葉を学ぶイメージです。</div>
+    <div class="point">試験ポイント：プレトレーニング＝大量テキスト・一般知識・ラベルなしデータからパターン学習。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">5</span><span class="tag tag-ok">○</span></div>
+    <div class="question">LLMのトレーニングにおけるファインチューニングとは、タスク特有のデータやコンテキスト（文脈）に応じた語彙や表現を学習し、タスクの性能を向上させるトレーニングプロセスをいう。</div>
+    <p>正しいです。ファインチューニングは、すでに基礎学習を終えたモデルを、特定の用途に合わせて<span class="keyword">微調整</span>することです。</p>
+    <div class="example">例：一般的な日本語を理解できるモデルに、法律文書、医療文書、社内マニュアルなどのデータを追加で学ばせ、特定分野に強くします。</div>
+    <div class="point">試験ポイント：ファインチューニング＝特定タスク・特定分野に合わせて性能を高める。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">6</span><span class="tag tag-ok">○</span></div>
+    <div class="question">ハイパーパラメータとは、モデル学習前に手動で設定・調整が可能なパラメータで、これを調整することにより、モデルの複雑さや学習の進行度合いを制御させることができる。</div><aside class="revision-note"><strong>補足</strong><p>教科書の○判定を維持しています。学習率やバッチサイズなどの学習用設定と、Temperature・Top-pなどの生成用設定は使う場面が違います。また、設定値は手動だけでなく自動探索で調整する場合もあります。</p></aside>
+    <p>正しいです。<span class="keyword">ハイパーパラメータ</span>は、モデルが学習によって自動で獲得する値ではなく、学習前や実行時に人間側が設定する値です。</p>
+    <p>モデルの複雑さ、学習の進み方、出力のばらつきなどに影響します。TemperatureやTop-pは、生成時の出力を調整する代表的な設定として出題されやすいです。</p>
+    <div class="note">補足：モデル内部で学習される「重み」と、外側から設定する「ハイパーパラメータ」は区別しましょう。</div>
+    <div class="point">試験ポイント：ハイパーパラメータ＝人間が事前に設定・調整する値。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">7</span><span class="tag tag-ok">○</span></div>
+    <div class="question">LLMモデルにプロンプトを入力する際に意識することで、出力の質が向上する4つの要素は、命令、文脈、入力データ、出力指示の4つである。</div>
+    <p>正しいです。プロンプトでは、AIに「何をしてほしいか」だけでなく、「どんな前提で」「何を材料に」「どんな形で返してほしいか」まで示すと、出力の質が上がります。</p>
+    <table>
+      <tr><th>4つの要素</th><th>英語</th><th>役割</th><th>例</th></tr>
+      <tr><td>命令</td><td>Instruction</td><td>AIに何をするか指示する</td><td>要約してください</td></tr>
+      <tr><td>文脈</td><td>Context</td><td>背景・立場・目的を伝える</td><td>初心者向けに</td></tr>
+      <tr><td>入力データ</td><td>Input Data</td><td>処理対象の文章や情報を渡す</td><td>以下のメール文</td></tr>
+      <tr><td>出力指示</td><td>Output Indicator</td><td>回答形式を指定する</td><td>3点の箇条書きで</td></tr>
+    </table>
+    <div class="point">試験ポイント：4要素は<span class="keyword">命令・文脈・入力データ・出力指示</span>。英語名もセットで覚える。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">8</span><span class="tag tag-ng">×</span></div>
+    <div class="question">Zero-Shot プロンプティングとは、例文を2〜3個入力して質問を行うことで、より望ましい回答を得ることを可能とするプロンプティングである。</div><aside class="revision-note"><strong>補足</strong><p>Few-Shotの2〜3個は代表例です。厳密な固定数ではありません。例を1つ示す方法はOne-Shotと呼ばれます。</p></aside>
+    <p>誤りです。例文を2〜3個入力してから質問する方法は、<span class="keyword">Few-Shot プロンプティング</span>です。</p>
+    <p><span class="keyword">Zero-Shot プロンプティング</span>は、例示を入れずに、そのまま質問や依頼を入力する方法です。</p>
+    <div class="mistake">ひっかけ：Zero＝0個、Few＝少数。Shotは「例示」と考える。</div>
+    <div class="point">試験ポイント：「例示2〜3個」ならFew-Shot。Zero-Shotではない。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">9</span><span class="tag tag-ng">×</span></div>
+    <div class="question">Few-Shot プロンプティングとは、例示がない文章構成で入力を行うもので、聞きたい質問をそのまま入力し、回答を得るだけの最も簡単なプロンプティングである。</div>
+    <p>誤りです。この説明は<span class="keyword">Zero-Shot プロンプティング</span>です。</p>
+    <p>Few-Shotでは、AIに回答例をいくつか見せてから本題を依頼します。例を見せることで、出力の形式や考え方をそろえやすくなります。</p>
+    <table>
+      <tr><th>方法</th><th>例示の数</th><th>向いている場面</th></tr>
+      <tr><td>Zero-Shot</td><td>0個</td><td>単純な質問、一般的な依頼</td></tr>
+      <tr><td>Few-Shot</td><td>少数</td><td>形式をそろえたい、判断基準を示したい、少し複雑な依頼</td></tr>
+    </table>
+    <div class="point">試験ポイント：Zero-ShotとFew-Shotの説明を逆にする問題が出やすい。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">10</span><span class="tag tag-ok">○</span></div>
+    <div class="question">Zero-Shot プロンプティングと Few-Shot プロンプティングに関し、簡単な質問を入力するのに適しているのは、Zero-Shot プロンプティングである。</div>
+    <p>正しいです。簡単な質問や一般的な依頼であれば、例示を入れないZero-Shotで十分な場合があります。</p>
+    <div class="example">例：<br>「AIとは何かを一言で説明してください」<br>「次の文章を敬語に直してください」</div>
+    <p>一方、回答形式を細かくそろえたい場合や、判断基準をAIに示したい場合はFew-Shotが有効です。</p>
+    <div class="point">試験ポイント：簡単＝Zero-Shot、例で誘導＝Few-Shot。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">11</span><span class="tag tag-ok">○</span></div>
+    <div class="question">テキスト生成AIは、トレーニングデータから学習するため、そのデータが偏っていたり不完全だったりすると出力も不正確になる。</div>
+    <p>正しいです。テキスト生成AIは、学習データから言葉のパターンや知識を学びます。そのため、学習データに偏り、誤り、不足があると、出力にも偏りや誤りが反映される可能性があります。</p>
+    <div class="example">例：古い情報だけで学習していると、最新の制度変更や製品情報について誤った回答をすることがあります。</div>
+    <div class="point">試験ポイント：AIの出力は常に正しいとは限らない。<span class="keyword">人間による確認</span>が必要。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">12</span><span class="tag tag-ng">×</span></div>
+    <div class="question">テキスト生成AIを用いれば、メモやメールなどの文章から、一瞬ですべてのタスクを漏らすことなく抽出できる。</div>
+    <p>誤りです。テキスト生成AIは、文章からタスクを抽出することに役立ちますが、<span class="danger">すべてのタスクを必ず漏れなく抽出できるとは限りません</span>。</p>
+    <p>文章があいまいだったり、文脈が不足していたり、依頼が遠回しに書かれていたりすると、AIが見落とす可能性があります。</p>
+    <div class="example">例：「来週までに例の件、よろしくお願いします」というメールでは、「例の件」の具体的内容をAIが判断できない場合があります。</div>
+    <div class="point">試験ポイント：「必ず」「すべて」「漏れなく」などの断定表現は注意。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">13</span><span class="tag tag-ok">○</span></div>
+    <div class="question">GPT-3.5の場合、正確な文字数の指定は不得意であるとされている。</div><aside class="revision-note"><strong>補足</strong><p>教科書の○判定を維持しています。GPT-3.5についての説明を、すべてのモデルやサービスに同じ程度で当てはめるわけではありません。正確な文字数が必要なら、数え方を定め、文字数カウント機能やコードで確認します。</p></aside>
+    <p>正しいです。GPT-3.5では、指定した文字数ぴったりに出力することが難しい場合があります。</p>
+    <p>「100文字で説明して」と指示しても、実際には90文字や120文字になることがあります。文字数を厳密に守らせたい場合は、出力後に人間が確認したり、追加で調整を依頼したりする必要があります。</p>
+    <div class="note">補足：文字数指定が必要なときは、「およそ100文字」「100字前後」「短く」など、幅を持たせた指示の方が実務では扱いやすいことがあります。</div>
+    <div class="point">試験ポイント：テキスト生成AIの不得意分野として<span class="keyword">正確な文字数指定</span>を覚える。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><span class="qnum">14</span><span class="tag tag-ok">○</span></div>
+    <div class="question">AIは、独自の思考や感情を持たないため、絵画や音楽など感性が必要な芸術の批評は不得意である。</div><aside class="revision-note"><strong>補足</strong><p>教科書の○判定を維持しています。AIが芸術批評の文章を一切作れないという意味ではありません。構図・技法・歴史的背景を整理したり批評案を提案したりすることと、人間として作品を体験し感情を持つことを分けて理解しましょう。</p></aside>
+    <p>正しいです。AIは、過去のデータや言語パターンをもとに説明や評価文を作ることはできます。しかし、人間のような独自の感情、人生経験、価値観を持っているわけではありません。</p>
+    <p>芸術批評では、作品の構造や形式だけでなく、文化的背景、感情的な影響、哲学的な意味合いなど、多層的な理解が求められます。そのため、感性を伴う批評はAIの不得意な作業とされます。</p>
+    <div class="point">試験ポイント：AIは「それらしい批評文」は作れても、人間の感性や価値観を持つわけではない。</div>
+  </div>
+
+</section>
+
+<section>
+  <h2>まとめ</h2>
+  <div class="summary-grid">
+    <div class="mini"><strong>LMとLLM</strong><br>LMは言語モデルの総称。LLMは大規模データで学習した大規模言語モデル。</div>
+    <div class="mini"><strong>LLMの学習</strong><br>プレトレーニングで一般知識を学び、ファインチューニングで特定タスクに合わせる。</div>
+    <div class="mini"><strong>ハイパーパラメータ</strong><br>学習前・実行時に人間が設定する値。TemperatureやTop-pは出力の多様性に関係。</div>
+    <div class="mini"><strong>プロンプト4要素</strong><br>命令、文脈、入力データ、出力指示を意識すると回答品質が上がる。</div>
+    <div class="mini"><strong>Zero-Shot / Few-Shot</strong><br>Zeroは例示0個。Fewは少数の例示あり。簡単な質問はZero-Shotでよい。</div>
+    <div class="mini"><strong>テキスト生成AIの限界</strong><br>偏り、漏れ、文字数指定、最新情報、感性を要する批評などに注意する。</div>
+  </div>
+
+  <div class="box point">
+    特にひっかけやすい問題：<br>
+    「大規模＝LLM」「例示2〜3個＝Few-Shot」「例示なし＝Zero-Shot」
+    「Temperature・Top-pは同一設定とは限らない」
+    「AIなら必ず漏れなく抽出できる、という断定は誤り」
+  </div>
+</section>
+
+<footer>
+  生成AIパスポート試験 第6章対策｜確認問題 解答・解説資料
+</footer>
+
+</div>
+</body>
+</html>

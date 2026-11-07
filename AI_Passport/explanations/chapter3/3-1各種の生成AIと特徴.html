@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3-1 各種の生成AIと特徴｜生成AIパスポート試験対策</title>
+  <link rel="stylesheet" href="3-1各種の生成AIと特徴-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+
+<body>
+  <main class="page">
+    <header>
+      <div class="chapter">第3章　現在の生成AIの動向｜第1節</div>
+      <h1>3-1 各種の生成AIと特徴</h1>
+      <p class="lead">
+        生成AIは「文章」だけでなく、画像・音楽・音声・動画など、さまざまなコンテンツを作れるAIです。
+        試験では、<strong>種類ごとの特徴</strong>、<strong>代表的な技術用語</strong>、<strong>メリット・デメリット</strong>、そして
+        <strong>ディープフェイクの危険性</strong>が重要です。
+      </p>
+    </header>
+
+    <section>
+      <h2>1. このページで学ぶこと</h2>
+      <div class="box learn">
+        <ul class="two-col-list">
+          <li>テキスト生成AI・画像生成AI・音楽生成AI・音声生成AI・動画生成AIの違い</li>
+          <li>Claude、Gemini、Sora、Veo 3 などの代表例</li>
+          <li>画像生成で出る <span class="keyword">リサイズ</span><span class="keyword">正規化</span><span class="keyword">データの水増し</span></li>
+          <li><span class="keyword">GAN</span><span class="keyword">VAE</span><span class="keyword">CNN</span><span class="keyword">ディフュージョンモデル</span> の基本</li>
+          <li>生成AIのメリットとデメリット</li>
+          <li><span class="keyword tag-red">ディープフェイク</span> と <span class="keyword tag-red">偽情報</span> のリスク</li>
+        </ul>
+      </div>
+
+      <div class="box exam">
+        <p class="big-answer">試験での最重要テーマ</p>
+        <p>
+          「どの生成AIが何を生成するのか」「その生成で使われる代表的な技術は何か」
+          「生成AIの便利さと危険性を両方説明できるか」が問われやすいです。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. 本文解説：主な生成AIと特徴</h2>
+
+      <h3>生成AIとは</h3>
+      <p>
+        <span class="keyword">生成AI</span>とは、学習したデータをもとに、新しい文章・画像・音声・動画などを作り出すAIです。
+        英語では <strong>Generative AI</strong> と呼ばれます。
+      </p>
+      <p>
+        たとえば、たくさんの作文を読んだAIは文章の書き方を学び、たくさんの画像を見たAIは画像の特徴を学びます。
+        その結果、利用者の指示に合わせて新しいコンテンツを生成できます。
+      </p>
+
+      <div class="box point">
+        <h4>身近なたとえ</h4>
+        <p>
+          生成AIは「大量の作品を見て練習したアシスタント」のようなものです。
+          ただし、人間のように意味を完全に理解しているとは限らず、
+          <strong>もっともらしいが間違った内容</strong>を出すことがあります。
+        </p>
+      </div>
+
+      <h3>① テキスト生成AI</h3>
+      <p>
+        <span class="keyword">テキスト生成AI</span>は、文章やテキストデータを自動的に生成するAIです。
+        質問への回答、要約、翻訳、メール作成、文章の校正、アイデア出しなどに使われます。
+      </p>
+
+      <table>
+        <tr>
+          <th>用語</th>
+          <th>意味</th>
+          <th>試験での押さえ方</th>
+        </tr>
+        <tr>
+          <td><span class="keyword">自然言語処理<br>（NLP）</span></td>
+          <td>
+            人間が普段使う言葉を、コンピュータに処理させる技術。
+            文章の理解、翻訳、要約、質問応答などに使われる。
+          </td>
+          <td>
+            「人間の言葉をAIが扱うための技術」と覚える。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">LLM</span></td>
+          <td>
+            Large Language Model の略。大量の文章データで学習した大規模言語モデル。
+          </td>
+          <td>
+            ChatGPTのような対話型AIの基盤になる。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">ChatGPT</span><br><span class="keyword">Claude</span><br><span class="keyword">Gemini</span></td>
+          <td>
+            代表的なテキスト生成AI・対話型AIのサービスやモデル。
+          </td>
+          <td>
+            それぞれ「文章生成や対話を行う代表的な生成AI」として押さえる。
+          </td>
+        </tr>
+      </table>
+
+      <div class="box exam">
+        <h4>試験ポイント</h4>
+        <p>
+          <strong>NLPは「自然言語処理」、LLMは「大規模言語モデル」。</strong>
+          ChatGPT、Claude、Geminiは、文章生成や対話に使われる代表例として覚えましょう。
+        </p>
+      </div>
+
+      <h3>② 画像生成AI</h3>
+      <p>
+        <span class="keyword">画像生成AI</span>は、文字で入力した指示文、参考画像、ラフスケッチなどをもとに、
+        新しい画像を作り出す生成AIです。たとえば「青空の下で走る犬のイラスト」
+        「未来的なオフィスの写真風画像」のように指示すると、その内容に近い画像を生成できます。
+      </p>
+      <p>
+        画像生成AIは、単に画像をコピーして貼り合わせているわけではありません。
+        大量の画像データから、<strong>色、形、構図、質感、光の当たり方、物体同士の関係</strong>などの特徴を学習し、
+        指示に合うように新しい画像を作ります。
+      </p>
+
+      <div class="box point">
+        <h4>身近なたとえ：画像生成AIは「絵を学習したアシスタント」</h4>
+        <p>
+          画像生成AIは、たくさんの写真やイラストを見て、
+          「猫は耳が三角で、ひげがあり、毛並みがある」
+          「夕焼けはオレンジ色の光になりやすい」
+          といった特徴を学んだアシスタントのようなものです。
+        </p>
+        <p>
+          ただし、人間のように本当に世界を理解しているわけではないため、
+          指の本数、文字、細かい構造、物理的な整合性などを間違えることがあります。
+        </p>
+      </div>
+
+      <h4>画像生成AIの基本的な流れ</h4>
+      <p>
+        画像生成AIを理解するときは、次の流れで考えるとわかりやすくなります。
+      </p>
+
+      <table>
+        <tr>
+          <th>段階</th>
+          <th>内容</th>
+          <th>イメージ</th>
+        </tr>
+        <tr>
+          <td><strong>① データを集める</strong></td>
+          <td>
+            写真、イラスト、画像の説明文など、学習に使う大量のデータを用意する。
+          </td>
+          <td>
+            美術の勉強のために、たくさんの作品例を見る。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>② 前処理する</strong></td>
+          <td>
+            画像のサイズや数値の範囲をそろえ、AIが学習しやすい形に整える。
+          </td>
+		<td>
+		  写真を同じ大きさにそろえたり、明るさや色の値を整えたりして、
+		  AIが見比べやすい状態にする。
+		</td>
+        </tr>
+        <tr>
+          <td><strong>③ 特徴を学習する</strong></td>
+          <td>
+            色、輪郭、形、構図、質感など、画像に含まれる特徴を学習する。
+          </td>
+          <td>
+            「犬らしさ」「水彩画らしさ」「写真らしさ」を覚える。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>④ 指示に応じて生成する</strong></td>
+          <td>
+            プロンプトや条件に合わせて、新しい画像を生成する。
+          </td>
+          <td>
+            注文を聞いて、その場で新しい絵を描く。
+          </td>
+        </tr>
+      </table>
+
+      <div class="box exam">
+        <h4>試験ポイント</h4>
+        <p>
+          画像生成AIでは、<strong>「画像を生成するAI」</strong>という概要だけでなく、
+          学習前に行う <span class="keyword">リサイズ</span>
+          <span class="keyword">正規化</span>
+          <span class="keyword">データの水増し</span>
+          といった <strong>前処理</strong> が問われやすいです。
+        </p>
+      </div>
+
+      <h4>画像生成AIで重要な前処理</h4>
+      <p>
+        AIに画像を学習させるとき、集めた画像をそのまま使うと問題が起こります。
+        画像ごとにサイズが違ったり、明るさや色の値がバラバラだったりすると、
+        AIが効率よく学習できないからです。
+      </p>
+      <p>
+        そこで、画像データをAIが扱いやすい形に整える作業を行います。
+        これを <span class="keyword">前処理</span> といいます。
+      </p>
+
+      <table>
+        <tr>
+          <th>前処理</th>
+          <th>意味</th>
+          <th>具体例</th>
+          <th>試験での押さえ方</th>
+        </tr>
+        <tr>
+          <td><span class="keyword">画像のリサイズ</span></td>
+          <td>
+            画像の大きさをそろえること。
+            AIモデルに入力できるサイズに変換する。
+          </td>
+          <td>
+            1024×768、800×600、300×300などバラバラの画像を、
+            512×512にそろえる。
+          </td>
+          <td>
+            <strong>「画像サイズを統一する」</strong>と覚える。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">正規化</span></td>
+          <td>
+            画素の数値の範囲をそろえること。
+            明るさや色の値を、AIが学習しやすい範囲に変換する。
+          </td>
+          <td>
+            0〜255の画素値を、0〜1や-1〜1の範囲に変換する。
+          </td>
+          <td>
+            <strong>「数値のスケールをそろえる」</strong>と覚える。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">データの水増し<br>データ拡張</span></td>
+          <td>
+            画像を加工して、学習データのバリエーションを増やすこと。
+            英語では augmentation と呼ばれる。
+          </td>
+          <td>
+            画像を左右反転する、少し回転する、一部を切り抜く、
+            明るさを変える。
+          </td>
+          <td>
+            <strong>「学習例を増やして、AIを強くする」</strong>と覚える。
+          </td>
+        </tr>
+      </table>
+
+      <div class="box point">
+        <h4>たとえで理解：前処理は「勉強しやすい教材づくり」</h4>
+        <p>
+          受験勉強で、問題用紙のサイズが毎回違い、文字の濃さもバラバラだと勉強しにくくなります。
+          画像生成AIも同じで、画像データがバラバラのままだと学習しづらくなります。
+        </p>
+        <p>
+          そこで、画像の大きさをそろえたり、数値の範囲を整えたり、
+          反転・回転などで練習問題を増やしたりします。
+          これが画像生成AIにおける前処理です。
+        </p>
+      </div>
+
+      <div class="box caution">
+        <h4>誤解注意：データの水増しは「でたらめに増やす」ことではない</h4>
+        <p>
+          データの水増しは、学習に役立つ範囲で画像を加工することです。
+          たとえば猫の画像を左右反転しても、猫であることは変わりません。
+        </p>
+        <p>
+          一方で、数字や文字の画像を左右反転すると意味が変わることがあります。
+          そのため、どのような加工をしてもよいかは、扱うデータの性質によって変わります。
+        </p>
+      </div>
+
+      <h4>画像生成AIで出る代表的な技術</h4>
+      <p>
+        画像生成AIに関連して、試験では
+        <span class="keyword">GAN</span>
+        <span class="keyword">VAE</span>
+        <span class="keyword">CNN</span>
+        <span class="keyword">ディフュージョンモデル</span>
+        などの用語が出やすいです。
+        それぞれの細かな数式までは不要ですが、<strong>何をする技術なのか</strong>を説明できるようにしましょう。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">GAN：敵対的生成ネットワーク</div>
+          <p>
+            <span class="keyword">GAN</span>は、2つのAIを競わせながら画像を生成する考え方です。
+            偽物の画像を作る <span class="keyword">生成器</span> と、
+            それが本物か偽物かを見分ける <span class="keyword">識別器</span> が登場します。
+          </p>
+          <p>
+            生成器は識別器をだませるように画像を作り、
+            識別器は偽物を見破れるように学習します。
+            この競争によって、より本物らしい画像を作れるようになります。
+          </p>
+          <p class="mini">
+            覚え方：<strong>作る人</strong>と<strong>見破る人</strong>が競争する。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">VAE：変分自己符号化器</div>
+          <p>
+            <span class="keyword">VAE</span>は、データを一度コンパクトな情報に圧縮し、
+            そこから再び画像を復元・生成する考え方です。
+          </p>
+          <p>
+            情報を圧縮する部分を <span class="keyword">エンコーダ</span>、
+            圧縮された情報をもとに復元する部分を <span class="keyword">デコーダ</span>、
+            特徴を表す空間を「潜在空間」、その中の1つの点を表す数値の並びを「潜在ベクトル」と呼びます。
+          </p>
+          <p class="mini">
+            覚え方：<strong>圧縮して、特徴をつかみ、もう一度復元する</strong>。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">CNN：畳み込みニューラルネットワーク</div><aside class="revision-note"><strong>補足</strong><p>VAEは、入力から潜在変数の確率分布を求め、そこから取り出した潜在ベクトルを使って復元します。新しいデータの生成では、学習で整えた潜在空間の分布から値を取り出します。「潜在空間」は地図全体、「潜在ベクトル」は地図上の1か所を示す座標、と考えると区別しやすくなります。</p></aside>
+          <p>
+            <span class="keyword">CNN</span>は、画像の特徴を見つけるのが得意なニューラルネットワークです。
+            画像の中から、線、角、模様、輪郭、形などを段階的にとらえます。
+          </p>
+          <p>
+            画像生成そのものだけでなく、画像認識、画像分類、画像処理などで広く使われてきました。
+            画像を扱うAIの基礎的な技術として重要です。
+          </p>
+          <p class="mini">
+            覚え方：画像の<strong>模様・輪郭・形</strong>を見つけるのが得意。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">ディフュージョンモデル</div>
+          <p>
+            <span class="keyword">ディフュージョンモデル</span>は、ノイズから画像を作る考え方です。
+            最初は砂嵐のようなランダムなノイズから始め、
+            少しずつノイズを取り除きながら、目的の画像に近づけていきます。
+          </p>
+          <p>
+            現在の画像生成AIでよく使われる代表的な方式の一つで、
+            高精細で自然な画像を生成しやすい点が特徴です。
+          </p>
+          <p class="mini">
+            覚え方：<strong>砂嵐から少しずつ絵を浮かび上がらせる</strong>。
+          </p>
+        </div>
+      </div>
+
+      <div class="box exam">
+        <h4>試験ポイント：代表技術の覚え方</h4>
+        <ul>
+          <li><strong>GAN</strong>：生成器と識別器を競わせる。</li>
+          <li><strong>VAE</strong>：エンコーダで圧縮し、デコーダで復元する。</li>
+          <li><strong>CNN</strong>：画像の特徴、模様、輪郭、形をとらえるのが得意。</li>
+          <li><strong>ディフュージョンモデル</strong>：ノイズを段階的に除去して高精細な画像を生成する。</li>
+          <li><strong>自己回帰モデル</strong>：画像を小さな単位に分け、順番に生成する考え方。</li>
+        </ul>
+      </div>
+
+
+      <h4>図解：ディフュージョンモデルの流れ</h4>
+      <p>
+        ディフュージョンモデルは、試験対策では
+        <strong>「きれいな画像にノイズを足していく流れを学習し、生成時はノイズを少しずつ取り除く」</strong>
+        と理解すると十分です。数式よりも、<span class="keyword">ノイズ</span>
+        <span class="keyword">段階的に除去</span>
+        <span class="keyword">高精細な画像生成</span>の3点を押さえましょう。
+      </p>
+
+      <div class="diagram-panel">
+        <p class="diagram-title">① 学習時：きれいな画像に少しずつノイズを足す</p>
+        <svg class="diffusion-svg" viewBox="0 0 1180 440" role="img" aria-label="ディフュージョンモデルの学習時の流れ。元画像に段階的にノイズを加え、最終的にランダムノイズに近づける。">
+          <defs>
+            <filter id="noiseSoft">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="8"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0 0.28"></feFuncA>
+              </feComponentTransfer>
+            </filter>
+            <filter id="noiseMid">
+              <feTurbulence type="fractalNoise" baseFrequency="1.15" numOctaves="3" seed="12"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0.1 0.58"></feFuncA>
+              </feComponentTransfer>
+            </filter>
+            <filter id="noiseHard">
+              <feTurbulence type="fractalNoise" baseFrequency="1.55" numOctaves="4" seed="18"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+            </filter>
+            <linearGradient id="skyGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#bfdbfe"></stop>
+              <stop offset="58%" stop-color="#dbeafe"></stop>
+              <stop offset="58%" stop-color="#86efac"></stop>
+              <stop offset="100%" stop-color="#22c55e"></stop>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="1180" height="440" rx="16" fill="#ffffff"></rect>
+          <text x="40" y="48" font-size="29" font-weight="900" fill="#0f172a">拡散過程：正解画像 → ノイズ画像</text>
+          <text x="40" y="82" font-size="21" fill="#334155">AIは「どれくらいノイズが混ざったか」を学び、後で逆向きに戻せるようにする</text>
+
+          <g transform="translate(50,120)">
+            <rect x="0" y="0" width="180" height="150" rx="18" fill="url(#skyGrad)" stroke="#0b3d91" stroke-width="4"></rect>
+            <circle cx="58" cy="45" r="24" fill="#f59e0b"></circle>
+            <polygon points="25,105 75,56 126,105" fill="#64748b"></polygon>
+            <polygon points="78,105 128,48 165,105" fill="#475569"></polygon>
+            <rect x="0" y="105" width="180" height="45" rx="0" fill="#22c55e" opacity="0.75"></rect>
+            <text x="90" y="192" font-size="22" font-weight="900" fill="#0b3d91" text-anchor="middle">元画像</text>
+            <text x="90" y="222" font-size="18" fill="#334155" text-anchor="middle">ノイズ 0%</text>
+          </g>
+
+          <path d="M252 191 H302 V181 L322 195 L302 209 V199 H252 Z" fill="#0b3d91"></path>
+          <text x="287" y="176" font-size="18" font-weight="900" fill="#0b3d91" text-anchor="middle">足す</text>
+
+          <g transform="translate(345,120)">
+            <rect x="0" y="0" width="180" height="150" rx="18" fill="url(#skyGrad)" stroke="#0b3d91" stroke-width="4"></rect>
+            <circle cx="58" cy="45" r="24" fill="#f59e0b"></circle>
+            <polygon points="25,105 75,56 126,105" fill="#64748b"></polygon>
+            <polygon points="78,105 128,48 165,105" fill="#475569"></polygon>
+            <rect x="0" y="105" width="180" height="45" fill="#22c55e" opacity="0.75"></rect>
+            <rect x="0" y="0" width="180" height="150" rx="18" filter="url(#noiseSoft)" opacity="0.9"></rect>
+            <text x="90" y="192" font-size="22" font-weight="900" fill="#0b3d91" text-anchor="middle">少しノイズ</text>
+            <text x="90" y="222" font-size="18" fill="#334155" text-anchor="middle">輪郭はまだ見える</text>
+          </g>
+
+          <path d="M547 191 H597 V181 L617 195 L597 209 V199 H547 Z" fill="#0b3d91"></path>
+          <text x="582" y="176" font-size="18" font-weight="900" fill="#0b3d91" text-anchor="middle">もっと足す</text>
+
+          <g transform="translate(640,120)">
+            <rect x="0" y="0" width="180" height="150" rx="18" fill="url(#skyGrad)" stroke="#0b3d91" stroke-width="4"></rect>
+            <circle cx="58" cy="45" r="24" fill="#f59e0b"></circle>
+            <polygon points="25,105 75,56 126,105" fill="#64748b"></polygon>
+            <polygon points="78,105 128,48 165,105" fill="#475569"></polygon>
+            <rect x="0" y="105" width="180" height="45" fill="#22c55e" opacity="0.75"></rect>
+            <rect x="0" y="0" width="180" height="150" rx="18" filter="url(#noiseMid)" opacity="1"></rect>
+            <text x="90" y="192" font-size="22" font-weight="900" fill="#0b3d91" text-anchor="middle">かなりノイズ</text>
+            <text x="90" y="222" font-size="18" fill="#334155" text-anchor="middle">形が分かりにくい</text>
+          </g>
+
+          <path d="M842 191 H892 V181 L912 195 L892 209 V199 H842 Z" fill="#0b3d91"></path>
+          <text x="877" y="176" font-size="18" font-weight="900" fill="#0b3d91" text-anchor="middle">最終段階</text>
+
+          <g transform="translate(935,120)">
+            <rect x="0" y="0" width="180" height="150" rx="18" fill="#e5e7eb" stroke="#0b3d91" stroke-width="4" filter="url(#noiseHard)"></rect>
+            <rect x="0" y="0" width="180" height="150" rx="18" fill="#64748b" opacity="0.25"></rect>
+            <text x="90" y="192" font-size="22" font-weight="900" fill="#0b3d91" text-anchor="middle">ランダムノイズ</text>
+            <text x="90" y="222" font-size="18" fill="#334155" text-anchor="middle">ほぼ砂嵐</text>
+          </g>
+
+          <rect x="300" y="372" width="580" height="42" rx="21" fill="#fff3bf" stroke="#f59e0b" stroke-width="3"></rect>
+          <text x="590" y="400" font-size="21" font-weight="900" fill="#92400e" text-anchor="middle">学習のポイント：ノイズの混ざり方を覚える</text>
+        </svg>
+        <p class="diagram-note">
+          たとえ：きれいな写真に、透明な砂嵐シートを1枚ずつ重ねていくイメージです。
+        </p>
+      </div>
+
+      <div class="diagram-panel">
+        <p class="diagram-title">② 生成時：ノイズから少しずつ画像を復元する</p>
+        <svg class="diffusion-svg" viewBox="0 0 1180 620" role="img" aria-label="ディフュージョンモデルの生成時の流れ。ランダムノイズから段階的にノイズを除去し、プロンプトに合う画像に近づける。">
+          <defs>
+            <filter id="genNoiseHard">
+              <feTurbulence type="fractalNoise" baseFrequency="1.45" numOctaves="4" seed="22"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+            </filter>
+            <filter id="genNoiseMid">
+              <feTurbulence type="fractalNoise" baseFrequency="1.0" numOctaves="3" seed="26"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0.1 0.55"></feFuncA>
+              </feComponentTransfer>
+            </filter>
+            <filter id="genNoiseSoft">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="31"></feTurbulence>
+              <feColorMatrix type="saturate" values="0"></feColorMatrix>
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0 0.3"></feFuncA>
+              </feComponentTransfer>
+            </filter>
+            <linearGradient id="catBg" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#dbeafe"></stop>
+              <stop offset="100%" stop-color="#fef3c7"></stop>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="1180" height="620" rx="16" fill="#ffffff"></rect>
+          <text x="40" y="48" font-size="29" font-weight="900" fill="#0f172a">逆拡散過程：ノイズ画像 → 生成画像</text>
+          <text x="40" y="82" font-size="21" fill="#334155">AIは「このノイズをどう消せば目的の画像に近づくか」を何回も予測する</text>
+
+          <g transform="translate(42,118)">
+            <rect x="0" y="0" width="255" height="75" rx="16" fill="#eef5ff" stroke="#0b3d91" stroke-width="4"></rect>
+            <text x="128" y="30" font-size="20" font-weight="900" fill="#0b3d91" text-anchor="middle">プロンプト</text>
+            <text x="128" y="58" font-size="18" fill="#0f172a" text-anchor="middle">「白い猫、写真風」</text>
+          </g>
+          <path d="M166 196 H174 V220 H188 L170 238 L152 220 H166 Z" fill="#0b3d91"></path>
+
+          <g transform="translate(60,245)">
+            <rect x="0" y="0" width="220" height="70" rx="16" fill="#fff3bf" stroke="#f59e0b" stroke-width="4"></rect>
+            <text x="110" y="31" font-size="19" font-weight="900" fill="#92400e" text-anchor="middle">条件として使う</text>
+            <text x="110" y="57" font-size="17" fill="#92400e" text-anchor="middle">目標の方向を示す</text>
+          </g>
+
+          <g transform="translate(335,135)">
+            <rect x="0" y="0" width="155" height="130" rx="18" fill="#e5e7eb" stroke="#e85d04" stroke-width="4" filter="url(#genNoiseHard)"></rect>
+            <rect x="0" y="0" width="155" height="130" rx="18" fill="#64748b" opacity="0.22"></rect>
+            <text x="78" y="174" font-size="20" font-weight="900" fill="#e85d04" text-anchor="middle">1. ノイズ</text>
+            <text x="78" y="200" font-size="17" fill="#334155" text-anchor="middle">出発点</text>
+          </g>
+
+          <path d="M510 196 H568 V185 L590 200 L568 215 V204 H510 Z" fill="#e85d04"></path>
+          <text x="550" y="177" font-size="18" font-weight="900" fill="#e85d04" text-anchor="middle">除去</text>
+
+          <g transform="translate(610,135)">
+            <rect x="0" y="0" width="155" height="130" rx="18" fill="url(#catBg)" stroke="#e85d04" stroke-width="4"></rect>
+            <ellipse cx="78" cy="82" rx="48" ry="34" fill="#f8fafc" opacity="0.6"></ellipse>
+            <polygon points="45,58 62,26 79,58" fill="#f8fafc" opacity="0.6"></polygon>
+            <polygon points="78,58 96,26 112,58" fill="#f8fafc" opacity="0.6"></polygon>
+            <rect x="0" y="0" width="155" height="130" rx="18" filter="url(#genNoiseMid)" opacity="1"></rect>
+            <text x="78" y="174" font-size="20" font-weight="900" fill="#e85d04" text-anchor="middle">2. 粗い形</text>
+            <text x="78" y="200" font-size="17" fill="#334155" text-anchor="middle">何かが見える</text>
+          </g>
+
+          <path d="M785 196 H843 V185 L865 200 L843 215 V204 H785 Z" fill="#e85d04"></path>
+          <text x="825" y="177" font-size="18" font-weight="900" fill="#e85d04" text-anchor="middle">さらに除去</text>
+
+          <g transform="translate(885,135)">
+            <rect x="0" y="0" width="155" height="130" rx="18" fill="url(#catBg)" stroke="#e85d04" stroke-width="4"></rect>
+            <ellipse cx="78" cy="82" rx="49" ry="35" fill="#ffffff"></ellipse>
+            <polygon points="43,60 61,22 80,60" fill="#ffffff"></polygon>
+            <polygon points="76,60 96,22 114,60" fill="#ffffff"></polygon>
+            <circle cx="62" cy="76" r="6" fill="#0f172a"></circle>
+            <circle cx="94" cy="76" r="6" fill="#0f172a"></circle>
+            <path d="M74 88 Q78 94 82 88" stroke="#0f172a" stroke-width="3" fill="none"></path>
+            <rect x="0" y="0" width="155" height="130" rx="18" filter="url(#genNoiseSoft)" opacity="0.8"></rect>
+            <text x="78" y="174" font-size="20" font-weight="900" fill="#e85d04" text-anchor="middle">3. ほぼ完成</text>
+            <text x="78" y="200" font-size="17" fill="#334155" text-anchor="middle">細部を整える</text>
+          </g>
+
+          <g transform="translate(405,348)">
+            <rect x="0" y="0" width="285" height="82" rx="20" fill="#eefaf3" stroke="#34d399" stroke-width="4"></rect>
+            <text x="142.5" y="33" font-size="21" font-weight="900" fill="#1b7f4c" text-anchor="middle">AIの予測</text>
+            <text x="142.5" y="62" font-size="18" fill="#0f172a" text-anchor="middle">不要なノイズを推定</text>
+          </g>
+
+          <line x1="705" y1="389" x2="834" y2="389" stroke="#0b3d91" stroke-width="4.5" stroke-dasharray="10 10" stroke-linecap="butt"></line>
+          <polygon points="848,372 876,389 848,406" fill="#0b3d91"></polygon>
+          <text x="790" y="444" font-size="18" font-weight="900" fill="#0b3d91" text-anchor="middle">プロンプトの条件が</text>
+          <text x="790" y="470" font-size="18" font-weight="900" fill="#0b3d91" text-anchor="middle">生成結果に反映される</text>
+
+          <rect x="210" y="545" width="760" height="38" rx="19" fill="#fff3bf"></rect>
+          <text x="590" y="571" font-size="19" font-weight="900" fill="#92400e" text-anchor="middle">覚え方：砂嵐から、何度もピントを合わせて画像を浮かび上がらせる</text>
+        </svg>
+        <p class="diagram-note">
+          厳密には、各段階でニューラルネットワークが「取り除くべきノイズ」を予測し、その予測を使って少しずつ画像をきれいにします。
+        </p>
+      </div>
+
+      <div class="mini-flow">
+        <div class="step">
+          <div class="step-num">覚える①</div>
+          <p><strong>学習時</strong>は、画像にノイズを足していく過程を扱う。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">覚える②</div>
+          <p><strong>生成時</strong>は、ランダムノイズからノイズを段階的に取り除く。</p>
+        </div>
+        <div class="step">
+          <div class="step-num">覚える③</div>
+          <p><strong>特徴</strong>は、高精細で自然な画像を生成しやすいこと。</p>
+        </div>
+      </div>
+
+      <div class="box exam">
+        <h4>試験での言い換え対策</h4>
+        <p>
+          ディフュージョンモデルは、問題文では次のように表現されることがあります。
+        </p>
+        <div class="memory-line">
+          <span class="memory-pill">ノイズから画像を生成</span>
+          <span class="memory-pill">段階的にノイズを除去</span>
+          <span class="memory-pill">逆拡散過程</span>
+          <span class="memory-pill">高品質な画像生成</span>
+        </div>
+        <p>
+          <strong>「生成器と識別器が競争」ならGAN</strong>、
+          <strong>「圧縮して復元」ならVAE</strong>、
+          <strong>「ノイズを除去」ならディフュージョンモデル</strong>
+          と切り分けると選択肢を選びやすくなります。
+        </p>
+      </div>
+
+
+      <aside class="revision-note"><strong>補足</strong><p>拡散モデルの学習では、画像に既知のノイズを加え、モデルがそのノイズなどを予測できるようにします。生成時には、その予測を繰り返し使ってランダムノイズから画像を作ります。元の学習画像をそのまま取り戻す仕組みではありません。また、画像の前処理は主にモデルの開発・学習段階の話で、利用者が生成するたびに行う必須操作ではありません。</p></aside><h4>プロンプトと画像生成</h4>
+      <p>
+        画像生成AIでは、利用者が入力する指示文を <span class="keyword">プロンプト</span> と呼びます。
+        プロンプトには、作りたい画像の内容、雰囲気、画風、構図、色、光の当たり方などを指定できます。
+      </p>
+
+      <table>
+        <tr>
+          <th>指定する内容</th>
+          <th>プロンプト例</th>
+          <th>生成結果への影響</th>
+        </tr>
+        <tr>
+          <td>被写体</td>
+          <td>白い猫、未来都市、和風の教室</td>
+          <td>何を描くかが決まる。</td>
+        </tr>
+        <tr>
+          <td>画風</td>
+          <td>写真風、イラスト風、水彩画風、3D風</td>
+          <td>見た目のスタイルが変わる。</td>
+        </tr>
+        <tr>
+          <td>構図</td>
+          <td>正面から、上から見た、広角、背景をぼかす</td>
+          <td>画像の見せ方が変わる。</td>
+        </tr>
+        <tr>
+          <td>雰囲気</td>
+          <td>明るい、落ち着いた、近未来的、幻想的</td>
+          <td>色や光、全体の印象が変わる。</td>
+        </tr>
+      </table>
+
+      <div class="box point">
+        <h4>よいプロンプトの考え方</h4>
+        <p>
+          「犬の画像」だけよりも、
+          「公園で走っている茶色い犬、晴れた昼、写真風、背景は少しぼかす」
+          のように具体的に書いた方が、意図に近い画像になりやすくなります。
+        </p>
+        <p>
+          試験ではプロンプト作成の細かな技法よりも、
+          <strong>生成AIは入力された指示をもとに生成物を作る</strong>
+          という基本を押さえることが重要です。
+        </p>
+      </div>
+
+      <h4>画像生成AIの活用例</h4>
+      <p>
+        画像生成AIは、デザインや広告だけでなく、教育、企画、資料作成などでも使われます。
+        完成品を作るだけでなく、<strong>アイデア出しや試作品作成</strong>に使える点が大きな特徴です。
+      </p>
+
+      <table>
+        <tr>
+          <th>活用場面</th>
+          <th>具体例</th>
+          <th>メリット</th>
+        </tr>
+        <tr>
+          <td>広告・広報</td>
+          <td>キャンペーン用のビジュアル案を作る。</td>
+          <td>短時間で複数の案を比較できる。</td>
+        </tr>
+        <tr>
+          <td>商品企画</td>
+          <td>新商品のパッケージ案やイメージ画像を作る。</td>
+          <td>企画段階で完成イメージを共有しやすい。</td>
+        </tr>
+        <tr>
+          <td>教育</td>
+          <td>授業で使う説明図やイメージ図を作る。</td>
+          <td>抽象的な内容を視覚的に説明しやすい。</td>
+        </tr>
+        <tr>
+          <td>資料作成</td>
+          <td>プレゼン資料の挿絵や概念図を作る。</td>
+          <td>専門デザイナーでなくても素材案を作れる。</td>
+        </tr>
+      </table>
+
+      <h4>画像生成AIの注意点</h4>
+      <p>
+        画像生成AIは便利ですが、使うときには注意が必要です。
+        特に、試験では生成AIのメリットだけでなく、リスクも問われます。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">① 著作権・知的財産権</div>
+          <p>
+            生成した画像が、既存の作品やキャラクター、ブランドロゴに似すぎる場合、
+            権利侵害の問題が生じる可能性があります。
+          </p>
+          <p class="mini">
+            商用利用する場合は、利用規約や権利関係の確認が必要です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">② 肖像権・プライバシー</div>
+          <p>
+            実在の人物に似た画像や、本人の許可がない顔写真を使う場合は注意が必要です。
+            顔や姿は個人を識別できる情報になり得ます。
+          </p>
+          <p class="mini">
+            人物画像の生成・加工では、本人の権利やプライバシーを意識します。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">③ 偽画像・誤情報</div>
+          <p>
+            本物の写真のように見える偽画像を作れるため、
+            災害、事件、政治、著名人などに関する偽情報に悪用される可能性があります。
+          </p>
+          <p class="mini">
+            「写真のように見える」ことと「事実である」ことは別です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">④ 品質の限界</div>
+          <p>
+            指、文字、細かい道具、複雑な構造などが不自然になることがあります。
+            生成結果は必ず人間が確認する必要があります。
+          </p>
+          <p class="mini">
+            AIの出力は完成品ではなく、確認・修正の対象です。
+          </p>
+        </div>
+      </div>
+
+      <div class="box caution">
+        <h4>重要：画像生成AIの出力をそのまま信じない</h4>
+        <p>
+          画像生成AIは、現実には存在しない写真のような画像を作ることができます。
+          そのため、ニュース画像、証拠画像、人物画像などを見たときは、
+          <strong>本当に撮影されたものか</strong>、<strong>信頼できる出典があるか</strong>を確認することが大切です。
+        </p>
+      </div>
+
+      <div class="box exam">
+        <h4>試験で押さえるポイント</h4>
+        <ul>
+          <li>画像生成AIは、学習した画像の特徴をもとに新しい画像を生成する。</li>
+          <li>学習前には、リサイズ、正規化、データの水増しなどの前処理を行う。</li>
+          <li>GANは、生成器と識別器を競わせる。</li>
+          <li>VAEは、エンコーダで圧縮し、デコーダで復元する。</li>
+          <li>CNNは、画像の特徴抽出に強い。</li>
+          <li>ディフュージョンモデルは、ノイズを少しずつ取り除いて画像を生成する。</li>
+          <li>画像生成AIは便利だが、著作権、肖像権、プライバシー、偽情報に注意する。</li>
+        </ul>
+      </div>
+
+      <h3>③ 音楽生成AI</h3>
+      <p>
+        <span class="keyword">音楽生成AI</span>は、コンピュータが音楽を作り出すための技術です。
+        既存の音楽データセットから、メロディ、リズム、コード進行などの特徴を学習します。
+      </p>
+      <p>
+        <span class="keyword">MIDIファイル</span>などの音楽データを含むデータセットから学習する例などがあります。
+        MIDIは、楽器の音そのものではなく「どの音を、どの長さで、どのタイミングで鳴らすか」といった演奏情報を扱う形式です。
+      </p>
+      <p>
+        音楽は時間の流れに沿ったデータなので、以前は
+        <span class="keyword">RNN</span>など、シーケンスデータの処理に向いた技術がよく用いられました。
+      </p>
+
+      <div class="box point">
+        <h4>たとえで理解：音楽生成AI</h4>
+        <p>
+          音楽生成AIは、たくさんの曲を聴いて「このコードの後にはこのメロディが来やすい」
+          「このジャンルではこのリズムが多い」と学ぶ作曲アシスタントのようなものです。
+        </p>
+      </div>
+
+      <h3>④ 音声生成AI</h3>
+      <p>
+        <span class="keyword">音声生成AI</span>は、コンピュータが音声を生成するための技術です。
+        大量の音声データを使って、話し方、声色、発音、感情表現などを学習します。
+      </p>
+
+      <table>
+        <tr>
+          <th>用語・例</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><span class="keyword">TTS</span></td>
+          <td>
+            Text-to-Speech の略。テキストを自然な音声に変換する技術。
+            読み上げ、ナレーション、多言語音声などに使われる。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">教師あり学習</span></td>
+          <td>
+            入力と正解のペアを使って学習する方法。
+            音声生成では、テキストと対応する音声データを学習する例がある。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">リップシンク</span></td>
+          <td>
+            映像内の人物の口の動きを、音声に合わせて自然に動かす技術。
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        音声生成AIは、読み上げ、ナレーション、動画制作、配信、教育、ビジネスなど幅広い場面で使われています。
+        一方で、本人の声に似せたなりすましにも悪用される可能性があるため注意が必要です。
+      </p>
+
+      <h3>⑤ 動画生成AI</h3>
+      <p>
+        <span class="keyword">動画生成AI</span>は、時間的につながりのある映像を生成する技術です。動画は連続するフレームで表されますが、単に別々の静止画をつなぐだけでなく、動きや前後の一貫性も扱います。
+        動画は多数のフレームで構成されているため、各フレームの自然さだけでなく、
+        <strong>フレーム間の一貫性</strong>が重要です。
+      </p>
+
+      <div class="box learn">
+        <h4>動画生成で重要なこと</h4>
+        <ul>
+          <li>大量の動画データを収集する。</li>
+          <li>AIが処理しやすいように、動画をフレームごとに分割して前処理する。</li>
+          <li>人物や背景が急に変わらないように、各フレーム間の一貫性を保つ。</li>
+          <li>映像だけでなく、音声・環境音・セリフとの同期も重要になる。</li>
+        </ul>
+      </div>
+
+      <table>
+        <tr>
+          <th>代表例</th>
+          <th>特徴</th>
+          <th>押さえ方</th>
+        </tr>
+        <tr>
+          <td><span class="keyword">Sora</span></td>
+          <td>
+            OpenAIが発表した動画生成AIとして注目されたモデル。
+            テキストなどから高品質な動画を生成できる。
+          </td>
+          <td>
+            「動画生成AIの代表例」として覚える。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">Veo 3<br>（ヴィオ スリー）</span></td>
+          <td>
+            Google DeepMindによる動画生成AI。
+            高精細な映像生成に加え、環境音やセリフなどの音声生成にも対応する例として扱われる。
+          </td>
+          <td>
+            「映像と音声を扱う動画生成AI」として押さえる。
+          </td>
+        </tr>
+      </table>
+
+      <div class="box exam">
+        <h4>試験ポイント</h4>
+        <p>
+          動画生成AIでは、単に1枚1枚の画像がきれいなだけでは不十分です。
+          <strong>時間的な連続性</strong>、<strong>フレーム間の一貫性</strong>、
+          <strong>音声との同期</strong>が重要です。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. 各種生成AIのメリット</h2>
+
+      <table>
+        <tr>
+          <th>メリット</th>
+          <th>内容</th>
+          <th>具体例</th>
+        </tr>
+        <tr>
+          <td><strong>① 作業効率の向上</strong></td>
+          <td>短時間で多くのコンテンツを生成でき、作業を自動化できる。</td>
+          <td>メール文案、議事録要約、画像案を短時間で作成する。</td>
+        </tr>
+        <tr>
+          <td><strong>② 補完と拡張が可能</strong></td>
+          <td>与えられたデータを理解し、不足している情報を補ったり、関連情報を広げたりできる。</td>
+          <td>文章の続きを提案する、ラフ案からデザイン案を増やす。</td>
+        </tr>
+        <tr>
+          <td><strong>③ 新たなアイデア・デザインの生成</strong></td>
+          <td>既存の情報をもとに、新しい企画や表現を提案できる。</td>
+          <td>広告コピー、商品名、ロゴ案、プレゼン構成案を出す。</td>
+        </tr>
+        <tr>
+          <td><strong>④ アクセシビリティの向上</strong></td>
+          <td>専門知識がなくても、音楽・画像・動画制作やコード作成がしやすくなる。</td>
+          <td>非デザイナーが画像案を作る、初心者がプログラムを修正する。</td>
+        </tr>
+        <tr>
+          <td><strong>⑤ 言語の壁の克服</strong></td>
+          <td>異なる言語間で文章や音声のやり取りがしやすくなる。</td>
+          <td>翻訳、海外向けメール作成、多言語ナレーション。</td>
+        </tr>
+      </table>
+
+      <div class="box exam">
+        <h4>試験ポイント</h4>
+        <p>
+          生成AIのメリットは、単に「便利」ではなく、
+          <strong>効率化</strong>、<strong>補完・拡張</strong>、<strong>創造支援</strong>、
+          <strong>アクセシビリティ向上</strong>、<strong>言語の壁の克服</strong>の5つで整理しましょう。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. 各種生成AIのデメリット</h2>
+
+      <table>
+        <tr>
+          <th>デメリット</th>
+          <th>内容</th>
+          <th>注意点</th>
+        </tr>
+        <tr>
+          <td><strong>① 虚偽情報や不適切コンテンツの生成</strong></td>
+          <td>
+            文章・画像・音声・映像などで、事実と異なる内容や不適切な内容を生成する可能性がある。
+          </td>
+          <td>
+            AIの出力は必ず人間が確認する。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>② 偏見・差別的コンテンツの生成</strong></td>
+          <td>
+            学習データに偏りがあると、偏見や差別を含む出力が生成される可能性がある。
+          </td>
+          <td>
+            学習データの偏りが、AIの出力に反映されることがある。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>③ プライバシー侵害</strong></td>
+          <td>
+            入力データや生成物に、個人情報や機微情報が含まれる可能性がある。
+          </td>
+          <td>
+            氏名、住所、顔写真、健康情報、社外秘情報などを安易に入力しない。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>④ 知的財産権の侵害</strong></td>
+          <td>
+            生成物が著作権、特許権、商標権、意匠権などを侵害する可能性がある。
+          </td>
+          <td>
+            権利関係の確認が必要。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>⑤ 業界の職業への影響</strong></td>
+          <td>
+            音楽生成AIなどにより、人間の制作者への需要が変化する可能性がある。
+          </td>
+          <td>
+            生成AIは社会や仕事のあり方にも影響を与える。
+          </td>
+        </tr>
+        <tr>
+          <td><strong>⑥ 質の低下</strong></td>
+          <td>
+            AI生成の動画では、映像の連続性や音と映像の同期などで、人間の手作業より品質が劣る場合がある。
+          </td>
+          <td>
+            生成物をそのまま使わず、確認・修正する。
+          </td>
+        </tr>
+      </table>
+
+      <div class="box caution">
+        <h4>誤解注意</h4>
+        <p>
+          生成AIは「正しい答えを必ず出す機械」ではありません。
+          もっともらしい文章や画像を作ることは得意ですが、
+          <strong>正確性・権利・倫理・安全性</strong>は人間が確認する必要があります。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. ディープフェイクの特徴</h2>
+
+      <p>
+        <span class="keyword tag-red">ディープフェイク</span>は、ディープラーニングや生成AIを利用して、
+        非常にリアルな画像・映像・音声などを作成し、人を誤認させる可能性のある技術です。
+        日本語では <strong>深層偽造</strong> とも呼ばれます。
+      </p>
+
+      <div class="box learn">
+        <h4>ディープフェイクでできること</h4>
+        <ul>
+          <li>元の映像とは異なる人物の顔を合成する。</li>
+          <li>既存の映像に新しい表情や動きを追加する。</li>
+          <li>本人が話していない内容を、話しているように見せる。</li>
+          <li>音声生成AIと組み合わせて、声まで本人らしく作る。</li>
+        </ul>
+      </div>
+
+      <p>
+        ディープフェイクは、映画、翻訳吹き替え、教育、エンターテインメントなどで有用に使われる可能性があります。
+        一方で、悪意を持って使われると、なりすまし、詐欺、名誉毀損、選挙への影響、偽ニュース拡散などにつながります。
+      </p>
+
+      <div class="box caution">
+        <h4>重要：偽情報との関係</h4>
+        <p>
+          <span class="keyword tag-red">偽情報</span>は、英語で
+          <span class="keyword tag-red">ディスインフォメーション</span>とも呼ばれます。
+          ディープフェイクは、偽情報を広める手段として悪用されることがあります。
+        </p>
+      </div>
+
+      <div class="box exam">
+        <h4>試験ポイント</h4>
+        <ul>
+          <li><strong>ディープフェイク</strong>＝深層学習を使った非常にリアルな偽造コンテンツ。</li>
+          <li><strong>偽情報</strong>＝人を誤解させるために広められる誤った情報。</li>
+          <li>生成AIの品質が上がるほど、偽物を見抜くことが難しくなる。</li>
+          <li>倫理面、権利面、社会的影響に注意が必要。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!--section>
+      <h2>6. 似た用語の違い</h2>
+
+      <table>
+        <tr>
+          <th>用語</th>
+          <th>違い</th>
+        </tr>
+        <tr>
+          <td><span class="keyword">NLP</span> と <span class="keyword">LLM</span></td>
+          <td>
+            NLPは「人間の言葉をコンピュータで処理する技術分野」。
+            LLMは「大量の文章を学習した大規模な言語モデル」。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">GAN</span> と <span class="keyword">VAE</span></td>
+          <td>
+            GANは生成器と識別器を競わせる。
+            VAEはエンコーダで圧縮し、デコーダで復元する。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">音声生成AI</span> と <span class="keyword">音楽生成AI</span></td>
+          <td>
+            音声生成AIは人の声や読み上げ音声を作る。
+            音楽生成AIはメロディや曲を作る。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">画像生成AI</span> と <span class="keyword">動画生成AI</span></td>
+          <td>
+            画像生成AIは静止画像を作る。
+            動画生成AIは連続したフレームを作り、動きや時間的な一貫性も扱う。
+          </td>
+        </tr>
+        <tr>
+          <td><span class="keyword">誤情報</span> と <span class="keyword">偽情報</span></td>
+          <td>
+            誤情報は、意図せず広がる間違った情報。
+            偽情報は、人をだます目的で作られたり広められたりする情報。
+          </td>
+        </tr>
+      </table>
+    </section-->
+
+    <!--section>
+      <h2>7. 授業中に確認したいミニ問題</h2>
+
+      <div class="box point">
+        <h4>問題1</h4>
+        <p>画像生成AIで、画像のサイズをそろえたり、値の範囲を整えたりする作業を何というか。</p>
+        <p class="big-answer">答え：前処理</p>
+      </div>
+
+      <div class="box point">
+        <h4>問題2</h4>
+        <p>GANで、偽物の画像を作る役割を何というか。</p>
+        <p class="big-answer">答え：生成器</p>
+      </div>
+
+      <div class="box point">
+        <h4>問題3</h4>
+        <p>テキストを自然な音声に変換する技術を何というか。</p>
+        <p class="big-answer">答え：TTS、Text-to-Speech</p>
+      </div>
+
+      <div class="box point">
+        <h4>問題4</h4>
+        <p>深層学習を使って、非常にリアルな偽の映像や音声を作る技術を何というか。</p>
+        <p class="big-answer">答え：ディープフェイク、深層偽造</p>
+      </div>
+    </section-->
+
+    <section class="summary">
+      <h2>8. まとめ</h2>
+      <p>
+        この節では、現在の生成AIが作れるコンテンツと、それぞれの特徴を学びました。
+      </p>
+      <ul>
+        <li><span class="keyword">テキスト生成AI</span>：文章、要約、翻訳、対話を生成する。NLPやLLMが重要。</li>
+        <li><span class="keyword">画像生成AI</span>：画像を生成する。リサイズ、正規化、データの水増しなどの前処理が出題されやすい。</li>
+        <li><span class="keyword">音楽生成AI</span>：既存の音楽データから学習し、曲やメロディを生成する。</li>
+        <li><span class="keyword">音声生成AI</span>：TTSなどにより、テキストから自然な音声を生成する。</li>
+        <li><span class="keyword">動画生成AI</span>：連続したフレームを生成し、映像の一貫性や音声同期が重要になる。</li>
+        <li><span class="keyword">ディープフェイク</span>：リアルな偽造コンテンツを作れるため、偽情報やなりすましのリスクがある。</li>
+      </ul>
+      <p>
+        生成AIは便利な一方で、<strong>正確性確認</strong>、<strong>プライバシー保護</strong>、
+        <strong>知的財産権の確認</strong>、<strong>倫理的な利用</strong>が欠かせません。
+      </p>
+    </section>
+  </main>
+</body>
+</html>

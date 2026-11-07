@@ -1,0 +1,348 @@
+
+    :root {
+      --navy: #12355b;
+      --blue: #1d6fb8;
+      --light-blue: #eaf4ff;
+      --yellow: #fff3bf;
+      --orange: #d9480f;
+      --green: #087f5b;
+      --red: #c92a2a;
+      --gray: #f4f6f8;
+      --text: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.75;
+      font-size: 22px;
+    }
+
+.page {
+  width: 99%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 12px 4px 48px;
+}
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #fff;
+      padding: 32px 36px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    .label {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--navy);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 48px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      font-size: 26px;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+
+    section {
+      margin: 28px 0;
+      padding: 26px 30px;
+      border-radius: 18px;
+      background: #fff;
+      border: 2px solid #d9e2ec;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: var(--navy);
+      border-left: 12px solid var(--blue);
+      padding-left: 16px;
+      margin: 0 0 18px;
+    }
+
+    h3 {
+      font-size: 30px;
+      color: var(--navy);
+      margin: 26px 0 12px;
+    }
+
+    .learn-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .learn-card {
+      background: var(--light-blue);
+      border: 3px solid #7cc0ff;
+      border-radius: 16px;
+      padding: 18px;
+      font-weight: 700;
+      min-height: 120px;
+    }
+
+    .keyword {
+      display: inline-block;
+      background: #fff3bf;
+      border: 2px solid #f08c00;
+      color: #7a3d00;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 8px;
+      margin: 0 3px;
+    }
+
+    .point {
+      background: #fff8e1;
+      border-left: 12px solid #f59f00;
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-weight: 700;
+    }
+
+    .caution {
+      background: #fff5f5;
+      border-left: 12px solid var(--red);
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-weight: 700;
+    }
+
+    .example {
+      background: #effcf6;
+      border-left: 12px solid var(--green);
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 28px;
+      font-size: 21px;
+      overflow-wrap: anywhere;
+    }
+
+    th {
+      background: var(--navy);
+      color: #fff;
+      padding: 14px;
+      border: 2px solid #ffffff;
+      font-size: 22px;
+    }
+
+    td {
+      padding: 14px;
+      border: 2px solid #cbd5e1;
+      vertical-align: top;
+      background: #fff;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .level {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .compare-card {
+      border: 3px solid #cbd5e1;
+      border-radius: 18px;
+      padding: 22px;
+      background: #ffffff;
+    }
+
+    .ani {
+      border-color: #1d6fb8;
+      background: #eaf4ff;
+    }
+
+    .agi {
+      border-color: #d9480f;
+      background: #fff4e6;
+    }
+
+    .big {
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .quiz {
+      background: #f4f6f8;
+      border: 2px dashed #64748b;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-top: 20px;
+    }
+
+    .answer {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .summary {
+      background: #0b2e4a;
+      color: #ffffff;
+      border: none;
+    }
+
+    .summary h2 {
+      color: #ffffff;
+      border-left-color: #ffd43b;
+    }
+
+    .summary .keyword {
+      color: #111827;
+    }
+
+    ul {
+      margin-top: 8px;
+      padding-left: 1.3em;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .small-note {
+      font-size: 19px;
+      color: #475569;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 38px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      .learn-list,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      table {
+        font-size: 19px;
+      }
+    }
+
+  .decision-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 20px 0 28px;
+  }
+
+  .decision-card {
+    border: 3px solid #cbd5e1;
+    border-radius: 18px;
+    padding: 22px;
+    background: #ffffff;
+  }
+
+  .decision-card h4 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    color: var(--navy);
+  }
+
+  .yes {
+    border-color: #1d6fb8;
+    background: #eaf4ff;
+  }
+
+  .no {
+    border-color: #f59f00;
+    background: #fff8e1;
+  }
+
+  .level-mini {
+    display: inline-block;
+    font-weight: 900;
+    color: #ffffff;
+    background: var(--blue);
+    border-radius: 10px;
+    padding: 4px 12px;
+    margin-right: 8px;
+  }
+
+.level-lines {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.level-line {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+  .simple-level-table col:nth-child(1) {
+    width: 30%;
+  }
+
+  .simple-level-table col:nth-child(2) {
+    width: 38%;
+  }
+
+  .simple-level-table col:nth-child(3) {
+    width: 32%;
+  }
+
+  .simple-level-table td {
+    font-size: 22px;
+  }
+
+  @media (max-width: 900px) {
+    .decision-flow {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* 黄色いキーワード枠が文字や他の枠とくっつかないようにする */
+.point {
+  line-height: 2.1;
+}
+
+.point .keyword {
+  margin: 8px 12px;
+  vertical-align: middle;
+}

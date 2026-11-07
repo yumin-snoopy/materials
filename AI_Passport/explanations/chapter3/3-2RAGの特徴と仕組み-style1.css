@@ -1,0 +1,302 @@
+
+  :root{
+    --main:#0b3a75;
+    --accent:#e85d04;
+    --green:#137547;
+    --red:#c1121f;
+    --yellow:#fff3bf;
+    --bluebg:#eaf3ff;
+    --gray:#f5f7fa;
+    --dark:#1f2937;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#ffffff;
+    color:var(--dark);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+    font-size:22px;
+    line-height:1.75;
+  }
+  .page{
+    width:100%;
+    max-width:1260px;
+    margin:0 auto;
+    padding:26px 34px 70px;
+  }
+  h1{
+    margin:0 0 22px;
+    padding:26px 30px;
+    background:linear-gradient(90deg,var(--main),#1769aa);
+    color:#fff;
+    font-size:42px;
+    line-height:1.3;
+    border-radius:18px;
+  }
+  h2{
+    margin:42px 0 18px;
+    padding:12px 18px;
+    border-left:14px solid var(--main);
+    background:var(--bluebg);
+    font-size:34px;
+    color:var(--main);
+  }
+  h3{
+    margin:28px 0 12px;
+    font-size:28px;
+    color:var(--main);
+    border-bottom:3px solid #cfe3ff;
+  }
+  p{margin:0 0 16px;}
+  ul,ol{margin-top:8px;}
+  li{margin:8px 0;}
+  .lead{
+    background:#f8fbff;
+    border:3px solid #cfe3ff;
+    border-radius:18px;
+    padding:22px 26px;
+    font-size:25px;
+    font-weight:600;
+  }
+  .box{
+    background:#fff;
+    border:2px solid #d7dee8;
+    border-radius:18px;
+    padding:22px 26px;
+    margin:18px 0;
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
+  }
+  .learn{
+    background:#f7fff9;
+    border-color:#b7e4c7;
+  }
+  .point{
+    background:#fff3bf;
+    border:3px solid #ffd43b;
+  }
+  .exam{
+    background:#fff8f1;
+    border:3px solid var(--accent);
+  }
+  .caution{
+    background:#fff5f5;
+    border:3px solid #ffb3b3;
+  }
+  .keyword{
+    display:inline-block;
+    padding:2px 10px;
+    margin:2px;
+    color:#fff;
+    background:var(--main);
+    border-radius:8px;
+    font-weight:800;
+  }
+  .term{
+    color:var(--main);
+    font-weight:800;
+    border-bottom:3px solid #ffd43b;
+  }
+  .red{color:var(--red);font-weight:800;}
+  .green{color:var(--green);font-weight:800;}
+  .accent{color:var(--accent);font-weight:800;}
+  .flow{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+    margin-top:18px;
+  }
+  .step{
+    border:3px solid #cfe3ff;
+    border-radius:18px;
+    padding:20px;
+    background:#f8fbff;
+    position:relative;
+  }
+  .step-num{
+    display:inline-block;
+    background:var(--main);
+    color:#fff;
+    border-radius:999px;
+    padding:2px 14px;
+    font-weight:800;
+    margin-bottom:8px;
+  }
+  .compare{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:21px;
+  }
+  .compare th{
+    background:var(--main);
+    color:#fff;
+    padding:12px;
+    border:2px solid #fff;
+  }
+  .compare td{
+    border:2px solid #cfd8e3;
+    padding:12px 14px;
+    vertical-align:top;
+  }
+  .compare tr:nth-child(even) td{background:#f7faff;}
+  .mini{
+    font-size:19px;
+    color:#4b5563;
+  }
+  .summary{
+    background:#eafaf1;
+    border:4px solid var(--green);
+  }
+  .tag{
+    display:inline-block;
+    background:#eef2ff;
+    color:#273c75;
+    border:2px solid #b7c3ff;
+    border-radius:999px;
+    padding:4px 12px;
+    margin:4px;
+    font-weight:700;
+  }
+
+  .diagram{
+    background:#f8fbff;
+    border:3px solid #cfe3ff;
+    border-radius:20px;
+    padding:18px;
+    margin:18px 0;
+  }
+  .diagram svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .note-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:18px 0;
+  }
+  .mini-card{
+    background:#ffffff;
+    border:2px solid #d6e4ff;
+    border-radius:16px;
+    padding:16px 18px;
+  }
+
+
+  .example-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:18px 0;
+  }
+  .example-card{
+    background:#ffffff;
+    border:3px solid #d6e4ff;
+    border-radius:18px;
+    padding:18px 20px;
+  }
+  .example-card h4{
+    margin:0 0 10px;
+    font-size:24px;
+    color:var(--main);
+  }
+  .doc-sample{
+    background:#fbfdff;
+    border-left:9px solid var(--main);
+    border-radius:12px;
+    padding:16px 18px;
+    margin:12px 0;
+    font-size:21px;
+  }
+  .chunk-sample{
+    background:#f8fbff;
+    border:3px solid #cfe3ff;
+    border-radius:16px;
+    padding:16px 18px;
+    margin:12px 0;
+    font-size:21px;
+  }
+  .chunk-sample.good{
+    background:#f7fff9;
+    border-color:#95d5b2;
+  }
+  .chunk-sample.bad{
+    background:#fff5f5;
+    border-color:#ffb3b3;
+  }
+  .chunk-title{
+    display:inline-block;
+    font-weight:800;
+    color:#fff;
+    background:var(--main);
+    border-radius:999px;
+    padding:2px 12px;
+    margin-bottom:8px;
+  }
+  .chunk-title.bad{
+    background:var(--red);
+  }
+  .meta-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    font-size:20px;
+  }
+  .meta-table th{
+    width:26%;
+    background:#eef6ff;
+    color:var(--main);
+    border:2px solid #cfe3ff;
+    padding:8px 10px;
+    text-align:left;
+  }
+  .meta-table td{
+    border:2px solid #cfe3ff;
+    padding:8px 10px;
+    background:#fff;
+  }
+  .overlap-line{
+    border:3px solid #cfe3ff;
+    border-radius:16px;
+    padding:14px 16px;
+    margin:10px 0;
+    background:#ffffff;
+    font-size:21px;
+  }
+  .overlap-mark{
+    background:#fff3bf;
+    color:#7c2d12;
+    font-weight:800;
+    border-bottom:4px solid #ffd43b;
+  }
+  .judge{
+    display:inline-block;
+    font-weight:800;
+    border-radius:999px;
+    padding:2px 12px;
+    margin-right:8px;
+  }
+  .judge.ng{
+    background:#ffe3e3;
+    color:#c1121f;
+    border:2px solid #ffb3b3;
+  }
+  .judge.ok{
+    background:#eafaf1;
+    color:#137547;
+    border:2px solid #95d5b2;
+  }
+
+  @media(max-width:900px){
+    body{font-size:20px;}
+    h1{font-size:34px;}
+    h2{font-size:29px;}
+    h3{font-size:25px;}
+    .flow{grid-template-columns:1fr;}
+    .example-grid{grid-template-columns:1fr;}
+    .compare{font-size:18px;}
+    .page{padding:18px 18px 50px;}
+  }
+
+.revision-note{background:#f0f7fc;color:#182b3a;border:2px solid #6087a3;border-radius:12px;padding:18px 22px;margin:24px 0;line-height:1.85;overflow-wrap:anywhere}.revision-note p{margin:8px 0 0}

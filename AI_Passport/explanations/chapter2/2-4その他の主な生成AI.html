@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第2章 第4節 その他の主な生成AI</title>
+  <link rel="stylesheet" href="2-4その他の主な生成AI-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+<body>
+  <main class="page">
+    <header>
+      <div class="chapter">生成AIパスポート試験対策｜第2章 第4節</div>
+      <h1>その他の主な生成AI</h1>
+      <div class="subtitle">Gemini・Claude・Copilot の特徴を、試験で区別できるように理解する</div>
+      <div class="badge-row">
+        <span class="badge">Gemini</span>
+        <span class="badge">Claude</span>
+        <span class="badge">Copilot</span>
+        <span class="badge">Google DeepMind</span>
+        <span class="badge">Anthropic</span>
+        <span class="badge">Microsoft</span>
+        <span class="badge">マルチモーダル</span>
+        <span class="badge">Artifacts</span>
+      </div>
+    </header>
+
+    <section class="learn">
+      <h2>このページで学ぶこと</h2>
+      <ul class="checklist">
+        <li><strong>Gemini</strong> は Google DeepMind が開発する生成AIであること</li>
+        <li><strong>Claude</strong> は Anthropic が開発し、安全性や長文処理に強みがあること</li>
+        <li><strong>Copilot</strong> は Microsoft のAI支援サービス群で、Office業務や開発支援と結びつくこと</li>
+        <li>3つの生成AIについて、<strong>開発元・特徴・得意な用途</strong>を区別すること</li>
+        <li>試験で問われやすい <strong>マルチモーダル、Constitutional AI、Artifacts、Copilot Studio</strong> を理解すること</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>本文解説：この節の全体像</h2>
+      <p>
+        生成AIパスポート試験では、ChatGPTだけでなく、ChatGPT以外の主要な生成AIについても概要を理解する必要があります。
+        この節で特に押さえるのは、<span class="term">Gemini</span>、<span class="term">Claude</span>、<span class="term">Copilot</span> の3つです。
+      </p>
+
+      <div class="point">
+        <strong>試験ポイント</strong>
+        <p>
+          最初に覚えるべきことは、<strong>名前と開発元の対応</strong>です。<br>
+          <span class="compare-word">Gemini = Google DeepMind</span><br>
+          <span class="compare-word">Claude = Anthropic</span><br>
+          <span class="compare-word">Copilot = Microsoft</span>
+        </p>
+      </div>
+
+      <p>
+        3つとも文章生成や質問応答ができますが、試験では「全部同じチャットAI」と覚えるのではなく、
+        それぞれの<strong>立ち位置</strong>を区別することが大切です。
+      </p>
+
+      <!--div class="example">
+        <strong>身近なたとえ</strong>
+        <p>
+          3つの生成AIを会社のメンバーにたとえると、Geminiは画像・音声・動画・コードなどを幅広く扱う
+          <strong>多機能な分析担当</strong>、Claudeは安全性や丁寧な文章処理を重視する
+          <strong>慎重な文章・推論担当</strong>、CopilotはWordやExcelなどの作業の中で助けてくれる
+          <strong>業務アシスタント</strong>です。
+        </p>
+      </div-->
+    </section>
+
+    <section>
+      <h2>1. Gemini の特徴</h2>
+
+      <p>
+        <span class="term">Gemini</span> は、<strong>Google DeepMind</strong> が開発する生成AIです。
+        Google検索、Gmail、Googleドキュメント、Android、クラウドサービスなど、
+        Googleのさまざまなサービスと関係が深いAIとして理解すると覚えやすくなります。
+      </p>
+
+      <div class="deep">
+        <strong>Geminiを一言でいうと</strong>
+        <p>
+          Geminiは、テキストだけでなく、画像・音声・動画・コードなども扱うことを重視した
+          <strong>マルチモーダル型の生成AI</strong>です。
+          「文章だけを読むAI」ではなく、「見たり、聞いたり、読んだり、コードを扱ったりできるAI」と考えるとわかりやすいです。
+        </p>
+      </div>
+
+      <h3>Gemini の重要キーワード</h3>
+
+      <h4>① Google DeepMind</h4>
+      <p>
+        Geminiの開発元は <span class="term">Google DeepMind</span> です。
+        試験では、ChatGPTのOpenAI、ClaudeのAnthropic、CopilotのMicrosoftと混同しないことが重要です。
+      </p>
+
+      <h4>② マルチモーダル</h4>
+      <p>
+        <span class="term">マルチモーダル</span> とは、複数の種類の情報を扱えることです。
+        ここでいう「モード」とは、情報の形式を意味します。
+        たとえば、文章、画像、音声、動画、コードなどがそれぞれ異なるモードです。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <p>
+          画像に写っているグラフを読み取り、その内容を日本語で説明し、さらに表に整理する。
+          あるいは、資料の画像を見ながら説明文を作り、必要に応じてコードも書く。
+          このような使い方が、マルチモーダルAIのイメージです。
+        </p>
+      </div>
+
+      <h4>③ reasoning</h4>
+      <p>
+        <span class="term">reasoning</span> は、AIが答えを出すときに、より深く考える仕組みを指します。
+        単純な質問には素早く答え、複雑な問題では段階的に考えて答える、というイメージです。
+      </p>
+
+      <div class="example">
+        <strong>たとえ話</strong>
+        <p>
+          「今日の天気を教えて」のような質問はすぐ答えられます。
+          一方で、「売上データを見て、原因を分析し、改善策を3つ提案して」のような質問は、
+          データを読み取り、比較し、原因を考え、提案を作る必要があります。
+          このように複雑な問題を考える力が reasoning です。
+        </p>
+      </div>
+
+      <h4>④ Pro・Flash・Nano の違い</h4>
+      <p>
+        Geminiには、用途に応じて複数のモデルがあります。
+        試験では細かな性能差まで暗記するよりも、<strong>名前から役割をイメージできること</strong>が大切です。
+      </p>
+
+      <div class="model-box">
+        <h4>Gemini Pro</h4>
+        <p>
+          Proは、高度な処理や複雑な作業に向いたモデルです。
+          文章作成、コード、数学的な処理、長めの分析など、能力の高さを重視する場面で使われます。
+        </p>
+      </div>
+
+      <div class="model-box">
+        <h4>Gemini Flash</h4>
+        <p>
+          Flashは、名前の通り、速度や効率を重視するモデルです。
+          多くの質問にすばやく答える、コストを抑えて大量に処理する、といった場面に向いています。
+        </p>
+      </div>
+
+      <div class="model-box">
+        <h4>Gemini Nano</h4>
+        <p>
+          Nanoは、スマートフォンなどの端末上で動作する軽量版として理解します。
+          クラウドに毎回送らなくても、端末内で一部のAI処理を行えることがポイントです。
+        </p>
+      </div>
+
+      <div class="point">
+        <strong>試験ポイント</strong>
+        <p>
+          Geminiは、<strong>Google DeepMind</strong>、<strong>マルチモーダル</strong>、<strong>reasoning</strong>、
+          <strong>Pro / Flash / Nano</strong> をセットで覚えましょう。
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>誤解注意</strong>
+        <p>
+          「マルチモーダル」は、単に画像を読み込めるという意味だけではありません。
+          <strong>テキスト・画像・音声・動画・コードなど、複数の形式の情報を扱える</strong>という広い意味です。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Claude の特徴</h2>
+
+      <p>
+        <span class="term">Claude</span> は、<strong>Anthropic</strong> が開発する生成AIです。
+        Claudeは、文章の読み書き、要約、推論、長い資料の処理などに強みを持つAIとして紹介されることが多いです。
+      </p>
+
+      <div class="deep">
+        <strong>Claudeを一言でいうと</strong>
+        <p>
+          Claudeは、安全性や丁寧な応答を重視し、長い文書を扱いやすい
+          <strong>文章処理・推論に強い生成AI</strong>です。
+          「長い資料を読ませて、要約や整理をしてもらうAI」と考えるとイメージしやすいです。
+        </p>
+      </div>
+
+      <h3>Claude の重要キーワード</h3>
+
+      <h4>① Anthropic</h4>
+      <p>
+        Claudeの開発元は <span class="term">Anthropic</span> です。
+        Anthropicは、安全性を重視したAI開発で知られています。
+        試験では、ClaudeとAnthropicを結びつけて覚えることが重要です。
+      </p>
+
+      <h4>② Constitutional AI</h4>
+      <p>
+        <span class="term">Constitutional AI</span> は、AIが一定の原則に基づいて回答を調整する考え方です。
+        「Constitutional」は「憲法のような」という意味です。
+        つまり、AIに守るべき原則を与え、それに沿って安全で有用な回答を目指す仕組みと理解します。
+      </p>
+
+      <div class="example">
+        <strong>たとえ話</strong>
+        <p>
+          学校に校則があると、生徒は「やってよいこと」「やってはいけないこと」を判断しやすくなります。
+          Constitutional AIも同じように、AIに守るべき原則を与え、危険な回答や不適切な回答を避ける方向に調整します。
+        </p>
+      </div>
+
+      <h4>③ 「無害・役立つ・正直」</h4>
+      <p>
+        Claudeを理解するうえでは、<strong>無害・役立つ・正直</strong>という考え方が重要です。
+        無害とは危険な使い方を助長しないこと、役立つとは利用者の目的に沿って支援すること、
+        正直とはわからないことを無理に断定しないことです。
+      </p>
+
+      <h4>④ Haiku・Sonnet・Opus の違い</h4>
+      <p>
+        Claudeには、用途に応じて複数のモデル名があります。
+        代表的な名前として、<span class="term">Haiku</span>、<span class="term">Sonnet</span>、<span class="term">Opus</span> を押さえましょう。
+      </p>
+
+      <div class="model-box">
+        <h4>Claude Haiku</h4>
+        <p>
+          Haikuは、軽量で高速なモデルとして理解します。
+          すばやい応答や、比較的簡単な作業を効率よく処理する場面に向いています。
+        </p>
+      </div>
+
+      <div class="model-box">
+        <h4>Claude Sonnet</h4>
+        <p>
+          Sonnetは、速度と能力のバランスを重視したモデルです。
+          日常的な文章作成、要約、アイデア出し、分析など、幅広い用途に使いやすい位置づけです。
+        </p>
+      </div>
+
+      <div class="model-box">
+        <h4>Claude Opus</h4>
+        <p>
+          Opusは、複雑な推論や高度な文章処理に向いた上位モデルとして理解します。
+          難しい問題の分析、長い文書の精読、複雑な計画づくりなどに向いています。
+        </p>
+      </div>
+
+      <h4>⑤ 長大なコンテキスト</h4>
+      <p>
+        <span class="term">コンテキスト</span> とは、AIが回答の手がかりにする文脈や参照情報のことです。一度に扱える情報量の上限は「コンテキストウィンドウ」と呼びます。
+        Claudeは長い文章や大量の資料を扱う用途でよく説明されます。
+        長大なコンテキストを扱えると、長いPDF、仕様書、議事録、契約書のような文書をまとめて処理しやすくなります。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <p>
+          50ページの会議資料を読み込ませて、「重要な論点を5つにまとめて」
+          「リスクだけ抜き出して」「次回会議のアジェンダを作って」と依頼するような使い方です。
+        </p>
+      </div>
+
+      <h4>⑥ Artifacts</h4>
+      <p>
+        <span class="term">Artifacts</span> は、Claudeで文書やコードなどの成果物を別画面のように表示しながら、
+        生成・編集できる機能として理解します。
+        チャットでやり取りするだけでなく、作成中の文章やコードを確認しながら修正しやすい点が特徴です。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <p>
+          Claudeに「授業用のHTML資料を作って」と頼むと、チャットの返答だけでなく、
+          HTMLファイルのような成果物を画面上で確認しながら編集できるイメージです。
+        </p>
+      </div>
+
+      <div class="point">
+        <strong>試験ポイント</strong>
+        <p>
+          Claudeは、<strong>Anthropic</strong>、<strong>Constitutional AI</strong>、
+          <strong>無害・役立つ・正直</strong>、<strong>Haiku / Sonnet / Opus</strong>、
+          <strong>長大なコンテキスト</strong>、<strong>Artifacts</strong> を押さえましょう。
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>誤解注意</strong>
+        <p>
+          Claudeは「安全性を重視するから何もできないAI」という意味ではありません。
+          実際には、文章生成、要約、分析、コード作成など多くの作業ができます。
+          ただし、危険な内容や不適切な使い方には慎重に対応する設計だと理解しましょう。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Copilot の特徴</h2>
+
+      <p>
+        <span class="term">Copilot</span> は、<strong>Microsoft</strong> が展開するAIブランドです。
+        Word、Excel、Outlook、Teams、PowerPoint、GitHub、セキュリティ製品など、
+        Microsoftのサービスに組み込まれて作業を支援します。
+      </p>
+
+      <div class="deep">
+        <strong>Copilotを一言でいうと</strong>
+        <p>
+          Copilotは、単独のAIモデル名というより、Microsoft製品の中で利用者の作業を助ける
+          <strong>AIアシスタント機能・サービス群</strong>です。
+          「仕事中に横で手伝ってくれる副操縦士」というイメージで覚えましょう。
+        </p>
+      </div>
+
+      <h3>Copilot の重要キーワード</h3>
+
+      <h4>① Microsoft</h4>
+      <p>
+        Copilotの提供元は <span class="term">Microsoft</span> です。
+        試験では、Copilotを「MicrosoftのAI」として覚えることが第一歩です。
+      </p>
+
+      <h4>② Microsoft 365との連携</h4>
+      <p>
+        Copilotは、Word、Excel、Outlook、Teams、PowerPointなど、
+        Microsoft 365のアプリと連携して使われます。
+        つまり、チャットで質問するだけでなく、普段の業務画面の中でAIが支援してくれる点が特徴です。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <ul>
+          <li><strong>Word</strong>：文章の下書き、書き換え、要約を支援する</li>
+          <li><strong>Excel</strong>：表の分析、傾向の説明、関数の提案を支援する</li>
+          <li><strong>Outlook</strong>：メールの要約、返信文の作成を支援する</li>
+          <li><strong>Teams</strong>：会議内容の要約、決定事項やタスクの整理を支援する</li>
+          <li><strong>PowerPoint</strong>：資料構成やスライド案の作成を支援する</li>
+        </ul>
+      </div>
+
+      <h4>③ Copilot Studio</h4>
+      <p>
+        <span class="term">Copilot Studio</span> は、自社の業務に合わせたAIアシスタントを作るための仕組みです。
+        たとえば、社内FAQに答えるAI、問い合わせ対応を支援するAI、業務手順を案内するAIなどを作るイメージです。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <p>
+          会社の人が「経費精算の方法を教えて」と聞いたときに、
+          社内ルールに基づいて回答するAIを作る。
+          これがCopilot Studioのような仕組みで実現できる用途です。
+        </p>
+      </div>
+
+      <h4>④ GitHub Copilot</h4>
+      <p>
+        <span class="term">GitHub Copilot</span> は、プログラミングを支援するCopilotです。
+        コードの候補を出したり、エラーの原因を考えたり、関数の作成を補助したりします。
+      </p>
+
+      <div class="example">
+        <strong>具体例</strong>
+        <p>
+          プログラマーが「この処理をPythonで書きたい」と考えたとき、
+          GitHub Copilotがコードの候補を提案してくれます。
+          自動車の運転でいうと、運転そのものを完全に任せるのではなく、
+          横で道案内や操作補助をしてくれる存在に近いです。
+        </p>
+      </div>
+
+      <h4>⑤ Security Copilot</h4>
+      <p>
+        <span class="term">Security Copilot</span> は、セキュリティ業務を支援するCopilotです。
+        セキュリティ担当者が脅威を調査したり、ログを分析したり、対応方針を整理したりする作業を補助します。
+      </p>
+
+      <h4>⑥ Copilot+ PC</h4>
+      <p>
+        <span class="term">Copilot+ PC</span> は、AI機能を活用することを前提としたPCのカテゴリとして理解します。
+        PC上でAIを使った検索、要約、画像処理などを行いやすくする考え方と結びつきます。
+      </p>
+
+      <div class="point">
+        <strong>試験ポイント</strong>
+        <p>
+          Copilotは、<strong>Microsoft</strong>、<strong>Microsoft 365</strong>、
+          <strong>Word・Excel・Outlook・Teams</strong>、
+          <strong>Copilot Studio</strong>、<strong>GitHub Copilot</strong>、
+          <strong>Security Copilot</strong> を関連づけて覚えましょう。
+        </p>
+      </div>
+
+      <div class="note">
+        <strong>誤解注意</strong>
+        <p>
+          Copilotは、GeminiやClaudeのように単一のモデル名として覚えるよりも、
+          <strong>Microsoft製品に組み込まれたAI支援機能・サービス群</strong>として理解するのが重要です。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3つの比較表</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>Gemini</th>
+            <th>Claude</th>
+            <th>Copilot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>開発元・提供元</td>
+            <td>Google DeepMind</td>
+            <td>Anthropic</td>
+            <td>Microsoft</td>
+          </tr>
+          <tr>
+            <td>位置づけ</td>
+            <td>Google系の生成AIモデル・サービス</td>
+            <td>Anthropicの対話型生成AI</td>
+            <td>MicrosoftのAI支援機能・サービス群</td>
+          </tr>
+          <tr>
+            <td>主な特徴</td>
+            <td>ネイティブなマルチモーダル設計、reasoning</td>
+            <td>Constitutional AI、長大なコンテキスト、Artifacts</td>
+            <td>Word・Excel・Outlook・Teamsなどの業務アプリと連携</td>
+          </tr>
+          <tr>
+            <td>代表例</td>
+            <td>Gemini Pro、Gemini Flash、Gemini Nano</td>
+            <td>Claude Haiku、Claude Sonnet、Claude Opus</td>
+            <td>Copilot Studio、GitHub Copilot、Security Copilot、Copilot+ PC</td>
+          </tr>
+          <tr>
+            <td>得意なイメージ</td>
+            <td>画像・音声・動画・コードなどを幅広く扱う</td>
+            <td>長文資料の整理、要約、慎重な文章作成</td>
+            <td>Office業務、開発、セキュリティなどの実務支援</td>
+          </tr>
+          <tr>
+            <td>覚え方</td>
+            <td>Googleの多機能・マルチモーダル型</td>
+            <td>安全性と長文処理に強い慎重型</td>
+            <td>Microsoft 365業務に入り込む実務型</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>重要語句の補足説明</h2>
+
+      <h3><span class="mini-title">用語1</span>マルチモーダル</h3>
+      <p>
+        マルチモーダルとは、テキスト、画像、音声、動画、コードなど、複数の情報形式を扱えることです。
+        Geminiを説明するときに特に重要な用語です。
+      </p>
+
+      <h3><span class="mini-title">用語2</span>トークン</h3>
+      <p>
+        トークンとは、AIが文章を処理するときの単位です。
+        日本語では、1文字ずつではなく、文字の一部や意味のまとまりとして分割されることがあります。
+      </p>
+
+      <h3><span class="mini-title">用語3</span>コンテキスト</h3>
+      <p>
+        コンテキストとは、AIが回答の手がかりにする文脈や参照情報のことです。一度に扱える情報量の上限は「コンテキストウィンドウ」と呼びます。
+        コンテキストウィンドウが大きいほど、長い資料や大量の会話履歴を踏まえて回答しやすくなります。
+      </p>
+
+      <h3><span class="mini-title">用語4</span>reasoning</h3>
+      <p>
+        reasoningは、AIが答えを出す前に、より深く考える仕組みを指します。
+        簡単な質問では短く考え、複雑な問題では段階的に推論するイメージです。
+      </p>
+
+      <h3><span class="mini-title">用語5</span>Artifacts</h3>
+      <p>
+        Artifactsは、Claudeで文書やコードなどの成果物を確認しながら作成・編集しやすくする機能です。
+        「チャットの返答」だけでなく、「完成物を横に表示して作業する」イメージです。
+      </p>
+
+      <h3><span class="mini-title">用語6</span>Copilot</h3>
+      <p>
+        Copilotは「副操縦士」という意味です。
+        利用者の代わりにすべてを行うのではなく、利用者の作業を横で支援するAIという意味で使われます。
+      </p>
+    </section>
+
+    <section>
+      <h2>試験で押さえるポイント</h2>
+      <div class="grid">
+        <div class="card gemini">
+          <h3>Gemini</h3>
+          <ul>
+            <li>開発元は Google DeepMind</li>
+            <li>マルチモーダルが重要</li>
+            <li>reasoning と関連</li>
+            <li>Pro、Flash、Nanoの違いを大まかに理解</li>
+            <li>Google系サービスとの関連をイメージ</li>
+          </ul>
+        </div>
+        <div class="card claude">
+          <h3>Claude</h3>
+          <ul>
+            <li>開発元は Anthropic</li>
+            <li>Constitutional AI</li>
+            <li>無害・役立つ・正直</li>
+            <li>Haiku、Sonnet、Opus</li>
+            <li>長文処理、Artifactsが重要</li>
+          </ul>
+        </div>
+        <div class="card copilot">
+          <h3>Copilot</h3>
+          <ul>
+            <li>提供元は Microsoft</li>
+            <li>単一モデル名ではなくAI支援サービス群</li>
+            <li>Word・Excel・Outlook・Teamsと連携</li>
+            <li>Copilot Studio</li>
+            <li>GitHub Copilot、Security Copilot</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="memory">
+        暗記フレーズ：<br>
+        Geminiは「Google・マルチモーダル」、
+        Claudeは「Anthropic・安全原則・長文処理」、
+        Copilotは「Microsoft・Office業務支援」
+      </div>
+    </section>
+
+    <!--section>
+      <h2>試験での見分け方</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>問題文に出てきたら</th>
+            <th>連想するAI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google DeepMind、マルチモーダル、Pro、Flash、Nano</td>
+            <td>Gemini</td>
+          </tr>
+          <tr>
+            <td>Anthropic、Constitutional AI、Haiku、Sonnet、Opus、Artifacts</td>
+            <td>Claude</td>
+          </tr>
+          <tr>
+            <td>Microsoft、Word、Excel、Outlook、Teams、GitHub、Security</td>
+            <td>Copilot</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="point">
+        <strong>試験ポイント</strong>
+        <p>
+          試験では、細かい技術仕様よりも、<strong>開発元・代表的な機能名・用途</strong>の組み合わせで問われる可能性が高いです。
+          まずは3つを混同しないことを目標にしましょう。
+        </p>
+      </div>
+    </section-->
+
+    <section class="summary">
+      <h2>まとめ</h2>
+      <ul class="checklist">
+        <li><strong>Gemini</strong> は Google DeepMind の生成AI。マルチモーダルと reasoning が重要。</li>
+        <li><strong>Claude</strong> は Anthropic の生成AI。Constitutional AI、長文処理、Artifacts が重要。</li>
+        <li><strong>Copilot</strong> は Microsoft のAI支援サービス群。Microsoft 365、GitHub、セキュリティ業務と結びつく。</li>
+        <li>試験では「開発元」「特徴的な用語」「代表的な用途」を組み合わせて覚える。</li>
+        <li>3つを一言で覚えるなら、Geminiは多機能型、Claudeは慎重な文章処理型、Copilotは業務支援型。</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

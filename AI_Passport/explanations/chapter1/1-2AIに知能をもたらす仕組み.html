@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>生成AIパスポート 第1章 第2節｜AIに知能をもたらす仕組み</title>
+<link rel="stylesheet" href="1-2AIに知能をもたらす仕組み-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+
+<body>
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="kicker">生成AIパスポート試験対策｜第1章 第2節</div>
+      <h1>AIに知能をもたらす仕組み</h1>
+      <p class="lead">
+        このページでは、AIが「判断できる」「分類できる」「改善できる」ようになる仕組みを学びます。
+        試験では、<span class="term">ルールベース</span>と<span class="term">機械学習</span>の違い、
+        さらに機械学習の代表的な手法を見分ける問題が出やすいです。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>1. このページで学ぶこと</h2>
+      <div>
+        <span class="tag">ルールベース</span>
+        <span class="tag">機械学習</span>
+        <span class="tag">教師あり学習</span>
+        <span class="tag">教師なし学習</span>
+        <span class="tag">クラスタリング</span>
+        <span class="tag">次元削減</span>
+        <span class="tag">強化学習</span>
+        <span class="tag">半教師あり学習</span>
+        <span class="tag">学習済みモデル</span>
+        <span class="tag">ノーフリーランチ定理</span>
+      </div>
+
+      <div class="point">
+        <div class="label">試験で最重要</div>
+        <p>
+          「正解データがあるか」「報酬があるか」「グループ分けしたいのか」を見れば、
+          どの学習手法か判断しやすくなります。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. AIに知能をもたらす2つの仕組み</h2>
+
+      <p>
+        AIが知的に見える動作をする仕組みには、大きく分けて
+        <span class="term">ルールベース</span>と<span class="term">機械学習</span>があります。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>仕組み</th>
+            <th>内容</th>
+            <th>特徴</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ルールベース</strong></td>
+            <td>
+              人間が事前に作ったルールや知識を、コンピュータプログラムに組み込み、
+              そのルールに基づいて予測や判断を行う技術。
+            </td>
+            <td>
+              複雑な問題に対応するには大量のルールが必要になり、
+              ルールの追加・修正・管理が難しくなりやすい。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>機械学習</strong></td>
+            <td>
+              コンピュータ自身がデータからパターンを見つけ、
+              予測や判断を行う技術。
+            </td>
+            <td>
+              統計的手法やアルゴリズムを用いて、大量のデータから機械が自ら学習する。
+              現在のAIの主流。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid">
+        <div class="card">
+          <h3>ルールベースの例</h3>
+          <p>
+            「気温が30℃以上なら“暑い”と表示する」
+            「在庫が10個未満なら発注する」のように、
+            人間が条件を決めておく方式です。
+          </p>
+          <p class="mini">
+            たとえ話：料理のレシピをそのまま実行するロボット。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>機械学習の例</h3>
+          <p>
+            過去の売上データから「雨の日は傘が売れやすい」
+            「週末は来店数が増えやすい」といった傾向を学び、
+            将来の売上を予測します。
+          </p>
+          <p class="mini">
+            たとえ話：たくさんの経験からコツをつかむ人間。
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="label">間違えやすい点</div>
+        <p>
+          ルールベースは「人間がルールを書く」方式、
+          機械学習は「データからルールのようなパターンを学ぶ」方式です。
+          どちらもAIに使われますが、現在の主流は機械学習です。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. 機械学習の具体的手法</h2>
+
+      <p>
+        機械学習の代表的な手法は、次の4つです。
+        試験では、それぞれの「学習に使うデータ」と「目的」を区別することが重要です。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>手法</th>
+            <th>学習の考え方</th>
+            <th>よくある用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>教師あり学習</strong></td>
+            <td>
+              入力データと正解データ、つまり教師データのペアを使って学習する。
+            </td>
+            <td>
+              分類、回帰、画像認識、迷惑メール判定、価格予測など。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>教師なし学習</strong></td>
+            <td>
+              正解データを与えず、データ自体のパターンや構造をモデルが見つける。
+            </td>
+            <td>
+              クラスタリング、次元削減、データ分析、異常検知など。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>強化学習</strong></td>
+            <td>
+              報酬という目標を設定し、報酬を最大化する行動を試行錯誤で学ぶ。
+            </td>
+            <td>
+              ゲームAI、ロボット制御、自動運転、最適な行動選択など。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>半教師あり学習</strong></td>
+            <td>
+              少量のラベル付きデータと、大量のラベルなしデータを組み合わせて学習する。
+            </td>
+            <td>
+              ラベル付けコストを抑えたい画像分類、文章分類など。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="point">
+        <div class="label">試験ポイント</div>
+        <p>
+          「正解ラベルあり」なら教師あり学習、
+          「正解ラベルなしでグループ分け」なら教師なし学習、
+          「報酬を最大化」なら強化学習、
+          「少量の正解データ＋大量の未ラベルデータ」なら半教師あり学習です。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>4. 教師あり学習</h2>
+
+      <p>
+        <span class="term">教師あり学習</span>は、問題となる入力データと正解データのペアを反復的に学習することで、
+        未知のデータに対しても正しい分類や予測ができるようにする方法です。
+      </p>
+
+      <div class="flow">
+        <div>入力データ</div>
+        <div class="arrow">＋</div>
+        <div>正解データ<br><span class="mini">教師データ</span></div>
+        <div class="arrow">→</div>
+        <div>モデルが学習</div>
+        <div class="arrow">→</div>
+        <div>未知データを予測</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>身近な例</h3>
+          <p>
+            子どもが動物の絵本を見て、親から「これはライオンだよ」と教えてもらいます。
+            何度も見るうちに、次にライオンを見たとき「これはライオンだ」と言えるようになります。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>AIでの例</h3>
+          <p>
+            画像とラベルのペアを大量に学習します。
+            例：犬の画像には「犬」、猫の画像には「猫」という正解ラベルを付けて学習させます。
+          </p>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="label">分類と回帰も押さえる</div>
+
+        <p>
+          <span class="term">分類</span>と<span class="term">回帰</span>は、
+          どちらも<span class="term">教師あり学習</span>でよく使われる代表的な予測方法です。
+          試験では「答えがカテゴリなのか、数値なのか」を見分けることが重要です。
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>分類：カテゴリを予測する</h3>
+            <p>
+              <strong>分類</strong>は、データを見て
+              「どの種類に当てはまるか」を予測する方法です。
+            </p>
+            <ul>
+              <li>犬か猫かを判定する</li>
+              <li>合格か不合格かを判定する</li>
+              <li>迷惑メールか通常メールかを判定する</li>
+              <li>商品レビューを高評価・普通・低評価に分ける</li>
+            </ul>
+            <p class="mini">
+              たとえ話：郵便物を「請求書」「広告」「個人宛の手紙」に仕分けるイメージ。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>回帰：数値を予測する</h3>
+            <p>
+              <strong>回帰</strong>は、データを見て
+              「いくつになるか」を数値で予測する方法です。
+            </p>
+            <ul>
+              <li>来月の売上金額を予測する</li>
+              <li>明日の気温を予測する</li>
+              <li>住宅価格を予測する</li>
+              <li>広告費から販売数を予測する</li>
+            </ul>
+            <p class="mini">
+              たとえ話：経験豊富な店長が「明日は傘が30本くらい売れそう」と予想するイメージ。
+            </p>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>比較ポイント</th>
+              <th>分類</th>
+              <th>回帰</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>予測するもの</strong></td>
+              <td>カテゴリ・種類・ラベル</td>
+              <td>数値・量・金額</td>
+            </tr>
+            <tr>
+              <td><strong>問いの形</strong></td>
+              <td>どれに当てはまるか？</td>
+              <td>いくつになるか？</td>
+            </tr>
+            <tr>
+              <td><strong>答えの例</strong></td>
+              <td>犬、猫、合格、不合格</td>
+              <td>25℃、120万円、3500万円</td>
+            </tr>
+            <tr>
+              <td><strong>試験でのキーワード</strong></td>
+              <td>判定、識別、分類、カテゴリ、ラベル</td>
+              <td>予測、推定、金額、価格、気温、売上</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <div class="label">間違えやすい点</div>
+          <p>
+            同じテーマでも、答えの形によって「分類」か「回帰」かが変わります。
+            たとえば、テスト結果について考える場合、
+            <strong>合格か不合格か</strong>を予測するなら分類、
+            <strong>何点取れるか</strong>を予測するなら回帰です。
+          </p>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>問題文の例</th>
+              <th>答えの形</th>
+              <th>分類？回帰？</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>受験者が合格するか不合格になるかを予測する</td>
+              <td>合格／不合格</td>
+              <td><strong>分類</strong></td>
+            </tr>
+            <tr>
+              <td>受験者のテスト点数を予測する</td>
+              <td>82点、65点など</td>
+              <td><strong>回帰</strong></td>
+            </tr>
+            <tr>
+              <td>顧客をAランク、Bランク、Cランクに分ける</td>
+              <td>A／B／C</td>
+              <td><strong>分類</strong></td>
+            </tr>
+            <tr>
+              <td>顧客が来月いくら購入するかを予測する</td>
+              <td>15,000円など</td>
+              <td><strong>回帰</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <strong>試験では、分類＝カテゴリ、回帰＝数値と覚えましょう。</strong>
+          「犬か猫か」「合格か不合格か」のように答えが名前や種類なら分類、
+          「売上金額」「気温」「住宅価格」のように答えが数字なら回帰です。
+        </p>
+      </div>
+
+
+      <div class="note">
+        <div class="label">誤解注意</div>
+        <p>
+          「教師」といっても、必ず人間の先生が横で教えるという意味ではありません。
+          正解ラベル付きのデータを「教師データ」と呼びます。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. 教師なし学習</h2>
+
+      <p>
+        <span class="term">教師なし学習</span>は、正解データ、つまり
+        「これは犬」「これは猫」のような答えを与えずに、
+        データの中にある<span class="term">特徴</span>や<span class="term">パターン</span>を
+        AI自身に見つけさせる学習方法です。
+      </p>
+
+      <div class="point">
+        <div class="label">まず押さえる考え方</div>
+        <p>
+          教師あり学習は「正解を見ながら学ぶ」のに対して、
+          教師なし学習は「正解なしで、似ているもの・隠れた構造を探す」学習です。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>比較</th>
+            <th>教師あり学習</th>
+            <th>教師なし学習</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>正解データ</strong></td>
+            <td>ある</td>
+            <td>ない</td>
+          </tr>
+          <tr>
+            <td><strong>学習の目的</strong></td>
+            <td>正解に近い予測をする</td>
+            <td>データの特徴や構造を見つける</td>
+          </tr>
+          <tr>
+            <td><strong>代表例</strong></td>
+            <td>分類、回帰</td>
+            <td>クラスタリング、次元削減</td>
+          </tr>
+          <tr>
+            <td><strong>たとえ</strong></td>
+            <td>先生に答えを教わりながら練習する</td>
+            <td>自分で共通点を見つけて整理する</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid">
+        <div class="card">
+          <h3>身近な例</h3>
+          <p>
+            箱の中に、赤いブロック、青いブロック、丸いブロック、四角いブロックが
+            たくさん入っているとします。
+          </p>
+          <p>
+            誰かに「これは赤グループ」「これは丸グループ」と教えられなくても、
+            色や形を見れば、似ているもの同士で自然に分けられます。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>AIでの例</h3>
+          <p>
+            顧客データを見て、購買傾向が似ている人をグループ分けします。
+            たとえば、「価格重視の顧客」「新商品が好きな顧客」
+            「まとめ買いが多い顧客」などを発見できます。
+          </p>
+        </div>
+      </div>
+
+      <h3>① クラスタリング</h3>
+
+      <p>
+        <span class="term">クラスタリング</span>は、教師なし学習の代表的な手法で、
+        与えられたデータを、似た特徴やパターンを持つ
+        <span class="term">グループ</span>に分ける方法です。
+      </p>
+
+      <div class="flow">
+        <div>正解なしのデータ</div>
+        <div class="arrow">→</div>
+        <div>特徴を見つける</div>
+        <div class="arrow">→</div>
+        <div>似たもの同士で分ける</div>
+        <div class="arrow">→</div>
+        <div>グループを発見</div>
+      </div>
+
+      <div class="card">
+        <h3>クラスタリングのイメージ</h3>
+        <p>
+          クラス名が書かれていない生徒たちを、
+          「運動が得意な人」「読書が好きな人」「ゲームが好きな人」のように、
+          行動や特徴の似ている人同士で自然に分けるイメージです。
+        </p>
+        <p>
+          重要なのは、最初から「Aグループ」「Bグループ」という正解が
+          用意されているわけではない点です。
+          AIがデータを見て、似ているまとまりを発見します。
+        </p>
+      </div>
+
+      <div class="point">
+        <div class="label">クラスタリングの用途</div>
+        <ul>
+          <li>顧客を購買傾向でグループ分けする</li>
+          <li>似たニュース記事をまとめる</li>
+          <li>似た画像や文章をまとめる</li>
+          <li>通常とは違うデータを見つける異常検知に使う</li>
+          <li>アンケート結果から似た回答傾向の人を探す</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <div class="label">混同注意：分類とクラスタリングの違い</div>
+        <p>
+          <strong>分類</strong>は、教師あり学習で「正解ラベル」があります。
+          たとえば、犬・猫・鳥という正解ラベルを使って学習します。
+        </p>
+        <p>
+          一方、<strong>クラスタリング</strong>は、教師なし学習で正解ラベルがありません。
+          AIがデータを見て、「このデータ同士は似ている」と自分でグループを作ります。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>分類</th>
+            <th>クラスタリング</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>学習方法</strong></td>
+            <td>教師あり学習</td>
+            <td>教師なし学習</td>
+          </tr>
+          <tr>
+            <td><strong>正解ラベル</strong></td>
+            <td>ある</td>
+            <td>ない</td>
+          </tr>
+          <tr>
+            <td><strong>目的</strong></td>
+            <td>決められたカテゴリに分ける</td>
+            <td>似ているデータのまとまりを見つける</td>
+          </tr>
+          <tr>
+            <td><strong>例</strong></td>
+            <td>犬か猫かを判定する</td>
+            <td>似た購買傾向の顧客をまとめる</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>② 次元削減</h3>
+
+      <p>
+        <span class="term">次元削減</span>は、データの次元、つまり
+        <span class="term">変数や特徴の数</span>を減らしながら、
+        重要な情報をできるだけ残して、データを扱いやすくする方法です。
+      </p>
+
+      <div class="point">
+        <div class="label">「次元」とは何か</div>
+        <p>
+          ここでいう次元とは、数学の難しい空間の話というより、
+          データを見るための項目数だと考えるとわかりやすいです。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>データの例</th>
+            <th>次元、つまり変数の例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>住宅データ</td>
+            <td>広さ、築年数、駅からの距離、部屋数、地域、価格など</td>
+          </tr>
+          <tr>
+            <td>顧客データ</td>
+            <td>年齢、購入金額、購入回数、利用店舗、閲覧履歴など</td>
+          </tr>
+          <tr>
+            <td>画像データ</td>
+            <td>たくさんの画素情報、色、明るさ、形の特徴など</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h3>地図のたとえ</h3>
+        <p>
+          自宅から学校まで行くとき、地域すべての道路、建物、電柱、細い路地まで
+          全部載っている地図は情報量が多すぎます。
+        </p>
+        <p>
+          実際には、一番近い道、大きな通り、曲がる場所、目印になる建物だけが
+          載っている簡単な地図があれば十分です。
+        </p>
+        <p>
+          次元削減も同じで、必要な情報だけを残して細かすぎる情報を省き、
+          データをよりシンプルな形にします。
+        </p>
+      </div>
+
+      <div class="point">
+        <div class="label">次元削減のメリット</div>
+        <ul>
+          <li>データを見やすく可視化できる</li>
+          <li>解析しやすくなる</li>
+          <li>計算にかかる時間やコストを減らせる</li>
+          <li>重要な特徴を見つけやすくなる</li>
+          <li>モデルの性能向上が期待できる場合がある</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <div class="label">誤解注意</div>
+        <p>
+          次元削減は、単にデータを雑に捨てることではありません。
+          重要な情報をできるだけ残しながら、余分な情報を減らして、
+          データを扱いやすくする方法です。
+        </p>
+      </div>
+
+      <div class="point">
+        <div class="label">試験での見分け方</div>
+        <p>
+          「似たものをグループ分けする」は<strong>クラスタリング</strong>。
+          「情報を保ちながら変数を減らす」「データを可視化しやすくする」は
+          <strong>次元削減</strong>です。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. 強化学習</h2>
+
+      <p>
+        <span class="term">強化学習</span>は、コンピュータに
+        <span class="term">報酬</span>という目標を設定し、
+        その報酬をできるだけ大きくする行動を、試行錯誤しながら学習する方法です。
+      </p>
+
+      <div class="point">
+        <div class="label">強化学習の基本イメージ</div>
+        <p>
+          強化学習では、最初から正解を教えるのではなく、
+          「良い行動をすると報酬が増える」「悪い行動をすると報酬が減る」
+          という仕組みで、より良い行動を学ばせます。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>ゲームの例</h3>
+        <p>
+          新しくプレイするゲームで、コインを取ると <strong>+10ポイント</strong>、
+          モンスターにぶつかると <strong>-5ポイント</strong> になるとします。
+        </p>
+        <p>
+          最初は、どの行動が良いかわからないため、ランダムに動いて失敗もします。
+          しかし、何度も試すうちに、
+          「コインを取ると点が増える」「モンスターを避けると点が減りにくい」
+          ということを学びます。
+        </p>
+        <p>
+          このように、<strong>試してみる → 結果を見る → 報酬を得る → 行動を改善する</strong>
+          という流れで学ぶのが強化学習です。
+        </p>
+      </div>
+
+      <div class="flow">
+        <div>行動する</div>
+        <div class="arrow">→</div>
+        <div>結果を見る</div>
+        <div class="arrow">→</div>
+        <div>報酬を得る</div>
+        <div class="arrow">→</div>
+        <div>次の行動を改善</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>活用例</h3>
+          <ul>
+            <li>ゲームAIの開発</li>
+            <li>ロボットの動作制御</li>
+            <li>自動運転車の行動判断</li>
+            <li>広告配信や推薦の最適化</li>
+            <li>倉庫ロボットの移動経路の最適化</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>重要キーワード</h3>
+          <ul>
+            <li><strong>報酬</strong>：良い行動に与える点数のようなもの</li>
+            <li><strong>試行錯誤</strong>：いろいろ試して良い行動を探すこと</li>
+            <li><strong>行動</strong>：AIが選ぶ動きや判断</li>
+            <li><strong>最大化</strong>：報酬をできるだけ大きくすること</li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>比較</th>
+            <th>教師あり学習</th>
+            <th>強化学習</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>学習の材料</strong></td>
+            <td>入力データと正解ラベル</td>
+            <td>行動の結果として得られる報酬</td>
+          </tr>
+          <tr>
+            <td><strong>学び方</strong></td>
+            <td>正解に近づくように学ぶ</td>
+            <td>報酬が大きくなる行動を探す</td>
+          </tr>
+          <tr>
+            <td><strong>例</strong></td>
+            <td>犬か猫かを判定する</td>
+            <td>ゲームで高得点を取る行動を覚える</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <div class="label">誤解注意</div>
+        <p>
+          強化学習は、教師あり学習のように「この行動が必ず正解です」と
+          正解ラベルを大量に与える方法ではありません。
+          行動した結果として得られる報酬を手がかりに、
+          より良い行動を学びます。
+        </p>
+      </div>
+
+      <div class="point">
+        <div class="label">試験ポイント</div>
+        <p>
+          問題文に「報酬」「行動」「試行錯誤」「報酬を最大化」
+          「ゲームAI」「自動運転」などが出てきたら、
+          <strong>強化学習</strong>を疑いましょう。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>7. 半教師あり学習</h2>
+
+      <p>
+        <span class="term">半教師あり学習</span>は、
+        少量の<span class="term">ラベル付きデータ</span>と、
+        大量の<span class="term">ラベルなしデータ</span>を組み合わせて学習する方法です。
+      </p>
+
+      <div class="point">
+        <div class="label">一言でいうと</div>
+        <p>
+          半教師あり学習は、教師あり学習と教師なし学習のハイブリッドです。
+          「少しだけ正解を教えて、残りはデータの特徴から学ばせる」
+          と考えるとわかりやすいです。
+        </p>
+      </div>
+
+      <div class="flow">
+        <div>少量のラベル付きデータ</div>
+        <div class="arrow">＋</div>
+        <div>大量のラベルなしデータ</div>
+        <div class="arrow">→</div>
+        <div>効率よく学習</div>
+      </div>
+
+      <div class="card">
+        <h3>身近な例：大量の写真分類</h3>
+        <p>
+          写真が10万枚あり、それを「犬」「猫」「鳥」に分けたいとします。
+          しかし、10万枚すべてに人間がラベルを付けるのは大変です。
+        </p>
+        <p>
+          そこで、まず一部の写真だけに「犬」「猫」「鳥」という正解ラベルを付けます。
+          その少量の正解データを手がかりにして、残りの大量のラベルなし写真についても、
+          AIにパターンを推測させながら学習させます。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>メリット</th>
+            <th>デメリット</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <li>すべてのデータにラベル付けする必要がない</li>
+                <li>少量の正解データを用意すればよい</li>
+                <li>人間の作業負担を減らせる</li>
+                <li>学習コストを大幅に削減できる</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>最初に付けた正解ラベルに偏りがあると、学習結果も偏る可能性がある</li>
+                <li>AIが後から推測したラベルが正確でない可能性がある</li>
+                <li>学習精度は、十分なラベル付きデータを使う教師あり学習より低くなる場合がある</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3つの学習方法の違い</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>学習方法</th>
+            <th>使うデータ</th>
+            <th>覚え方</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>教師あり学習</strong></td>
+            <td>ラベル付きデータを使う</td>
+            <td>正解を見ながら学ぶ</td>
+          </tr>
+          <tr>
+            <td><strong>教師なし学習</strong></td>
+            <td>ラベルなしデータを使う</td>
+            <td>正解なしで特徴を探す</td>
+          </tr>
+          <tr>
+            <td><strong>半教師あり学習</strong></td>
+            <td>少量のラベル付きデータ＋大量のラベルなしデータ</td>
+            <td>少しだけ正解を使って、大量データを活用する</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <div class="label">間違えやすい点</div>
+        <p>
+          半教師あり学習は「教師あり学習の半分の精度」という意味ではありません。
+          また、「教師あり学習を少しだけ行う」という意味でもありません。
+          正解ラベル付きデータとラベルなしデータを組み合わせる学習方法です。
+        </p>
+      </div>
+
+      <div class="point">
+        <div class="label">試験ポイント</div>
+        <p>
+          問題文に「少量の正解データ」「大量のラベルなしデータ」
+          「ラベル付けコストを削減」などが出てきたら、
+          <strong>半教師あり学習</strong>を選びます。
+        </p>
+      </div>
+    </section>
+
+
+    <!--section class="section">
+      <h2>8. 追加で押さえたい試験用語</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>学習済みモデル</h3>
+          <p>
+            すでにデータで学習が終わったモデルのことです。
+            たとえば、たくさんの犬・猫画像を学習したあと、
+            新しい画像を見て「これは犬」と判断できる状態のモデルです。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>ノーフリーランチ定理</h3>
+          <p>
+            すべての問題に対して万能なアルゴリズムはない、という考え方です。
+            画像認識、文章分類、売上予測など、目的やデータに応じて適切な手法を選ぶ必要があります。
+          </p>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="label">試験ポイント</div>
+        <p>
+          「この手法が常に一番良い」とは考えません。
+          AIでは、問題の種類・データの量・正解ラベルの有無・求める精度によって手法を選びます。
+        </p>
+      </div>
+    </section-->
+
+    <section class="section">
+      <h2>8. 試験での見分け方まとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>問題文のヒント</th>
+            <th>選ぶべき用語</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>人間が事前に条件や知識をプログラムに組み込む</td>
+            <td><strong>ルールベース</strong></td>
+          </tr>
+          <tr>
+            <td>入力データと正解ラベルのペアを使う</td>
+            <td><strong>教師あり学習</strong></td>
+          </tr>
+          <tr>
+            <td>正解ラベルなしで、データの構造やパターンを見つける</td>
+            <td><strong>教師なし学習</strong></td>
+          </tr>
+          <tr>
+            <td>似ているデータをグループに分ける</td>
+            <td><strong>クラスタリング</strong></td>
+          </tr>
+          <tr>
+            <td>情報を保ちながら変数の数を減らす</td>
+            <td><strong>次元削減</strong></td>
+          </tr>
+          <tr>
+            <td>報酬を最大化する行動を試行錯誤で学ぶ</td>
+            <td><strong>強化学習</strong></td>
+          </tr>
+          <tr>
+            <td>少量の正解データと大量の未ラベルデータを使う</td>
+            <td><strong>半教師あり学習</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary">
+      <h2>9. まとめ</h2>
+      <ul>
+        <li><span class="check">✔</span> AIに知能をもたらす仕組みは、大きく「ルールベース」と「機械学習」。</li>
+        <li><span class="check">✔</span> ルールベースは、人間が作ったルールに基づいて判断する。</li>
+        <li><span class="check">✔</span> 機械学習は、データからパターンを学び、予測や判断を行う。</li>
+        <li><span class="check">✔</span> 教師あり学習は、入力データと正解データのペアを使う。</li>
+        <li><span class="check">✔</span> 教師なし学習は、正解データなしでパターンや構造を見つける。</li>
+        <li><span class="check">✔</span> クラスタリングはグループ分け、次元削減は変数を減らす手法。</li>
+        <li><span class="check">✔</span> 強化学習は、報酬を最大化する行動を学ぶ。</li>
+        <li><span class="check">✔</span> 半教師あり学習は、少量のラベル付きデータと大量のラベルなしデータを使う。</li>
+      </ul>
+
+      <div class="point">
+        <div class="label">最後に暗記</div>
+        <p>
+          <strong>ラベルあり＝教師あり</strong>、
+          <strong>ラベルなし＝教師なし</strong>、
+          <strong>報酬あり＝強化学習</strong>、
+          <strong>少量ラベル＋大量未ラベル＝半教師あり</strong>。
+        </p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

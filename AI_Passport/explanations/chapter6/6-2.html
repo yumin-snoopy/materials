@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成AIパスポート試験対策｜第6章 第2節 プロンプティングの基礎とAIの特性</title>
+  <link rel="stylesheet" href="6-2-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+<body>
+  <main class="page">
+    <!-- 1. タイトル -->
+    <section class="hero">
+      <span class="kicker">生成AIパスポート試験対策｜第6章 第2節</span>
+      <h1>プロンプティングの基礎と<br>AIの特性</h1>
+      <p class="subtitle">Instruction・Context・Input Data・Output Indicator／Zero-Shot・Few-Shot／ビジネス利用と不得意な作業</p>
+      <div class="source-note">
+        教科書画像 p.136〜139 の内容をもとに、シラバス「第5章 テキスト生成AIのプロンプト制作と実例」の範囲に合わせて補足した授業用HTML資料です。
+      </div>
+    </section>
+
+    <!-- 2. このページで学ぶこと -->
+    <section>
+      <h2>このページで学ぶこと</h2>
+      <div class="grid four">
+        <div class="card blue">
+          <p class="mini-title"><span class="number">1</span>プロンプトの意味</p>
+          <p>生成AIに入力する文章・質問・命令を <span class="term">プロンプト</span> と呼ぶ。形式は1つに決まっていない。</p>
+        </div>
+        <div class="card green">
+          <p class="mini-title"><span class="number">2</span>出力品質を上げる4要素</p>
+          <p><span class="term">Instruction</span><span class="term">Context</span><span class="term">Input Data</span><span class="term">Output Indicator</span> の役割を区別する。</p>
+        </div>
+        <div class="card purple">
+          <p class="mini-title"><span class="number">3</span>Zero-Shot / Few-Shot</p>
+          <p>例示なしで質問する方法と、例を2〜3個与えて回答させる方法の違いを押さえる。</p>
+        </div>
+        <div class="card yellow">
+          <p class="mini-title"><span class="number">4</span>得意・不得意の判断</p>
+          <p>ビジネス利用例と、文字数・計算・最新情報などの不得意分野を試験向けに整理する。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 本文解説 -->
+    <section>
+      <h2>本文解説</h2>
+
+      <h3>1. プロンプティングの基礎</h3>
+      <p class="lead">
+        <span class="term">プロンプティング</span>とは、生成AIに特定のタスクを実行させたり、望ましい応答を得たりするために、入力内容を工夫する技術です。
+      </p>
+      <p>
+        生成AIに入力する文章や質問そのものを <span class="term">プロンプト</span> と呼びます。プロンプトは、質問形式でも、命令形式でも、要望形式でも構いません。大切なのは「AIが何をすればよいか」を誤解しにくい形で伝えることです。
+      </p>
+
+      <div class="point">
+        <span class="label">試験ポイント</span>
+        <p>
+          <span class="must">プロンプトに特定の決まった形式はありません。</span>
+          ただし、入力時に4つの要素を意識すると、出力の質が上がりやすくなります。
+        </p>
+      </div>
+
+      <div class="memory">
+        <span class="label">覚え方</span>
+        <p class="lead">良いプロンプトは「命令 → 前提 → 材料 → 出力形式」</p>
+        <div class="flow">
+          <div class="flow-step">
+            <strong>Instruction</strong>
+            <span>何をする？</span>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <strong>Context</strong>
+            <span>どんな前提？</span>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <strong>Input Data</strong>
+            <span>処理する材料は？</span>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <strong>Output Indicator</strong>
+            <span>どう出す？</span>
+          </div>
+        </div>
+      </div>
+
+      <h4>プロンプトの4要素</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>要素</th>
+            <th>意味</th>
+            <th>身近な例</th>
+            <th>試験での押さえ方</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Instruction<br><span class="small">インストラクション：命令</span></td>
+            <td>AIに何をすべきかを具体的に指示する部分。タスクの内容を明確に伝える。</td>
+            <td>「次の文章を英語に翻訳して」「誤字を修正して」</td>
+            <td><strong>何をするか</strong>を指定する要素。</td>
+          </tr>
+          <tr>
+            <td>Context<br><span class="small">コンテキスト：文脈</span></td>
+            <td>AIが適切に回答するための背景情報・参照情報・前提条件。文脈を正しく与えると、回答のズレを減らしやすい。</td>
+            <td>「あなたはプロのマーケターです」「前回の会議ではA案が採用されました」</td>
+            <td><strong>背景・立場・前提</strong>を与える要素。</td>
+          </tr>
+          <tr>
+            <td>Input Data<br><span class="small">インプットデータ：入力データ</span></td>
+            <td>AIに処理させる具体的な情報やデータ。AIはこのデータを基に分析・要約・変換を行う。</td>
+            <td>要約したい長文、アンケート回答、翻訳したい文章</td>
+            <td><strong>処理対象の材料</strong>。</td>
+          </tr>
+          <tr>
+            <td>Output Indicator<br><span class="small">アウトプットインジケータ：出力指示</span></td>
+            <td>結果をどのような形式・構造・制約で返すかを示す指示。</td>
+            <td>「5つの箇条書きで」「Yes / Noで答えて」「表形式で」</td>
+            <td><strong>出力の形</strong>を指定する要素。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example">
+        <span class="label">具体例：悪いプロンプトと良いプロンプト</span>
+        <div class="prompt-box bad">
+          <strong>悪い例：</strong>この文章をまとめて。
+          <p class="small">何をどの程度まとめるのか、誰向けなのか、出力形式が不明です。</p>
+        </div>
+        <div class="prompt-box good">
+          <strong>良い例：</strong><br>
+          <span class="tag">Instruction</span>次の文章を要約してください。<br>
+          <span class="tag">Context</span>対象は生成AIパスポート試験の初心者です。<br>
+          <span class="tag">Input Data</span>【ここに長文を貼る】<br>
+          <span class="tag">Output Indicator</span>重要語句を太字にし、5つの箇条書きで出力してください。
+        </div>
+      </div>
+
+      <div class="attention">
+        <span class="label">混同注意</span>
+        <ul>
+          <li><strong>Context</strong> は「背景・前提」。例：「あなたはプロのマーケターです」</li>
+          <li><strong>Input Data</strong> は「処理する材料」。例：「要約したい記事本文」</li>
+          <li><strong>Output Indicator</strong> は「出力形式」。例：「表で」「5項目で」「Yes / Noで」</li>
+        </ul>
+      </div>
+
+      <aside class="revision-note"><strong>補足</strong><p>4要素は、依頼を整理するための目安です。毎回すべてを明記したり、この順番や英語の見出しを使ったりする義務はありません。処理対象の本文と指示を見出し・区切り記号で分けると読み違いを減らせます。ただし、区切るだけで誤答や不正な指示への追従を完全に防げるわけではありません。</p></aside><h3>2. Zero-Shot プロンプティングと Few-Shot プロンプティング</h3>
+
+      <div class="grid two">
+        <div class="card purple">
+          <p class="mini-title">Zero-Shot プロンプティング</p>
+          <p>
+            <span class="term">Shot（例示）</span> が <span class="must">0個</span> の文章構成で入力する方法です。簡単な質問や単純なタスクに向いています。
+          </p>
+          <div class="prompt-box">
+            <strong>例：</strong><br>
+            「次の文章を英語に翻訳してください。<br>私は明日の会議に参加します。」
+          </div>
+        </div>
+        <div class="card green">
+          <p class="mini-title">Few-Shot プロンプティング</p>
+          <p>
+            <span class="term">Shot（例示）</span> を <span class="must">2〜3個</span> 入れてから質問する方法です。望ましい回答パターンをAIに示せます。
+          </p>
+          <div class="prompt-box">
+            <strong>例：</strong><br>
+            入力：商品が届かない → 分類：配送トラブル<br>
+            入力：サイズが違う → 分類：商品不一致<br>
+            入力：請求金額が違う → 分類：
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>比較項目</th>
+            <th>Zero-Shot</th>
+            <th>Few-Shot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>例示</td>
+            <td>なし</td>
+            <td>2〜3個程度の例を提示</td>
+          </tr>
+          <tr>
+            <td>向いている場面</td>
+            <td>簡単な質問、一般的な翻訳、短い要約など</td>
+            <td>分類ルール、出力スタイル、表現のトーンをそろえたい場合</td>
+          </tr>
+          <tr>
+            <td>メリット</td>
+            <td>すぐに使える。プロンプトが短い。</td>
+            <td>回答の形式や判断基準をそろえやすい。</td>
+          </tr>
+          <tr>
+            <td>注意点</td>
+            <td>複雑なタスクでは回答がずれることがある。</td>
+            <td>例が不適切だと、その誤ったパターンに引きずられる。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="point">
+        <span class="label">試験ポイント</span>
+        <p>
+          <span class="must">Zero-Shot＝例示なし</span>、<span class="must">Few-Shot＝例示あり</span>。
+          Few-Shotは「AIを再学習させる」ことではありません。プロンプト内の例を手がかりとして回答させる方法です。
+        </p>
+      </div>
+
+      <div class="attention">
+        <span class="label">ハルシネーションに注意</span>
+        <p>
+          AIは、事実と異なる内容や文脈と無関係な内容を、もっともらしく出力することがあります。これを <span class="term">ハルシネーション</span> といいます。
+        </p>
+        <p>
+          特にZero-Shotで複雑な質問をした場合、信頼性の高い回答と見分けがつきにくいことがあります。最終的には人間が確認する必要があります。
+        </p>
+      </div>
+
+      <aside class="revision-note"><strong>補足</strong><p>Few-Shotの「2〜3個」は教科書での代表例です。必ず2個か3個に限る定義ではなく、少数の入力・出力例を示す方法です。例を1つ示す方法はOne-Shotと呼ばれます。プロンプト内の例示は通常、モデルの重みを更新する追加学習ではなく、その入力内の手がかりとして使われます。</p></aside><h3>3. テキスト生成AIのビジネス利用</h3>
+      <p>
+        テキスト生成AIは、文章作成・整理・分析・発想支援など、ビジネスの幅広い場面で利用できます。試験では「どのような用途に使えるか」と「利用時の注意点」が問われやすいです。
+      </p>
+
+      <div class="grid four">
+        <div class="card blue">
+          <p class="mini-title">文章作成</p>
+          <ul class="compact">
+            <li>メールの作成</li>
+            <li>キャッチコピーの作成</li>
+            <li>ビジネス書類テンプレート作成</li>
+            <li>海外企業宛メール文章の作成</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <p class="mini-title">調査・分析</p>
+          <ul class="compact">
+            <li>アンケート項目の作成</li>
+            <li>アンケートの分析</li>
+            <li>タスクの抽出</li>
+            <li>姓と名の分離</li>
+          </ul>
+        </div>
+        <div class="card purple">
+          <p class="mini-title">整理・計画</p>
+          <ul class="compact">
+            <li>アジェンダの作成</li>
+            <li>業務手順の分解</li>
+            <li>タスクの細分化</li>
+            <li>ふりがなの記載</li>
+          </ul>
+        </div>
+        <div class="card yellow">
+          <p class="mini-title">言語・発想</p>
+          <ul class="compact">
+            <li>外国語の翻訳</li>
+            <li>英単語から英文作成</li>
+            <li>役割を与えてディベート</li>
+            <li>ブレインストーミング</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="example">
+        <span class="label">身近な例</span>
+        <p>
+          生成AIは「新人に作業を依頼する」ときに似ています。依頼があいまいだとズレますが、目的・前提・材料・出力形式を伝えると、期待に近い成果物になりやすくなります。
+        </p>
+      </div>
+
+      <div class="attention">
+        <span class="label">利用時の注意点</span>
+        <ul>
+          <li><strong>機密情報・個人情報</strong>を安易に入力しない。</li>
+          <li>翻訳や要約には<strong>誤訳・意味の誤解</strong>が含まれる可能性がある。</li>
+          <li>生成文が自然でも、<strong>事実確認</strong>と<strong>人間による最終チェック</strong>が必要。</li>
+          <li>文章からタスクを抽出しても、すべての作業が漏れなく抽出できるとは限らない。</li>
+        </ul>
+      </div>
+
+      <aside class="revision-note"><strong>補足</strong><p>LLM単体の文章生成と、検索・RAG・Python・表計算などの道具を組み合わせたサービスは分けて考えましょう。最新情報の確認や計算、文字数の検査は、道具で補えることがあります。文字数は句読点・空白・改行を含めるかを決め、実際に数えて確かめます。仮説や芸術批評の案は作れても、その正しさや人間の感情体験を保証するものではありません。</p></aside><h3>4. テキスト生成AIの不得意な作業</h3>
+      <p>
+        生成AIには便利な面が多い一方で、設計原理・学習データ・学習方法に由来する限界があります。試験では「AIに任せてよい作業」と「人間の判断が必要な作業」を区別することが重要です。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>不得意な作業</th>
+            <th>理由・内容</th>
+            <th>試験での言い換え</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>新しい情報の生成</td>
+            <td>AIは既存の知識や学習データをもとに文章を生成するため、新しいアイデアや仮説の提案はできるが、その内容を検証せず、新しい事実として保証することはできない。</td>
+            <td>「まだ存在しない事実を確実に作る」ことはできない。</td>
+          </tr>
+          <tr>
+            <td>感情や直感に基づく判断</td>
+            <td>AIは人間のような感情や直感を持たないため、直感に基づいた判断はできない。</td>
+            <td>「なんとなく良い」「感覚的に違う」の判断は苦手。</td>
+          </tr>
+          <tr>
+            <td>文脈の深い理解</td>
+            <td>長文の正確な要約や、複雑な文脈・含意・皮肉を常に正確に捉えることは難しい。</td>
+            <td>自然な文章でも、細かい意味がずれることがある。</td>
+          </tr>
+          <tr>
+            <td>正確な文字数による回答</td>
+            <td>「100文字で」などの指定に対して、常に厳密な文字数で出力できるとは限らない。教科書ではGPT-3.5の例として、正確な文字数指定が難しいことが示されている。</td>
+            <td>文字数制限は目安になりやすい。必要なら人間が数える。</td>
+          </tr>
+          <tr>
+            <td>複雑な計算</td>
+            <td>回答が出力されても、計算結果が誤っていることがある。計算は表計算ソフトや電卓などで確認する。</td>
+            <td>「答えが出た＝正しい」ではない。</td>
+          </tr>
+          <tr>
+            <td>最新の情報に関する出力</td>
+            <td>事前学習を前提とする場合、学習データより後の情報は出力できなかったり、不正確になったりする。検索機能やRAGを用いるサービスは弱点を補えるが、確認は必要。</td>
+            <td>最新ニュース・価格・法改正は確認が必要。</td>
+          </tr>
+          <tr>
+            <td>芸術の批評</td>
+            <td>AIは独自の思考や感情を持たないため、絵画や音楽などを人間の感性として批評することは難しい。</td>
+            <td>感性・価値観に関わる評価は人間が行う。</td>
+          </tr>
+          <tr>
+            <td>モラルや倫理に関する判断</td>
+            <td>AIは道徳的な判断や価値観を自分で持っているわけではないため、倫理的な問題の最終判断は難しい。</td>
+            <td>責任を伴う判断は人間が行う。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="point">
+        <span class="label">試験ポイント</span>
+        <p>
+          テキスト生成AIは「文章を作る・整える・分類する」ことは得意ですが、<span class="must">事実の保証、正確な計算、最新情報、倫理判断</span>は苦手です。
+          便利な道具であって、最終責任を負う主体ではありません。
+        </p>
+      </div>
+
+      <!--h3>5. 試験で問われやすいひっかけ</h3>
+      <div class="grid two">
+        <div class="card red">
+          <p class="mini-title">ひっかけ1：Few-Shot＝AIを学習させる？</p>
+          <p><strong>誤り。</strong> Few-Shotは、プロンプト内に例を入れて回答の方向性を示す方法。モデルの重みを更新する学習ではありません。</p>
+        </div>
+        <div class="card red">
+          <p class="mini-title">ひっかけ2：AIの文章は自然だから正しい？</p>
+          <p><strong>誤り。</strong> ハルシネーションにより、自然で説得力があっても事実と違う場合があります。</p>
+        </div>
+        <div class="card red">
+          <p class="mini-title">ひっかけ3：Output Indicatorは入力データ？</p>
+          <p><strong>誤り。</strong> Output Indicatorは「出力形式の指示」。Input Dataは「処理対象のデータ」です。</p>
+        </div>
+        <div class="card red">
+          <p class="mini-title">ひっかけ4：最新情報も必ず正確？</p>
+          <p><strong>誤り。</strong> 学習データの範囲外の情報は不正確になることがあります。検索連携ツールでも出典確認が必要です。</p>
+        </div>
+      </div>
+
+      <h3>6. ミニ確認問題</h3>
+      <div class="quiz">
+        <p><strong>Q1.</strong> 「5つの箇条書きで答えて」は、プロンプトの4要素のうちどれに当たるか。</p>
+        <details>
+          <summary>答えを見る</summary>
+          <p><strong>Output Indicator</strong>。出力形式を指定しているため。</p>
+        </details>
+      </div>
+      <div class="quiz">
+        <p><strong>Q2.</strong> 例を入れずに「次の文章を要約して」と依頼する方法は何か。</p>
+        <details>
+          <summary>答えを見る</summary>
+          <p><strong>Zero-Shot プロンプティング</strong>。Shot（例示）が0個のため。</p>
+        </details>
+      </div>
+      <div class="quiz">
+        <p><strong>Q3.</strong> 生成AIが事実と異なる内容をもっともらしく出力する現象を何というか。</p>
+        <details>
+          <summary>答えを見る</summary>
+          <p><strong>ハルシネーション</strong>。試験では「もっともらしい嘘」と説明されることがある。</p>
+        </details>
+      </div>
+      <div class="quiz">
+        <p><strong>Q4.</strong> 「あなたはプロのマーケターです」は、Instruction・Context・Input Data・Output Indicatorのどれか。</p>
+        <details>
+          <summary>答えを見る</summary>
+          <p><strong>Context</strong>。AIが回答する前提・立場を示しているため。</p>
+        </details>
+      </div-->
+    </section>
+
+    <!-- 4. まとめ -->
+    <section>
+      <h2>まとめ</h2>
+      <div class="summary-box">
+        <ol>
+          <li><strong>プロンプティング</strong>は、生成AIから望ましい応答を得るために入力を工夫する技術。</li>
+          <li>良いプロンプトは <strong>Instruction・Context・Input Data・Output Indicator</strong> の4要素で整理できる。</li>
+          <li><strong>Zero-Shot</strong>は例示なし、<strong>Few-Shot</strong>は2〜3個程度の例示あり。</li>
+          <li>生成AIはビジネス文書作成、翻訳、要約、タスク分解、ブレインストーミングなどに活用できる。</li>
+          <li>ただし、<strong>機密情報・個人情報の入力、誤訳、ハルシネーション、計算ミス、最新情報、倫理判断</strong>には注意が必要。</li>
+        </ol>
+        <div class="badge-row">
+          <span class="badge">最重要：4要素</span>
+          <span class="badge">Zero-Shot＝例なし</span>
+          <span class="badge">Few-Shot＝例あり</span>
+          <span class="badge">ハルシネーション</span>
+          <span class="badge">人間の確認が必要</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>作成用途：生成AIパスポート試験対策授業用／生成AIパスポート試験シラバス「第5章 テキスト生成AIのプロンプト制作と実例」</p>
+    </footer>
+  </main>
+</body>
+</html>

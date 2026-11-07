@@ -1,0 +1,1663 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生成AIパスポート対策｜2-1 生成モデルの誕生・系譜と技術の基礎</title>
+<link rel="stylesheet" href="2-1生成モデルの誕生・系譜と技術の基礎-style1.css">
+<script src="../../../assets/source-guard.js"></script></head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="tag">生成AIパスポート試験対策｜2-1</div>
+  <h1>生成モデルの誕生・系譜と<br>技術の基礎</h1>
+  <p class="lead">
+    ゴール：生成AIの土台になったモデルを「何に強いか」「何が課題か」「似た用語の違い」で整理する。
+    特に、ボルツマンマシンからLSTMまでの流れを、試験で答えられるレベルまで深く理解する。
+  </p>
+</header>
+
+<section>
+  <h2>1. このページで学ぶこと</h2>
+  <div class="keyword-box">
+    <span>ボルツマンマシン</span>
+    <span>制約付きボルツマンマシン</span>
+    <span>自己回帰モデル</span>
+    <span>ディープラーニング</span>
+    <span>CNN</span>
+    <span>VAE</span>
+    <span>GAN</span>
+    <span>RNN</span>
+    <span>LSTM</span>
+    <span>Transformer</span>
+  </div>
+
+  <div class="point">
+    <strong>試験での見方：</strong>
+    まずは「どの種類のデータに向くか」「何をする役割か」「次の技術にどうつながったか」を押さえます。
+    さらに、似た用語を区別できるようにしておくことが重要です。
+  </div>
+</section>
+
+<section>
+  <h2>2. 本文解説</h2>
+
+  <h3>2-1. 生成モデルの流れをざっくり見る</h3>
+  <div class="timeline">
+    <div class="step">1985<br>BM<small>確率的に答えを探す</small></div>
+    <div class="step">1986<br>RBM<small>入力・推定を分けて効率化</small></div>
+    <div class="step">1990s〜<br>自己回帰<small>過去から未来を予測</small></div>
+    <div class="step">CNN/RNN<small>画像・時系列で活躍</small></div>
+    <div class="step">VAE/GAN<small>データ生成の代表</small></div>
+    <div class="step">Transformer<small>現代LLMの基盤</small></div>
+  </div>
+
+  <div class="exam">
+    <div class="exam-title">試験ポイント</div>
+    生成AIの歴史は「古いモデルを丸暗記する」よりも、
+    <strong>どんな課題を解決するために次のモデルが出てきたか</strong>を問われやすいです。
+    ここでの並びは学習する順番です。すべてが一本道で発展したわけではありません。画像の特徴を扱うCNN、系列を扱うRNN・LSTM、生成モデルのVAE・GANを、役割ごとに整理しましょう。
+  </div>
+
+  <div class="section-card">
+    <aside class="revision-note"><strong>補足</strong><p>冒頭の図は技術を学ぶための整理図です。厳密な年代順や、すべてが直接の改良版であることを表してはいません。主な発表時期は、LSTMが1997年、VAEの原論文が2013年、GANが2014年、Transformerが2017年です。</p></aside><h3>2-2. ボルツマンマシン</h3>
+
+    <p>
+      <span class="term">ボルツマンマシン</span>は、ニューラルネットワークの一種です。
+      データの中にあるパターンや関連性を見つけようとするとき、完全に1つの答えを決め打ちするのではなく、
+      「可能性のある答え」をたくさん考え、その中からよい答えを選ぶように
+      <strong>確率的に動作</strong>します。
+    </p>
+
+    <div class="flow">
+      <div class="box">入力データ</div>
+      <div class="arrow">→</div>
+      <div class="box">複数の候補を確率的に探索</div>
+      <div class="arrow">→</div>
+      <div class="box">もっとも自然なパターンを見つける</div>
+    </div>
+
+    <h4>理解しよう</h4>
+    <p>
+      ボルツマンマシンは、「データの中に隠れている規則性」を見つけるモデルです。
+      たとえば、たくさんの手書き数字の画像を見せると、「0には丸い形が多い」「1は縦線が多い」のような特徴を学習します。
+      ただし、正解をそのまま覚えるのではなく、<strong>データがどのような分布・組み合わせで現れやすいか</strong>を学びます。
+    </p>
+
+    <h4>身近なたとえ</h4>
+    <p>
+      旅行先を決めるときに、天気、予算、混雑、好みを総合して、
+      「京都が70％よさそう」「北海道が50％よさそう」のように候補を考え、
+      もっともよさそうなものを選ぶイメージです。
+      ボルツマンマシンも同じように、複数の可能性を確率的に考えます。
+    </p>
+
+    <table>
+      <tr>
+        <th>観点</th>
+        <th>ボルツマンマシンの特徴</th>
+      </tr>
+      <tr>
+        <td>分類</td>
+        <td>ニューラルネットワークの一種</td>
+      </tr>
+      <tr>
+        <td>動き方</td>
+        <td>確率的に動作し、可能性の高いパターンを探す</td>
+      </tr>
+      <tr>
+        <td>できること</td>
+        <td>データのパターンや関連性を学習する</td>
+      </tr>
+      <tr>
+        <td>課題</td>
+        <td>処理に時間がかかり、大規模データでは実用化が難しい</td>
+      </tr>
+    </table>
+
+    <div class="warning">
+      <div class="warning-title">誤解しやすい点</div>
+      ボルツマンマシンは、現代のChatGPTのように文章を直接生成するモデルとして覚えるのではなく、
+      <strong>生成AIにつながる初期の確率的なニューラルネットワーク</strong>として覚えます。
+    </div>
+
+    <div class="exam">
+      <div class="exam-title">試験ポイント</div>
+      <ul>
+        <li><strong>ボルツマンマシン＝ニューラルネットワークの一種</strong></li>
+        <li><strong>確率的に動作する</strong></li>
+        <li><strong>データのパターンや関連性を見つける</strong></li>
+        <li><strong>処理に時間がかかる課題があった</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>2-3. 制約付きボルツマンマシン（RBM）</h3>
+
+    <p>
+      <span class="term">制約付きボルツマンマシン</span>は、ボルツマンマシンの問題を改善するために開発されたモデルです。
+      英語では <strong>Restricted Boltzmann Machine</strong> といい、略して <strong>RBM</strong> と呼ばれます。
+    </p>
+
+    <p>
+      「制約付き」とは、人工ニューロン同士の接続を自由にしすぎず、特定のルールに基づいて制限するという意味です。
+      データ処理を<strong>ネットワークの入力部分</strong>と<strong>推定部分</strong>の2つに分けることで、
+      効率化しています。
+    </p>
+
+    <div class="flow">
+      <div class="box">入力部分<br><small>見えるデータ</small></div>
+      <div class="arrow">↔</div>
+      <div class="box">推定部分<br><small>隠れた特徴</small></div>
+    </div>
+
+    <h4>理解しよう</h4>
+    <p>
+      ボルツマンマシンを「全員が自由に話し合う会議」とすると、RBMは「入力担当」と「特徴発見担当」に役割分担した会議です。
+      全員が全員と話すと時間がかかりますが、役割を分けることで効率よく情報を整理できます。
+    </p>
+
+    <h4>何に使われるか</h4>
+    <p>
+      RBMは、データの重要な特徴を見つけるのに役立ちます。
+      そのため、<strong>次元削減</strong>、<strong>データの分類</strong>、<strong>特徴抽出</strong>などに応用されました。
+      また、教師あり学習だけでなく、正解ラベルがないデータから特徴を学ぶ<strong>教師なし学習</strong>にも関係します。
+    </p>
+
+    <table>
+      <tr>
+        <th>用語</th>
+        <th>説明</th>
+        <th>試験で押さえる点</th>
+      </tr>
+      <tr>
+        <td><strong>ボルツマンマシン</strong></td>
+        <td>確率的にデータのパターンを探すニューラルネットワーク。</td>
+        <td>処理が重く、大規模データでは実用化に課題。</td>
+      </tr>
+      <tr>
+        <td><strong>制約付きボルツマンマシン</strong></td>
+        <td>接続に制約をかけ、入力部分と推定部分を分けた改良版。</td>
+        <td>次元削減、分類、特徴抽出、教師あり・教師なし学習に応用。</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <div class="note-title">補足</div>
+      RBMは、後のディープラーニング発展に関係する重要なモデルです。
+      特に、複数の層を重ねて学習する深いネットワークの考え方につながっていきました。
+    </div>
+
+    <div class="exam">
+      <div class="exam-title">試験ポイント</div>
+      <ul>
+        <li><strong>RBM＝Restricted Boltzmann Machine</strong></li>
+        <li><strong>ボルツマンマシンを効率化したモデル</strong></li>
+        <li><strong>入力部分と推定部分に分ける</strong></li>
+        <li><strong>特徴抽出・次元削減・分類に応用</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>2-4. 自己回帰モデルとディープラーニング</h3>
+
+    <h4>自己回帰モデルとは</h4>
+    <p>
+      <span class="term">自己回帰モデル</span>は、過去のデータを使って、次のデータや未来の値を予測する方法です。
+      「今までの流れを見れば、次に何が来るか予想できる」という考え方です。
+    </p>
+
+    <div class="flow">
+      <div class="box">過去の情報</div>
+      <div class="arrow">→</div>
+      <div class="box">現在の状態を判断</div>
+      <div class="arrow">→</div>
+      <div class="box">次を予測</div>
+    </div>
+
+    <h4>具体例</h4>
+    <table>
+      <tr>
+        <th>データ</th>
+        <th>自己回帰モデルの考え方</th>
+      </tr>
+      <tr>
+        <td>天気</td>
+        <td>昨日までの気温や気圧から、明日の天気を予測する。</td>
+      </tr>
+      <tr>
+        <td>株価</td>
+        <td>過去の値動きから、次の値動きを予測する。</td>
+      </tr>
+      <tr>
+        <td>文章</td>
+        <td>前の単語や文脈から、次に来る単語を予測する。</td>
+      </tr>
+      <tr>
+        <td>音楽</td>
+        <td>前の音の流れから、次に自然に続く音を予測する。</td>
+      </tr>
+    </table>
+
+    <p>
+      文章生成AIも、基本的には「次に来る単語やトークンを予測する」考え方と関係があります。
+      たとえば「今日は雨が降りそうなので、」という文の後には、
+      「傘を持っていく」「外出を控える」などが続きやすいと考えられます。
+    </p>
+
+    <h4>ディープラーニングとは</h4>
+    <p>
+      <span class="term">ディープラーニング</span>は、日本語で<strong>深層学習</strong>と呼ばれます。
+      人間の脳の神経細胞のつながりを参考にした
+      <span class="term">ニューラルネットワーク</span>を、何層にも重ねて学習させる技術です。
+    </p>
+
+    <div class="point">
+      <strong>一言でいうと：</strong>
+      ディープラーニングとは、AIが大量のデータから
+      <strong>特徴やパターンを自動で見つける技術</strong>です。
+      画像、文章、音声、動画など、複雑なデータを扱う現代の生成AIの土台になっています。
+    </div>
+
+    <div class="flow">
+      <div class="box">入力層<br><small>データを受け取る</small></div>
+      <div class="arrow">→</div>
+      <div class="box">隠れ層<br><small>特徴を学ぶ</small></div>
+      <div class="arrow">→</div>
+      <div class="box">隠れ層<br><small>より複雑な特徴を学ぶ</small></div>
+      <div class="arrow">→</div>
+      <div class="box">出力層<br><small>予測・分類・生成</small></div>
+    </div>
+
+    <h4>なぜ「ディープ＝深い」なのか</h4>
+    <p>
+      「深い」とは、<strong>隠れ層が何層も重なっている</strong>という意味です。
+      浅いネットワークでも複雑な関係を表せる場合がありますが、
+      層を深くすることで、単純な特徴から複雑な特徴まで段階的に学習できます。
+    </p>
+
+    <table>
+      <tr>
+        <th>層のイメージ</th>
+        <th>画像認識での例</th>
+        <th>文章処理での例</th>
+      </tr>
+      <tr>
+        <td><strong>浅い層</strong></td>
+        <td>線、点、色、明るさを見つける。</td>
+        <td>文字、単語、記号をとらえる。</td>
+      </tr>
+      <tr>
+        <td><strong>中間の層</strong></td>
+        <td>目、鼻、耳、タイヤなどの部品を見つける。</td>
+        <td>単語同士の関係や文の流れをとらえる。</td>
+      </tr>
+      <tr>
+        <td><strong>深い層</strong></td>
+        <td>人の顔、猫、車など全体を認識する。</td>
+        <td>文脈、意図、意味のつながりをとらえる。</td>
+      </tr>
+    </table>
+
+    <h4>人工ニューロン・重み・学習のイメージ</h4>
+    <p>
+      ニューラルネットワークは、たくさんの
+      <span class="term">人工ニューロン</span>、つまり<strong>ノード</strong>がつながった構造です。
+      それぞれのつながりには、情報の重要度を表す<span class="term">重み</span>があります。
+    </p>
+
+    <div class="flow">
+      <div class="box">データ</div>
+      <div class="arrow">→</div>
+      <div class="box">人工ニューロン<br><small>情報を受け取る</small></div>
+      <div class="arrow">→</div>
+      <div class="box">重みづけ<br><small>重要度を調整</small></div>
+      <div class="arrow">→</div>
+      <div class="box">結果を出す</div>
+    </div>
+
+    <p>
+      たとえば、AIに犬と猫の画像を見分けさせる場合、
+      「耳の形」「目の位置」「毛並み」「輪郭」などの特徴が関係します。
+      学習の中でAIは、どの特徴をどのくらい重視すればよいかを少しずつ調整します。
+      この調整される値が<strong>重み</strong>です。
+    </p>
+
+    <div class="note">
+      <div class="note-title">身近なたとえ</div>
+      料理の味付けを考えるとわかりやすいです。
+      カレーを作るとき、スパイス、塩、玉ねぎ、肉の量を調整すると味が変わります。
+      AIの学習もこれに似ています。
+      「どの情報をどのくらい重視するか」という重みを調整しながら、
+      より正しい答えに近づいていきます。
+    </div>
+
+    <h4>従来の機械学習との違い</h4>
+    <p>
+      従来の機械学習では、人間が「どの特徴を見るべきか」をある程度設計する必要がありました。
+      これを<strong>特徴量設計</strong>といいます。
+      一方、ディープラーニングでは、大量のデータからAIが特徴を自動的に学習しやすくなりました。
+    </p>
+
+    <table>
+      <tr>
+        <th>比較</th>
+        <th>従来の機械学習</th>
+        <th>ディープラーニング</th>
+      </tr>
+      <tr>
+        <td>特徴の見つけ方</td>
+        <td>人間が特徴を設計することが多い。</td>
+        <td>AIがデータから特徴を自動で学びやすい。</td>
+      </tr>
+      <tr>
+        <td>向いているデータ</td>
+        <td>比較的整理されたデータ。</td>
+        <td>画像、文章、音声など複雑なデータ。</td>
+      </tr>
+      <tr>
+        <td>必要なもの</td>
+        <td>特徴量設計の工夫。</td>
+        <td>大量のデータと計算資源。</td>
+      </tr>
+      <tr>
+        <td>試験での覚え方</td>
+        <td>人間が特徴を考える場面が多い。</td>
+        <td>多層構造で特徴を自動学習する。</td>
+      </tr>
+    </table>
+
+    <h4>ディープラーニングが生成AIにつながる理由</h4>
+    <p>
+      生成AIは、新しい文章、画像、音楽、動画などを作るAIです。
+      そのためには、単にデータを分類するだけでなく、
+      データの中にある複雑なパターンを学習する必要があります。
+    </p>
+
+    <p>
+      ディープラーニングは、画像の形、文章の文脈、音声の波形など、
+      人間が手作業でルール化しにくい特徴を学べます。
+      そのため、CNN、RNN、LSTM、Transformer、VAE、GANなど、
+      生成AIにつながる多くのモデルの基盤になっています。
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h4>画像生成・画像認識</h4>
+        <p>
+          画像の線、色、形、質感などを学習します。
+          CNNや画像生成AIの理解につながります。
+        </p>
+      </div>
+      <div class="card">
+        <h4>文章生成</h4>
+        <p>
+          単語の意味、文脈、次に続きやすい表現を学習します。
+          RNN、LSTM、Transformer、GPTの理解につながります。
+        </p>
+      </div>
+      <div class="card">
+        <h4>音声認識・音声生成</h4>
+        <p>
+          音の時間的な変化や発音のパターンを学習します。
+          音声AIや読み上げAIと関係します。
+        </p>
+      </div>
+      <div class="card">
+        <h4>異常検知</h4>
+        <p>
+          通常のパターンを学習し、そこから外れたデータを見つけます。
+          セキュリティや製造現場でも活用されます。
+        </p>
+      </div>
+    </div>
+
+    <h4>過学習とは</h4>
+    <p>
+      ディープラーニングでよく出る注意点が
+      <span class="term">過学習</span>です。
+      過学習とは、学習データに合わせすぎてしまい、
+      新しいデータに対してうまく答えられなくなる状態です。
+    </p>
+
+    <div class="warning">
+      <div class="warning-title">たとえで理解</div>
+      試験勉強で、過去問の答えを丸暗記しただけの状態を考えてみましょう。
+      同じ問題なら解けますが、少し言い方を変えられると解けなくなります。
+      これがAIでいう<strong>過学習</strong>のイメージです。
+    </div>
+
+    <table>
+      <tr>
+        <th>状態</th>
+        <th>説明</th>
+        <th>試験での押さえ方</th>
+      </tr>
+      <tr>
+        <td><strong>うまく学習</strong></td>
+        <td>学習データだけでなく、新しいデータにも対応できる。</td>
+        <td>汎化性能が高い。</td>
+      </tr>
+      <tr>
+        <td><strong>過学習</strong></td>
+        <td>学習データに合わせすぎて、新しいデータに弱い。</td>
+        <td>オーバーフィッティングともいう。</td>
+      </tr>
+    </table>
+
+    <h4>過学習を防ぐ方法と、関連する学習の工夫</h4>
+    <p>
+      過学習対策や、学習を効率化する関連技術として、
+      <span class="term">正則化</span>、<span class="term">ドロップアウト</span>、
+      <span class="term">転移学習</span>があります。
+      生成AIパスポート試験では、名前と役割をセットで押さえることが大切です。
+    </p>
+
+    <table>
+      <tr>
+        <th>用語</th>
+        <th>説明</th>
+        <th>覚え方</th>
+      </tr>
+      <tr>
+        <td><strong>正則化</strong></td>
+        <td>
+          モデルが複雑になりすぎないように制限をかける方法。
+          学習データに合わせすぎるのを防ぐ。
+        </td>
+        <td>「やりすぎを抑える」</td>
+      </tr>
+      <tr>
+        <td><strong>ドロップアウト</strong></td>
+        <td>
+          学習中に一部のニューロンをあえて無効化する方法。
+          特定のニューロンに頼りすぎないようにする。
+        </td>
+        <td>「一部を休ませて鍛える」</td>
+      </tr>
+<tr>
+  <td><strong>転移学習</strong></td>
+  <td>
+    すでに学習済みのモデルを別の課題に活用する方法。
+    少ないデータでも効率よく学習できるため、結果的に過学習を抑えやすい場合がある。
+  </td>
+  <td>「学んだ知識を別の場面で使う」</td>
+</tr>
+    </table>
+
+    <div class="note">
+      <div class="note-title">転移学習の身近な例</div>
+      英語を学んだ人は、フランス語やスペイン語を学ぶときに、
+      アルファベットや文法の考え方を少し応用できます。
+      AIでも、画像を大量に学んだモデルを別の画像分類に活用するように、
+      すでに学んだ知識を別の課題に使うことがあります。
+    </div>
+
+    <h4>自己回帰モデルとディープラーニングの関係</h4>
+    <p>
+      自己回帰モデルとディープラーニングは同じ意味ではありません。
+      自己回帰モデルは「過去の情報から次を予測する考え方」です。
+      ディープラーニングは「多層ニューラルネットワークで特徴を学習する技術」です。
+    </p>
+
+    <p>
+      現代の文章生成AIでは、この2つの考え方が組み合わさることがあります。
+      つまり、ディープラーニングで文脈や単語の関係を学習し、
+      自己回帰的に「次の単語・次のトークン」を予測して文章を作っていく、というイメージです。
+    </p>
+
+    <div class="flow">
+      <div class="box">文脈を読む<br><small>ディープラーニング</small></div>
+      <div class="arrow">→</div>
+      <div class="box">次の単語を予測<br><small>自己回帰</small></div>
+      <div class="arrow">→</div>
+      <div class="box">文章を生成</div>
+    </div>
+
+    <div class="warning">
+      <div class="warning-title">誤解しやすい点</div>
+      <ul>
+        <li>
+          <strong>自己回帰モデル</strong>は「過去から次を予測する考え方」。
+        </li>
+        <li>
+          <strong>ディープラーニング</strong>は「多層ニューラルネットワークで学習する技術」。
+        </li>
+        <li>
+          <strong>生成AI</strong>は「学習したパターンをもとに新しいデータを作るAI」。
+        </li>
+      </ul>
+      この3つを同じ意味として覚えないようにしましょう。
+    </div>
+
+    <div class="exam">
+      <div class="exam-title">試験ポイント</div>
+      <ul>
+        <li><strong>自己回帰モデル＝過去のデータから未来・次のデータを予測する考え方</strong></li>
+        <li><strong>文章生成では、前の文脈から次の単語・トークンを予測する考え方と関係する</strong></li>
+        <li><strong>ディープラーニング＝多層ニューラルネットワークによる学習</strong></li>
+        <li><strong>人工ニューロン、ノード、重み、隠れ層という用語を押さえる</strong></li>
+        <li><strong>ディープラーニングは、複雑な特徴をデータから自動的に学習しやすい</strong></li>
+        <li><strong>過学習＝学習データに合わせすぎて、新しいデータに弱くなること</strong></li>
+        <li><strong>正則化・ドロップアウトは過学習を抑える手法</strong></li>
+        <li><strong>転移学習＝学習済みモデルの知識を別の課題に活用すること</strong></li>
+      </ul>
+    </div>
+
+    <!--div class="short-check">
+      <div class="short-check-title">確認問題</div>
+      <ul>
+        <li>Q1. 多層ニューラルネットワークを使って特徴を学習する技術は？ → <strong>ディープラーニング</strong></li>
+        <li>Q2. 情報の重要度を表す値は？ → <strong>重み</strong></li>
+        <li>Q3. 学習データに合わせすぎて新しいデータに弱くなることは？ → <strong>過学習</strong></li>
+        <li>Q4. 学習中に一部のニューロンを無効化する手法は？ → <strong>ドロップアウト</strong></li>
+        <li>Q5. 学習済みモデルを別の課題に活用する方法は？ → <strong>転移学習</strong></li>
+      </ul>
+    </div>
+  </div-->
+
+  <div class="section-card">
+    <aside class="revision-note"><strong>補足</strong><p>正則化とドロップアウトは過学習を抑える方法です。ドロップアウトも広い意味では正則化の一種です。一方、転移学習は学習済みの知識を再利用する方法で、過学習防止を保証するものではありません。学習条件によっては、転移学習でも過学習が起こります。</p></aside><h3>2-5. CNN（畳み込みニューラルネットワーク）</h3>
+
+    <p>
+      <span class="term">CNN</span>は、Convolutional Neural Network の略で、
+      日本語では <strong>畳み込みニューラルネットワーク</strong> と呼ばれます。
+      特に、<strong>画像認識</strong>や<strong>画像処理</strong>で効果を発揮するモデルです。
+    </p>
+
+    <h4>畳み込みとは</h4>
+    <p>
+      CNNの「畳み込み」とは、画像全体を一度に見るのではなく、
+      小さな窓のような範囲を少しずつ動かしながら特徴を探す処理です。
+      画像の一部分から線、角、色の変化、模様などを取り出します。
+    </p>
+
+    <div class="flow">
+      <div class="box">画像</div>
+      <div class="arrow">→</div>
+      <div class="box">小さな範囲を見る</div>
+      <div class="arrow">→</div>
+      <div class="box">線・色・形を抽出</div>
+      <div class="arrow">→</div>
+      <div class="box">全体を認識</div>
+    </div>
+
+<h4>段階的に特徴を学習する</h4>
+
+<!--p>
+  CNNでは、浅い層では単純な特徴、深い層では複雑な特徴を学びます。
+  たとえば猫の画像を認識する場合、最初から「猫」と判断するのではなく、
+  小さな特徴を少しずつ組み合わせて、最終的に「猫らしい」と判断します。
+</p-->
+
+<div class="cnn-diagram">
+  <div class="cnn-box input">
+    <div class="cnn-icon">🐱</div>
+    <div class="cnn-title">入力画像</div>
+    <div class="cnn-desc">猫の写真</div>
+  </div>
+
+  <div class="cnn-arrow">→</div>
+
+  <div class="cnn-box shallow">
+    <div class="cnn-icon">／ ○</div>
+    <div class="cnn-title">浅い層</div>
+    <div class="cnn-desc">
+      線・色・明暗・輪郭<br>
+      <strong>単純な特徴</strong>
+    </div>
+  </div>
+
+  <div class="cnn-arrow">→</div>
+
+  <div class="cnn-box middle">
+    <div class="cnn-icon">👂 👁</div>
+    <div class="cnn-title">中間の層</div>
+    <div class="cnn-desc">
+      耳・目・ひげ・鼻<br>
+      <strong>部品の特徴</strong>
+    </div>
+  </div>
+
+  <div class="cnn-arrow">→</div>
+
+  <div class="cnn-box deep">
+    <div class="cnn-icon">🐈</div>
+    <div class="cnn-title">深い層</div>
+    <div class="cnn-desc">
+      猫らしい顔・猫の姿<br>
+      <strong>物体全体</strong>
+    </div>
+  </div>
+
+  <div class="cnn-arrow">→</div>
+
+  <div class="cnn-box output">
+    <div class="cnn-icon">✅</div>
+    <div class="cnn-title">判断</div>
+    <div class="cnn-desc">
+      「これは猫」<br>
+      と認識する
+    </div>
+  </div>
+</div>
+
+<!--div class="point">
+  <strong>重要：</strong>
+  CNNは、画像をいきなり全体で判断するのではなく、
+  <strong>小さな特徴 → 部品 → 物体全体</strong>のように、段階的に特徴を組み合わせて認識します。
+</div-->
+
+
+<h4>なぜCNNは画像に強いのか</h4>
+
+<p>
+  画像は、たくさんの小さな点でできています。
+  この小さな点を<strong>画素</strong>、または<strong>ピクセル</strong>といいます。
+</p>
+
+<p>
+  画像では、近くにある点どうしをまとめて見ると、意味のある形が見えてきます。
+  たとえば、黒い点が丸く並んでいれば「目」や「タイヤ」に見えます。
+  線が三角形のように集まっていれば「耳」に見えることがあります。
+</p>
+
+<div class="point">
+  <strong>ポイント：</strong>
+  CNNは、画像全体をいきなり見るのではなく、
+  <strong>小さな範囲を少しずつ見ながら、線・形・部品を見つける</strong>のが得意です。
+</div>
+
+<p>
+  たとえば猫の画像なら、CNNは最初から「これは猫だ」と判断するわけではありません。
+  まず「線」「色の変化」「丸い形」などを見つけます。
+  次に、それらを組み合わせて「耳」「目」「ひげ」などを見つけます。
+  最後に、それらの特徴をまとめて「猫らしい」と判断します。
+</p>
+
+<div class="flow">
+  <div class="box">小さな点<br><small>ピクセル</small></div>
+  <div class="arrow">→</div>
+  <div class="box">線・色の変化</div>
+  <div class="arrow">→</div>
+  <div class="box">目・耳・ひげ</div>
+  <div class="arrow">→</div>
+  <div class="box">猫と判断</div>
+</div>
+
+<!--div class="exam">
+  <div class="exam-title">試験ポイント</div>
+  <ul>
+    <li><strong>CNNは画像の小さな範囲から特徴を見つけるのが得意</strong></li>
+    <li><strong>画像では、近くにあるピクセル同士の関係が重要</strong></li>
+    <li><strong>線や色 → 部品 → 物体全体のように段階的に認識する</strong></li>
+  </ul>
+</div-->
+
+    <div class="note">
+      <div class="note-title">身近な利用例</div>
+      スマートフォンの顔認証、写真アプリの人物分類、医療画像の診断支援、
+      自動運転での標識や歩行者認識など、画像を扱う場面でCNNの考え方が使われてきました。
+    </div>
+
+    <!--div class="warning">
+      <div class="warning-title">RNNとの違い</div>
+      CNNは画像のように<strong>空間的な特徴</strong>を扱うのが得意です。
+      RNNは文章や音楽のように<strong>順番のあるデータ</strong>を扱うのが得意です。
+    </div-->
+
+    <div class="exam">
+      <div class="exam-title">試験ポイント</div>
+      <ul>
+        <li><strong>CNN＝畳み込みニューラルネットワーク</strong></li>
+        <li><strong>画像認識・画像処理に強い</strong></li>
+        <li><strong>画像の一部分、つまり局所的な範囲から特徴を抽出</strong></li>
+        <li><strong>線や色 → 形 → 物体全体のように段階的に認識</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>2-6. VAE（変分自己符号化器）</h3>
+
+    <p>
+      <span class="term">VAE</span>は、Variational Autoencoder の略で、
+      日本語では <strong>変分自己符号化器</strong> と呼ばれます。
+      生成モデルの一種で、データを一度コンパクトな情報に圧縮し、
+      その情報から元データに似たものを復元・生成するモデルです。
+    </p>
+
+    <div class="flow">
+      <div class="box">入力データ</div>
+      <div class="arrow">→</div>
+      <div class="box">エンコーダ<br><small>圧縮</small></div>
+      <div class="arrow">→</div>
+      <div class="box">潜在ベクトル</div>
+      <div class="arrow">→</div>
+      <div class="box">デコーダ<br><small>復元・生成</small></div>
+    </div>
+
+    <div class="vae-image-diagram">
+  <div class="vae-panel">
+    <div class="vae-title">画像データ</div>
+    <div class="vae-paper noisy">
+      <div class="vae-cat vae-cat-blur">🐈</div>
+    </div>
+  </div>
+
+  <div class="vae-arrow-line"></div>
+
+  <div class="vae-process">
+    <div class="vae-step">エンコーダ</div>
+    <div class="vae-step main">潜在ベクトル</div>
+    <div class="vae-step">デコーダ</div>
+    <div class="vae-distribution">データの「分布」を学習</div>
+  </div>
+
+  <div class="vae-arrow-line"></div>
+
+  <div class="vae-panel">
+    <div class="vae-title">生成データ</div>
+    <div class="vae-paper">
+      <div class="vae-cat">🐈</div>
+    </div>
+  </div>
+</div>
+
+<div class="point">
+  <strong>図のポイント：</strong>
+  VAEでは、画像データをそのまま覚えるのではなく、
+  エンコーダで重要な特徴を<span class="term">潜在ベクトル</span>に圧縮します。
+  そして、デコーダがその潜在ベクトルをもとに、
+  元データに近い新しいデータを生成します。
+</div>
+
+
+    <h4>エンコーダとデコーダ</h4>
+    <table>
+      <tr>
+        <th>部分</th>
+        <th>役割</th>
+        <th>たとえ</th>
+      </tr>
+      <tr>
+        <td><strong>エンコーダ</strong></td>
+        <td>入力データを、重要な特徴を持つ低次元の表現に変換する。</td>
+        <td>長い文章を要約メモにする。</td>
+      </tr>
+      <tr>
+        <td><strong>潜在ベクトル</strong></td>
+        <td>データの特徴をコンパクトに表した情報。</td>
+        <td>人物写真なら「髪型・表情・向き」などの特徴メモ。</td>
+      </tr>
+      <tr>
+        <td><strong>デコーダ</strong></td>
+        <td>潜在ベクトルから、元データに近いものを生成する。</td>
+        <td>要約メモから文章を復元する。</td>
+      </tr>
+    </table>
+
+    <h4>理解しよう</h4>
+    <p>
+      VAEは、データを「そのまま丸暗記」するのではなく、
+      重要な特徴だけを取り出して、コンパクトな情報にまとめます。
+      たとえば顔画像なら、「目が大きい」「髪が長い」「笑顔」「正面を向いている」といった特徴をまとめるイメージです。
+    </p>
+
+    <p>
+      その後、デコーダがその特徴情報を使って、元の画像に近いものを復元します。
+      また、潜在ベクトルを少し変えることで、元データに似ているけれど少し違う新しいデータも生成できます。
+    </p>
+
+    <h4>何に使われるか</h4>
+    <table>
+      <tr>
+        <th>用途</th>
+        <th>説明</th>
+      </tr>
+      <tr>
+        <td>データ生成</td>
+        <td>学習した特徴をもとに、新しい画像やデータを生成する。</td>
+      </tr>
+      <tr>
+        <td>次元削減</td>
+        <td>複雑なデータを、少ない情報に圧縮して扱いやすくする。</td>
+      </tr>
+      <tr>
+        <td>異常検知</td>
+        <td>通常データをうまく復元できる一方、異常データは復元しにくいため異常を検出できる。</td>
+      </tr>
+      <tr>
+        <td>特徴学習</td>
+        <td>データの重要な特徴を自動的に学ぶ。</td>
+      </tr>
+    </table>
+
+    <!--div class="warning">
+      <div class="warning-title">GANとの違い</div>
+      VAEは<strong>圧縮して復元・生成</strong>するモデルです。
+      GANは<strong>生成器と識別器が競い合って生成能力を高める</strong>モデルです。
+      試験ではこの違いが重要です。
+    </div-->
+
+    <div class="exam">
+      <div class="exam-title">試験ポイント</div>
+      <ul>
+        <li><strong>VAE＝変分自己符号化器</strong></li>
+        <li><strong>エンコーダ＝入力データを潜在ベクトルに圧縮</strong></li>
+        <li><strong>デコーダ＝潜在ベクトルから元データに近いものを生成</strong></li>
+        <li><strong>潜在ベクトル＝データの重要な特徴をまとめたコンパクトな表現</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <aside class="revision-note"><strong>補足</strong><p>VAEのエンコーダは、入力に対応する潜在変数の確率分布（平均や分散など）を求めます。その分布から取り出した潜在ベクトルを、デコーダが復元に使います。新しいデータを生成するときは、学習で整えた潜在空間の分布から値を取り出して使えます。「圧縮して復元する」だけでなく、確率分布を扱う点が特徴です。</p></aside><h3>2-7. GAN（敵対的生成ネットワーク）</h3>
+
+    <p>
+      <span class="term">GAN</span>は、Generative Adversarial Networks の略で、
+      日本語では <strong>敵対的生成ネットワーク</strong> と呼ばれます。
+      GANは、<strong>生成器</strong>と<strong>識別器</strong>という2つのネットワークから構成されます。
+    </p>
+
+    <div class="flow">
+      <div class="box">ノイズ</div>
+      <div class="arrow">→</div>
+      <div class="box">生成器<br><small>偽物を作る</small></div>
+      <div class="arrow">→</div>
+      <div class="box">識別器<br><small>本物か判定</small></div>
+      <div class="arrow">→</div>
+      <div class="box">生成器が改善</div>
+    </div>
+
+    <h4>生成器と識別器の役割</h4>
+    <table>
+      <tr>
+        <th>役割</th>
+        <th>何をするか</th>
+        <th>身近なたとえ</th>
+      </tr>
+      <tr>
+        <td><strong>生成器</strong></td>
+        <td>ランダムノイズや潜在空間の情報をもとに、本物らしいデータを作る。</td>
+        <td>偽物の絵を描く人。</td>
+      </tr>
+      <tr>
+        <td><strong>識別器</strong></td>
+        <td>生成されたデータと本物のデータを見比べ、真偽を判断する。</td>
+        <td>本物か偽物かを見破る鑑定士。</td>
+      </tr>
+    </table>
+
+    <h4>なぜ「敵対的」なのか</h4>
+    <p>
+      GANでは、生成器と識別器が互いに競い合います。
+      生成器は「識別器をだませるほど本物らしいデータ」を作ろうとします。
+      一方、識別器は「本物と偽物を正確に見分ける」ことを目指します。
+    </p>
+
+    <p>
+      この競争によって、生成器はだんだん本物に近いデータを作れるようになります。
+      たとえるなら、偽物の絵を描く人と鑑定士が何度も勝負しているうちに、
+      絵を描く人の技術がどんどん上達するようなイメージです。
+    </p>
+
+<h4>GANで重要な入力：ノイズ</h4>
+
+<p>
+  GANでいう<span class="term">ノイズ</span>とは、
+  「不要なゴミ」という意味ではありません。
+  ここでのノイズは、<strong>新しいデータを作るための出発点になるランダムな数字のセット</strong>です。
+</p>
+
+<div class="point">
+  <strong>一言でいうと：</strong>
+  ノイズは、生成器に渡す<strong>ランダムな材料</strong>です。
+  生成器は、そのランダムな材料をもとに、本物らしい画像やデータを作ろうとします。
+</div>
+
+<div class="flow">
+  <div class="box">ランダムな数字<br><small>ノイズ</small></div>
+  <div class="arrow">→</div>
+  <div class="box">生成器<br><small>画像らしく変換</small></div>
+  <div class="arrow">→</div>
+  <div class="box">偽物の画像<br><small>本物に近づける</small></div>
+  <div class="arrow">→</div>
+  <div class="box">識別器<br><small>本物か判定</small></div>
+</div>
+
+<p>
+  たとえば、最初のノイズは「猫の画像」そのものではありません。
+  ただのランダムな数字です。
+  しかし、学習を重ねることで、生成器はその数字をもとに
+  「猫らしい画像」「人の顔らしい画像」のようなデータを作れるようになります。
+</p>
+
+<div class="note">
+  <div class="note-title">身近なたとえ</div>
+  ノイズは、料理でいう「何を作るかを決めるためのくじ」のようなものです。
+  くじの番号が違うと、できあがる料理が少し変わります。
+  GANでも、ノイズの値が変わると、生成される画像も変わります。
+</div>
+
+<div class="warning">
+  <div class="warning-title">誤解しやすい点</div>
+  <ul>
+    <li><strong>ノイズ＝画像に入ったザラザラした汚れ</strong>ではありません。</li>
+    <li><strong>ノイズ＝生成器に入力するランダムな情報</strong>です。</li>
+    <li>生成器は、ノイズをそのまま出力するのではなく、学習したパターンを使って本物らしいデータに変換します。</li>
+  </ul>
+</div>
+
+<div class="exam">
+  <div class="exam-title">試験ポイント</div>
+  <ul>
+    <li><strong>GANの生成器は、ノイズや潜在空間の情報を入力としてデータを生成する</strong></li>
+    <li><strong>ノイズは不要なゴミではなく、生成の出発点になるランダムな情報</strong></li>
+    <li><strong>ノイズが違うと、生成されるデータも変わる</strong></li>
+    <li><strong>生成器はノイズをもとに、識別器をだませるほど本物らしいデータを作ろうとする</strong></li>
+  </ul>
+</div>
+
+
+  </div>
+
+<div class="section-card">
+  <h3>2-8. RNN（回帰型ニューラルネットワーク）</h3>
+
+  <p>
+    <span class="term">RNN</span>は、Recurrent Neural Network の略で、
+    日本語では<strong>回帰型ニューラルネットワーク</strong>と呼ばれます。
+    RNNは、文章、音楽、音声、株価、天気のように、
+    <strong>順番に意味があるデータ</strong>を扱うのが得意なモデルです。
+  </p>
+
+  <div class="point">
+    <strong>一言でいうと：</strong>
+    RNNは、前に出てきた情報を覚えながら、次の情報を処理するニューラルネットワークです。
+    つまり、<strong>「ここまでの流れ」を見て、次を考えるモデル</strong>です。
+  </div>
+
+  <h4>シーケンスデータとは</h4>
+  <p>
+    RNNが得意とするデータは、<span class="term">シーケンスデータ</span>です。
+    シーケンスデータとは、<strong>順番に意味があるデータ</strong>のことです。
+  </p>
+
+  <table>
+    <tr>
+      <th>データ</th>
+      <th>順番が重要な理由</th>
+      <th>例</th>
+    </tr>
+    <tr>
+      <td><strong>文章</strong></td>
+      <td>単語の順番が変わると意味が変わる。</td>
+      <td>「犬が人を噛む」と「人が犬を噛む」は意味が違う。</td>
+    </tr>
+    <tr>
+      <td><strong>音楽</strong></td>
+      <td>音の順番によってメロディになる。</td>
+      <td>同じ音でも順番が変わると曲の印象が変わる。</td>
+    </tr>
+    <tr>
+      <td><strong>株価</strong></td>
+      <td>過去の値動きが次の動きの参考になる。</td>
+      <td>昨日まで上がっているか、下がっているかを見る。</td>
+    </tr>
+    <tr>
+      <td><strong>天気</strong></td>
+      <td>気温や気圧の変化の流れが予測に関係する。</td>
+      <td>急に気圧が下がると天気が崩れやすい。</td>
+    </tr>
+  </table>
+
+  <div class="warning">
+    <div class="warning-title">ここが重要</div>
+    RNNは、データを1つずつ順番に処理します。
+    そのため、文章や時系列データのように
+    <strong>「前の情報が後の情報に影響するデータ」</strong>に向いています。
+  </div>
+
+  <h4>RNNの基本イメージ</h4>
+  <p>
+    普通のニューラルネットワークは、入力を受け取って結果を出すだけです。
+    一方、RNNは、前の時点で得た情報を次の時点に渡します。
+    これにより、<strong>過去の情報をある程度覚えながら処理</strong>できます。
+  </p>
+
+  <div class="flow">
+    <div class="box">時点1<br><small>今日</small></div>
+    <div class="arrow">→</div>
+    <div class="box">時点2<br><small>雨が</small></div>
+    <div class="arrow">→</div>
+    <div class="box">時点3<br><small>降りそう</small></div>
+    <div class="arrow">→</div>
+    <div class="box">次を予測<br><small>傘を…</small></div>
+  </div>
+
+  <p>
+    たとえば「今日は雨が降りそうなので、傘を」という文があるとします。
+    この文の次には、「持っていく」「買う」「忘れない」などが続きやすいです。
+    RNNは、前の単語の流れを見ながら、次に来る情報を考えます。
+  </p>
+
+  <h4>RNNは「文脈メモ」を持っているイメージ</h4>
+  <p>
+    RNNの特徴は、前の情報を内部に残しながら処理することです。
+    この内部に残る情報を、初心者向けには<strong>文脈メモ</strong>のように考えるとわかりやすいです。
+  </p>
+
+  <div class="flow">
+    <div class="box">入力<br><small>今日</small></div>
+    <div class="arrow">→</div>
+    <div class="box">文脈メモ<br><small>今日</small></div>
+    <div class="arrow">→</div>
+    <div class="box">入力<br><small>雨が</small></div>
+    <div class="arrow">→</div>
+    <div class="box">文脈メモ<br><small>今日は雨</small></div>
+    <div class="arrow">→</div>
+    <div class="box">次を予測</div>
+  </div>
+
+  <p>
+    文章を読むとき、人間も前に読んだ内容を完全に忘れてしまうわけではありません。
+    「今日は雨が降りそう」という流れを覚えているから、
+    次に「傘」という言葉が自然だとわかります。
+    RNNもこれに近い考え方で、前の情報を次の処理に使います。
+  </p>
+
+<h4>隠れ層とリカレント層をやさしく理解する</h4>
+
+<p>
+  RNNを理解するときに出てくる
+  <span class="term">隠れ層</span>と
+  <span class="term">リカレント層</span>は、最初は少し難しく感じやすい用語です。
+  まずは、次のように考えるとわかりやすいです。
+</p>
+
+<table>
+  <tr>
+    <th>用語</th>
+    <th>かんたんな意味</th>
+    <th>たとえ</th>
+  </tr>
+  <tr>
+    <td><strong>隠れ層</strong></td>
+    <td>
+      入力された情報をもとに、AIが中で特徴を考える部分。
+    </td>
+    <td>
+      頭の中で考える場所。
+    </td>
+  </tr>
+  <tr>
+    <td><strong>リカレント層</strong></td>
+    <td>
+      前に考えた内容を、次の処理に渡せる層。
+    </td>
+    <td>
+      メモを取りながら読み進める場所。
+    </td>
+  </tr>
+</table>
+
+<div class="point">
+  <strong>重要：</strong>
+  RNNでは、前の情報を次に渡すことが大切です。
+  そのため、リカレント層は
+  <strong>「前の内容を覚えて、次の判断に使う層」</strong>
+  と理解しましょう。
+</div>
+
+<h4>文章で考えてみよう</h4>
+
+<p>
+  たとえば、次の文をRNNが順番に読むとします。
+</p>
+
+<div class="flow">
+  <div class="box">今日</div>
+  <div class="arrow">→</div>
+  <div class="box">雨が</div>
+  <div class="arrow">→</div>
+  <div class="box">降りそう</div>
+  <div class="arrow">→</div>
+  <div class="box">傘を…</div>
+</div>
+
+<p>
+  「今日」だけを見ても、次に何が来るかはよくわかりません。
+  しかし、「今日」「雨が」「降りそう」まで読むと、
+  次に「傘を持っていく」のような言葉が続きそうだと予想できます。
+</p>
+
+<p>
+  このときRNNは、前に読んだ言葉の情報を内部に残しながら、
+  次の言葉を処理します。
+  この<strong>内部で考える部分</strong>が隠れ層であり、
+  <strong>前の情報を次に渡す仕組みを持った層</strong>がリカレント層です。
+</p>
+
+<div class="flow">
+  <div class="box">入力<br><small>今日</small></div>
+  <div class="arrow">→</div>
+  <div class="box">中で考える<br><small>隠れ層</small></div>
+  <div class="arrow">→</div>
+  <div class="box">メモを残す<br><small>今日</small></div>
+</div>
+
+<div class="flow">
+  <div class="box">入力<br><small>雨が</small></div>
+  <div class="arrow">→</div>
+  <div class="box">前のメモも使う<br><small>リカレント層</small></div>
+  <div class="arrow">→</div>
+  <div class="box">メモを更新<br><small>今日は雨</small></div>
+</div>
+
+<div class="flow">
+  <div class="box">入力<br><small>降りそう</small></div>
+  <div class="arrow">→</div>
+  <div class="box">前のメモも使う<br><small>リカレント層</small></div>
+  <div class="arrow">→</div>
+  <div class="box">次を予測<br><small>傘を…</small></div>
+</div>
+
+<div class="note">
+  <div class="note-title">身近なたとえ</div>
+  RNNは、文章を読みながらメモを取る人に似ています。
+  1つの単語だけを見るのではなく、
+  「ここまで何を読んだか」をメモしながら次を考えます。
+  このメモ機能があるから、RNNは文章や時系列データを扱えます。
+</div>
+
+<!--div class="warning">
+  <div class="warning-title">誤解しやすい点</div>
+  <ul>
+    <li>
+      <strong>隠れ層</strong>は、単に「見えない層」というより、
+      入力と出力の間でAIが特徴を考える部分です。
+    </li>
+    <li>
+      <strong>リカレント層</strong>は、前の情報を次に渡せる仕組みを持つ層です。
+    </li>
+    <li>
+      RNNが文章や時系列データに向いている理由は、
+      前の情報を使って次を判断できるからです。
+    </li>
+  </ul>
+</div-->
+
+<div class="exam">
+  <div class="exam-title">試験ポイント</div>
+  <ul>
+    <li><strong>隠れ層＝入力と出力の間で特徴を学習する部分</strong></li>
+    <li><strong>リカレント層＝前の時点の情報を次の時点に渡す層</strong></li>
+    <li><strong>RNNは、前の情報を使って次を処理する</strong></li>
+    <li><strong>文章・音楽・株価・天気のような順番のあるデータに向いている</strong></li>
+  </ul>
+</div>
+
+
+  <h4>RNNが使われてきた場面</h4>
+  <table>
+    <tr>
+      <th>用途</th>
+      <th>RNNが役立つ理由</th>
+    </tr>
+    <tr>
+      <td>文章生成</td>
+      <td>前の単語の流れをもとに、次の単語を予測できる。</td>
+    </tr>
+    <tr>
+      <td>機械翻訳</td>
+      <td>文の順番や文脈を考慮して、別の言語に変換できる。</td>
+    </tr>
+    <tr>
+      <td>音声認識</td>
+      <td>音の流れを順番に処理し、言葉として認識できる。</td>
+    </tr>
+    <tr>
+      <td>時系列予測</td>
+      <td>過去のデータの変化を見て、次の値を予測できる。</td>
+    </tr>
+  </table>
+
+  <h4>CNNとの違い</h4>
+  <p>
+    CNNとRNNは、どちらもニューラルネットワークの一種ですが、
+    得意なデータが違います。
+  </p>
+
+  <table>
+    <tr>
+      <th>モデル</th>
+      <th>得意なデータ</th>
+      <th>覚え方</th>
+    </tr>
+    <tr>
+      <td><strong>CNN</strong></td>
+      <td>画像のように、近くの点や部分の関係が重要なデータ。</td>
+      <td>画像の特徴を見つける。</td>
+    </tr>
+    <tr>
+      <td><strong>RNN</strong></td>
+      <td>文章や音楽のように、順番が重要なデータ。</td>
+      <td>前の情報を覚えて次を考える。</td>
+    </tr>
+  </table>
+
+  <h4>RNNの課題：長い情報を覚えにくい</h4>
+  <p>
+    RNNは、前の情報を次に渡せる便利なモデルです。
+    しかし、文章やデータが長くなると、最初のほうの重要な情報をうまく覚え続けるのが難しくなります。
+  </p>
+
+  <div class="warning">
+    <div class="warning-title">具体例で理解</div>
+    「私は昨日、駅前の本屋で買った分厚い小説を、夜に少しだけ読んだ。その小説はとても面白かった。」
+    という文を考えます。
+    「その小説」が何を指しているかを理解するには、
+    前に出てきた「駅前の本屋で買った分厚い小説」という情報を覚えておく必要があります。
+    RNNは文が長くなるほど、このような昔の情報を保持しにくくなることがあります。
+  </div>
+
+  <h4>勾配消失問題とは</h4>
+  <p>
+    RNNで長いデータを学習するときに起こりやすい問題が、
+    <span class="term">勾配消失問題</span>です。
+    これは、学習のための調整情報がだんだん弱くなり、
+    前のほうの情報をうまく学習しにくくなる問題です。
+  </p>
+
+  <div class="point">
+    <strong>かんたんにいうと：</strong>
+    長い文章を最後まで読むうちに、最初の大事な内容を忘れてしまうようなイメージです。
+    RNNは短い流れは扱えますが、長い流れになると苦手になりやすいです。
+  </div>
+
+  <h4>LSTMにつながる理由</h4>
+  <p>
+    RNNは順番のあるデータに強い一方で、
+    長い文脈や長期間の情報を扱うのが苦手でした。
+    この弱点を改善するために登場したのが、
+    <span class="term">LSTM</span>です。
+  </p>
+
+  <div class="flow">
+    <div class="box">RNN</div>
+    <div class="arrow">→</div>
+    <div class="box">順番のあるデータに強い</div>
+    <div class="arrow">→</div>
+    <div class="box">でも長い記憶が苦手</div>
+    <div class="arrow">→</div>
+    <div class="box">LSTMへ発展</div>
+  </div>
+
+  <div class="exam">
+    <div class="exam-title">試験ポイント</div>
+    <ul>
+      <li><strong>RNN＝Recurrent Neural Network、回帰型ニューラルネットワーク</strong></li>
+      <li><strong>シーケンスデータ、つまり順番に意味があるデータに適している</strong></li>
+      <li><strong>文章、音楽、音声、株価、天気などの時系列データと相性がよい</strong></li>
+      <li><strong>前の時点の情報を次の時点に渡しながら処理する</strong></li>
+      <li><strong>リカレント層は、前の情報を次へ渡す仕組みを持つ層</strong></li>
+      <li><strong>長いシーケンスでは、勾配消失問題が起こりやすい</strong></li>
+      <li><strong>RNNの長期記憶の弱点を改善するためにLSTMが登場した</strong></li>
+    </ul>
+  </div>
+
+  <!--div class="short-check">
+    <div class="short-check-title">確認問題</div>
+    <ul>
+      <li>Q1. 順番に意味があるデータを何という？ → <strong>シーケンスデータ</strong></li>
+      <li>Q2. RNNが得意なデータは？ → <strong>文章・音楽・音声・時系列データ</strong></li>
+      <li>Q3. RNNの特徴は？ → <strong>前の情報を次の処理に渡す</strong></li>
+      <li>Q4. 長い情報を学習しにくくなる問題は？ → <strong>勾配消失問題</strong></li>
+      <li>Q5. RNNの長期記憶の弱点を改善するモデルは？ → <strong>LSTM</strong></li>
+    </ul>
+  </div-->
+</div>
+
+<div class="section-card">
+  <h3>2-9. LSTM（長・短期記憶）</h3>
+
+  <p>
+    <span class="term">LSTM</span>は、Long Short-Term Memory の略で、
+    日本語では<strong>長・短期記憶</strong>と呼ばれます。
+    RNNの弱点である<strong>長い情報を覚えにくい問題</strong>を改善するために作られたモデルです。
+  </p>
+
+  <div class="point">
+    <strong>一言でいうと：</strong>
+    LSTMは、RNNに<strong>「大事な情報を残し、いらない情報を捨てるメモ機能」</strong>を強化したモデルです。
+    文章や時系列データの中で、長く覚えておくべき情報を扱いやすくします。
+  </div>
+
+  <h4>なぜLSTMが必要になったのか</h4>
+
+  <p>
+    RNNは、前の情報を次の処理に渡せるため、文章や時系列データに向いています。
+    しかし、文章やデータが長くなると、最初のほうに出てきた大事な情報を忘れやすくなります。
+  </p>
+
+  <div class="flow">
+    <div class="box">RNN</div>
+    <div class="arrow">→</div>
+    <div class="box">前の情報を使える</div>
+    <div class="arrow">→</div>
+    <div class="box">でも長い情報は苦手</div>
+    <div class="arrow">→</div>
+    <div class="box">LSTMが登場</div>
+  </div>
+
+  <div class="warning">
+    <div class="warning-title">RNNの弱点</div>
+    RNNは短い文章なら比較的うまく扱えます。
+    しかし、長い文章になると、最初のほうに出てきた重要な情報が後ろまで伝わりにくくなります。
+    この問題を改善するために、LSTMでは<strong>記憶を管理する仕組み</strong>が取り入れられました。
+  </div>
+
+  <h4>具体例で考えよう</h4>
+
+  <p>
+    次の文を考えてみます。
+  </p>
+
+  <div class="note">
+    <div class="note-title">例文</div>
+    私は昨日、駅前の本屋で買った<strong>分厚い小説</strong>を、夜に少しだけ読んだ。
+    その<strong>小説</strong>はとても面白かった。
+  </div>
+
+  <p>
+    「その小説」が何を指しているかを理解するには、
+    前に出てきた「分厚い小説」という情報を覚えておく必要があります。
+    RNNは文章が長くなると、このような前の情報を忘れやすくなります。
+  </p>
+
+  <p>
+    LSTMは、こうした長い文脈でも、
+    <strong>どの情報を残すべきか</strong>、
+    <strong>どの情報を捨ててもよいか</strong>を判断しながら処理します。
+  </p>
+
+  <h4>LSTMは「記憶を管理するメモ帳」</h4>
+
+  <p>
+    LSTMは、RNNに<strong>記憶を管理するメモ帳</strong>を追加したようなモデルです。
+    すべての情報を同じように残すのではなく、
+    重要な情報は残し、不要な情報は捨てます。
+  </p>
+
+  <div class="flow">
+    <div class="box">新しい情報</div>
+    <div class="arrow">→</div>
+    <div class="box">必要か判断</div>
+    <div class="arrow">→</div>
+    <div class="box">大事な情報は残す</div>
+    <div class="arrow">→</div>
+    <div class="box">不要な情報は捨てる</div>
+  </div>
+
+  <div class="note">
+    <div class="note-title">身近なたとえ</div>
+    LSTMは、授業中にノートを取る人に似ています。
+    先生が話した内容をすべて一字一句メモするのではなく、
+    試験に出そうな重要ポイントは残し、細かすぎる雑談は省きます。
+    LSTMも同じように、必要な情報を残し、不要な情報を捨てながら処理します。
+  </div>
+
+  <h4>LSTMの中で行われる3つの判断</h4>
+
+  <p>
+    LSTMでは、記憶を管理するために、主に次のような判断をします。
+    試験では    <strong>「必要な情報を残し、不要な情報を捨てる」</strong>という考え方は押さえましょう。
+  </p>
+
+  <table>
+    <tr>
+      <th>判断</th>
+      <th>何をするか</th>
+      <th>たとえ</th>
+    </tr>
+    <tr>
+      <td><strong>忘れる</strong></td>
+      <td>もう必要ない情報を捨てる。</td>
+      <td>ノートから不要なメモを消す。</td>
+    </tr>
+    <tr>
+      <td><strong>覚える</strong></td>
+      <td>新しく重要な情報を記憶に追加する。</td>
+      <td>試験に出そうな内容をノートに書く。</td>
+    </tr>
+    <tr>
+      <td><strong>出力する</strong></td>
+      <td>今の判断に必要な情報を取り出す。</td>
+      <td>問題を解くときにノートを見返す。</td>
+    </tr>
+  </table>
+
+  <div class="point">
+    <strong>重要：</strong>
+    LSTMは、ただ情報を覚えるだけではありません。
+    <strong>何を忘れるか、何を覚えるか、何を使うか</strong>を調整しながら処理します。
+  </div>
+
+  <h4>RNNとLSTMの違い</h4>
+
+  <table>
+    <tr>
+      <th>モデル</th>
+      <th>特徴</th>
+      <th>弱点・改善点</th>
+    </tr>
+    <tr>
+      <td><strong>RNN</strong></td>
+      <td>
+        前の情報を次に渡しながら、順番のあるデータを処理する。
+      </td>
+      <td>
+        長い文章や長期間のデータでは、前の情報を忘れやすい。
+      </td>
+    </tr>
+    <tr>
+      <td><strong>LSTM</strong></td>
+      <td>
+        重要な情報を長く残し、不要な情報を捨てる仕組みを持つ。
+      </td>
+      <td>
+        RNNより長い文脈を扱いやすい。
+      </td>
+    </tr>
+  </table>
+
+  <h4>LSTMが向いているデータ</h4>
+
+  <p>
+    LSTMは、RNNと同じく<strong>シーケンスデータ</strong>に向いています。
+    特に、前の情報を長く覚えておく必要がある場面で役立ちます。
+  </p>
+
+  <table>
+    <tr>
+      <th>データ</th>
+      <th>LSTMが役立つ理由</th>
+    </tr>
+    <tr>
+      <td><strong>長めの文章</strong></td>
+      <td>前に出てきた主語や話題を覚えて、後ろの文を理解しやすい。</td>
+    </tr>
+    <tr>
+      <td><strong>音声データ</strong></td>
+      <td>音の流れを時間順にとらえ、言葉として認識しやすい。</td>
+    </tr>
+    <tr>
+      <td><strong>株価・売上</strong></td>
+      <td>過去の変化の流れをもとに、将来の傾向を予測しやすい。</td>
+    </tr>
+    <tr>
+      <td><strong>センサーデータ</strong></td>
+      <td>機械や設備の変化を時系列で見て、異常の兆候を見つけやすい。</td>
+    </tr>
+  </table>
+
+  <h4>LSTMにも残った課題</h4>
+
+  <p>
+    LSTMはRNNの弱点を改善しましたが、万能ではありません。
+    特に、大規模な文章データや非常に長い文脈を扱う場合には、まだ課題がありました。
+  </p>
+
+  <table>
+    <tr>
+      <th>LSTMの良い点</th>
+      <th>LSTMの課題</th>
+    </tr>
+    <tr>
+      <td>RNNより長い情報を扱いやすい。</td>
+      <td>非常に長い文章では、文脈を完全に保つのが難しい。</td>
+    </tr>
+    <tr>
+      <td>時系列データや文章の流れを学習しやすい。</td>
+      <td>基本的に順番に処理するため、並列処理に向きにくい。</td>
+    </tr>
+    <tr>
+      <td>長期的な依存関係を扱いやすい。</td>
+      <td>大規模データを学習するには時間がかかりやすい。</td>
+    </tr>
+  </table>
+
+  <div class="warning">
+    <div class="warning-title">Transformerにつながる理由</div>
+    LSTMは、RNNより長い情報を扱いやすくしました。
+    しかし、文章を順番に処理する性質があるため、
+    大量のデータを高速に学習するには限界がありました。
+    そこで、より並列処理しやすく、長い文脈を扱いやすい
+    <strong>Transformer</strong>が重要になっていきます。
+  </div>
+
+  <div class="flow">
+    <div class="box">RNN<br><small>順番を扱える</small></div>
+    <div class="arrow">→</div>
+    <div class="box">LSTM<br><small>長い記憶を改善</small></div>
+    <div class="arrow">→</div>
+    <div class="box">Transformer<br><small>長文・大規模学習へ</small></div>
+  </div>
+
+  <!--div class="exam">
+    <div class="exam-title">試験ポイント</div>
+    <ul>
+      <li><strong>LSTM＝Long Short-Term Memory、長・短期記憶</strong></li>
+      <li><strong>RNNの長い情報を覚えにくい問題を改善するために作られた</strong></li>
+      <li><strong>重要な情報を残し、不要な情報を捨てる仕組みを持つ</strong></li>
+      <li><strong>文章、音声、株価、センサーデータなどのシーケンスデータに使われる</strong></li>
+      <li><strong>RNNより長期的な依存関係を扱いやすい</strong></li>
+      <li><strong>ただし、順番に処理するため並列処理には向きにくい</strong></li>
+      <li><strong>LSTMの課題の先にTransformerが登場する流れを理解する</strong></li>
+    </ul>
+  </div-->
+
+  <!--div class="short-check">
+    <div class="short-check-title">確認問題</div>
+    <ul>
+      <li>Q1. RNNの長期記憶の弱点を改善するモデルは？ → <strong>LSTM</strong></li>
+      <li>Q2. LSTMは何の略？ → <strong>Long Short-Term Memory</strong></li>
+      <li>Q3. LSTMが得意なデータは？ → <strong>文章・音声・時系列データなどのシーケンスデータ</strong></li>
+      <li>Q4. LSTMは何を管理する？ → <strong>残す情報、捨てる情報、使う情報</strong></li>
+      <li>Q5. LSTMのあとに重要になるモデルは？ → <strong>Transformer</strong></li>
+    </ul>
+  </div-->
+</div>
+
+<div class="section-card">
+
+  <h3>2-10. Transformerにつながる流れ</h3>
+  <p>
+    CNNは画像に強く、RNNやLSTMは時系列や文章に強いモデルでした。
+    しかし、大規模データを効率よく学習し、長い文脈を扱うには課題が残りました。
+    そこで、CNNやRNNを前提にしない新しいモデルとして
+    <span class="term">Transformer</span> が重要になります。
+  </p>
+
+  <div class="point">
+    Transformerは、後にGPTやBERTなどの大規模言語モデルにつながる重要な技術です。
+    このページでは「RNN・LSTMの課題の先にTransformerが出てくる」と理解しておきましょう。
+  </div>
+</section>
+
+<section>
+  <h2>3. 似た用語の違い</h2>
+
+  <table>
+    <tr>
+      <th>似た用語</th>
+      <th>違いの覚え方</th>
+    </tr>
+    <tr>
+      <td><strong>ボルツマンマシン / RBM</strong></td>
+      <td>ボルツマンマシンは確率的にパターンを探す初期モデル。RBMは接続を制約して効率化した改良版。</td>
+    </tr>
+    <tr>
+      <td><strong>自己回帰モデル / ディープラーニング</strong></td>
+      <td>自己回帰モデルは過去から次を予測する考え方。ディープラーニングは多層ニューラルネットワークで学習する技術。</td>
+    </tr>
+    <tr>
+      <td><strong>CNN / RNN</strong></td>
+      <td>CNNは画像の局所特徴、RNNは順番のあるデータ。</td>
+    </tr>
+    <tr>
+      <td><strong>VAE / GAN</strong></td>
+      <td>VAEは圧縮して復元・生成、GANは生成器と識別器の競争。</td>
+    </tr>
+    <tr>
+      <td><strong>生成器 / 識別器</strong></td>
+      <td>生成器は作る、識別器は見破る。</td>
+    </tr>
+    <tr>
+      <td><strong>エンコーダ / デコーダ</strong></td>
+      <td>エンコーダは圧縮、デコーダは復元。</td>
+    </tr>
+    <tr>
+      <td><strong>RNN / LSTM</strong></td>
+      <td>LSTMはRNNの長期記憶の弱点を改善したもの。</td>
+    </tr>
+  </table>
+
+  <div class="short-check">
+    <div class="short-check-title">試験直前チェック</div>
+    <ul>
+      <li>「画像認識」「畳み込み」「局所的特徴」→ <strong>CNN</strong></li>
+      <li>「シーケンスデータ」「時系列」「文章の順番」→ <strong>RNN</strong></li>
+      <li>「RNNの長期依存問題を改善」→ <strong>LSTM</strong></li>
+      <li>「エンコーダ」「デコーダ」「潜在ベクトル」→ <strong>VAE</strong></li>
+      <li>「生成器」「識別器」「敵対的」→ <strong>GAN</strong></li>
+      <li>「過去から未来を予測」→ <strong>自己回帰モデル</strong></li>
+      <li>「確率的にパターンを探す」→ <strong>ボルツマンマシン</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section class="summary">
+  <h2>4. まとめ</h2>
+  <ul>
+    <li><span class="term">ボルツマンマシン</span>は、確率的にパターンを探す初期の重要モデル。</li>
+    <li><span class="term">制約付きボルツマンマシン</span>は、接続を制限して効率化した改良版。</li>
+    <li><span class="term">自己回帰モデル</span>は、過去のデータから次を予測する。</li>
+    <li><span class="term">ディープラーニング</span>は、多層ニューラルネットワークで複雑な特徴を学習する。</li>
+    <li><span class="term">CNN</span>は、画像の局所的特徴を取り出すのが得意。</li>
+    <li><span class="term">VAE</span>は、エンコーダで圧縮し、デコーダで復元・生成する。</li>
+    <li><span class="term">GAN</span>は、生成器と識別器が競い合うことで本物らしいデータを作る。</li>
+    <li><span class="term">RNN</span>はシーケンスデータに強いが、長期依存に課題がある。</li>
+    <li><span class="term">LSTM</span>はRNNの長期依存問題を改善したが、大規模・並列処理には課題が残る。</li>
+    <li><span class="term">Transformer</span>は、これらの課題を背景に登場し、現代の生成AIにつながる重要技術。</li>
+  </ul>
+</section>
+
+</div>
+</body>
+</html>
