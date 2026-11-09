@@ -1,4 +1,4 @@
-# CSSデザインサンプル集
+# デザインサンプル集
 
 ## 概要
 
@@ -16,7 +16,7 @@
 
 ## 起動・体験
 
-[**CSSデザインサンプル集を開く**](https://yumin-snoopy.github.io/materials/web/css_samples/)
+[**デザインサンプル集を開く**](https://yumin-snoopy.github.io/materials/web/css_samples/)
 
 ## 使用技術
 

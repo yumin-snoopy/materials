@@ -15,7 +15,7 @@ HTMLやCSSのしくみを、見本や操作を通して学ぶ教材です。
 | [シマエナガのCSSレイアウト教室](css_flex_game/README.md) | Flexboxの設定を入力し、シマエナガを目標の位置に並べる全20問の学習ゲームです。 |
 | [CSS Flexbox体験ツール](css_flexbox/README.md) | 親要素のCSSを変え、子要素の向き・配置・間隔・折り返しを画面で学ぶ教材です。 |
 | [CSSリファレンス](css_reference/README.md) | CSSの項目を日本語やプロパティ名で探し、値を変えながら効果を確かめる教材です。 |
-| [CSSデザインサンプル集](css_samples/README.md) | 完成見本からWebデザインを選び、対応するHTMLとCSSをコピーできる教材です。 |
+| [デザインサンプル集](css_samples/README.md) | 完成見本からWebデザインを選び、対応するHTMLとCSSをコピーできる教材です。 |
 | [Webデザイン練習スタジオ](design_studio/README.md) | パーツの見た目を編集しながらHTML・CSSのコードを学べる教材です。 |
 | [CSSセレクター体験ツール](css_selectors/README.md) | セレクターがどのHTML要素に当たるかを、色の変化で確かめる教材です。 |
 | [Web入門：Webの仕組みとHTML・CSS・JavaScript](introduction/README.md) | ブラウザとサーバーの仕組みやHTML・CSS・JavaScriptの役割、基本的な書き方を学ぶ導入教材です。 |

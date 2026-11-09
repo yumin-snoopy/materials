@@ -72,7 +72,7 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 | [シマエナガのCSSレイアウト教室](web/css_flex_game/README.md) | Flexboxの設定を入力し、シマエナガを目標の位置に並べる全20問の学習ゲームです。 |
 | [CSS Flexbox体験ツール](web/css_flexbox/README.md) | 親要素のCSSを変え、子要素の向き・配置・間隔・折り返しを画面で学ぶ教材です。 |
 | [CSSリファレンス](web/css_reference/README.md) | CSSの項目を日本語やプロパティ名で探し、値を変えながら効果を確かめる教材です。 |
-| [CSSデザインサンプル集](web/css_samples/README.md) | 完成見本からWebデザインを選び、対応するHTMLとCSSをコピーできる教材です。 |
+| [デザインサンプル集](web/css_samples/README.md) | 完成見本からWebデザインを選び、対応するHTMLとCSSをコピーできる教材です。 |
 | [CSSセレクター体験ツール](web/css_selectors/README.md) | セレクターがどのHTML要素に当たるかを、色の変化で確かめる教材です。 |
 | [HTML5 入力練習ガイド](web/html_practice/README.md) | HTMLを1つのファイルに少しずつ手入力して学ぶ教材です。 |
 | [HTMLタグリファレンス](web/html_reference/README.md) | HTMLタグの意味や主な属性を調べ、コードと表示結果を一緒に確認できる教材です。 |
