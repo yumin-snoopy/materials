@@ -2,6 +2,12 @@
 
 Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめています。
 
+## 生成AIパスポート
+
+[用語ノートを開く](https://yumin-snoopy.github.io/materials/AI_Passport/) ／ [教材の説明](AI_Passport/README.md)
+
+生成AIの用語を、やさしい意味と具体例で調べる教材です。章・テーマ別の検索、復習マーク、印刷に対応しています。
+
 ## Excel
 
 [Excel教材一覧](excel/readme.md)
