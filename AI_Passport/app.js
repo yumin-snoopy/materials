@@ -11,7 +11,7 @@
   let chapter=0;
   let expanded=false;
   let printSnapshot=[];
-  function storageNotice(){ if(!saved) $('storage-note').textContent='このブラウザーでは保存機能を利用できません。復習マークは、この画面を開いている間だけ使えます。'; }
+  function storageNotice(){ if(!saved && $('storage-note')) $('storage-note').textContent='このブラウザーでは保存機能を利用できません。復習マークは、この画面を開いている間だけ使えます。'; }
   function syncMarks(){
     for (const t of terms){ const b=t.node.querySelector('.bookmark');const yes=marked.has(t.id);b.setAttribute('aria-pressed',String(yes));b.textContent=yes?'復習に登録済み':'あとで復習';b.setAttribute('aria-label',t.node.querySelector('h3').textContent+(yes?'をあとで復習から外す':'をあとで復習に登録')); }
     $('marked-count').textContent=String(marked.size);
@@ -40,7 +40,7 @@
     $('result-status').textContent=scope+'：'+total+' / '+terms.length+'項目を表示';
     $('print-scope').textContent=scope+' / '+(category||'すべてのテーマ')+($('core-only').checked?' / はじめの一歩':'')+($('marked-only').checked?' / あとで復習':'')+($('search').value.trim()?' / 検索：'+$('search').value.trim():'')+' / '+total+'項目';
     $('empty').hidden=total!==0;
-    $('print').disabled=total===0;
+    if($('print')) $('print').disabled=total===0;
     for(const b of document.querySelectorAll('[data-chapter-filter]')) b.setAttribute('aria-pressed',String(Number(b.dataset.chapterFilter)===chapter));
   }
   for(const b of document.querySelectorAll('[data-chapter-filter]')) b.addEventListener('click',()=>{chapter=Number(b.dataset.chapterFilter);$('category').value='';setCategories();applyFilters();});
@@ -54,10 +54,10 @@
     try{localStorage.setItem(storageKey,JSON.stringify([...marked]));}catch{saved=false;storageNotice();}
     syncMarks();applyFilters();
   });
-  $('expand-all').addEventListener('click',()=>{expanded=!expanded;for(const t of terms) t.node.querySelector('details').open=expanded;$('expand-all').textContent=expanded?'ポイントをすべて閉じる':'ポイントをすべて開く';$('expand-all').setAttribute('aria-pressed',String(expanded));});
+  $('expand-all')?.addEventListener('click',()=>{expanded=!expanded;for(const t of terms) t.node.querySelector('details').open=expanded;$('expand-all').textContent=expanded?'ポイントをすべて閉じる':'ポイントをすべて開く';$('expand-all').setAttribute('aria-pressed',String(expanded));});
   window.addEventListener('beforeprint',()=>{printSnapshot=terms.map((t)=>t.node.querySelector('details').open);for(const t of terms)t.node.querySelector('details').open=true;});
   window.addEventListener('afterprint',()=>{terms.forEach((t,i)=>t.node.querySelector('details').open=Boolean(printSnapshot[i]));});
-  $('print').addEventListener('click',()=>window.print());
+  $('print')?.addEventListener('click',()=>window.print());
   document.addEventListener('keydown',(event)=>{if(event.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){event.preventDefault();$('search').focus();}});
   storageNotice();syncMarks();setCategories();applyFilters();
 })();
