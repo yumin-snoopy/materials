@@ -8,3 +8,4 @@
 /* 説明を閉じた画面でも、検索欄と比較欄の間隔を保つ */
 .lookup + .compare-panel{margin-top:18px}
 .result-toolbar{margin-top:16px;margin-bottom:18px}
+.related-demo{margin:22px 0 0}.related-demo a{display:inline-block;background:#fff;border:2px solid #954665;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:700;text-decoration:none}.related-demo a:hover,.related-demo a:focus-visible{background:#fff0f5}

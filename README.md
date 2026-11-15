@@ -8,6 +8,8 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 
 生成AIの用語を、やさしい意味と具体例で調べる教材です。章・テーマ別の検索、復習マーク、印刷に対応しています。
 
+[ワークフロー型と自律型AIエージェントの旅行プラン比較デモ](AI_Passport/agent_workflow_demo/)
+
 ## Excel
 
 [Excel教材一覧](excel/readme.md)
