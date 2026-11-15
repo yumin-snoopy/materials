@@ -19,4 +19,4 @@
 - `index.html`：HTML、CSS、JavaScriptを含む単体ファイル。外部ライブラリ・画像・フォントへの依存なし。
 - `README.md`：この説明。
 
-公開サイト上では `AI_Passport/agent_workflow_demo/` から開ける想定です。単体ファイルを配布する場合は `index.html` だけで動作します。ページ下部の用語ノートへのリンクは、単体配布時には参照先が存在しないため利用できません。
+公開サイト上では `AI_Passport/agent_workflow_demo/` から開ける想定です。単体ファイルを配布する場合は `index.html` だけで動作します。
