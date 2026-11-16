@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="同じ旅行プランを並べて進め、ワークフロー型と自律型AIエージェントの違いを学ぶ模式デモ。">
-  <title>ワークフロー型と自律型AIエージェント | 旅行プラン比較デモ</title>
+  <meta name="description" content="同じ京都旅行の依頼に起きる予定外の変化を使い、ワークフロー型と自律型AIエージェントの次の行動の決め方を比べる模式デモ。">
+  <title>同じ依頼、違う「次の一手」｜AIエージェント比較デモ</title>
   <style>
-    :root{font-family:"Yu Gothic","Meiryo",system-ui,sans-serif;color:#22384a;background:#fff;line-height:1.7;--ink:#22384a;--muted:#476071;--line:#b9cedb;--blue:#eaf5fb;--pink:#fff0f5;--accent:#954665}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:4px solid var(--accent);outline-offset:3px}a{color:#20577a}.skip{position:absolute;top:-100px;left:10px;background:#fff;padding:8px}.skip:focus{top:10px}.shell{max-width:1260px;margin:auto;padding:clamp(18px,3vw,42px)}.eyebrow{font-weight:800;color:#365b72;font-size:clamp(1rem,1.5vw,1.2rem)}.badge{border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin-left:10px;font-size:.8em}h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.35;margin:.25em 0}h2{font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.4;margin:0 0 12px}h3{font-size:clamp(1.25rem,2vw,1.65rem);margin:0}p{margin:.5em 0 1em}.lead{font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:700}.notice{background:#f4f8fa;border-left:6px solid #7da8c3;padding:14px 18px;font-size:clamp(1rem,1.4vw,1.15rem)}.section{margin-top:clamp(36px,5vw,65px)}.request{background:var(--blue);border:2px solid var(--line);border-radius:18px;padding:clamp(18px,2.5vw,28px)}.request-text{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:800}.facts{display:flex;flex-wrap:wrap;gap:10px}.fact{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:clamp(1.05rem,1.5vw,1.25rem)}.fact strong{color:#783951}.settings{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px}.settings label{font-weight:800;font-size:clamp(1.05rem,1.5vw,1.2rem)}.settings select{display:block;width:100%;min-width:220px;background:#fff;color:var(--ink);border:2px solid #789db4;border-radius:10px;padding:8px 12px;margin-top:5px}.key-message{background:#fff7e8;border:2px solid #d2ad68;border-radius:14px;padding:14px 20px;font-size:clamp(1.18rem,1.8vw,1.45rem);font-weight:800}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}.toolbar button{border:2px solid #93b0c3;background:#fff;border-radius:11px;padding:10px 18px;color:var(--ink);font-weight:800;min-height:52px}.toolbar button[aria-pressed="true"]{background:#954665;color:#fff;border-color:#954665}.toolbar button:hover{border-color:#954665}.actionbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0}.actionbar button{border-radius:12px;padding:12px 20px;min-height:58px;font-size:clamp(1.1rem,1.7vw,1.3rem);font-weight:800}.next{background:#954665;border:2px solid #954665;color:white}.next:hover{background:#783951}.next:disabled{background:#c9bbc2;border-color:#c9bbc2;cursor:default}.reset{background:#fff;border:2px solid #93b0c3;color:var(--ink)}.counter{font-weight:800;color:#365b72;font-size:clamp(1.1rem,1.6vw,1.3rem)}.lanes{display:grid;grid-template-columns:1fr 1fr;gap:16px}.lane{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.lane.agent{border-color:#d4adbf}.lane-head{padding:18px 22px;background:var(--blue)}.agent .lane-head{background:var(--pink)}.decision-owner{font-weight:900;font-size:clamp(1.1rem,1.7vw,1.35rem);color:#783951;margin:4px 0 0}.lane-body{padding:18px;min-height:320px}.stage{border:2px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:12px;background:#fff}.stage.current{border-color:#954665;box-shadow:0 0 0 3px #95466522}.stage.decision{background:#fff8e9;border-color:#d2ad68}.stage-label{display:block;color:#365b72;font-weight:800;font-size:clamp(.95rem,1.25vw,1.05rem)}.stage p{font-size:clamp(1.1rem,1.55vw,1.28rem);margin:6px 0 0}.empty{color:var(--muted);font-size:1.2rem}.rule{display:block;background:#fff;border:2px solid #954665;border-radius:10px;padding:9px 12px;font-weight:900;font-size:clamp(1.08rem,1.5vw,1.24rem);margin:10px 0}.options{display:grid;gap:8px;margin:12px 0}.option{background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:clamp(1rem,1.35vw,1.14rem)}.option.selected{border:3px solid #954665;background:#fff0f5;font-weight:900}.outcome{margin-top:18px;background:#f1f7fa;border:2px solid #7da8c3;border-radius:14px;padding:15px 18px;font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:800}.outcome[hidden]{display:none}.explain{font-size:clamp(1.1rem,1.6vw,1.3rem)}.explain li{margin:9px 0}.footer{margin-top:58px;border-top:1px solid var(--line);padding-top:20px}.focus-workflow .agent,.focus-agent .workflow{display:none}.focus-workflow .lanes,.focus-agent .lanes{grid-template-columns:1fr}.focus-workflow .lane,.focus-agent .lane{max-width:800px}@media(max-width:780px){.lanes{grid-template-columns:1fr}.settings label{width:100%}.toolbar button{flex:1 1 100%}.actionbar button{flex:1 1 100%}.badge{margin-left:0}.lane-body{min-height:160px}}@media print{.toolbar,.actionbar,.settings{display:none}.lanes{display:grid!important;grid-template-columns:1fr 1fr!important}.lane{display:block!important}.shell{padding:10px}}
+    :root{font-family:"Yu Gothic","Meiryo",system-ui,sans-serif;color:#22384a;background:#fff;line-height:1.65;--ink:#22384a;--muted:#476071;--line:#b9cedb;--blue:#eaf5fb;--pink:#fff0f5;--accent:#873b60}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:4px solid var(--accent);outline-offset:3px}a{color:#20577a}.skip{position:absolute;top:-100px;left:10px;background:#fff;padding:8px}.skip:focus{top:10px}.shell{max-width:1280px;margin:auto;padding:clamp(18px,3vw,42px)}.eyebrow{font-weight:800;color:#365b72;font-size:clamp(1rem,1.5vw,1.2rem)}.badge{border:1px solid var(--line);border-radius:999px;padding:2px 10px;margin-left:10px;font-size:.8em}h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.3;margin:.25em 0}h2{font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.35;margin:0 0 12px}h3{font-size:clamp(1.3rem,2vw,1.7rem);margin:0}p{margin:.5em 0 1em}.lead{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:700}.notice{background:#f4f8fa;border-left:6px solid #7da8c3;padding:14px 18px;font-size:clamp(1.05rem,1.4vw,1.2rem)}.section{margin-top:clamp(34px,5vw,64px)}.request{background:var(--blue);border:2px solid var(--line);border-radius:18px;padding:clamp(18px,2.5vw,28px)}.request-text{font-size:clamp(1.3rem,2vw,1.65rem);font-weight:800}.facts{display:flex;flex-wrap:wrap;gap:10px}.fact{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:clamp(1.1rem,1.5vw,1.3rem)}.fact strong{color:#783951}.key-message{background:#fff7e8;border:2px solid #d2ad68;border-radius:14px;padding:14px 20px;font-size:clamp(1.17rem,1.8vw,1.45rem);font-weight:800}.rules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.rule-panel{background:#f5f9fb;border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:clamp(1.04rem,1.3vw,1.18rem)}.rule-panel.agent-rule{background:#fff8fa}.rule-panel strong{display:block;font-size:1.1em}.rule-panel ul{margin:6px 0;padding-left:1.4em}.toolbar,.actionbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0}.toolbar button,.actionbar button,.event-button{border:2px solid #829fb2;background:#fff;border-radius:11px;padding:10px 18px;color:var(--ink);font-weight:800;min-height:52px}.toolbar button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}.actionbar button{font-size:clamp(1.1rem,1.6vw,1.3rem);min-height:58px}.actionbar .next,.event-button.ready{background:var(--accent);border-color:var(--accent);color:#fff}.actionbar button:disabled,.event-button:disabled{background:#e7e7e7;border-color:#bbb;color:#606060;cursor:default}.counter{font-weight:800;color:#365b72;font-size:clamp(1.1rem,1.6vw,1.3rem)}.event-box{border:2px solid #d2ad68;border-radius:14px;padding:16px 20px;background:#fffaf0;margin:18px 0}.event-box h3{font-size:clamp(1.25rem,1.8vw,1.5rem)}.event-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.event-chip{border:1px solid #9bb7c8;border-radius:999px;padding:5px 12px;background:#fff;font-size:clamp(1rem,1.25vw,1.12rem)}.event-chip.done{background:#dff2e9;border-color:#559479}.event-chip.upcoming{border:3px solid var(--accent);font-weight:900}.event-button{font-size:clamp(1.08rem,1.5vw,1.25rem)}.event-instruction{font-weight:700;font-size:clamp(1.05rem,1.4vw,1.2rem)}.lanes{display:grid;grid-template-columns:1fr 1fr;gap:16px}.lane{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.lane.agent{border-color:#d4adbf}.lane-head{padding:18px 22px;background:var(--blue)}.agent .lane-head{background:var(--pink)}.lane-head p{font-size:clamp(1.05rem,1.4vw,1.2rem);margin:4px 0 0}.lane-body{padding:18px;min-height:260px}.stage{border:2px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:12px;background:#fff}.stage.current{border-color:var(--accent);box-shadow:0 0 0 3px #873b6022}.stage.decision{background:#fff8e9;border-color:#d2ad68}.stage.escalation{background:#fff1f1;border-color:#be6464}.stage-label{display:block;color:#365b72;font-weight:900;font-size:clamp(1rem,1.25vw,1.1rem)}.stage-title{font-size:clamp(1.18rem,1.6vw,1.38rem);font-weight:900;margin:5px 0}.stage p{font-size:clamp(1.08rem,1.45vw,1.24rem);margin:7px 0}.owner{display:block;background:#fff;border:2px solid var(--accent);border-radius:9px;padding:7px 10px;font-weight:900;font-size:clamp(1.07rem,1.45vw,1.23rem);margin:10px 0}.change{border-left:5px solid #569383;padding-left:10px;font-weight:800}.cost{font-weight:900;color:#70405c}.empty{color:var(--muted);font-size:1.2rem}.final{margin-top:20px;background:#f1f7fa;border:2px solid #7da8c3;border-radius:14px;padding:18px}.final[hidden]{display:none}.final p{font-size:clamp(1.13rem,1.5vw,1.3rem)}.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.final-grid article{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}.final-grid strong{font-size:clamp(1.2rem,1.6vw,1.4rem)}.explain{font-size:clamp(1.12rem,1.55vw,1.3rem)}.explain li{margin:10px 0}.footer{margin-top:58px;border-top:1px solid var(--line);padding-top:20px}.focus-workflow .lane.agent,.focus-agent .lane.workflow{display:none}.focus-workflow .lanes,.focus-agent .lanes{grid-template-columns:1fr}.focus-workflow .lane,.focus-agent .lane{max-width:850px}@media(max-width:850px){.lanes,.rules,.final-grid{grid-template-columns:1fr}.lane-body{min-height:160px}.toolbar button{flex:1 1 100%}.actionbar button{flex:1 1 100%}.badge{margin-left:0}}@media print{.toolbar,.actionbar,.event-button{display:none}.lanes{grid-template-columns:1fr 1fr!important}.lane{display:block!important}.shell{padding:10px}}
   </style>
 </head>
 <body>
@@ -16,118 +16,109 @@
   <header id="top">
     <div class="eyebrow">生成AIパスポート 学習サポート <span class="badge">非公式教材</span></div>
     <h1>同じ依頼、違う「次の一手」</h1>
-    <p class="lead">ワークフロー型と自律型AIエージェントを、予算5万円の旅行プランで並べて比べます。</p>
-    <p class="notice"><strong>模式シミュレーションです。</strong> 金額・候補・「AIの判断」は説明用に作った固定シナリオです。実際のLLM、旅行検索、外部APIは使いません。</p>
+    <p class="lead">予定外の変化が続く京都旅行。次の行動を誰が決め、結果を見て何を変えたかを比べます。</p>
+    <p class="notice"><strong>模式シミュレーションです。</strong> 金額・候補・判断・ツールの結果は説明用の架空データです。実際のAI、予約、旅行検索、外部APIは使いません。</p>
   </header>
   <main>
     <section class="section request" aria-labelledby="request-title">
-      <h2 id="request-title">旅行の依頼</h2>
-      <p class="request-text">「週末の1泊旅行を、交通・宿泊・食事込みで5万円以内にして」</p>
-      <div class="facts"><div class="fact">予算 <strong>50,000円</strong></div><div class="fact">最初の候補 <strong id="first-total">64,000円</strong></div><div class="fact">追加の希望 <strong id="wish-text">温泉宿を優先</strong></div></div>
-      <div class="settings">
-        <label for="case-select">予算の状況<select id="case-select"><option value="over">最初の候補が予算超過</option><option value="within">最初から予算内</option></select></label>
-        <label for="priority-select">大切にしたいこと<select id="priority-select"><option value="hotel">温泉宿をできれば変えたくない</option><option value="travel">移動手段をできれば変えたくない</option></select></label>
-      </div>
+      <h2 id="request-title">両方式への同じ依頼</h2>
+      <p class="request-text">「週末の京都1泊旅行を、交通・宿泊・食事・観光込みで5万円以内にして」</p>
+      <div class="facts"><div class="fact">上限 <strong>50,000円</strong></div><div class="fact">最初の案 <strong>46,000円</strong></div><div class="fact">内訳 <strong>交通16,000＋宿18,000＋食事8,000＋観光4,000円</strong></div></div>
+      <p>安全条件：予約・決済はしない。5万円を超える案は完成扱いにしない。新しい希望は確認できる案に反映する。</p>
     </section>
     <section class="section" id="comparison" aria-labelledby="comparison-title">
-      <h2 id="comparison-title">両方を同時に進める</h2>
-      <p class="key-message">予算超過なら、どちらも見直せます。注目するのは「見直す場所を誰が決めたか」です。</p>
-      <div class="toolbar" role="group" aria-label="表示方式">
-        <button type="button" data-focus="both" aria-pressed="true">両方を並べる</button>
-        <button type="button" data-focus="workflow" aria-pressed="false">ワークフロー型だけ</button>
-        <button type="button" data-focus="agent" aria-pressed="false">自律型だけ</button>
+      <h2 id="comparison-title">同じ変化を両方に起こす</h2>
+      <p class="key-message">ワークフロー型も、設計済みの分岐・再試行で対応できます。違いは、登録されていない条件が来たときに「次の行動」を誰が決めるかです。</p>
+      <div class="rules">
+        <div class="rule-panel"><strong>ワークフロー型に登録された手順</strong><ul><li>満室 → 代替宿を再検索</li><li>雨 → 屋内観光へ変更</li><li>遅延 → 登録済みの別経路を検索</li><li>予算超過 → 安い宿を再検索し再計算</li></ul>「歩く距離を短く」は未登録です。</div>
+        <div class="rule-panel agent-rule"><strong>自律型に与えられたもの</strong><ul><li>目的：希望に合う5万円以内の旅行案</li><li>道具：宿・天気・交通・観光・予算の模擬ツール</li><li>制約：予約・決済をしない、予算を守る</li></ul>結果を検証して必要な作業を選び直す想定です。</div>
       </div>
-      <div class="actionbar"><button class="next" id="next" type="button">1ステップ進める</button><button class="reset" id="reset" type="button">最初から</button><span class="counter" id="counter" role="status" aria-live="polite">開始前</span></div>
+      <div class="toolbar" role="group" aria-label="表示方式"><button type="button" data-focus="both" aria-pressed="true">両方を並べる</button><button type="button" data-focus="workflow" aria-pressed="false">ワークフロー型だけ</button><button type="button" data-focus="agent" aria-pressed="false">自律型だけ</button></div>
+      <div class="event-box" aria-labelledby="event-title"><h3 id="event-title">予定外の変化を発生させる</h3><div class="event-list" id="event-list"></div><p class="event-instruction" id="event-instruction" role="status" aria-live="polite"></p><button class="event-button" id="event-button" type="button"></button></div>
+      <div class="actionbar"><button class="next" id="next" type="button">1ステップ進める</button><button id="reset" type="button">最初から</button><span class="counter" id="counter" role="status" aria-live="polite">開始前</span></div>
       <div class="lanes" id="lanes">
-        <section class="lane workflow" aria-labelledby="workflow-title"><div class="lane-head"><h3 id="workflow-title">ワークフロー型</h3><p class="decision-owner">次の手順を決めるのは：設計者</p></div><div class="lane-body" id="workflow-steps"><p class="empty">ボタンを押すと、ここに手順が増えます。</p></div></section>
-        <section class="lane agent" aria-labelledby="agent-title"><div class="lane-head"><h3 id="agent-title">自律型AIエージェント</h3><p class="decision-owner">次の手順を決めるのは：AI自身</p></div><div class="lane-body" id="agent-steps"><p class="empty">ボタンを押すと、ここに手順が増えます。</p></div></section>
+        <section class="lane workflow" aria-labelledby="workflow-title"><div class="lane-head"><h3 id="workflow-title">ワークフロー型</h3><p>次の手順：人が事前に設計したルールで決まる</p></div><div class="lane-body" id="workflow-steps"><p class="empty">ボタンを押すと手順が表示されます。</p></div></section>
+        <section class="lane agent" aria-labelledby="agent-title"><div class="lane-head"><h3 id="agent-title">自律型AIエージェント</h3><p>次の手順：目的・道具・制約の範囲でAIが選ぶ想定</p></div><div class="lane-body" id="agent-steps"><p class="empty">ボタンを押すと手順が表示されます。</p></div></section>
       </div>
-      <p class="outcome" id="outcome" role="status" aria-live="polite" hidden></p>
+      <section class="final" id="final" aria-labelledby="final-title" hidden><h2 id="final-title">最終結果と差分</h2><div class="final-grid"><article><strong>ワークフロー型：人への確認待ち</strong><p>満室・雨・遅延・予算超過は登録済みの手順で処理し、50,000円の案まで作成。「歩く距離を短く」が未登録なので完成とせず、人に判断と手順の追加を依頼します。</p></article><article><strong>自律型：確認用の案を完成</strong><p>各ツールの結果を受けて再計画。徒歩を減らすため観光先を駅近くに変え、50,000円の案を提示します。予約・決済はしていません。</p></article></div><p><strong>差分：</strong>同じ変化でも、登録済みの例外では両方式とも対処。未登録の希望では、ワークフロー型は設計変更へエスカレーションし、自律型は道具を選び直して制約内の案を作ります。実際のAIの判断には誤りもあり得るため、案の確認は人が行います。</p></section>
     </section>
-    <section class="section" aria-labelledby="point-title">
-      <h2 id="point-title">ここが違い</h2>
-      <ul class="explain">
-        <li><strong>ワークフロー型：</strong>「予算を超えたら宿を再検索」と人が先に決めています。再検索や条件分岐もできます。</li>
-        <li><strong>自律型：</strong>予算と追加の希望を見て、宿・交通・食事のどこを調べ直すかをAI自身が選ぶ方式です。</li>
-        <li>この画面の自律型も説明用の固定シナリオです。選択の見せ方を比較しており、実際にAIが推論しているわけではありません。</li>
-      </ul>
-    </section>
+    <section class="section" aria-labelledby="point-title"><h2 id="point-title">授業で押さえる点</h2><ol class="explain"><li>各カードの<strong>「次の行動を決めたのは」</strong>を見る。ツールを使うこと自体は両方式で可能です。</li><li><strong>「結果を受けて変えたこと」</strong>を見る。自律型は結果を確認して作業を選び直し、ワークフロー型は登録済みのルールで再試行します。</li><li>未登録の条件への対応は自律型の利点ですが、万能ではありません。権限や安全条件を越える作業には人の確認が必要です。</li></ol></section>
   </main>
   <footer class="footer"><a href="#top">ページの先頭へ</a></footer>
 </div>
 <script>
 (() => {
   'use strict';
-  const $ = (id) => document.getElementById(id);
-  const nodes = {caseSelect:$('case-select'), priority:$('priority-select'), first:$('first-total'), wish:$('wish-text'), next:$('next'), reset:$('reset'), counter:$('counter'), workflow:$('workflow-steps'), agent:$('agent-steps'), outcome:$('outcome')};
-  let step = 0;
-  let focus = 'both';
-  const yen = (n) => n.toLocaleString('ja-JP') + '円';
-
-  function scenario() {
-    const over = nodes.caseSelect.value === 'over';
-    const hotelPriority = nodes.priority.value === 'hotel';
-    const initial = over ? 64000 : 48000;
-    const base = [
-      {label:'① 共通：候補を探す', text:over ? '交通26,000円 ＋ 温泉宿27,000円 ＋ 食事11,000円 ＝ 64,000円' : '交通20,000円 ＋ 宿18,000円 ＋ 食事10,000円 ＝ 48,000円'},
-      {label:'② 共通：予算を確認', text:over ? '5万円を14,000円超えました。見直しが必要です。' : '5万円以内です。見直しは不要です。'}
-    ];
-    if (!over) return {workflow:[...base,{label:'③ 結果',text:'予算内なので、そのまま架空プランを提示します。'}],agent:[...base,{label:'③ 結果',text:'予算内なので、そのまま架空プランを提示します。'}],summary:'どちらも48,000円のまま終了。予算内では追加の判断は必要ありません。'};
-    const workflow = [...base,
-      {label:'③ 分岐：人が先に決めたルール',text:'「予算超過 → 宿を再検索」と設定済み。追加の希望は、このルールには含まれていません。',kind:'decision',rule:'固定ルール → 宿を再検索'},
-      {label:'④ 設定済みの行動を実行',text:'安い宿12,000円に変更。交通26,000円 ＋ 宿12,000円 ＋ 食事11,000円 ＝ 49,000円'},
-      {label:'⑤ 結果',text:'予算内になりました。最初の温泉宿は変更されました。'}
-    ];
-    const selected = hotelPriority ? 'transport' : 'hotel';
-    const agent = [...base,
-      {label:'③ 分岐：次の行動を選ぶ想定',text:hotelPriority ? '「温泉宿を維持したい」という希望も見て、どこを見直すか選びます。' : '「移動手段を維持したい」という希望も見て、どこを見直すか選びます。',kind:'decision',selected},
-      hotelPriority ? {label:'④ 選んだ行動を実行',text:'交通を10,000円の候補に変更。交通10,000円 ＋ 温泉宿27,000円 ＋ 食事11,000円 ＝ 48,000円'} : {label:'④ 選んだ行動を実行',text:'宿を12,000円の候補に変更。交通26,000円 ＋ 宿12,000円 ＋ 食事11,000円 ＝ 49,000円'},
-      {label:'⑤ 結果',text:hotelPriority ? '予算内になり、希望していた温泉宿を維持できました。' : '予算内になり、希望していた移動手段を維持できました。'}
-    ];
-    return {workflow,agent,summary:hotelPriority ? '違い：固定ルールは宿を変更して49,000円。自律型は希望を踏まえて交通を選ぶ想定で、温泉宿を維持して48,000円。' : '違い：今回は両方とも宿を見直しました。固定ルールと状況に応じた選択は、同じ結果になる場合もあります。'};
+  const $ = id => document.getElementById(id);
+  const events = [
+    {id:'hotel',name:'① 希望の宿が満室'},
+    {id:'rain',name:'② 急な雨'},
+    {id:'delay',name:'③ 交通の遅延'},
+    {id:'budget',name:'④ 運賃の値上がり'},
+    {id:'wish',name:'⑤ 同行者の希望変更'}
+  ];
+  const scenes = [
+    {title:'最初の案を作る',phase:'計画',w:{owner:'設計者が設定した開始手順',action:'候補検索 → 予算計算の順に模擬ツールを実行。',change:'交通16,000＋宿18,000＋食事8,000＋観光4,000円。',cost:'46,000円'},a:{owner:'AIが目的から選ぶ想定',action:'交通・宿・観光の模擬ツールを選び、予算ツールで確認。',change:'同じ46,000円の案を作る。',cost:'46,000円'}},
+    {event:'hotel',title:'希望の宿が満室',phase:'状況把握・次の行動',w:{owner:'設計者の「満室なら再検索」ルール',action:'宿検索ツールを再実行する分岐へ。',change:'元の宿18,000円を候補から外す。'},a:{owner:'AIが検索結果を見て選ぶ想定',action:'宿検索に加えて地図ツールも選び、駅に近い代替を探す。',change:'元の宿を外し、移動のしやすさも確認する。'}},
+    {event:'hotel',title:'代替宿を調べる',phase:'ツール実行',w:{owner:'登録済みの再試行手順',action:'宿検索：代替の宿20,000円を取得。',change:'宿18,000→20,000円。',cost:'48,000円'},a:{owner:'AIが宿検索・地図の結果から選ぶ想定',action:'駅近くの宿20,000円を候補にする。',change:'宿18,000→20,000円。',cost:'48,000円'}},
+    {event:'hotel',title:'宿の変更を検証',phase:'結果検証・計画更新',w:{owner:'設計者の予算確認手順',action:'予算ツールで上限内と確認。',change:'代替宿を旅程に反映。',cost:'48,000円'},a:{owner:'AIが結果を確認する想定',action:'予算と駅からの距離を確認。',change:'駅近くの宿を採用して旅程を更新。',cost:'48,000円'}},
+    {event:'rain',title:'天気が雨に変わる',phase:'状況把握・次の行動',w:{owner:'設計者の「雨なら屋内」ルール',action:'屋内観光の登録済み候補を検索。',change:'屋外散策を取り消す。'},a:{owner:'AIが天気結果から選ぶ想定',action:'天気・観光・移動の道具を選び、雨でも回れる順路を探す。',change:'屋外散策を取り消す。'}},
+    {event:'rain',title:'雨天の候補を調べる',phase:'ツール実行',w:{owner:'登録済みの雨天分岐',action:'屋内施設5,000円を取得。',change:'観光4,000→5,000円。',cost:'49,000円'},a:{owner:'AIが複数の結果から選ぶ想定',action:'屋内施設5,000円と駅からの経路を確認。',change:'観光4,000→5,000円。',cost:'49,000円'}},
+    {event:'rain',title:'雨天案を検証',phase:'結果検証・計画更新',w:{owner:'設計者の予算確認手順',action:'予算内を確認し、屋内観光へ差し替え。',change:'雨天ルートに更新。',cost:'49,000円'},a:{owner:'AIが結果を確認する想定',action:'雨を避けられ、予算内と確認。',change:'屋内施設へ行程を更新。',cost:'49,000円'}},
+    {event:'delay',title:'予定の交通に遅延',phase:'状況把握・次の行動',w:{owner:'設計者の「遅延なら別経路」ルール',action:'交通ツールで登録済みの代替経路を検索。',change:'元の移動予定を取り消す。'},a:{owner:'AIが遅延情報から選ぶ想定',action:'交通・観光時間の道具を選び、移動経路と訪問順を再検討。',change:'到着後の順序を入れ替える。'}},
+    {event:'delay',title:'代替交通を調べる',phase:'ツール実行',w:{owner:'登録済みの代替経路手順',action:'代替交通19,000円を取得。',change:'交通16,000→19,000円。',cost:'52,000円'},a:{owner:'AIが交通結果から選ぶ想定',action:'代替交通19,000円を選び、屋内施設の訪問順を調整。',change:'交通16,000→19,000円。',cost:'52,000円'}},
+    {event:'delay',title:'予算を再検証',phase:'結果検証・計画更新',w:{owner:'設計者の予算超過分岐',action:'2,000円超過を検出。安い宿の再検索を次に設定。',change:'まだ完成扱いにしない。',cost:'52,000円・超過'},a:{owner:'AIが計算結果から次を選ぶ想定',action:'2,000円超過を検出。宿・交通の代替案を比較することにする。',change:'まだ完成扱いにしない。',cost:'52,000円・超過'}},
+    {event:'budget',title:'代替交通の運賃が値上がり',phase:'状況把握・次の行動',w:{owner:'設計者の予算超過ルール',action:'交通19,000→22,000円。5,000円超過なので、安い宿の再検索へ。',change:'宿を変更する分岐に入る。',cost:'55,000円・超過'},a:{owner:'AIが値上がりを受けて選ぶ想定',action:'交通・宿・予算ツールの結果を比較。宿を維持して別の交通を探す。',change:'交通手段を再検討する。',cost:'55,000円・超過'}},
+    {event:'budget',title:'費用を見直す',phase:'ツール実行・再試行',w:{owner:'登録済みの「安い宿を再検索」手順',action:'宿15,000円の空室を確認。予算ツールも再実行。',change:'宿20,000→15,000円。',cost:'50,000円'},a:{owner:'AIが交通検索の結果から選ぶ想定',action:'遅延路線と異なるバス16,000円の空席を確認。予算ツールも再実行。',change:'交通22,000→16,000円。',cost:'49,000円'}},
+    {event:'budget',title:'再計算の結果を検証',phase:'結果検証・計画更新',w:{owner:'設計者の上限確認手順',action:'宿の空室と50,000円以内を確認。',change:'安い宿を旅程に反映。',cost:'50,000円'},a:{owner:'AIが空席・予算・到着時刻を検証する想定',action:'バスの空席と49,000円以内を確認。',change:'宿を維持して交通と訪問順を更新。',cost:'49,000円'}},
+    {event:'wish',title:'同行者が「歩く距離を短く」と希望',phase:'新しい制約・次の行動',w:{owner:'設計者が未登録条件の扱いを決めた',action:'歩行距離の分岐がないため、人に判断と手順追加を依頼。',change:'案の完成を保留する。',cost:'50,000円・希望未反映'},a:{owner:'AIが新しい希望から選ぶ想定',action:'地図・観光・予算ツールを選び、徒歩の少ない順路を探す。',change:'歩く距離を新しい制約に追加。',cost:'49,000円・再検討中'}},
+    {event:'wish',title:'徒歩の少ない案を調べる',phase:'ツール実行',w:{owner:'人へのエスカレーション',action:'「どの程度まで歩けるか」「代替候補をどう選ぶか」の設計変更を依頼。',change:'自動で未登録の条件を解釈して進めない。'},a:{owner:'AIが地図・観光の結果から選ぶ想定',action:'駅近くの屋内施設6,000円と短い徒歩経路を確認。',change:'観光5,000→6,000円。',cost:'50,000円'}},
+    {event:'wish',title:'新しい希望を検証',phase:'結果検証・計画更新',w:{owner:'人の判断待ち',action:'歩行距離の希望を確認できないので完成扱いにしない。',change:'設計変更後の再実行が必要。',cost:'50,000円・未完成'},a:{owner:'AIが目的と安全条件を再確認する想定',action:'徒歩を減らした案が50,000円以内と確認。予約・決済は実行しない。',change:'確認用の旅行案を完成。',cost:'50,000円'}},
+    {title:'最終結果を比べる',phase:'差分',w:{owner:'人が新しい条件の扱いを決める',action:'登録済み例外は処理済み。新条件の設計変更を待つ。',change:'希望未反映のため未完成。',cost:'50,000円の暫定案'},a:{owner:'AIが結果を検証して案を提示する想定',action:'宿・天気・交通・観光・予算の結果を確認して提示。',change:'徒歩を抑えた確認用の案を完成。',cost:'50,000円'}}
+  ];
+  let step=0, focus='both';
+  const fired=new Set();
+  const next=$('next'), eventButton=$('event-button');
+  const nextEvent=()=>scenes[step] && scenes[step].event && !fired.has(scenes[step].event) ? events.find(e=>e.id===scenes[step].event) : null;
+  function card(scene,side,current){
+    const data=scene[side], article=document.createElement('article');
+    article.className='stage'+(current?' current':'')+(scene.event==='wish'&&side==='w'?' escalation':'')+(scene.phase.includes('次の行動')?' decision':'');
+    const label=document.createElement('span');label.className='stage-label';label.textContent=scene.phase;
+    const title=document.createElement('div');title.className='stage-title';title.textContent=scene.title;
+    const owner=document.createElement('strong');owner.className='owner';owner.textContent='次の行動を決めたのは：'+data.owner;
+    const action=document.createElement('p');action.textContent='行動・道具：'+data.action;
+    const change=document.createElement('p');change.className='change';change.textContent='結果を受けて変えたこと：'+data.change;
+    article.append(label,title,owner,action,change);
+    if(data.cost){const cost=document.createElement('p');cost.className='cost';cost.textContent='計画の合計：'+data.cost;article.append(cost);}
+    return article;
   }
-  function card(item,index,total,agentSide) {
-    const box = document.createElement('article');
-    box.className = 'stage' + (item.kind === 'decision' ? ' decision' : '') + (index === total-1 ? ' current' : '');
-    const label = document.createElement('span');label.className='stage-label';label.textContent=item.label;
-    const body = document.createElement('p');body.textContent=item.text;
-    box.append(label,body);
-    if (item.rule) {const rule=document.createElement('strong');rule.className='rule';rule.textContent=item.rule;box.append(rule);}
-    if (item.selected && agentSide) {
-      const options=document.createElement('div');options.className='options';options.setAttribute('aria-label','見直し候補');
-      const choices=[['transport','交通を見直す → 48,000円'],['hotel','宿を見直す → 49,000円'],['food','食事を見直す → 58,000円・まだ超過']];
-      choices.forEach(([id,text])=>{const p=document.createElement('div');p.className='option'+(id===item.selected?' selected':'');p.textContent=(id===item.selected?'選択：':'候補：')+text;options.append(p);});
-      box.append(options);
+  function render(){
+    const upcoming=nextEvent();
+    const list=$('event-list');list.replaceChildren();
+    events.forEach(event=>{const chip=document.createElement('span');chip.className='event-chip'+(fired.has(event.id)?' done':'')+(upcoming&&upcoming.id===event.id?' upcoming':'');chip.textContent=event.name+(fired.has(event.id)?' ✓':'');list.append(chip);});
+    const instruction=$('event-instruction');
+    if(upcoming){instruction.textContent='次は「'+upcoming.name+'」です。発生ボタンを押してからステップを進めてください。';eventButton.textContent=upcoming.name+'を発生させる';eventButton.disabled=false;eventButton.classList.add('ready');}
+    else{instruction.textContent=step===scenes.length?'すべての変化を確認しました。最終結果を比べてください。':'「1ステップ進める」で両方式の動きを確認してください。';eventButton.textContent='次の変化を待っています';eventButton.disabled=true;eventButton.classList.remove('ready');}
+    for(const [id,side] of [['workflow-steps','w'],['agent-steps','a']]){
+      const target=$(id);target.replaceChildren();
+      if(step===0){const p=document.createElement('p');p.className='empty';p.textContent='ボタンを押すと手順が表示されます。';target.append(p);}
+      else scenes.slice(0,step).forEach((scene,index)=>target.append(card(scene,side,index===step-1)));
     }
-    return box;
-  }
-  function render() {
-    const data=scenario();
-    const count=data.workflow.length;
-    nodes.first.textContent=nodes.caseSelect.value==='over'?'64,000円':'48,000円';
-    nodes.wish.textContent=nodes.priority.value==='hotel'?'温泉宿を優先':'移動手段を優先';
-    for (const [target,items,agentSide] of [[nodes.workflow,data.workflow,false],[nodes.agent,data.agent,true]]) {
-      target.replaceChildren();
-      if (step===0) {const p=document.createElement('p');p.className='empty';p.textContent='ボタンを押すと、ここに手順が増えます。';target.append(p);}
-      else items.slice(0,step).forEach((item,index)=>target.append(card(item,index,step,agentSide)));
-    }
-    nodes.counter.textContent=step===0?'開始前':step+' / '+count+' ステップ';
-    nodes.next.disabled=step>=count;
-    nodes.next.textContent=step>=count?'実行完了':'1ステップ進める';
-    nodes.outcome.hidden=step<count;
-    nodes.outcome.textContent=step>=count?data.summary:'';
+    next.disabled=step>=scenes.length || !!upcoming;
+    next.textContent=step>=scenes.length?'実行完了':'1ステップ進める';
+    $('counter').textContent=step===0?'開始前':step+' / '+scenes.length+' ステップ';
+    $('final').hidden=step<scenes.length;
     document.body.classList.toggle('focus-workflow',focus==='workflow');
     document.body.classList.toggle('focus-agent',focus==='agent');
     document.querySelectorAll('[data-focus]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.focus===focus)));
   }
-  function reset(){step=0;render();}
-  nodes.next.addEventListener('click',()=>{if(step<scenario().workflow.length){step++;render();}});
-  nodes.reset.addEventListener('click',reset);
-  nodes.caseSelect.addEventListener('change',reset);
-  nodes.priority.addEventListener('change',reset);
+  eventButton.addEventListener('click',()=>{const event=nextEvent();if(event){fired.add(event.id);render();}});
+  next.addEventListener('click',()=>{if(step<scenes.length&&!nextEvent()){step++;render();}});
+  $('reset').addEventListener('click',()=>{step=0;fired.clear();render();});
   document.querySelectorAll('[data-focus]').forEach(button=>button.addEventListener('click',()=>{focus=button.dataset.focus;render();}));
   render();
 })();
 </script>
 </body>
 </html>
+
