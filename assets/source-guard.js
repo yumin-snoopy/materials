@@ -2,11 +2,13 @@
 // Best-effort only: browser menus and direct file access cannot be blocked.
 (() => {
   const block = (event) => { event.preventDefault(); event.stopImmediatePropagation(); };
-  window.addEventListener("contextmenu", block, { capture: true });
+  const editable = (event) => event.target instanceof Element && Boolean(event.target.closest('input, textarea, select, [contenteditable="true"]'));
+  window.addEventListener("contextmenu", (event) => { if (!editable(event)) block(event); }, { capture: true });
   window.addEventListener("keydown", (event) => {
     const key = String(event.key).toLowerCase();
     const command = event.ctrlKey || event.metaKey;
     const developerShortcut = command && (event.shiftKey || event.altKey) && ["i", "j", "c", "k"].includes(key);
-    if (key === "f12" || (command && key === "u") || developerShortcut) block(event);
+    if (editable(event)) return;
+    if (key === "f12" || (command && ["u", "s"].includes(key)) || developerShortcut) block(event);
   }, { capture: true });
 })();

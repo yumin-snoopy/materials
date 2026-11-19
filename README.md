@@ -10,6 +10,8 @@ Excel、VBA、基本情報技術者試験、Web制作の学習教材をまとめ
 
 [ワークフロー型と自律型AIエージェントの旅行プラン比較デモ](AI_Passport/agent_workflow_demo/)
 
+[AIの仕組み体験シミュレーター](AI_Passport/ai_simulator/)：8つの操作型教材で、機械学習からRAG・拡散モデルまでを体験します。
+
 ## Excel
 
 [Excel教材一覧](excel/readme.md)
