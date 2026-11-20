@@ -9,3 +9,25 @@
 .lookup + .compare-panel{margin-top:18px}
 .result-toolbar{margin-top:16px;margin-bottom:18px}
 .related-demo{margin:22px 0 0}.related-demo a{display:inline-block;background:#fff;border:2px solid #954665;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:700;text-decoration:none}.related-demo a:hover,.related-demo a:focus-visible{background:#fff0f5}
+
+/* 長い用語一覧からページ先頭へ戻るリンク */
+#back-top {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #20577a;
+  color: #fff;
+  box-shadow: 0 2px 8px #17394d40;
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+}
+#back-top:hover, #back-top:focus-visible {
+  background: #163f5b;
+}
